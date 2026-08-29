@@ -39,7 +39,7 @@ const href = pastSeason(entry.season) ? url(`seasons/${entry.season}`) : null;
     <div>
       <div class="flex items-center justify-between gap-2">
         <p class="eyebrow text-accent">
-          {entry.competitionShort} · Grade {entry.grade}
+          {entry.competitionShort} · {entry.grade}
         </p>
         {entry.first && (
           <span class="font-figures text-2xs uppercase tracking-eyebrow text-ink-faint">Inaugural</span>

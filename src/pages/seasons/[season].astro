@@ -59,13 +59,15 @@ const tiles = [
         }
         {
           season.result && (
-            <div class="inline-flex items-center gap-3 self-start border-2 border-[#b4b5ba] bg-gradient-to-r from-[#b4b5ba]/25 via-[#b4b5ba]/10 to-transparent px-5 py-3 font-display uppercase tracking-eyebrow text-[#e8eaee] lg:justify-self-end shadow-md">
+            <div class="col-span-full flex items-center gap-3 self-start border-2 border-[#b4b5ba] bg-gradient-to-r from-[#b4b5ba]/25 via-[#b4b5ba]/10 to-transparent px-4 py-3 font-display uppercase tracking-eyebrow text-[#e8eaee] shadow-md sm:px-5 lg:col-span-1 lg:justify-self-end">
               <div class="flex h-8 w-8 items-center justify-center rounded bg-[#cfd3db] text-club">
                 <CricketIcon name="trophy" class="h-4 w-4 text-club" />
               </div>
-              <div>
-                <span class="block text-2xs font-figures text-accent-tint uppercase">Season Accolade</span>
-                <span class="block text-base font-bold text-paper">Grand Final {season.result}</span>
+              <div class="min-w-0">
+                <span class="block text-2xs font-figures uppercase text-accent-tint">Season accolade</span>
+                <span class="block text-base font-bold leading-tight text-paper">
+                  Grand Final {season.result}
+                </span>
               </div>
             </div>
           )

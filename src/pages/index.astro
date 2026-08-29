@@ -25,6 +25,9 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
 
+// The club's most recent finish, for the badge over the hero photo.
+const lastResult = [...seasons].reverse().find((s) => s.result);
+
 const nextGame = upcoming[0];
 const recent = results.slice(0, 4);
 
@@ -98,10 +101,16 @@ const leadingBowl = [...(seasonStats.players ?? [])]
                 sizes="(min-width: 1024px) 500px, 100vw"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-club/80 via-transparent to-transparent"></div>
-              <div class="absolute top-2.5 right-2.5 bg-gradient-to-r from-[#cfd3db] via-[#e8eaee] to-[#b4b5ba] text-club px-2.5 py-0.5 text-2xs font-display uppercase tracking-eyebrow font-bold shadow-md flex items-center gap-1 border border-white/40">
-                <CricketIcon name="trophy" class="h-3 w-3 text-club" />
-                <span>2025/26 Runners-up</span>
-              </div>
+              {
+                lastResult && (
+                  <div class="absolute right-2.5 top-2.5 flex max-w-[calc(100%-1.25rem)] items-center gap-1 border border-white/40 bg-gradient-to-r from-[#cfd3db] via-[#e8eaee] to-[#b4b5ba] px-2.5 py-0.5 font-display text-2xs font-bold uppercase tracking-eyebrow text-club shadow-md">
+                    <CricketIcon name="trophy" class="h-3 w-3 shrink-0 text-club" />
+                    {/* The season only appears once there is room for it. */}
+                    <span class="hidden sm:inline">{lastResult.label}</span>
+                    <span class="truncate">{lastResult.result}</span>
+                  </div>
+                )
+              }
               <div class="absolute bottom-2.5 left-3 right-3 text-left">
                 <p class="font-display text-xs uppercase tracking-wide text-paper">South Eastern Dreamers Senior Squad</p>
                 <p class="text-2xs text-accent-tint font-figures">Home ground: {homeGroundLabel}</p>

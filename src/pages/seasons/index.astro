@@ -41,7 +41,7 @@ const currentLosses = results.filter((r) => r.outcome === 'LOST' || r.outcome ==
       <div class="tile p-6 sm:p-8 bg-paper border-t-2 border-t-club relative overflow-hidden" data-rule-in>
         <div class="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-center">
           <div>
-            <div class="flex items-center gap-2.5">
+            <div class="flex flex-wrap items-center gap-2.5">
               <span class="eyebrow bg-emerald-500/10 text-emerald-700 px-2.5 py-0.5 rounded font-semibold text-2xs">
                 ● Current Ongoing Season
               </span>
@@ -115,8 +115,8 @@ const currentLosses = results.filter((r) => r.outcome === 'LOST' || r.outcome ==
             return (
               <div class="tile p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-[#dfb74c] group transition-all hover:-translate-y-1 hover:shadow-lift" data-rule-in>
                 <div>
-                  <div class="flex items-center justify-between gap-2 border-b border-rule pb-3">
-                    <div class="flex items-center gap-2.5">
+                  <div class="flex flex-wrap items-center justify-between gap-x-2 gap-y-2 border-b border-rule pb-3">
+                    <div class="flex flex-wrap items-center gap-2.5">
                       <span class="font-display text-2xl uppercase tracking-wide text-club">{entry.label}</span>
                       {entry.result && (
                         <span class="rounded border border-[#b4b5ba] bg-[#b4b5ba]/25 px-2.5 py-0.5 text-2xs font-display uppercase tracking-wider text-club font-bold shadow-xs">
@@ -125,7 +125,7 @@ const currentLosses = results.filter((r) => r.outcome === 'LOST' || r.outcome ==
                       )}
                     </div>
                     <span class="eyebrow bg-club/5 px-2.5 py-1 rounded text-club font-semibold">
-                      {entry.competitionShort} · Grade {entry.grade}
+                      {entry.competitionShort} · {entry.grade}
                     </span>
                   </div>
 

@@ -11,9 +11,7 @@
     "_comment": "Two different places, deliberately. 'suburb' is where the club is registered (Cranbourne East); the home ground is in Endeavour Hills. Anything telling a visitor where to watch cricket should use homeGround, not suburb.",
     "suburb": "Cranbourne East",
     "state": "VIC",
-    "postcode": "3977",
     "country": "Australia",
-    "postalAddress": "5 Tattle Grove, Cranbourne East VIC 3977",
     "homeGround": {
       "name": "Singleton Reserve",
       "suburb": "Endeavour Hills",
@@ -90,9 +88,7 @@
       "Playing next season",
       "Something else"
     ],
-    "phone": "0401 236 864",
-    "address": "5 Tattle Grove, Cranbourne East VIC 3977",
-    "_privacyComment": "Club contact details only. Never add a player's personal email, phone, address or date of birth here \u2014 see CLAUDE.md."
+    "_privacyComment": "Club email only. The president's phone number and home address were removed: this repository is public, and CLAUDE.md forbids committing personal phone numbers or addresses. Do not add them back. The home ground in location.homeGround is a public reserve and is fine to publish."
   },
   "social": {
     "_comment": "Official club accounts only. Leave null and the link is simply not rendered.",
@@ -150,6 +146,18 @@
         "name": "KloudI",
         "logo": "kloudi.png",
         "_confirm": "No details supplied. Needs a strapline, blurb, contact details and a website. Note the supplied artwork reads 'Innovatinve Solutions Company' \u2014 a typo in the logo itself, so it is not repeated as text here."
+      },
+      {
+        "name": "Southern Star Property Services",
+        "strapline": "Experience the difference",
+        "logo": "southern-star-group.png",
+        "blurb": "Commercial and domestic premium services across Melbourne, for real estate agents, property managers, builders, site managers, homeowners and developers, in both residential and office environments. Wherever we are, the goal is the same: exceptional work by a proud and professional team.",
+        "address": "67 John Russell Rd, Cranbourne West VIC 3977",
+        "phone": "0432 491 388",
+        "phoneLabel": "Phone \u00b7 24/7",
+        "email": "info@ssproperties.com.au",
+        "url": "https://ssproperties.com.au/",
+        "_confirm": "The logo reads 'Southern Star Group'; the club supplied the name as 'Southern Star Property Services'. Confirm which should appear."
       }
     ]
   }

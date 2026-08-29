@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import { allPhotos, galleryTitle, galleryIntro } from '../../lib/gallery';
+import { club } from '../../lib/site';
+---
+
+<Base title={galleryTitle} description={galleryIntro ?? `Photos from ${club.name}.`}>
+  <PageHeader eyebrow="The club" title={galleryTitle} intro={galleryIntro} />
+
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    {
+      allPhotos.length > 0 ? (
+        /* Landscape shots take two columns and squares take one, so the grid
+           follows the photographs rather than cropping them to a template. */
+        <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          {allPhotos.map((p, i) => (
+            <figure
+              class:list={[
+                'tile group relative overflow-hidden',
+                p.shape === 'square' ? 'col-span-1' : 'col-span-2',
+              ]}
+              data-rule-in
+            >
+              <Image
+                src={p.image}
+                alt={p.alt}
+                widths={[400, 800, 1200]}
+                sizes={
+                  p.shape === 'square'
+                    ? '(min-width: 1024px) 260px, 50vw'
+                    : '(min-width: 1024px) 560px, 100vw'
+                }
+                loading={i < 2 ? 'eager' : 'lazy'}
+                class:list={[
+                  'w-full object-cover transition-transform duration-500 group-hover:scale-105',
+                  p.shape === 'pano' && 'aspect-[16/9]',
+                  p.shape === 'landscape' && 'aspect-[4/3]',
+                  p.shape === 'square' && 'aspect-square',
+                ]}
+              />
+              {p.caption && (
+                <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-club/90 via-club/60 to-transparent px-4 pb-3 pt-10">
+                  <span class="font-display text-sm uppercase tracking-eyebrow text-paper">
+                    {p.caption}
+                  </span>
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <EmptyState title="No photos yet" />
+      )
+    }
+
+    <p class="mt-10 max-w-prose text-sm text-ink-muted">
+      Got a photo from a match day? Send it in and it will go up here.
+    </p>
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

@@ -1,0 +1,42 @@
+{
+  "_comment": "Captions for the photos in src/assets/gallery/. Match 'file' to the filename exactly. A photo with no entry here still appears — it just falls back to the generic caption — and an entry whose file is missing is ignored, so the page never breaks. Order here is the order on the page.",
+  "title": "Gallery",
+  "intro": "Match days, training nights and the people who make up the club.",
+  "photos": [
+    {
+      "file": "celebration.jpg",
+      "caption": "Celebrating a win outside the shelter",
+      "alt": "The Dreamers squad with arms raised and bats held up, celebrating a win in front of the ground shelter."
+    },
+    {
+      "file": "shelter-matchday.jpg",
+      "caption": "Match day at the ground",
+      "alt": "Players and supporters seated under the ground shelter on a match day, club flag flying beside them."
+    },
+    {
+      "file": "player-of-the-match.jpg",
+      "caption": "Player of the match",
+      "alt": "A Dreamers player smiling on the outfield, wearing the club's blue Player of the Match medal."
+    },
+    {
+      "file": "nets-session.jpg",
+      "caption": "Training in the nets",
+      "alt": "Seven Dreamers players crowded together for a photo inside the practice nets after a training session."
+    },
+    {
+      "file": "ground-in-play.jpg",
+      "caption": "Out in the middle",
+      "alt": "A wide view of the ground during play, fielders spread across the outfield under a blue sky."
+    },
+    {
+      "file": "watching-from-the-shelter.jpg",
+      "caption": "Watching from the boundary",
+      "alt": "Players and supporters watching a match from the shelter, with the ground stretching out behind them."
+    },
+    {
+      "file": "club-cap.jpg",
+      "caption": "The club cap",
+      "alt": "A navy Dreamers cap resting on the grass, the shield crest embroidered on the front."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+---
+import CricketIcon from './CricketIcon.astro';
+import { formatDate } from '../lib/format';
+import { teamBySlug } from '../lib/site';
+import type { Performance } from '../lib/playhq-types';
+
+interface Props {
+  batter: Performance | null;
+  bowler: Performance | null;
+}
+const { batter, bowler } = Astro.props;
+
+const batting = (p: Performance) =>
+  p.batting ? `${p.batting.runs}${p.batting.notOut ? '*' : ''} (${p.batting.balls}b)` : '';
+
+const bowling = (p: Performance) =>
+  p.bowling ? `${p.bowling.wickets}/${p.bowling.runs} (${p.bowling.overs} ov)` : '';
+
+const entries = [
+  batter && { label: 'Top batter', icon: 'bat' as const, p: batter, figures: batting(batter) },
+  bowler && { label: 'Top bowler', icon: 'ball' as const, p: bowler, figures: bowling(bowler) },
+].filter(Boolean) as Array<{ label: string; icon: 'bat' | 'ball'; p: Performance; figures: string }>;
+---
+
+<div class="grid gap-6 sm:grid-cols-2">
+  {
+    entries.map(({ label, icon, p, figures }) => (
+      <div class="tile p-7 border-t-2 border-t-club transition-all hover:shadow-lift" data-rule-in>
+        <div class="flex items-center justify-between gap-3">
+          <p class="eyebrow text-accent">{label}</p>
+          <div class="flex h-7 w-7 items-center justify-center rounded bg-club/5 text-club">
+            <CricketIcon name={icon} class="h-4 w-4 text-accent" />
+          </div>
+        </div>
+        <p class="mt-4 font-display text-2xl uppercase tracking-wide text-club">{p.displayName}</p>
+        <p class="mt-1 font-figures text-4xl font-bold tabular-nums text-ink">{figures}</p>
+        <p class="mt-3 text-sm text-ink-muted border-t border-rule pt-3">
+          {teamBySlug(p.teamSlug)?.shortName ?? p.teamSlug} · {p.round} v {p.opponent} ·{' '}
+          {formatDate(p.date, { day: 'numeric', month: 'short' })}
+        </p>
+      </div>
+    ))
+  }
+</div>

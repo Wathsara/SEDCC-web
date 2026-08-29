@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { CATEGORY_LABELS, formatDate, isoDate } from '../lib/format';
+import { url } from '../lib/site';
+
+interface Props {
+  article: {
+    id: string;
+    data: {
+      title: string;
+      date: Date;
+      category: string;
+      summary: string;
+      hero?: { src: ImageMetadata; alt: string } | undefined;
+    };
+  };
+}
+const { article } = Astro.props;
+const { title, date, category, summary, hero } = article.data;
+const href = url(`news/${article.id}`);
+---
+
+<article class="group border-b border-rule py-6">
+  <a href={href} class="block">
+    {
+      hero && (
+        <Image
+          src={hero.src}
+          alt={hero.alt}
+          widths={[400, 800]}
+          sizes="(min-width: 640px) 400px, 100vw"
+          class="mb-4 w-full object-cover"
+        />
+      )
+    }
+    <p class="eyebrow">
+      {CATEGORY_LABELS[category] ?? category} ·{' '}
+      <time datetime={isoDate(date)}>{formatDate(date)}</time>
+    </p>
+    <h3
+      class="mt-2 font-display text-xl uppercase text-club group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4"
+    >
+      {title}
+    </h3>
+    <p class="mt-2 max-w-prose text-ink-muted">{summary}</p>
+  </a>
+</article>

@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import photo from '../assets/2025-26-vsca-grade-4-team.jpg';
+
+interface Props {
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  sizes?: string;
+}
+const {
+  class: className,
+  loading = 'lazy',
+  sizes = '(min-width: 1024px) 1100px, 100vw',
+} = Astro.props;
+---
+
+<Image
+  src={photo}
+  alt="The Dreamers VSCA Grade 4 side of 2025/26, the club's only team that season, at their home ground."
+  widths={[600, 900, 1200]}
+  sizes={sizes}
+  loading={loading}
+  class={className}
+/>

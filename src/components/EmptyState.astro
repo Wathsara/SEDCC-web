@@ -1,0 +1,18 @@
+---
+/*
+  The season has not started, so most data-driven panels are empty until it
+  does. The club asked these be kept short: the "Coming soon" label and a
+  one-line statement of what is missing, nothing more.
+*/
+interface Props {
+  title: string;
+  /** Set false for panels empty for a reason other than timing. */
+  soon?: boolean;
+}
+const { title, soon = true } = Astro.props;
+---
+
+<div class="border border-dashed border-rule-strong bg-paper-sunk px-6 py-10 text-center">
+  {soon && <p class="eyebrow text-accent">Coming soon</p>}
+  <p class="mt-2 font-display text-lg uppercase tracking-display text-ink">{title}</p>
+</div>

@@ -1,0 +1,51 @@
+---
+import '../styles/tokens.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { club, tagline, url } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Set on the one page that should not append the club name. */
+  bareTitle?: boolean;
+}
+
+const { title, description, bareTitle = false } = Astro.props;
+
+const pageTitle = bareTitle ? title : `${title} — ${club.shortName}`;
+const desc = description ?? tagline;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'http://localhost:4321');
+---
+
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical.href} />
+    <meta property="og:site_name" content={club.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical.href} />
+    <meta name="theme-color" content={club.brand.primary} />
+    <link rel="icon" href={url(club.brand.favicon)} sizes="32x32" />
+    <link rel="apple-touch-icon" href={url(club.brand.appleTouchIcon)} />
+    <meta property="og:image" content={new URL(url(club.brand.ogImage), canonical).href} />
+    <link rel="sitemap" href={url('sitemap-index.xml')} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:bg-club focus:px-4 focus:py-2 focus:text-paper"
+      >Skip to content</a
+    >
+    <SiteHeader />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

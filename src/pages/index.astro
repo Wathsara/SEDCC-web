@@ -1,0 +1,454 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import EmptyState from '../components/EmptyState.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Logo from '../components/Logo.astro';
+import TeamPhoto from '../components/TeamPhoto.astro';
+import SixBall from '../components/SixBall.astro';
+import SeasonCard from '../components/SeasonCard.astro';
+import NextFixture from '../components/NextFixture.astro';
+import FormGuide from '../components/FormGuide.astro';
+import CricketIcon from '../components/CricketIcon.astro';
+import WeeklyBest from '../components/WeeklyBest.astro';
+import { club, season, teams, homeGroundSuburb, homeGroundLabel, suburb, headlineRecords, sponsors, showNews, intro, heroLine, url } from '../lib/site';
+import { seasons } from '../lib/history';
+import {
+  hasWeeklyStats, hasSeasonStats, weekly, seasonStats,
+  upcoming, results, form,
+} from '../lib/playhq';
+import { formatDate, isoDate } from '../lib/format';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+
+const nextGame = upcoming[0];
+const recent = results.slice(0, 4);
+
+const growth = [
+  { count: 3, figure: '03', label: 'Seasons', detail: 'Since 2024/25', icon: 'boundary' as const },
+  { count: 3, figure: '03', label: 'Sides', detail: 'Two ECA, one VSCA', icon: 'cap' as const },
+  { count: 2, figure: '02', label: 'Days a week', detail: 'Saturday and Sunday', icon: 'ball' as const },
+];
+
+// Honour board teaser — the club's four all-time marks.
+
+// Leading players this season, from the sync.
+const leadingBat = [...(seasonStats.players ?? [])]
+  .filter((p) => p.batting.innings > 0)
+  .sort((a, b) => b.batting.runs - a.batting.runs)[0];
+const leadingBowl = [...(seasonStats.players ?? [])]
+  .filter((p) => p.bowling.wickets > 0)
+  .sort((a, b) => b.bowling.wickets - a.bowling.wickets)[0];
+---
+
+<Base title={club.name} bareTitle>
+  <!-- Hero -->
+  <section data-hero class="relative isolate overflow-hidden bg-club text-paper">
+    {/* Subtle atmospheric background */}
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(180,181,186,0.15),rgba(15,28,63,1))]"></div>
+    <SixBall />
+
+    <div class="relative mx-auto max-w-6xl px-4 py-14 sm:py-20">
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+        <div>
+          <div class="flex items-center gap-3.5">
+            <Logo class="h-12 w-12 shrink-0 sm:h-14 sm:w-14 drop-shadow-md" width={56} />
+            <div>
+              <span class="eyebrow text-accent-tint">{homeGroundSuburb ?? suburb} · {season.label}</span>
+              <p class="text-2xs font-figures text-paper/70 tracking-wider uppercase mt-0.5">{club.name}</p>
+            </div>
+          </div>
+
+          <h1 class="lockup mt-5">
+            Dreamers<br />Cricket Club
+          </h1>
+          {heroLine && <p class="mt-4 max-w-lg text-sm sm:text-base text-paper/90 leading-relaxed font-light">{heroLine}</p>}
+
+          <div class="mt-7 flex flex-wrap items-center gap-3.5">
+            <a
+              href={url('teams')}
+              class="bg-paper px-5 py-2.5 font-display text-xs uppercase tracking-eyebrow text-club transition-colors hover:bg-accent-tint shadow-sm"
+              >The Three Sides</a
+            >
+            <a
+              href={url('stats')}
+              class="border border-accent-tint/60 px-5 py-2.5 font-display text-xs uppercase tracking-eyebrow text-paper transition-colors hover:bg-club-tint"
+              >Match Centre & Stats</a
+            >
+            <button
+              type="button"
+              data-six-trigger
+              class="stitch-link font-display text-xs uppercase tracking-eyebrow text-accent-tint transition-colors hover:text-paper"
+              >Hit a Six</button
+            >
+          </div>
+        </div>
+
+        {/* Framed Team Photo - Centered on player faces */}
+        <div class="relative">
+          <div class="tile p-2.5 bg-paper/5 backdrop-blur-sm border border-white/15 shadow-lift overflow-hidden group">
+            <div class="relative aspect-[16/11] overflow-hidden bg-club">
+              <TeamPhoto
+                class="h-full w-full object-cover object-[center_66%] transition-transform duration-500 group-hover:scale-105"
+                loading="eager"
+                sizes="(min-width: 1024px) 500px, 100vw"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-club/80 via-transparent to-transparent"></div>
+              <div class="absolute top-2.5 right-2.5 bg-gradient-to-r from-[#cfd3db] via-[#e8eaee] to-[#b4b5ba] text-club px-2.5 py-0.5 text-2xs font-display uppercase tracking-eyebrow font-bold shadow-md flex items-center gap-1 border border-white/40">
+                <CricketIcon name="trophy" class="h-3 w-3 text-club" />
+                <span>2025/26 Runners-up</span>
+              </div>
+              <div class="absolute bottom-2.5 left-3 right-3 text-left">
+                <p class="font-display text-xs uppercase tracking-wide text-paper">South Eastern Dreamers Senior Squad</p>
+                <p class="text-2xs text-accent-tint font-figures">Home ground: {homeGroundLabel}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seam seam--onclub seam--draw"></div>
+  </section>
+
+  <!-- Editorial Club Ethos & Vision -->
+  {
+    intro && (
+      <section class="border-b border-rule bg-paper">
+        <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+          <div class="grid gap-10 lg:grid-cols-[1.25fr_1fr] items-center">
+            <div>
+              <div class="flex items-center gap-2">
+                <CricketIcon name="ball" class="h-4 w-4 text-accent" />
+                <p class="eyebrow text-club font-semibold">Club Ethos & Vision</p>
+              </div>
+              <h2 class="mt-2.5 font-display text-2xl sm:text-3xl uppercase tracking-tight text-club leading-snug">
+                Relentless cricket, brotherhood, and a lasting community legacy.
+              </h2>
+              <p class="mt-3.5 text-sm sm:text-base text-ink-muted leading-relaxed font-light">
+                {intro}
+              </p>
+              <div class="mt-6 flex flex-wrap items-center gap-4 text-xs font-figures text-ink-faint">
+                <span>Established {club.established}</span>
+                <span>·</span>
+                <span>{suburb}, {club.location.state}</span>
+                <span>·</span>
+                <a href={url('about')} class="stitch-link font-display uppercase tracking-eyebrow text-club hover:text-accent transition-colors">
+                  Our Story →
+                </a>
+              </div>
+            </div>
+
+            <div class="grid gap-4">
+              <div class="tile p-5 border-l-4 border-l-club">
+                <p class="font-display text-sm uppercase tracking-wide text-club">01 · Brotherhood & Discipline</p>
+                <p class="mt-1 text-xs text-ink-muted leading-relaxed">
+                  Playing hard on the field, backing each other in the dressing room, and upholding the integrity of the game.
+                </p>
+              </div>
+              <div class="tile p-5 border-l-4 border-l-[#dfb74c]">
+                <p class="font-display text-sm uppercase tracking-wide text-club">02 · Premiership Ambition</p>
+                <p class="mt-1 text-xs text-ink-muted leading-relaxed">
+                  Fielding three competitive squads across Saturday ECA and Sunday VSCA to build a winning culture.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Next fixture + recent results -->
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+    <SectionHead title="Match Centre" note={season.label} href={url('teams')} linkLabel="All Fixtures" />
+    <div class="grid gap-6 lg:grid-cols-[1.15fr_1fr]">
+      <div>
+        {
+          nextGame ? (
+            <NextFixture game={nextGame} />
+          ) : (
+            <EmptyState title="No fixtures yet" />
+          )
+        }
+      </div>
+
+      <div class="tile p-5 sm:p-6">
+        <div class="flex items-baseline justify-between gap-4 border-b border-rule pb-3">
+          <h2 class="font-display text-base uppercase text-club">
+            Recent results
+            <span class="ml-2 font-figures text-2xs tracking-eyebrow text-ink-faint">
+              {season.label}
+            </span>
+          </h2>
+          {recent.length > 0 && <CricketIcon name="bat" class="h-3.5 w-3.5 text-accent" />}
+        </div>
+        {
+          recent.length > 0 ? (
+            <ul class="mt-3">
+              {recent.map((g) => (
+                <li class="card-line" data-rule-in>
+                  <span class="card-line__name text-sm">
+                    {g.isHome ? 'v' : '@'} {g.opponent}
+                  </span>
+                  <span class="card-line__figures text-xs">
+                    {g.ourScore ? (
+                      g.ourScore
+                    ) : (
+                      <time datetime={isoDate(g.dates[0])}>
+                        {formatDate(g.dates[0], { day: 'numeric', month: 'short' })}
+                      </time>
+                    )}
+                  </span>
+                  <span class="card-line__context text-2xs">
+                    {g.teamName} · {g.roundShort}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="mt-3">
+              <span class="eyebrow block text-accent">Coming soon</span>
+              <span class="mt-1 block font-display text-sm uppercase text-ink">No results yet</span>
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Club figures -->
+  <section class="band-dark border-y border-white/10">
+    <div class="mx-auto grid max-w-6xl gap-4 px-4 py-8 sm:grid-cols-3">
+      {
+        growth.map((g) => (
+          <div class="flex items-center gap-3.5 p-2">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-white/5 border border-white/10">
+              <CricketIcon name={g.icon} class="h-5 w-5 text-accent-tint" />
+            </div>
+            <div>
+              <p class="scoreboard__figure text-2xl font-bold tabular-nums text-paper" data-count={g.count}>
+                {g.figure}
+              </p>
+              <p class="font-display text-2xs uppercase tracking-eyebrow text-paper">{g.label}</p>
+              <p class="text-2xs text-accent-tint">{g.detail}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- The three sides, with form -->
+  <section class="mx-auto max-w-6xl px-4 py-14 sm:py-16">
+    <SectionHead title={`The Three Sides · ${season.label}`} href={url('teams')} linkLabel="All squads" />
+    <div class="grid gap-6 md:grid-cols-3">
+      {
+        teams.map((t, i) => {
+          const guide = form(t.slug);
+          return (
+            <a href={url(`teams/${t.slug}`)} class="tile block p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-lift group border-t-2 border-t-club" data-rule-in>
+              <div class="flex items-baseline justify-between border-b border-rule pb-2.5">
+                <span class="font-figures text-2xs tabular-nums text-ink-faint">
+                  SIDE #{String(i + 1).padStart(2, '0')}
+                </span>
+                <span class="eyebrow bg-club/5 px-2 py-0.5 rounded text-club font-semibold">{t.competitionShort} · {t.day}</span>
+              </div>
+              <p class="mt-3.5 font-display text-lg uppercase text-club group-hover:text-accent transition-colors">{t.name}</p>
+              {t.shield && <p class="mt-1 text-xs text-ink-muted">{t.shield}</p>}
+              {guide.length > 0 ? (
+                <div class="mt-3.5 pt-2.5 border-t border-rule">
+                  <p class="eyebrow mb-1">Form</p>
+                  <FormGuide outcomes={guide} />
+                </div>
+              ) : (
+                <p class="mt-3.5 pt-2.5 border-t border-rule font-figures text-2xs uppercase tracking-eyebrow text-ink-faint">
+                  Form guide coming soon
+                </p>
+              )}
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Weekly best -->
+  {
+    hasWeeklyStats && (
+      <section class="mx-auto max-w-6xl px-4 pb-14 sm:pb-16">
+        <SectionHead title="This week’s best" note={season.label} href={url('stats')} linkLabel="Leaderboards" />
+        <WeeklyBest batter={weekly.topBatter} bowler={weekly.topBowler} />
+      </section>
+    )
+  }
+
+  <!-- Leading players -->
+  {
+    hasSeasonStats && (leadingBat || leadingBowl) && (
+      <section class="mx-auto max-w-6xl px-4 pb-14 sm:pb-16">
+        <SectionHead title="Leading the season" note={season.label} href={url('stats')} linkLabel="All stats" />
+        <div class="grid gap-6 sm:grid-cols-2">
+          {leadingBat && (
+            <div class="tile p-5 sm:p-6 border-t-2 border-t-club transition-all hover:shadow-lift" data-rule-in>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <CricketIcon name="bat" class="h-3.5 w-3.5 text-accent" />
+                  <p class="eyebrow text-accent">Season Most Runs</p>
+                </div>
+                <span class="font-figures text-2xs text-ink-faint">{season.label}</span>
+              </div>
+              <p class="mt-2.5 font-display text-lg uppercase text-club">{leadingBat.displayName}</p>
+              <p class="mt-1 font-figures text-2xl font-bold tabular-nums text-ink">{leadingBat.batting.runs} <span class="text-xs font-normal text-ink-faint">runs</span></p>
+              <p class="mt-2 text-xs text-ink-muted border-t border-rule pt-2">
+                {leadingBat.batting.innings} innings · HS {leadingBat.batting.highScore}
+                {leadingBat.batting.average !== null && ` · avg ${leadingBat.batting.average.toFixed(1)}`}
+              </p>
+            </div>
+          )}
+          {leadingBowl && (
+            <div class="tile p-5 sm:p-6 border-t-2 border-t-club transition-all hover:shadow-lift" data-rule-in>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <CricketIcon name="ball" class="h-3.5 w-3.5 text-accent" />
+                  <p class="eyebrow text-accent">Season Most Wickets</p>
+                </div>
+                <span class="font-figures text-2xs text-ink-faint">{season.label}</span>
+              </div>
+              <p class="mt-2.5 font-display text-lg uppercase text-club">{leadingBowl.displayName}</p>
+              <p class="mt-1 font-figures text-2xl font-bold tabular-nums text-ink">{leadingBowl.bowling.wickets} <span class="text-xs font-normal text-ink-faint">wickets</span></p>
+              <p class="mt-2 text-xs text-ink-muted border-t border-rule pt-2">
+                {leadingBowl.bowling.overs} overs · best {leadingBowl.bowling.best}
+                {leadingBowl.bowling.average !== null && ` · avg ${leadingBowl.bowling.average.toFixed(1)}`}
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Honour board teaser: the four all-time marks -->
+  {
+    headlineRecords.length > 0 && (
+      <section class="band-dark">
+        <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+          <div class="section-head">
+            <h2 class="section-head__title text-paper">Pavilion Honours & Records</h2>
+            <span class="section-head__rule bg-[#dfb74c]/40" />
+            <a
+              href={url('honour-board')}
+              class="stitch-link shrink-0 font-display text-xs uppercase tracking-eyebrow text-[#dfb74c] hover:text-paper transition-colors"
+            >
+              Pavilion Board →
+            </a>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {headlineRecords.map((r) => (
+              <div class="border border-[#dfb74c]/40 bg-white/5 p-5 relative overflow-hidden transition-all hover:border-[#dfb74c] hover:bg-white/10 hover:-translate-y-1 shadow-md" data-rule-in>
+                <div class="flex items-center justify-between gap-3">
+                  <p class="eyebrow text-[#dfb74c]">{r.short}</p>
+                  <CricketIcon name={r.icon} class="h-3.5 w-3.5 shrink-0 text-[#dfb74c]" />
+                </div>
+                <p class="mt-3 font-figures text-3xl font-bold tabular-nums leading-none text-[#f6e4a6]">
+                  {r.value}
+                  {r.balls && <span class="text-base font-normal text-accent-tint">({r.balls}b)</span>}
+                </p>
+                <p class="mt-2.5 font-display text-base uppercase text-paper tracking-wide">{r.holder}</p>
+                <p class="text-xs text-accent-tint/90">{r.season}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="seam seam--onclub" />
+      </section>
+    )
+  }
+
+  <!-- History -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <SectionHead title="How we got here" />
+    <p class="max-w-prose text-base text-ink-muted leading-relaxed font-light">
+      Two seasons, one side each, both on Sundays in the VSCA. Three sides across two
+      associations in {season.label}.
+    </p>
+    <div class="mt-8 grid gap-8 md:grid-cols-2">
+      {seasons.map((entry) => <SeasonCard entry={entry} />)}
+    </div>
+  </section>
+
+  <!-- News + store -->
+  {
+    sponsors.length > 0 && (
+      <section class="mx-auto max-w-6xl px-4 pb-16">
+        <SectionHead title="Our sponsors" href={url('sponsors')} linkLabel="All sponsors" />
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {sponsors.map((s) => (
+            <a
+              href={url('sponsors')}
+              class="tile flex items-center justify-center overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lift group"
+              data-rule-in
+            >
+              {s.image ? (
+                <span class="flex h-24 w-full items-center justify-center bg-white p-4">
+                  <Image
+                    src={s.image}
+                    alt={`${s.name} logo`}
+                    widths={[200, 400]}
+                    sizes="240px"
+                    class="max-h-full w-auto object-contain transition-transform group-hover:scale-105"
+                  />
+                </span>
+              ) : (
+                <span class="p-6 text-center font-display text-base uppercase text-club">
+                  {s.name}
+                </span>
+              )}
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="mx-auto max-w-6xl px-4 pb-20">
+    <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+      {
+        showNews && (
+          <div>
+            <SectionHead title="Latest" href={url('news')} linkLabel="All news" />
+            {articles.length > 0 ? (
+              articles.map((article) => <ArticleCard article={article} />)
+            ) : (
+              <EmptyState title="No articles yet" />
+            )}
+          </div>
+        )
+      }
+
+      <div class="tile self-start p-6 sm:p-7 border-t-2 border-t-club">
+        <div class="flex items-center justify-between gap-3">
+          <CricketIcon name="cap" class="h-6 w-6 text-accent" />
+          <p class="eyebrow text-accent">Official Apparel</p>
+        </div>
+        <h2 class="mt-3 font-display text-xl uppercase text-club">{club.store.name}</h2>
+        <p class="mt-2 text-sm text-ink-muted leading-relaxed">{club.store.blurb}</p>
+        <a
+          href={club.store.url}
+          target="_blank"
+          rel="noopener noreferrer external"
+          class="stitch-link mt-5 inline-block font-display text-xs uppercase tracking-eyebrow text-club hover:text-accent transition-colors"
+          >Shop at {club.store.provider}<span class="sr-only"> (opens in a new tab)</span> &#8599;</a
+        >
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import '../scripts/motion.ts';
+</script>

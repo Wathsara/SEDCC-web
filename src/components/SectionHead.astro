@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  /** Small label beside the title — the season a panel covers, for instance. */
+  note?: string;
+  /** Optional link rendered at the end of the rule. */
+  href?: string;
+  linkLabel?: string;
+}
+const { title, note, href, linkLabel } = Astro.props;
+---
+
+<div class="section-head">
+  <h2 class="section-head__title">{title}</h2>
+  {
+    note && (
+      <span class="font-figures text-2xs uppercase tracking-eyebrow text-ink-faint">{note}</span>
+    )
+  }
+  <span class="section-head__rule"></span>
+  {
+    href && (
+      <a
+        href={href}
+        class="stitch-link shrink-0 font-display text-sm uppercase tracking-eyebrow text-ink-muted hover:text-club"
+      >
+        {linkLabel ?? 'All'}
+      </a>
+    )
+  }
+</div>

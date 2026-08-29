@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { season, teams, url } from '../../lib/site';
+---
+
+<Base title="Teams" description="Dreamers CC fields three senior sides in 2026/27 across the ECA and VSCA.">
+  <PageHeader
+    eyebrow={season.label}
+    title="The Three Sides"
+    intro="Two sides in the Eastern Cricket Association on Saturdays, one in the Victorian Sunday Cricket Association on Sundays."
+  />
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-8 md:grid-cols-3">
+      {
+        teams.map((t, i) => (
+          <a
+            href={url(`teams/${t.slug}`)}
+            class="tile p-8 flex flex-col justify-between group transition-all hover:-translate-y-1 hover:shadow-lift border-t-2 border-t-club"
+            data-rule-in
+          >
+            <div>
+              <div class="flex items-baseline justify-between">
+                <span class="font-figures text-xs uppercase tracking-eyebrow text-ink-faint">
+                  Side #{String(i + 1).padStart(2, '0')}
+                </span>
+                <span class="eyebrow bg-club/5 px-2.5 py-1 rounded text-club font-semibold">
+                  {t.day}
+                </span>
+              </div>
+              <h2 class="mt-4 font-display text-3xl uppercase tracking-tight text-club group-hover:text-accent transition-colors">
+                {t.name}
+              </h2>
+              <p class="mt-2 text-sm font-medium text-ink-muted">
+                {t.shield ? `${t.shield} · ${t.competition}` : t.competition}
+              </p>
+              <div class="mt-4 inline-flex items-center gap-2 text-xs font-figures text-ink-faint">
+                <span>Grade: {t.gradeLabel}</span>
+                <span>·</span>
+                <span>{t.competitionShort}</span>
+              </div>
+            </div>
+
+            <div class="mt-8 border-t border-rule pt-4 flex items-center justify-between">
+              <span class="text-xs font-display uppercase tracking-eyebrow text-club group-hover:text-accent transition-colors">
+                View Fixtures & Squad
+              </span>
+              <span class="text-club group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

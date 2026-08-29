@@ -1,0 +1,51 @@
+{
+  "season": "2026-27",
+  "label": "2026/27 Season",
+  "startsAround": "2026-10-03",
+  "_comment": "playhqGradeId and playhqTeamId stay null until ECA and VSCA publish 2026/27 grades. Run 'npm run playhq:discover' then, and paste the IDs in. The sync skips null teams cleanly.",
+  "teams": [
+    {
+      "slug": "loc-1",
+      "name": "Dreamers LOC 1",
+      "shortName": "LOC 1",
+      "competition": "Eastern Cricket Association",
+      "competitionShort": "ECA",
+      "day": "Saturday",
+      "gradeLabel": "LOC 1",
+      "playhqSeasonId": null,
+      "playhqGradeId": null,
+      "playhqTeamId": null,
+      "active": true,
+      "shield": "McCarthy Shield"
+    },
+    {
+      "slug": "loc-3",
+      "name": "Dreamers LOC 3",
+      "shortName": "LOC 3",
+      "competition": "Eastern Cricket Association",
+      "competitionShort": "ECA",
+      "day": "Saturday",
+      "gradeLabel": "LOC 3",
+      "playhqSeasonId": null,
+      "playhqGradeId": null,
+      "playhqTeamId": null,
+      "active": true,
+      "shield": "Reg Lamborn Shield"
+    },
+    {
+      "slug": "grade-4",
+      "name": "Dreamers Grade 4",
+      "shortName": "Grade 4",
+      "competition": "Victorian Sunday Cricket Association",
+      "competitionShort": "VSCA",
+      "day": "Sunday",
+      "gradeLabel": "Grade 4",
+      "playhqSeasonId": null,
+      "playhqGradeId": null,
+      "playhqTeamId": null,
+      "active": true,
+      "shield": null
+    }
+  ],
+  "_shieldComment": "ECA names its limited-overs divisions after shields: LOC 1 is the McCarthy Shield, LOC 3 the Reg Lamborn Shield. VSCA Grade 4 has no shield name."
+}

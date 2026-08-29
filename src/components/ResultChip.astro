@@ -1,0 +1,35 @@
+---
+/*
+  W / L / D / T, and the ragged cases suburban cricket produces every round —
+  byes, forfeits, abandoned games, washouts. The letter carries the meaning and
+  the colour only agrees with it, so the chip still reads correctly in
+  monochrome or to someone who cannot separate the green from the red.
+
+  Ready for the sync: nothing renders results yet because no round has been
+  played. See src/lib/playhq.ts.
+*/
+type Outcome = 'W' | 'L' | 'D' | 'T' | 'N';
+
+interface Props {
+  outcome: Outcome;
+  /** Read out in place of the bare letter. */
+  label?: string;
+}
+
+const { outcome, label } = Astro.props;
+
+const LABELS: Record<Outcome, string> = {
+  W: 'Won',
+  L: 'Lost',
+  D: 'Drawn',
+  T: 'Tied',
+  N: 'No result',
+};
+
+const modifier = outcome === 'N' ? 'result--none' : `result--${outcome.toLowerCase()}`;
+---
+
+<span class:list={['result', modifier]}>
+  <span aria-hidden="true">{outcome}</span>
+  <span class="sr-only">{label ?? LABELS[outcome]}</span>
+</span>

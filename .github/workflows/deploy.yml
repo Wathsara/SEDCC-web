@@ -1,0 +1,93 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Lets you redeploy from the Actions tab without pushing a commit — useful
+  # after the weekly PlayHQ sync commits new data.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race. A run already in progress finishes rather than
+# being cancelled, so a half-built site is never published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # astro 7 requires >=22.12; package.json pins the same floor.
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Work out the site URL and base path
+        id: paths
+        # astro.config.mjs reads SITE_URL and BASE_PATH. Getting the base wrong
+        # is the classic Pages failure: the deploy succeeds but every asset
+        # 404s and the site renders unstyled. Derive it rather than hardcode it.
+        run: |
+          owner="${{ github.repository_owner }}"
+          repo="${GITHUB_REPOSITORY#*/}"
+          owner_lc="$(echo "$owner" | tr '[:upper:]' '[:lower:]')"
+          repo_lc="$(echo "$repo" | tr '[:upper:]' '[:lower:]')"
+
+          if [ -f public/CNAME ]; then
+            # A custom domain serves from the root.
+            site="https://$(tr -d '[:space:]' < public/CNAME)"
+            base="/"
+            echo "Custom domain from public/CNAME"
+          elif [ "$repo_lc" = "$owner_lc.github.io" ]; then
+            # The user/org site also serves from the root.
+            site="https://$owner_lc.github.io"
+            base="/"
+            echo "User site"
+          else
+            # A project site serves from /<repo>/.
+            site="https://$owner_lc.github.io"
+            base="/$repo/"
+            echo "Project site"
+          fi
+
+          echo "site=$site" >> "$GITHUB_OUTPUT"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "SITE_URL=$site  BASE_PATH=$base"
+
+      - name: Build
+        env:
+          SITE_URL: ${{ steps.paths.outputs.site }}
+          BASE_PATH: ${{ steps.paths.outputs.base }}
+        run: npm run build
+
+      - name: Check the build actually produced pages
+        # A green deploy of an empty dist/ is worse than a red one.
+        run: |
+          test -f dist/index.html || { echo "::error::dist/index.html missing"; exit 1; }
+          echo "Built $(find dist -name '*.html' | wc -l) pages"
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

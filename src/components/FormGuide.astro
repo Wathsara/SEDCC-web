@@ -1,0 +1,29 @@
+---
+import ResultChip from './ResultChip.astro';
+import type { Outcome } from '../lib/playhq-types';
+
+interface Props {
+  outcomes: Outcome[];
+}
+const { outcomes } = Astro.props;
+
+const MAP: Record<string, { letter: 'W' | 'L' | 'D' | 'T' | 'N'; label: string }> = {
+  WON: { letter: 'W', label: 'Won' },
+  LOST: { letter: 'L', label: 'Lost' },
+  DRAWN: { letter: 'D', label: 'Drawn' },
+  TIED: { letter: 'T', label: 'Tied' },
+  WON_BY_SUPER_OVER: { letter: 'W', label: 'Won on super over' },
+  LOSS_BY_SUPER_OVER: { letter: 'L', label: 'Lost on super over' },
+  WASHOUT: { letter: 'N', label: 'Washed out' },
+  FORFEIT: { letter: 'N', label: 'Forfeit' },
+};
+---
+
+<span class="form-guide">
+  {
+    outcomes.map((o) => {
+      const m = o ? MAP[o] : undefined;
+      return m ? <ResultChip outcome={m.letter} label={m.label} /> : <ResultChip outcome="N" label="No result" />;
+    })
+  }
+</span>

@@ -1,0 +1,92 @@
+---
+import CricketIcon from './CricketIcon.astro';
+import type { Honour } from '../lib/site';
+
+interface Props {
+  title: string;
+  rows: Honour[];
+  /** Which field carries the performance — a score or bowling figures. */
+  field: 'score' | 'figures';
+  /** Shown when the board is empty. */
+  emptyNote: string;
+}
+const { title, rows, field, emptyNote } = Astro.props;
+const isBatting = field === 'score';
+---
+
+<div class="honours-board">
+  <!-- Lord's Style Pediment / Crown Header -->
+  <div class="honours-board__pediment">
+    <div class="honours-board__crest">
+      <CricketIcon name={isBatting ? 'bat' : 'ball'} class="h-8 w-8 text-[#dfb74c]" />
+    </div>
+    <p class="honours-board__sub">Dreamers Cricket Club · Pavilion Honours</p>
+    <h2 class="honours-board__title">{title}</h2>
+  </div>
+
+  <div class="honours-board__inner">
+    <div class="honours-board__head-row">
+      <span>Season</span>
+      <span>{isBatting ? 'Batter' : 'Bowler'}</span>
+      <span class="text-right">{isBatting ? 'Score' : 'Figures'}</span>
+    </div>
+
+    {
+      rows.length > 0 ? (
+        <div>
+          {rows.map((r) => {
+            const extraBatting = [
+              r.balls ? `${r.balls}b` : null,
+              r.fours ? `${r.fours}x4` : null,
+              r.sixes ? `${r.sixes}x6` : null,
+              r.strikeRate ? `SR ${r.strikeRate}` : null,
+              r.dismissal,
+            ]
+              .filter(Boolean)
+              .join(' · ');
+
+            const extraBowling = [
+              r.overs ? `${r.overs} ov` : null,
+              r.maidens ? `${r.maidens} md` : null,
+              r.economy ? `Econ ${r.economy}` : null,
+            ]
+              .filter(Boolean)
+              .join(' · ');
+
+            const matchInfo = [
+              r.opponent && `v ${r.opponent}`,
+              r.round,
+              r.grade,
+            ]
+              .filter(Boolean)
+              .join(' · ');
+
+            return (
+              <div class="honours-row" data-rule-in>
+                <span class="honours-row__year">{r.season}</span>
+                <div>
+                  <span class="honours-row__name block">{r.name}</span>
+                  {(isBatting ? extraBatting : extraBowling) && (
+                    <span class="mt-0.5 block font-figures text-2xs text-[#dfb74c]/85">
+                      {isBatting ? extraBatting : extraBowling}
+                    </span>
+                  )}
+                </div>
+                <span class="honours-row__figure">
+                  {r[field]}
+                </span>
+                <span class="honours-row__detail">
+                  {matchInfo}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p class="py-8 text-center font-display text-sm uppercase tracking-eyebrow text-accent-tint">
+          {emptyNote}
+        </p>
+      )
+    }
+  </div>
+</div>

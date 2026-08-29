@@ -1,0 +1,51 @@
+---
+import CricketIcon from './CricketIcon.astro';
+import { formatDate, isoDate } from '../lib/format';
+import { teamBySlug, url } from '../lib/site';
+import type { GameWithTeam } from '../lib/playhq';
+
+interface Props {
+  game: GameWithTeam;
+}
+const { game } = Astro.props;
+const team = teamBySlug(game.teamSlug);
+---
+
+<a href={url(`teams/${game.teamSlug}`)} class="scoreboard block p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-lift relative overflow-hidden border border-white/10 group">
+  <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-3">
+    <div class="flex items-center gap-2">
+      <span class="inline-block h-2 w-2 rounded-full bg-accent-tint animate-pulse"></span>
+      <span class="scoreboard__label">Next Fixture · {game.roundShort}</span>
+    </div>
+    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-white/5 border border-white/10 text-accent-tint group-hover:text-paper transition-colors">
+      <CricketIcon name="stumps" class="h-3.5 w-3.5" />
+    </div>
+  </div>
+
+  <p class="mt-4 font-display text-xl sm:text-2xl uppercase leading-snug break-words text-paper">
+    {team?.shortName ?? game.teamName}
+    <span class="text-accent-tint/80 font-light">{game.isHome ? ' v ' : ' @ '}</span>
+    {game.opponent}
+  </p>
+
+  <dl class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 border-t border-white/10 pt-4">
+    <div>
+      <dt class="scoreboard__label">Date</dt>
+      <dd class="mt-0.5 font-figures text-sm tabular-nums text-paper">
+        <time datetime={isoDate(game.dates[0])}>
+          {formatDate(game.dates[0], { weekday: 'short', day: 'numeric', month: 'short' })}
+        </time>
+      </dd>
+    </div>
+    <div>
+      <dt class="scoreboard__label">Time</dt>
+      <dd class="mt-0.5 font-figures text-sm tabular-nums text-accent-tint font-semibold">
+        {formatDate(game.dates[0], { hour: 'numeric', minute: '2-digit' })}
+      </dd>
+    </div>
+    <div class="col-span-2 sm:col-span-1">
+      <dt class="scoreboard__label">Ground</dt>
+      <dd class="mt-0.5 text-xs text-paper/90 font-medium truncate">{game.ground ?? 'Venue TBC'}</dd>
+    </div>
+  </dl>
+</a>

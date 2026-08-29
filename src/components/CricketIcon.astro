@@ -1,0 +1,40 @@
+---
+/*
+  Line-drawn cricket furniture. All currentColor, all 24×24, so they take the
+  colour of whatever they sit in and work on navy or on paper.
+*/
+type Name = 'ball' | 'bat' | 'stumps' | 'trophy' | 'cap' | 'boundary';
+
+interface Props {
+  name: Name;
+  class?: string;
+}
+const { name, class: className } = Astro.props;
+
+const PATHS: Record<Name, string> = {
+  // Seamed ball, side on.
+  ball: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-3.4 1.4c2.1 4.6 2.1 10.6 0 15.2m6.8-15.2c2.1 4.6 2.1 10.6 0 15.2',
+  // Bat with a handle and a splice.
+  bat: 'M4.5 19.5l2 2m-1-3l6-6m-2.5-.5l5-9a2.6 2.6 0 0 1 4 3l-6.5 8a2 2 0 0 1-1.4.6h-1.5a2 2 0 0 1-1.4-.6Z',
+  // Three stumps and two bails.
+  stumps: 'M7 8v12m5-12v12m5-12v12M5.5 7.2h5m3 0h5',
+  trophy: 'M7 4h10v5a5 5 0 0 1-10 0V4Zm0 1.5H4.5A2.5 2.5 0 0 0 7 9.5m10-4h2.5A2.5 2.5 0 0 1 17 9.5M10 14v3m4-3v3m-5 3h6',
+  cap: 'M3.5 15.5a8.5 8.5 0 0 1 17 0Zm17 0h1.5a1.5 1.5 0 0 1 0 3H3.5',
+  // Boundary rope curving away.
+  boundary: 'M2 18c4-6 16-6 20 0M6 9.5a1.2 1.2 0 1 0 0-.1M12 6.5a1.2 1.2 0 1 0 0-.1M18 9.5a1.2 1.2 0 1 0 0-.1',
+};
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d={PATHS[name]} />
+</svg>

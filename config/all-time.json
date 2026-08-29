@@ -1,0 +1,244 @@
+{
+  "_comment": "Hand-maintained club history. Nothing here comes from PlayHQ \u2014 it predates it. Add records as the club digs them out of old scorebooks; every field is optional so a partial entry still renders.",
+  "allTimeXI": {
+    "title": "Dreamers All-Time XI",
+    "note": "Selected by the committee. Argue about it in the clubrooms.",
+    "players": [
+      {
+        "name": "TODO",
+        "order": 1,
+        "role": "Opening batter",
+        "years": "TODO",
+        "blurb": "TODO \u2014 one or two sentences on why.",
+        "figures": null
+      }
+    ]
+  },
+  "records": {
+    "batting": [
+      {
+        "label": "Highest individual score",
+        "value": "213*",
+        "holder": "Amila Jayanuwan",
+        "detail": "v Punjab Panthers, Grade 3C",
+        "season": "2024/25",
+        "balls": 106
+      },
+      {
+        "label": "Most runs in a season",
+        "value": "670",
+        "holder": "Aruna Perera",
+        "detail": "Average 47.86",
+        "season": "2025/26"
+      },
+      {
+        "label": "Most career runs",
+        "value": null,
+        "holder": null,
+        "detail": null,
+        "season": null
+      },
+      {
+        "label": "Most centuries",
+        "value": null,
+        "holder": null,
+        "detail": null,
+        "season": null
+      }
+    ],
+    "bowling": [
+      {
+        "label": "Best bowling figures",
+        "value": "5/38",
+        "holder": "Anuradha Kannangara",
+        "detail": "8 overs, v Melbourne Crickeroos",
+        "season": "2025/26"
+      },
+      {
+        "label": "Most wickets in a season",
+        "value": "25",
+        "holder": "Harith Perera",
+        "detail": "Average 16.32",
+        "season": "2025/26"
+      },
+      {
+        "label": "Most career wickets",
+        "value": null,
+        "holder": null,
+        "detail": null,
+        "season": null
+      }
+    ],
+    "team": [
+      {
+        "label": "Highest team total",
+        "value": null,
+        "detail": null,
+        "season": null
+      },
+      {
+        "label": "Highest successful chase",
+        "value": null,
+        "detail": null,
+        "season": null
+      }
+    ]
+  },
+  "premierships": [],
+  "lifeMembers": [],
+  "clubChampions": [],
+  "seasons": [
+    {
+      "season": "2024-25",
+      "label": "2024/25",
+      "competition": "Victorian Sunday Cricket Association",
+      "competitionShort": "VSCA",
+      "grade": "Grade 3C",
+      "teams": 1,
+      "first": true,
+      "note": "The club's first season. One side, Grade 3C, every Sunday.",
+      "photo": "2024-25-vsca-grade-3c-team.jpg",
+      "clubNameThen": "Dreamers",
+      "teamNameThen": "Dreamers Grade 3C",
+      "leaders": {
+        "mostRuns": {
+          "name": "Amila Jayanuwan",
+          "runs": 422,
+          "average": 42.2
+        },
+        "mostWickets": {
+          "name": "Kavindu Heshan Fernando",
+          "wickets": 15,
+          "average": 10.73
+        }
+      }
+    },
+    {
+      "season": "2025-26",
+      "label": "2025/26",
+      "competition": "Victorian Sunday Cricket Association",
+      "competitionShort": "VSCA",
+      "grade": "Grade 4",
+      "teams": 1,
+      "first": false,
+      "note": "Runners-up in VSCA Grade 4, playing as Dreamers SC.",
+      "photo": "2025-26-vsca-grade-4-team.jpg",
+      "clubNameThen": "Dreamers SC",
+      "teamNameThen": "Dreamers SC - 4",
+      "result": "Runners-up",
+      "playhqGradeId": "e3e0d509-769b-43ba-9167-7af1e5545a9b",
+      "playhqTeamId": "b8e29581-2ae0-4529-9a8e-742b8057fe6a",
+      "resultsUrl": "https://play.cricket.com.au/grade/e3e0d509-769b-43ba-9167-7af1e5545a9b?teamId=b8e29581-2ae0-4529-9a8e-742b8057fe6a&tab=matches",
+      "leaders": {
+        "mostRuns": {
+          "name": "Aruna Perera",
+          "runs": 670,
+          "average": 47.86
+        },
+        "mostWickets": {
+          "name": "Harith Perera",
+          "wickets": 25,
+          "average": 16.32
+        }
+      }
+    }
+  ],
+  "_seasonsComment": "Hand-maintained. Photos live in src/assets/ so Astro optimises them; the filename here must match. The 2024/25 photo was supplied named GRADE-2; the club's own results confirm the grade was 3C.",
+  "honours": {
+    "_comment": "The two honours boards, Lord's style: centuries and five-wicket hauls. One row per performance, not per player. The site sorts by season, newest first, and preserves the order of this list within each season \u2014 so to move an entry, move it here. Rounds were resolved by cross-referencing each innings against the team totals in config/results-*.json; two are left null because more than one round fits.",
+    "centuries": [
+      {
+        "name": "Aruna Perera",
+        "season": "2025/26",
+        "score": "131",
+        "balls": 104,
+        "fours": 21,
+        "sixes": 0,
+        "strikeRate": 125.96,
+        "opponent": "Melbourne Titans - 4",
+        "grade": "VSCA Grade 4",
+        "round": null,
+        "dismissal": "Caught"
+      },
+      {
+        "name": "Amila Jayanuwan",
+        "season": "2025/26",
+        "score": "100*",
+        "balls": 54,
+        "fours": 20,
+        "sixes": 0,
+        "strikeRate": 185.18,
+        "opponent": "Melbourne Crickeroos CC - 4",
+        "grade": "VSCA Grade 4",
+        "round": "Round 12",
+        "dismissal": "Not out"
+      },
+      {
+        "name": "Aruna Perera",
+        "season": "2025/26",
+        "score": "150*",
+        "balls": 116,
+        "fours": 11,
+        "sixes": 2,
+        "strikeRate": 129.31,
+        "opponent": "Eastern Rebels - 4",
+        "grade": "VSCA Grade 4",
+        "round": null,
+        "dismissal": "Not out"
+      },
+      {
+        "name": "Amila Jayanuwan",
+        "season": "2025/26",
+        "score": "154",
+        "balls": null,
+        "fours": 17,
+        "sixes": 10,
+        "strikeRate": null,
+        "opponent": "Hartley CC - 4",
+        "grade": "VSCA Grade 4",
+        "round": "Round 1",
+        "dismissal": "Bowled"
+      },
+      {
+        "name": "Amila Jayanuwan",
+        "season": "2024/25",
+        "score": "213*",
+        "balls": 106,
+        "fours": 29,
+        "sixes": 11,
+        "strikeRate": 200.94,
+        "opponent": "Punjab Panthers Grade 3",
+        "grade": "VSCA Grade 3C",
+        "round": "Round 12",
+        "dismissal": "Not out"
+      }
+    ],
+    "fiveWicketHauls": [
+      {
+        "name": "Anuradha Kannangara",
+        "season": "2025/26",
+        "figures": "5/38",
+        "overs": 8,
+        "runs": 38,
+        "maidens": 0,
+        "economy": 4.75,
+        "opponent": "Melbourne Crickeroos CC - 4",
+        "grade": "VSCA Grade 4",
+        "round": "Round 12"
+      },
+      {
+        "name": "Harith Perera",
+        "season": "2025/26",
+        "figures": "5/48",
+        "overs": 8,
+        "runs": 48,
+        "maidens": 0,
+        "economy": 6.0,
+        "opponent": "Hartley CC - 4",
+        "grade": "VSCA Grade 4",
+        "round": "Round 1"
+      }
+    ]
+  },
+  "_historicalIdsComment": "playhqGradeId / playhqTeamId on a season here are HISTORICAL \u2014 they belong to that season only. Never copy them into config/season-2026-27.json: the sync would pull last season's fixtures and present them as this season's. Once PLAYHQ_API_KEY exists these can be used to backfill real results for past seasons."
+}

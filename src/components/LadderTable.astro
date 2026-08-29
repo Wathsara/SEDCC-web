@@ -1,0 +1,58 @@
+---
+import type { LadderGrade } from '../lib/playhq-types';
+
+interface Props {
+  grade: LadderGrade;
+}
+const { grade } = Astro.props;
+
+/*
+  Column definitions come from PlayHQ, not from us — different grades return
+  different columns. Rendering headers[] positionally against values[] is the
+  only safe way to do this.
+*/
+---
+
+{
+  grade.ladders.map((block) => (
+    <div class="overflow-x-auto">
+      {block.pool && <p class="eyebrow mb-2">{block.pool.name}</p>}
+      <table class="w-full min-w-[32rem] border-collapse text-left">
+        <thead>
+          <tr class="border-b border-rule-strong">
+            <th scope="col" class="py-2 pr-3 font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
+              Team
+            </th>
+            {block.headers.map((h) => (
+              <th
+                scope="col"
+                class="py-2 px-2 text-right font-display text-2xs uppercase tracking-eyebrow text-ink-muted"
+              >
+                <abbr title={h.name}>{h.shortName}</abbr>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {block.standings.map((row, i) => {
+            const ours = row.team?.id === grade.ourTeamId;
+            return (
+              <tr
+                class:list={['border-b border-rule', ours && 'bg-paper-sunk font-semibold text-club']}
+              >
+                <th scope="row" class="py-2.5 pr-3 text-left font-normal">
+                  <span class="mr-3 text-ink-faint tabular-nums">{i + 1}</span>
+                  {row.team?.name ?? 'Unnamed team'}
+                  {ours && <span class="sr-only"> (Dreamers)</span>}
+                </th>
+                {row.values.map((v) => (
+                  <td class="py-2.5 px-2 text-right tabular-nums">{v}</td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  ))
+}

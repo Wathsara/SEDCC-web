@@ -1,0 +1,337 @@
+{
+  "_comment": "The PlayHQ public cricket API has NO stable player ID \u2014 appearance IDs change every game. Players are matched by NAME. 'aliases' catches the variants PlayHQ actually returns (Mike/Michael, initials, misspellings). After each sync, check data/playhq/stats/unmatched.json and add anything listed there.",
+  "players": [
+    {
+      "id": "example-player",
+      "name": "Example Player",
+      "aliases": [
+        "Example Playr",
+        "E Player"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": "Top-order batter",
+      "battingStyle": "Right-hand bat",
+      "bowlingStyle": "Right-arm medium",
+      "joined": 2024,
+      "active": false
+    },
+    {
+      "id": "malith-kanahara",
+      "name": "Malith Kanahara",
+      "aliases": [
+        "M Kanahara",
+        "M. Kanahara"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "be9369a0-f4c1-46be-8fbc-b3e50f825d00",
+      "profileUrl": "https://play.cricket.com.au/player/be9369a0-f4c1-46be-8fbc-b3e50f825d00/malith-kanahara",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "yasuntha-gamalath",
+      "name": "Yasuntha Gamalath",
+      "aliases": [
+        "Y Gamalath",
+        "Y. Gamalath"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "f81f46c7-a702-497a-b339-fe20e0bcd3db",
+      "profileUrl": "https://play.cricket.com.au/player/f81f46c7-a702-497a-b339-fe20e0bcd3db/yasuntha-gamalath",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "shamendra-kannangara",
+      "name": "Shamendra Kannangara",
+      "aliases": [
+        "S Kannangara",
+        "S. Kannangara"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "f39e84e1-2b8b-4ab8-9826-adef22390219",
+      "profileUrl": "https://play.cricket.com.au/player/f39e84e1-2b8b-4ab8-9826-adef22390219/shamendra-kannangara",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "nisitha-ginigalgodage",
+      "name": "Nisitha Ginigalgodage",
+      "aliases": [
+        "N Ginigalgodage",
+        "N. Ginigalgodage"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "0a0d0e1b-91e9-4e17-bc05-ac1975b73767",
+      "profileUrl": "https://play.cricket.com.au/player/0a0d0e1b-91e9-4e17-bc05-ac1975b73767/nisitha-ginigalgodage",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "wathsara-daluwatta",
+      "name": "Wathsara Daluwatta",
+      "aliases": [
+        "W Daluwatta",
+        "W. Daluwatta"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "21dac146-699a-44b7-9ee9-1416edf90138",
+      "profileUrl": "https://play.cricket.com.au/player/21dac146-699a-44b7-9ee9-1416edf90138/wathsara-daluwatta",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "thaushka-herath",
+      "name": "Thaushka Herath",
+      "aliases": [
+        "T Herath",
+        "T. Herath"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "c27bfd75-9805-42a8-b0f9-4610fbec597c",
+      "profileUrl": "https://play.cricket.com.au/player/c27bfd75-9805-42a8-b0f9-4610fbec597c/thaushka-herath",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "charith-elvatigala",
+      "name": "Charith Elvatigala",
+      "aliases": [
+        "C Elvatigala",
+        "C Elvitigala",
+        "C. Elvatigala",
+        "Charitha Elvitigala"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "f99bcace-ae92-4ee4-a446-f5c39451a514",
+      "profileUrl": "https://play.cricket.com.au/player/f99bcace-ae92-4ee4-a446-f5c39451a514/charitha-elvitigala",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "shehan-galagedara",
+      "name": "Shehan Galagedara",
+      "aliases": [
+        "S Galagedara",
+        "S. Galagedara"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "ce917786-64d4-43a0-a738-816b5e78824b",
+      "profileUrl": "https://play.cricket.com.au/player/ce917786-64d4-43a0-a738-816b5e78824b/shehan-galagedara",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "saminda-kaviraja",
+      "name": "Saminda Kaviraja",
+      "aliases": [
+        "S Kaviraja",
+        "S. Kaviraja"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "77a3a48b-ada8-4bc0-8ef5-63e45ce56f12",
+      "profileUrl": "https://play.cricket.com.au/player/77a3a48b-ada8-4bc0-8ef5-63e45ce56f12/saminda-kaviraja",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "lasitha-ekanayake",
+      "name": "Lasitha Ekanayake",
+      "aliases": [
+        "L Ekanayake",
+        "L. Ekanayake"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "ff4fd877-14b1-4d59-a898-1694ae42e12b",
+      "profileUrl": "https://play.cricket.com.au/player/ff4fd877-14b1-4d59-a898-1694ae42e12b/lasitha-ekanayake",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "kalindu-kumarasinghe",
+      "name": "Kalindu Kumarasinghe",
+      "aliases": [
+        "K Kumarasinghe",
+        "K. Kumarasinghe"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "3feed7ae-8954-4a45-86c2-7d1ff701506f",
+      "profileUrl": "https://play.cricket.com.au/player/3feed7ae-8954-4a45-86c2-7d1ff701506f/kalindu-kumarasinghe",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "harsha-munasinghe",
+      "name": "Harsha Munasinghe",
+      "aliases": [
+        "H Munasinghe",
+        "H. Munasinghe"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "5df5b200-ebdb-42a0-9187-63665e77abd9",
+      "profileUrl": "https://play.cricket.com.au/player/5df5b200-ebdb-42a0-9187-63665e77abd9/harsha-munasinghe",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "aruna-perera",
+      "name": "Aruna Perera",
+      "aliases": [
+        "A Perera",
+        "A. Perera"
+      ],
+      "teams": [
+        "loc-3",
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "de6c9fbf-25da-4c54-9e79-6673f540a4b4",
+      "profileUrl": "https://play.cricket.com.au/player/de6c9fbf-25da-4c54-9e79-6673f540a4b4/aruna-perera",
+      "transferFrom": "Dreamers SC",
+      "transferNote": "No ECA games at previous club"
+    },
+    {
+      "id": "nimsara-wijesinghe",
+      "name": "Nimsara Wijesinghe",
+      "aliases": [
+        "N Wijesinghe",
+        "N. Wijesinghe"
+      ],
+      "teams": [
+        "loc-3"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "1fe161c7-4616-4526-876e-218596494e4c",
+      "profileUrl": "https://play.cricket.com.au/player/1fe161c7-4616-4526-876e-218596494e4c/nimsara-wijesinghe",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "dilhan-rahubadde-kankanange",
+      "name": "Dilhan Rahubadde Kankanange",
+      "aliases": [
+        "D Kankanange",
+        "D. Kankanange",
+        "Dilhan Kankanange"
+      ],
+      "teams": [
+        "loc-3",
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "e92aa552-168e-472a-975d-df05a19c989d",
+      "profileUrl": "https://play.cricket.com.au/player/e92aa552-168e-472a-975d-df05a19c989d/dilhan-rahubadde-kankanange",
+      "transferFrom": "Berwick Springs",
+      "transferNote": "No ECA games at previous club"
+    },
+    {
+      "id": "ruchira-dhanasekara",
+      "name": "Ruchira Dhanasekara",
+      "aliases": [
+        "R Dhanasekara",
+        "R. Dhanasekara"
+      ],
+      "teams": [
+        "loc-3",
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "6a1dc3ff-af47-4a04-a5f6-0e632f9173a0",
+      "profileUrl": "https://play.cricket.com.au/player/6a1dc3ff-af47-4a04-a5f6-0e632f9173a0/ruchira-dhanasekara",
+      "transferFrom": "Mavericks",
+      "transferNote": "No ECA games at previous club"
+    }
+  ],
+  "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game \u2014 matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
+  "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file \u2014 see CLAUDE.md.",
+  "_teamsComment": "teams[] lists every side a player turns out for. The 2026/27 LOC 3 sheet annotated three players '(No ECA Games)'; that referred to their record at their previous club, not to eligibility. All three play LOC 3 and Grade 4."
+}

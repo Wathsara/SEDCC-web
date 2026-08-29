@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import CricketIcon from './CricketIcon.astro';
+import type { SeasonEntry } from '../lib/history';
+import { pastSeason } from '../lib/seasons';
+import { url } from '../lib/site';
+
+interface Props {
+  entry: SeasonEntry;
+}
+const { entry } = Astro.props;
+const href = pastSeason(entry.season) ? url(`seasons/${entry.season}`) : null;
+---
+
+<figure class="tile overflow-hidden flex flex-col justify-between border border-rule group transition-all hover:-translate-y-1 hover:shadow-lift">
+  {
+    entry.image && (
+      <div class="relative aspect-[16/10] overflow-hidden bg-club/20">
+        <Image
+          src={entry.image}
+          alt={`The Dreamers ${entry.competitionShort} ${entry.grade} side of ${entry.label}.`}
+          widths={[500, 800]}
+          sizes="(min-width: 768px) 500px, 100vw"
+          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute top-3 left-3 bg-club/90 backdrop-blur-sm px-2.5 py-1 text-2xs font-figures uppercase tracking-eyebrow text-paper border border-white/10">
+          {entry.label}
+        </div>
+        {entry.result && (
+          <div class="absolute top-3 right-3 bg-gradient-to-r from-[#cfd3db] via-[#e8eaee] to-[#b4b5ba] text-club px-2.5 py-1 text-2xs font-display uppercase tracking-eyebrow font-bold shadow-md flex items-center gap-1.5 border border-white/40">
+            <CricketIcon name="trophy" class="h-3 w-3 text-club" />
+            <span>{entry.result}</span>
+          </div>
+        )}
+      </div>
+    )
+  }
+  <figcaption class="p-5 flex flex-col justify-between flex-1 bg-paper">
+    <div>
+      <div class="flex items-center justify-between gap-2">
+        <p class="eyebrow text-accent">
+          {entry.competitionShort} · Grade {entry.grade}
+        </p>
+        {entry.first && (
+          <span class="font-figures text-2xs uppercase tracking-eyebrow text-ink-faint">Inaugural</span>
+        )}
+      </div>
+
+      {
+        entry.result && (
+          <div class="mt-2.5 inline-flex items-center gap-2 rounded border border-[#b4b5ba]/80 bg-[#b4b5ba]/15 px-3 py-1 text-xs font-display uppercase tracking-wider text-club font-bold">
+            <CricketIcon name="trophy" class="h-3.5 w-3.5 text-accent" />
+            <span>Grand Final {entry.result}</span>
+          </div>
+        )
+      }
+      <p class="mt-2.5 text-sm text-ink-muted leading-relaxed">{entry.note}</p>
+    </div>
+
+    <div class="mt-4 pt-3 border-t border-rule flex items-center justify-between">
+      {
+        href ? (
+          <a
+            href={href}
+            class="stitch-link font-display text-xs uppercase tracking-eyebrow text-club group-hover:text-accent transition-colors flex items-center gap-1.5"
+          >
+            <span>View {entry.label} Archive</span>
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        ) : (
+          <span class="text-2xs font-figures uppercase text-ink-faint">Current Campaign</span>
+        )
+      }
+      {
+        entry.clubNameThen && entry.clubNameThen !== 'Dreamers Cricket Club' && (
+          <span class="font-figures text-2xs uppercase text-ink-faint/80">
+            as {entry.clubNameThen}
+          </span>
+        )
+      }
+    </div>
+  </figcaption>
+</figure>

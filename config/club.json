@@ -1,0 +1,156 @@
+{
+  "name": "South Eastern Dreamers Cricket Club",
+  "shortName": "Dreamers CC",
+  "abbreviation": "SEDCC",
+  "tagline": "Three teams. Two competitions. One club.",
+  "intro": "Built on brotherhood, discipline, and community pride, South Eastern Dreamers Cricket Club was founded in 2024 to create a premier home for cricketers in Melbourne's South East. From a single Sunday side to three senior squads competing across the ECA and VSCA, we play relentless cricket with integrity, back each other on every delivery, and forge a lasting legacy for the next generation.",
+  "heroLine": "One-day cricket from October through March. Saturdays for the McCarthy and Reg Lamborn Shields, Sundays for VSCA Grade 4.",
+  "_heroLineComment": "The line under the club name on the home page. Every claim here comes from the results in config/results-*.json: all matches are One Day, and both seasons ran between October and March.",
+  "established": 2024,
+  "location": {
+    "_comment": "Two different places, deliberately. 'suburb' is where the club is registered (Cranbourne East); the home ground is in Endeavour Hills. Anything telling a visitor where to watch cricket should use homeGround, not suburb.",
+    "suburb": "Cranbourne East",
+    "state": "VIC",
+    "postcode": "3977",
+    "country": "Australia",
+    "postalAddress": "5 Tattle Grove, Cranbourne East VIC 3977",
+    "homeGround": {
+      "name": "Singleton Reserve",
+      "suburb": "Endeavour Hills",
+      "state": "VIC",
+      "_comment": "Confirmed by the club. Match cards use the ground NAME to decide which side is home: a game played here lists Dreamers first.",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Singleton+Reserve%2C+Endeavour+Hills+VIC"
+    }
+  },
+  "brand": {
+    "_comment": "Sampled from public/brand/logo.jpg. Navy shield + chrome lettering; no gold. Mirrored in src/styles/tokens.css as --color-club / --color-accent-tint \u2014 change both together.",
+    "primary": "#0F1C3F",
+    "secondary": "#B4B5BA",
+    "logo": "/brand/logo.jpg",
+    "logoMono": null,
+    "favicon": "/brand/favicon-32.png",
+    "appleTouchIcon": "/brand/apple-touch-icon.png",
+    "ogImage": "/brand/icon-512.png"
+  },
+  "playhq": {
+    "_comment": "Organisation IDs are UUIDs not visible on playhq.com. Ask ECA and VSCA for theirs. Tenant for cricket is 'ca'.",
+    "tenant": "ca",
+    "baseUrl": "https://api.playhq.com",
+    "clubId": null,
+    "clubNameMatch": "dreamers",
+    "organisationIds": [
+      {
+        "label": "Eastern Cricket Association (ECA)",
+        "id": null
+      },
+      {
+        "label": "Victorian Sunday Cricket Association (VSCA)",
+        "id": null
+      }
+    ],
+    "publicProfileUrl": null
+  },
+  "store": {
+    "name": "Dreamers Club Store",
+    "provider": "Tradexco",
+    "url": "https://tradexco.com.au/club-store/dreamers-cricket-club",
+    "blurb": "Playing shirts, training gear and supporter apparel. Orders go direct to Tradexco and ship to you.",
+    "featured": []
+  },
+  "contact": {
+    "email": "admin@dreamerssc.com.au",
+    "_formComment": "GitHub Pages cannot process a POST. Pick a provider (Formspree, Web3Forms, Getform), paste the endpoint below, and the contact form posts straight to it. Leave null and the form falls back to a mailto: link.",
+    "formProvider": null,
+    "formEndpoint": null,
+    "committee": [
+      {
+        "role": "President",
+        "name": "TODO",
+        "email": null
+      },
+      {
+        "role": "Secretary",
+        "name": "TODO",
+        "email": null
+      },
+      {
+        "role": "Treasurer",
+        "name": "TODO",
+        "email": null
+      },
+      {
+        "role": "Junior Coordinator",
+        "name": "TODO",
+        "email": null
+      }
+    ],
+    "enquiryTypes": [
+      "Sponsorship",
+      "Club store order",
+      "Playing next season",
+      "Something else"
+    ],
+    "phone": "0401 236 864",
+    "address": "5 Tattle Grove, Cranbourne East VIC 3977",
+    "_privacyComment": "Club contact details only. Never add a player's personal email, phone, address or date of birth here \u2014 see CLAUDE.md."
+  },
+  "social": {
+    "_comment": "Official club accounts only. Leave null and the link is simply not rendered.",
+    "facebook": "https://www.facebook.com/profile.php?id=61564774055652",
+    "instagram": null,
+    "playhq": null
+  },
+  "site": {
+    "_comment": "Derived automatically by .github/workflows/deploy.yml from the repo name, so these are reference only. Repo: github.com/Wathsara/SEDCC-web -> a project site at https://wathsara.github.io/SEDCC-web/. Add a CNAME file to public/ for a custom domain and the workflow switches over.",
+    "url": "https://wathsara.github.io",
+    "base": "/SEDCC-web/",
+    "customDomain": null,
+    "sections": {
+      "_comment": "Switches for parts of the site that are built but not ready to promote. Setting news to true puts the tab back in the nav and footer and shows the Latest block on the home page. The /news/ pages are always built either way, so any link already shared keeps working.",
+      "news": false
+    },
+    "repository": "https://github.com/Wathsara/SEDCC-web"
+  },
+  "sponsors": {
+    "_comment": "Club sponsors, shown at /sponsors/. A flat list \u2014 add as many as you like and the page grid grows. 'logo' is a filename in src/assets/sponsors/ so Astro optimises it. Every field except name is optional. 'mission' and 'vision' are stored but not currently rendered; say the word and the card can show them.",
+    "list": [
+      {
+        "name": "WinQuest Finance",
+        "strapline": "Your finance partner",
+        "logo": "winquest-finance.png",
+        "blurb": "Ready to build your future with confidence? We\u2019re here to be your trusted finance partner every step of the way.",
+        "address": "57 Patricia Loop, Keysborough VIC 3173",
+        "phone": "+61 420 981 189",
+        "phoneLabel": "Hotline",
+        "url": "https://winquestfinance.com.au/"
+      },
+      {
+        "name": "Bridge Inspection Engineers",
+        "strapline": "Let\u2019s build something creative together",
+        "logo": "bridge-inspection-engineers.png",
+        "blurb": "Our experienced professionals have a genuine interest in the quality and safety of structures and their impact on society. That motivated us to form this company in 2022. We are based in Melbourne and operate all around Australia.",
+        "address": "16 Martine Court, Hoppers Crossing VIC 3029",
+        "email": "info@bieng.com.au",
+        "url": "https://bieng.com.au/",
+        "mission": "To deliver high-quality bridge inspection, assessment and maintenance solutions that exceed industry standards. Through advanced technology, skilled expertise and a commitment to safety, we strive to protect and enhance the structural integrity of Australia\u2019s bridge network, supporting the nation\u2019s transportation and economic growth.",
+        "vision": "To be recognised by clients as the leading provider of innovative, reliable and sustainable bridge maintenance and inspection services in Australia, ensuring the safety, longevity and efficiency of critical infrastructure for future generations."
+      },
+      {
+        "name": "Rogers Real Estate",
+        "strapline": "Melbourne",
+        "logo": "rogers-real-estate.png",
+        "blurb": "Buying and selling are among the most important decisions a person can make, yet they are too often based on outdated marketing and data. We believe you deserve the best experience for a decision that matters this much.",
+        "phone": "0406 271 004",
+        "phoneLabel": "Phone",
+        "email": "roger@atrealty.com.au",
+        "_confirm": "Phone was supplied as 406271004 \u2014 assumed to be the mobile 0406 271 004. Confirm.",
+        "url": "https://www.rogers-realestate.com.au/"
+      },
+      {
+        "name": "KloudI",
+        "logo": "kloudi.png",
+        "_confirm": "No details supplied. Needs a strapline, blurb, contact details and a website. Note the supplied artwork reads 'Innovatinve Solutions Company' \u2014 a typo in the logo itself, so it is not repeated as text here."
+      }
+    ]
+  }
+}

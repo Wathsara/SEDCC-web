@@ -1,0 +1,92 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import { club, teams, season, suburb, filled, showNews, homeGroundLabel, url } from '../lib/site';
+
+const year = new Date().getFullYear();
+const hasEmail = !club.contact.email.startsWith('TODO');
+const phone = filled((club.contact as { phone?: string }).phone);
+const address = filled((club.contact as { address?: string }).address);
+---
+
+<footer class="mt-24 bg-club text-paper">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <p class="font-display text-xl uppercase tracking-display">{club.name}</p>
+      <p class="mt-2 text-sm text-accent-tint">
+        {suburb}, {club.location.state}
+      </p>
+      {homeGroundLabel && (
+        <p class="mt-1 text-sm text-accent-tint">
+          Home ground · {homeGroundLabel}
+        </p>
+      )}
+      <SocialLinks class="mt-5 text-accent-tint" />
+    </div>
+
+    <div>
+      <p class="eyebrow text-accent-tint">Teams</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          teams.map((t) => (
+            <li>
+              <a href={url(`teams/${t.slug}`)} class="hover:text-accent-tint">
+                {t.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <p class="eyebrow text-accent-tint">Club</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {showNews && <li><a href={url('news')} class="hover:text-accent-tint">News</a></li>}
+        <li><a href={url('seasons')} class="hover:text-accent-tint">Seasons</a></li>
+        <li><a href={url('honour-board')} class="hover:text-accent-tint">Honour board</a></li>
+        <li><a href={url('sponsors')} class="hover:text-accent-tint">Sponsors</a></li>
+        <li>
+          <a
+            href={club.store.url}
+            target="_blank"
+            rel="noopener noreferrer external"
+            class="hover:text-accent-tint"
+            >Club store<span class="sr-only"> (opens in a new tab)</span></a
+          >
+        </li>
+        <li><a href={url('contact')} class="hover:text-accent-tint">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="eyebrow text-accent-tint">Get in touch</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          hasEmail && (
+            <li>
+              <a href={`mailto:${club.contact.email}`} class="hover:text-accent-tint">
+                {club.contact.email}
+              </a>
+            </li>
+          )
+        }
+        {
+          phone && (
+            <li>
+              <a href={`tel:${phone.replace(/\s+/g, '')}`} class="font-figures hover:text-accent-tint">
+                {phone}
+              </a>
+            </li>
+          )
+        }
+        {address && <li class="text-accent-tint">{address}</li>}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/15">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-accent-tint">
+      <p>&copy; {year} {club.name}. {season.label} results via PlayHQ.</p>
+    </div>
+  </div>
+</footer>

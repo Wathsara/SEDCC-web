@@ -1,0 +1,31 @@
+---
+/*
+  A cricket ball seen side on: the sphere, the seam running across it as a
+  foreshortened ellipse, and the stitching either side of it. Inline SVG using
+  currentColor so it takes its colour from whatever it sits on — chrome on the
+  navy hero, rule grey on paper. Decorative, so it is hidden from screen
+  readers.
+*/
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 200 200"
+  fill="none"
+  stroke="currentColor"
+  aria-hidden="true"
+  focusable="false"
+>
+  <circle cx="100" cy="100" r="86" stroke-width="1.5" />
+  <!-- The seam: an ellipse squashed to the angle the ball is held at. -->
+  <ellipse cx="100" cy="100" rx="30" ry="86" stroke-width="1.5" />
+  <!-- Stitching, angled off the seam on both sides, tightest at the equator. -->
+  <g stroke-width="1.25" stroke-linecap="round">
+    <path d="M74 58l-11-5M71 76l-12-4M70 95l-13-2M70 114l-13 2M72 133l-12 4M77 152l-11 5" />
+    <path d="M126 58l11-5M129 76l12-4M130 95l13-2M130 114l13 2M128 133l12 4M123 152l11 5" />
+  </g>
+</svg>

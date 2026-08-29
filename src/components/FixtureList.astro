@@ -1,0 +1,89 @@
+---
+import ResultChip from './ResultChip.astro';
+import { formatDate, isoDate } from '../lib/format';
+import type { TeamFixtures, Outcome } from '../lib/playhq-types';
+
+interface Props {
+  team: TeamFixtures;
+}
+const { team } = Astro.props;
+
+/*
+  Fixture lists are ragged: byes, washouts, forfeits, two-day games spanning a
+  fortnight, games not yet played. Each of those gets its own treatment rather
+  than being forced into a won/lost column.
+*/
+const CHIP: Record<string, { letter: 'W' | 'L' | 'D' | 'T' | 'N'; label: string }> = {
+  WON: { letter: 'W', label: 'Won' },
+  LOST: { letter: 'L', label: 'Lost' },
+  DRAWN: { letter: 'D', label: 'Drawn' },
+  TIED: { letter: 'T', label: 'Tied' },
+  WON_BY_SUPER_OVER: { letter: 'W', label: 'Won on super over' },
+  LOSS_BY_SUPER_OVER: { letter: 'L', label: 'Lost on super over' },
+  WASHOUT: { letter: 'N', label: 'Washed out' },
+  FORFEIT: { letter: 'N', label: 'Forfeit' },
+};
+
+const chipFor = (o: Outcome) => (o ? CHIP[o] : undefined);
+
+/** Two dates means a two-day game spanning a fortnight. */
+const dateLabel = (dates: string[]) =>
+  dates.length > 1
+    ? `${formatDate(dates[0], { day: 'numeric', month: 'short' })} & ${formatDate(dates[dates.length - 1], { day: 'numeric', month: 'short' })}`
+    : formatDate(dates[0], { weekday: 'short', day: 'numeric', month: 'short' });
+---
+
+<ul>
+  {
+    team.games.map((g) => {
+      const chip = chipFor(g.outcome);
+      const played = g.status === 'FINAL';
+      return (
+        <li class="card-line" data-rule-in>
+          <span class="card-line__name flex items-center gap-3">
+            {chip ? (
+              <ResultChip outcome={chip.letter} label={chip.label} />
+            ) : (
+              <span class="result result--none" aria-hidden="true">
+                –
+              </span>
+            )}
+            <span>
+              {g.isHome ? 'v' : '@'} {g.opponent}
+            </span>
+          </span>
+          <span class="card-line__figures">
+            {played && g.ourScore ? (
+              <>
+                {g.ourScore} <span class="text-ink-faint">/</span> {g.theirScore}
+              </>
+            ) : (
+              <time datetime={isoDate(g.dates[0])}>{dateLabel(g.dates)}</time>
+            )}
+          </span>
+          <span class="card-line__context">
+            {g.roundShort} · {g.ground ?? 'Ground TBC'}
+            {!played && g.status !== 'FINAL' && g.ourScore === null && chip === undefined && (
+              <> · {g.status === 'UPCOMING' ? 'Upcoming' : g.status}</>
+            )}
+            {chip && !g.ourScore && <> · {chip.label}</>}
+          </span>
+        </li>
+      );
+    })
+  }
+  {
+    team.byes.map((b) => (
+      <li class="card-line" data-rule-in>
+        <span class="card-line__name flex items-center gap-3">
+          <span class="result result--none" aria-hidden="true">
+            –
+          </span>
+          <span class="text-ink-muted">Bye</span>
+        </span>
+        <span class="card-line__figures text-ink-faint">No game</span>
+        <span class="card-line__context">{b.roundShort}</span>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import crest from '../assets/crest.jpg';
+
+/*
+  The club crest. The source is a JPG with the navy already baked into it, so it
+  is always placed on a navy surface where that background disappears — never on
+  paper. Run through astro:assets so it ships resized and in a modern format
+  rather than the full 1108px original.
+*/
+interface Props {
+  class?: string;
+  /** Rendered width in px; sets the density variants Astro emits. */
+  width?: number;
+  alt?: string;
+}
+const { class: className, width = 96, alt = 'Dreamers Cricket Club crest' } = Astro.props;
+---
+
+<Image src={crest} alt={alt} width={width} height={width} densities={[1, 2]} class={className} />

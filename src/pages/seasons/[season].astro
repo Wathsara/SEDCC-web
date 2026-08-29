@@ -1,0 +1,185 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import MatchCard from '../../components/MatchCard.astro';
+import CricketIcon from '../../components/CricketIcon.astro';
+import { Image } from 'astro:assets';
+import { pastSeasons, summarise } from '../../lib/seasons';
+import { seasons as history } from '../../lib/history';
+import { url } from '../../lib/site';
+
+export const getStaticPaths = (async () =>
+  pastSeasons.map((s) => ({ params: { season: s.season }, props: { season: s } }))) satisfies GetStaticPaths;
+
+const { season } = Astro.props;
+const s = summarise(season);
+
+const played = season.games.filter((g) => g.outcome !== 'BYE');
+const homeAway = played.filter((g) => !g.isFinal);
+const finals = played.filter((g) => g.isFinal);
+const byes = season.games.filter((g) => g.outcome === 'BYE');
+
+// Squad photo for the same season, if the club has one.
+const photo = history.find((h) => h.season === season.season)?.image;
+
+const tiles = [
+  { figure: s.played, label: 'Played' },
+  { figure: s.won, label: 'Won' },
+  { figure: s.lost, label: 'Lost' },
+  { figure: s.noResult, label: 'Abandoned' },
+  ...(s.byes > 0 ? [{ figure: s.byes, label: 'Byes' }] : []),
+];
+---
+
+<Base
+  title={`${season.label} results`}
+  description={`Every ${season.label} result for ${season.teamName} in ${season.competitionShort} ${season.grade} — ${s.won} wins from ${s.played} matches.`}
+>
+  <PageHeader
+    eyebrow={`${season.competitionShort} ${season.grade} · ${season.clubNameThen}`}
+    title={`${season.label} results`}
+    intro={`Every match ${season.teamName} played in ${season.competitionShort} ${season.grade}.`}
+  />
+
+  <!-- Season record -->
+  <section class="band-dark">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-[repeat(auto-fit,minmax(6rem,auto))] lg:items-center">
+        {
+          tiles.map((t) => (
+            <div>
+              <p class="scoreboard__figure" data-count={t.figure}>
+                {String(t.figure).padStart(2, '0')}
+              </p>
+              <p class="mt-2 font-display text-sm uppercase tracking-eyebrow">{t.label}</p>
+            </div>
+          ))
+        }
+        {
+          season.result && (
+            <div class="inline-flex items-center gap-3 self-start border-2 border-[#b4b5ba] bg-gradient-to-r from-[#b4b5ba]/25 via-[#b4b5ba]/10 to-transparent px-5 py-3 font-display uppercase tracking-eyebrow text-[#e8eaee] lg:justify-self-end shadow-md">
+              <div class="flex h-8 w-8 items-center justify-center rounded bg-[#cfd3db] text-club">
+                <CricketIcon name="trophy" class="h-4 w-4 text-club" />
+              </div>
+              <div>
+                <span class="block text-2xs font-figures text-accent-tint uppercase">Season Accolade</span>
+                <span class="block text-base font-bold text-paper">Grand Final {season.result}</span>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+    <div class="seam seam--onclub"></div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <!-- Highlights -->
+    <section class="mb-16">
+      <SectionHead title="The season in three" />
+      <div class="grid gap-6 sm:grid-cols-3">
+        {
+          s.highest && (
+            <div class="tile p-6" data-rule-in>
+              <CricketIcon name="bat" class="h-5 w-5 text-accent" />
+              <p class="eyebrow mt-3">Highest total</p>
+              <p class="mt-2 font-figures text-4xl tabular-nums text-club">
+                {s.highest.ourScore}
+              </p>
+              <p class="mt-2 text-sm text-ink-muted">
+                v {s.highest.opponent} · {s.highest.roundShort}
+              </p>
+            </div>
+          )
+        }
+        {
+          s.biggestWin && (
+            <div class="tile p-6" data-rule-in>
+              <CricketIcon name="boundary" class="h-5 w-5 text-accent" />
+              <p class="eyebrow mt-3">Biggest win</p>
+              <p class="mt-2 font-figures text-4xl tabular-nums text-club">
+                {s.biggestWin.margin?.split(' ')[0]}
+              </p>
+              <p class="mt-2 text-sm text-ink-muted">
+                runs · v {s.biggestWin.opponent} · {s.biggestWin.roundShort}
+              </p>
+            </div>
+          )
+        }
+        {
+          s.closestWin && (
+            <div class="tile p-6" data-rule-in>
+              <CricketIcon name="stumps" class="h-5 w-5 text-accent" />
+              <p class="eyebrow mt-3">Closest win</p>
+              <p class="mt-2 font-figures text-4xl tabular-nums text-club">
+                {s.closestWin.margin?.split(' ')[0]}
+              </p>
+              <p class="mt-2 text-sm text-ink-muted">
+                wicket{s.closestWin.margin?.startsWith('1 ') ? '' : 's'} · v{' '}
+                {s.closestWin.opponent} · {s.closestWin.roundShort}
+              </p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- Home and away -->
+    <section class="mb-16">
+      <SectionHead title="Home and away" />
+      <div class="grid gap-6 md:grid-cols-2">
+        {homeAway.map((g) => <MatchCard game={g} teamName={season.teamName} />)}
+      </div>
+      {
+        byes.length > 0 && (
+          <p class="mt-6 font-figures text-2xs uppercase tracking-eyebrow text-ink-faint">
+            Byes · {byes.map((b) => b.roundShort).join(', ')}
+          </p>
+        )
+      }
+    </section>
+
+    <!-- Finals -->
+    {
+      finals.length > 0 && (
+        <section class="mb-16">
+          <SectionHead title="Finals" />
+          <div class="grid gap-6 md:grid-cols-2">
+            {finals.map((g) => (
+              <MatchCard game={g} teamName={season.teamName} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      photo && (
+        <figure class="mb-16">
+          <Image
+            src={photo}
+            alt={`The ${season.teamName} side of ${season.label}.`}
+            widths={[600, 900]}
+            sizes="(min-width: 768px) 768px, 100vw"
+            class="w-full"
+          />
+          <figcaption class="mt-3 font-figures text-2xs uppercase tracking-eyebrow text-ink-muted">
+            {season.teamName}, {season.label}
+          </figcaption>
+        </figure>
+      )
+    }
+
+    <p class="border-t border-rule pt-6 text-sm text-ink-muted">
+      Results entered from the club's PlayHQ grade page.{' '}
+      <a href={url('honour-board')} class="underline underline-offset-4">Honour board</a> ·{' '}
+      <a href={url('seasons')} class="underline underline-offset-4">All seasons</a>
+    </p>
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

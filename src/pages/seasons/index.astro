@@ -1,0 +1,186 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CricketIcon from '../../components/CricketIcon.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { pastSeasons, summarise } from '../../lib/seasons';
+import { seasons as history } from '../../lib/history';
+import { season, url } from '../../lib/site';
+import { results, seasonStats } from '../../lib/playhq';
+
+/* Past completed seasons, newest first. */
+const pastRows = [...history].reverse();
+
+/* Ongoing season live stats */
+const currentPlayed = results.length;
+const currentWins = results.filter((r) => r.outcome === 'WON' || r.outcome === 'WON_BY_SUPER_OVER').length;
+const currentLosses = results.filter((r) => r.outcome === 'LOST' || r.outcome === 'LOSS_BY_SUPER_OVER').length;
+---
+
+<Base title="Seasons & Campaigns" description="Ongoing 2026/27 season campaign and club history for Dreamers Cricket Club.">
+  <PageHeader
+    eyebrow="Club Campaigns"
+    title="Seasons & Campaigns"
+    intro="Track our active 2026/27 campaign across the ECA and VSCA, alongside our complete historical season archives."
+  />
+
+  <div class="mx-auto max-w-6xl px-4 py-16 space-y-16">
+    <!-- Active / Ongoing 2026/27 Season Hub -->
+    <section>
+      <div class="section-head mb-6">
+        <div class="flex items-center gap-2">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <h2 class="section-head__title">Active Campaign · {season.label}</h2>
+        </div>
+        <span class="section-head__rule"></span>
+        <span class="font-figures text-2xs uppercase tracking-eyebrow text-accent font-semibold">
+          In Progress
+        </span>
+      </div>
+
+      <div class="tile p-6 sm:p-8 bg-paper border-t-2 border-t-club relative overflow-hidden" data-rule-in>
+        <div class="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-center">
+          <div>
+            <div class="flex items-center gap-2.5">
+              <span class="eyebrow bg-emerald-500/10 text-emerald-700 px-2.5 py-0.5 rounded font-semibold text-2xs">
+                ● Current Ongoing Season
+              </span>
+              <span class="font-figures text-xs text-ink-faint">Three Senior Squads</span>
+            </div>
+            <h3 class="mt-3 font-display text-2xl uppercase tracking-wide text-club">
+              {season.label} Championship Chase
+            </h3>
+            <p class="mt-2 text-sm text-ink-muted leading-relaxed font-light">
+              Dreamers CC enters {season.label} fielding three senior teams across two major Melbourne associations:
+              two Saturday sides in the Eastern Cricket Association (LOC 1 & LOC 3) and one Sunday side in VSCA Grade 4.
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center gap-4">
+              <a
+                href={url('teams')}
+                class="bg-club text-paper px-5 py-2.5 font-display text-xs uppercase tracking-eyebrow hover:bg-accent transition-colors"
+              >
+                View 3 Sides & Fixtures
+              </a>
+              <a
+                href={url('stats')}
+                class="border border-club px-5 py-2.5 font-display text-xs uppercase tracking-eyebrow text-club hover:bg-club/5 transition-colors"
+              >
+                Season Leaderboards →
+              </a>
+            </div>
+          </div>
+
+          <!-- Current Season Summary Metrics -->
+          <div class="grid grid-cols-2 gap-4 border-t lg:border-t-0 lg:border-l border-rule pt-6 lg:pt-0 lg:pl-8">
+            <div class="p-4 bg-paper-sunk/60 rounded">
+              <p class="eyebrow text-accent text-2xs">Active Squads</p>
+              <p class="mt-1 font-figures text-3xl font-bold tabular-nums text-club">03</p>
+              <p class="text-2xs text-ink-muted">2 ECA · 1 VSCA</p>
+            </div>
+            <div class="p-4 bg-paper-sunk/60 rounded">
+              <p class="eyebrow text-accent text-2xs">Matches Played</p>
+              <p class="mt-1 font-figures text-3xl font-bold tabular-nums text-ink">{currentPlayed}</p>
+              <p class="text-2xs text-ink-muted">{currentWins}W · {currentLosses}L</p>
+            </div>
+            <div class="p-4 bg-paper-sunk/60 rounded col-span-2">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="eyebrow text-accent text-2xs">Leading Run Scorer</p>
+                  <p class="mt-0.5 font-display text-base uppercase text-club truncate">
+                    {seasonStats?.players?.[0]?.displayName ?? 'Season starting Oct'}
+                  </p>
+                </div>
+                {seasonStats?.players?.[0] && (
+                  <p class="font-figures text-xl font-bold text-ink">
+                    {seasonStats.players[0].batting.runs} <span class="text-xs font-normal text-ink-faint">runs</span>
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Past Completed Seasons History -->
+    <section>
+      <SectionHead title="Previous Seasons History" />
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          pastRows.map((entry) => {
+            const results = pastSeasons.find((s) => s.season === entry.season);
+            const sum = results ? summarise(results) : null;
+            return (
+              <div class="tile p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-[#dfb74c] group transition-all hover:-translate-y-1 hover:shadow-lift" data-rule-in>
+                <div>
+                  <div class="flex items-center justify-between gap-2 border-b border-rule pb-3">
+                    <div class="flex items-center gap-2.5">
+                      <span class="font-display text-2xl uppercase tracking-wide text-club">{entry.label}</span>
+                      {entry.result && (
+                        <span class="rounded border border-[#b4b5ba] bg-[#b4b5ba]/25 px-2.5 py-0.5 text-2xs font-display uppercase tracking-wider text-club font-bold shadow-xs">
+                          🥈 {entry.result}
+                        </span>
+                      )}
+                    </div>
+                    <span class="eyebrow bg-club/5 px-2.5 py-1 rounded text-club font-semibold">
+                      {entry.competitionShort} · Grade {entry.grade}
+                    </span>
+                  </div>
+
+                  <p class="mt-3.5 text-sm text-ink-muted leading-relaxed">{entry.note}</p>
+
+                  {/* Season Performance Stats */}
+                  <div class="mt-5 grid grid-cols-2 gap-3 border-y border-rule py-4">
+                    {entry.leaders?.mostRuns && (
+                      <div>
+                        <div class="flex items-center gap-1.5 text-accent">
+                          <CricketIcon name="bat" class="h-3.5 w-3.5" />
+                          <span class="eyebrow text-2xs">Most Runs</span>
+                        </div>
+                        <p class="mt-1 font-display text-sm uppercase text-club truncate">{entry.leaders.mostRuns.name}</p>
+                        <p class="font-figures text-base font-bold tabular-nums text-ink">
+                          {entry.leaders.mostRuns.runs} <span class="text-xs font-normal text-ink-faint">@ {entry.leaders.mostRuns.average}</span>
+                        </p>
+                      </div>
+                    )}
+                    {entry.leaders?.mostWickets && (
+                      <div>
+                        <div class="flex items-center gap-1.5 text-accent">
+                          <CricketIcon name="ball" class="h-3.5 w-3.5" />
+                          <span class="eyebrow text-2xs">Most Wickets</span>
+                        </div>
+                        <p class="mt-1 font-display text-sm uppercase text-club truncate">{entry.leaders.mostWickets.name}</p>
+                        <p class="font-figures text-base font-bold tabular-nums text-ink">
+                          {entry.leaders.mostWickets.wickets} <span class="text-xs font-normal text-ink-faint">@ {entry.leaders.mostWickets.average}</span>
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div class="mt-5 pt-2 flex items-center justify-between">
+                  <span class="font-figures text-xs uppercase tracking-eyebrow text-ink-faint">
+                    {sum ? `${sum.won} Wins · ${sum.lost} Losses` : 'Match records'}
+                  </span>
+                  <a
+                    href={url(`seasons/${entry.season}`)}
+                    class="stitch-link font-display text-xs uppercase tracking-eyebrow text-club group-hover:text-accent transition-colors flex items-center gap-1.5"
+                  >
+                    <span>View {entry.label} Archive</span>
+                    <span class="transition-transform group-hover:translate-x-1">→</span>
+                  </a>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

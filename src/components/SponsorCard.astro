@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import CricketIcon from './CricketIcon.astro';
+import type { Sponsor } from '../lib/site';
+
+interface Props {
+  sponsor: Sponsor;
+}
+const { sponsor } = Astro.props;
+
+// Sponsor logos usually carry their own background, so each sits in its own
+// block rather than being forced onto the club's paper.
+const tel = sponsor.phone ? sponsor.phone.replace(/[^\d+]/g, '') : null;
+---
+
+<article class="tile flex flex-col overflow-hidden" data-rule-in>
+  {
+    sponsor.image ? (
+      <div class="flex h-40 items-center justify-center border-b border-rule bg-white p-6">
+        <Image
+          src={sponsor.image}
+          alt={`${sponsor.name} logo`}
+          widths={[300, 600]}
+          sizes="(min-width: 768px) 380px, 100vw"
+          class="max-h-full w-auto object-contain"
+        />
+      </div>
+    ) : (
+      <div class="flex aspect-[3/1] items-center justify-center bg-club px-6">
+        <p class="text-center font-display text-2xl uppercase tracking-display text-paper">
+          {sponsor.name}
+        </p>
+      </div>
+    )
+  }
+
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="font-display text-xl uppercase text-club">{sponsor.name}</h3>
+    {
+      sponsor.strapline && (
+        <p class="mt-1 font-figures text-2xs uppercase tracking-eyebrow text-accent">
+          {sponsor.strapline}
+        </p>
+      )
+    }
+    {sponsor.blurb && <p class="mt-4 text-ink-muted">{sponsor.blurb}</p>}
+
+    <dl class="mt-5 space-y-2 border-t border-rule pt-5 text-sm">
+      {
+        sponsor.address && (
+          <div class="flex gap-3">
+            <dt class="eyebrow shrink-0 pt-0.5">Address</dt>
+            <dd class="text-ink-muted">{sponsor.address}</dd>
+          </div>
+        )
+      }
+      {
+        sponsor.email && (
+          <div class="flex gap-3">
+            <dt class="eyebrow shrink-0 pt-0.5">Email</dt>
+            <dd class="break-words">
+              <a href={`mailto:${sponsor.email}`} class="stitch-link text-club">
+                {sponsor.email}
+              </a>
+            </dd>
+          </div>
+        )
+      }
+      {
+        sponsor.phone && tel && (
+          <div class="flex gap-3">
+            <dt class="eyebrow shrink-0 pt-0.5">{sponsor.phoneLabel ?? 'Phone'}</dt>
+            <dd>
+              <a href={`tel:${tel}`} class="stitch-link font-figures text-club">
+                {sponsor.phone}
+              </a>
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+
+    {
+      sponsor.url && (
+        <a
+          href={sponsor.url}
+          target="_blank"
+          rel="noopener noreferrer external"
+          class="stitch-link mt-5 inline-flex items-center gap-2 self-start font-display text-sm uppercase tracking-eyebrow text-club"
+        >
+          <CricketIcon name="boundary" class="h-4 w-4" />
+          Visit site<span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      )
+    }
+  </div>
+</article>

@@ -1,0 +1,65 @@
+---
+import { teamBySlug } from '../lib/site';
+import type { SeasonAggregate } from '../lib/playhq-types';
+
+interface Props {
+  players: SeasonAggregate[];
+}
+const { players } = Astro.props;
+
+const batters = [...players]
+  .filter((p) => p.batting.innings > 0)
+  .sort((a, b) => b.batting.runs - a.batting.runs)
+  .slice(0, 10);
+
+const bowlers = [...players]
+  .filter((p) => p.bowling.wickets > 0)
+  .sort((a, b) => b.bowling.wickets - a.bowling.wickets)
+  .slice(0, 10);
+
+const teamsOf = (p: SeasonAggregate) =>
+  p.teams.map((s) => teamBySlug(s)?.shortName ?? s).join(' · ');
+
+/** null average means never dismissed — a dash, not a zero. */
+const num = (v: number | null) => (v === null ? '—' : v.toFixed(2));
+---
+
+<div class="grid gap-12 lg:grid-cols-2">
+  <section>
+    <p class="eyebrow">Runs</p>
+    <ul class="mt-4">
+      {
+        batters.map((p) => (
+          <li class="card-line" data-rule-in>
+            <span class="card-line__name">{p.displayName}</span>
+            <span class="card-line__figures">
+              {p.batting.runs} <span class="text-ink-faint">@ {num(p.batting.average)}</span>
+            </span>
+            <span class="card-line__context">
+              {teamsOf(p)} · {p.batting.innings} inns · HS {p.batting.highScore}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">Wickets</p>
+    <ul class="mt-4">
+      {
+        bowlers.map((p) => (
+          <li class="card-line" data-rule-in>
+            <span class="card-line__name">{p.displayName}</span>
+            <span class="card-line__figures">
+              {p.bowling.wickets} <span class="text-ink-faint">@ {num(p.bowling.average)}</span>
+            </span>
+            <span class="card-line__context">
+              {teamsOf(p)} · {p.bowling.overs} ov · Best {p.bowling.best}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</div>

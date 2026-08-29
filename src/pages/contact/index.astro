@@ -1,0 +1,167 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
+import { club, filled, socials, homeGroundLabel, homeGroundMapUrl } from '../../lib/site';
+
+const { contact } = club;
+
+/*
+  GitHub Pages serves files and cannot process a POST. When the club picks a
+  form provider the endpoint goes in config/club.json and the form posts
+  straight to it; until then this degrades to a mailto: link rather than a form
+  that silently does nothing.
+*/
+const endpoint = filled(contact.formEndpoint);
+const email = filled(contact.email);
+const phone = filled((contact as { phone?: string }).phone);
+const address = filled((contact as { address?: string }).address);
+
+// Committee entries ship as TODO stubs. Only show people who are actually
+// named, and never render a null email as an empty mailto.
+const committee = contact.committee.filter((m) => filled(m.name));
+
+const details = [
+  homeGroundLabel && {
+    label: 'Home ground',
+    value: homeGroundLabel,
+    href: homeGroundMapUrl ?? null,
+  },
+  address && { label: 'Postal address', value: address, href: null },
+  phone && { label: 'Phone', value: phone, href: `tel:${phone.replace(/\s+/g, '')}` },
+  email && { label: 'Email', value: email, href: `mailto:${email}` },
+].filter(Boolean) as Array<{ label: string; value: string; href: string | null }>;
+---
+
+<Base title="Contact" description={`Get in touch with ${club.name}.`}>
+  <PageHeader
+    eyebrow="Get in touch"
+    title="Contact"
+    intro="Sponsoring the club, chasing an order, or asking about a future season — this reaches the committee."
+  />
+
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    {
+      endpoint ? (
+        <form action={endpoint} method="POST" class="max-w-2xl space-y-6">
+          <div>
+            <label for="name" class="eyebrow block">Your name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+              class="mt-2 w-full border border-rule-strong bg-paper px-3 py-2"
+            />
+          </div>
+          <div>
+            <label for="email" class="eyebrow block">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              class="mt-2 w-full border border-rule-strong bg-paper px-3 py-2"
+            />
+          </div>
+          <div>
+            <label for="enquiry" class="eyebrow block">What’s this about</label>
+            <select
+              id="enquiry"
+              name="enquiry"
+              class="mt-2 w-full border border-rule-strong bg-paper px-3 py-2"
+            >
+              {contact.enquiryTypes.map((t) => <option value={t}>{t}</option>)}
+            </select>
+          </div>
+          <div>
+            <label for="message" class="eyebrow block">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              class="mt-2 w-full border border-rule-strong bg-paper px-3 py-2"
+            />
+          </div>
+          <button
+            type="submit"
+            class="bg-club px-6 py-3 font-display text-sm uppercase tracking-eyebrow text-paper hover:bg-club-tint"
+            >Send</button
+          >
+        </form>
+      ) : (
+        <div class="tile max-w-2xl p-8">
+          <h2 class="font-display text-2xl uppercase text-club">Email us</h2>
+          <p class="mt-3 text-ink-muted">
+            Tell us what it’s about and someone from the committee will get back to you.
+          </p>
+          {email && (
+            <a
+              href={`mailto:${email}?subject=${encodeURIComponent(`${club.shortName} enquiry`)}`}
+              class="mt-6 inline-block bg-club px-6 py-3 font-display text-sm uppercase tracking-eyebrow text-paper hover:bg-club-tint"
+            >
+              {email}
+            </a>
+          )}
+        </div>
+      )
+    }
+
+    {
+      details.length > 0 && (
+        <section class="mt-16">
+          <SectionHead title="Club details" />
+          <dl class="grid gap-px bg-rule sm:grid-cols-3">
+            {details.map((d) => (
+              <div class="bg-paper-sunk p-6">
+                <dt class="eyebrow">{d.label}</dt>
+                <dd class="mt-2 break-words">
+                  {d.href ? (
+                    <a href={d.href} class="stitch-link">
+                      {d.value}
+                    </a>
+                  ) : (
+                    d.value
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )
+    }
+
+    {
+      socials.length > 0 && (
+        <section class="mt-16">
+          <SectionHead title="Follow the club" />
+          <SocialLinks class="text-club" />
+        </section>
+      )
+    }
+
+    {
+      committee.length > 0 && (
+        <section class="mt-16">
+          <SectionHead title="Committee" />
+          <ul>
+            {committee.map((m) => (
+              <li class="card-line" data-rule-in>
+                <span class="card-line__name">{m.name}</span>
+                <span class="card-line__figures text-ink-muted">{m.role}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

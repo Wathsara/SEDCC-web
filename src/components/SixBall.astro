@@ -1,0 +1,32 @@
+---
+/*
+  The ball that gets hit for six. Decorative and script-driven: it sits at the
+  origin with no opacity until motion.ts animates it, so with JavaScript off it
+  is simply not there and nothing else on the page changes.
+
+  White ball — this is limited-overs cricket, which is all three sides play.
+*/
+---
+
+<span
+  data-six-ball
+  aria-hidden="true"
+  class="pointer-events-none absolute left-0 top-0 z-20 block h-10 w-10 opacity-0 will-change-transform sm:h-12 sm:w-12 drop-shadow-2xl"
+>
+  <svg viewBox="0 0 48 48" class="h-full w-full drop-shadow-lg">
+    <circle cx="24" cy="24" r="22" fill="var(--color-paper)" />
+    <circle cx="24" cy="24" r="22" fill="none" stroke="var(--color-rule-strong)" stroke-width="1" />
+    <!-- Seam across the face, stitches either side. -->
+    <path d="M9 12c7 7 7 17 0 24" fill="none" stroke="var(--color-ink)" stroke-width="1.6" />
+    <path d="M39 12c-7 7-7 17 0 24" fill="none" stroke="var(--color-ink)" stroke-width="1.6" />
+    <g stroke="var(--color-ink)" stroke-width="1.2" stroke-linecap="round">
+      <path d="M11 15l4-1.5M12.5 20l4-1M13 25l4 0M12.5 30l4 1M11 35l4 1.5" />
+      <path d="M37 15l-4-1.5M35.5 20l-4-1M35 25l-4 0M35.5 30l-4 1M37 35l-4 1.5" />
+    </g>
+  </svg>
+</span>
+<canvas
+  data-six-canvas
+  aria-hidden="true"
+  class="pointer-events-none absolute inset-0 z-10 h-full w-full"
+></canvas>

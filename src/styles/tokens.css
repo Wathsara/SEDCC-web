@@ -1,0 +1,680 @@
+@import 'tailwindcss';
+
+/*
+  Dreamers CC design tokens — the only place a colour, size or font is defined.
+  Components use the utilities these generate; they never contain raw hex or px.
+
+  Direction and rationale: .claude/skills/club-design-system/SKILL.md
+*/
+
+@theme {
+  /* --- Club colours -------------------------------------------------------
+     Sampled from public/brand/Dreamers-With-Background-Final.avif. The badge is
+     a two-colour identity: navy shield, chrome lettering and ball. There is no
+     gold in it, so the accent is the chrome, split into the two values it
+     actually needs — silver only works on navy, never on paper.
+
+       club       shield navy, 36.7% of the badge   16.1:1 on paper
+       club-tint  same hue, lighter, for fills      12.5:1 under white text
+       accent     chrome darkened to hold paper      6.2:1 on paper
+       accent-tint the chrome as drawn, on navy      8.2:1 on navy
+
+     Also update config/club.json when these change. */
+  --color-club: #0f1c3f;
+  --color-club-tint: #1c3069;
+  --color-accent: #55606e;
+  --color-accent-tint: #b4b5ba;
+
+  /* --- Surfaces and ink ---------------------------------------------------
+     Warm near-black rather than #000: pen on paper, not a terminal.
+     Paper is off-white with a hint of warmth — deliberately NOT the #F4F1EA
+     cream that every AI-generated site reaches for. */
+  --color-ink: #16181c;
+  --color-ink-muted: #5b6068;
+  --color-ink-faint: #8b9099;
+  --color-paper: #fbfbf9;
+  --color-paper-sunk: #f1f1ee;
+  --color-rule: #d8d8d3;
+  --color-rule-strong: #b4b4ae;
+
+  /* --- Results ------------------------------------------------------------
+     Always paired with a letter (W/L/D/T). Colour is never the only signal. */
+  --color-win: #1f6f3f;
+  --color-loss: #98342c;
+  --color-draw: #7a6a1f;
+
+  /* --- Type ---------------------------------------------------------------
+     Display: condensed, because that is how names fit on a scoreboard.
+     Body: a workhorse that disappears.
+     Figures: monospace with real tabular numerals — cricket data is columnar
+     and the whole scorebook idea rests on numbers lining up.
+     Self-hosted in public/fonts/. No Google Fonts CDN. */
+  --font-display: 'Oswald', 'Archivo Narrow', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Source Sans 3', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-figures: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 2.875rem;
+  --text-6xl: 3.5rem;
+  --text-7xl: 4.25rem;
+
+  --tracking-display: -0.01em;
+  --tracking-eyebrow: 0.14em;
+
+  /* --- Space: 4px base ---------------------------------------------------- */
+  --spacing: 0.25rem;
+
+  /* --- Radius -------------------------------------------------------------
+     Near-zero on purpose. A scorebook has no rounded corners, and the hard
+     edges are what make the hairline rules read as ruling. */
+  --radius-none: 0;
+  --radius-chip: 2px;
+
+  /* --- Depth --------------------------------------------------------------
+     Used sparingly and always with a hairline: the shadow gives a card weight,
+     the rule keeps the scorebook edge. Never a soft glow. */
+  --shadow-tile: 0 1px 2px rgb(15 28 63 / 0.06), 0 8px 24px -12px rgb(15 28 63 / 0.28);
+  --shadow-lift: 0 2px 4px rgb(15 28 63 / 0.08), 0 18px 40px -16px rgb(15 28 63 / 0.42);
+
+  /* --- Measure ------------------------------------------------------------ */
+  --container-prose: 68ch;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: var(--tracking-display);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  /* Every number on the site aligns in a column. A mono face alone does not
+     guarantee tabular figures in all fallbacks — ask for them explicitly. */
+  .figures,
+  table td,
+  table th,
+  time {
+    font-family: var(--font-figures);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* Keyboard focus stays visible. Never outline:none without a replacement. */
+  :focus-visible {
+    outline: 2px solid var(--color-club);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* The signature element: one performance, one ruled line.
+     Name left, figures right, hairline beneath. Used for weekly bests, honour
+     board entries and season leaders — the same rhythm everywhere. */
+  .card-line {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: calc(var(--spacing) * 4);
+    padding-block: calc(var(--spacing) * 3);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .card-line__name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  .card-line__figures {
+    font-family: var(--font-figures);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-base);
+    white-space: nowrap;
+  }
+
+  .card-line__context {
+    grid-column: 1 / -1;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+
+  /* Long-form article body. Match reports are written by volunteers in plain
+     Markdown, so every element they might reach for is styled here rather than
+     relying on classes in the file. */
+  .prose-club {
+    max-width: var(--container-prose);
+    font-size: var(--text-lg);
+  }
+
+  .prose-club > * + * {
+    margin-block-start: calc(var(--spacing) * 5);
+  }
+
+  .prose-club h2 {
+    font-size: var(--text-2xl);
+    margin-block-start: calc(var(--spacing) * 10);
+    text-transform: uppercase;
+    color: var(--color-club);
+  }
+
+  .prose-club h3 {
+    font-size: var(--text-xl);
+    margin-block-start: calc(var(--spacing) * 8);
+    text-transform: uppercase;
+  }
+
+  .prose-club a {
+    color: var(--color-club);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-club strong {
+    font-weight: 600;
+  }
+
+  .prose-club ul,
+  .prose-club ol {
+    padding-inline-start: calc(var(--spacing) * 6);
+  }
+
+  .prose-club ul {
+    list-style: disc;
+  }
+
+  .prose-club ol {
+    list-style: decimal;
+  }
+
+  .prose-club li + li {
+    margin-block-start: calc(var(--spacing) * 2);
+  }
+
+  .prose-club blockquote {
+    border-inline-start: 2px solid var(--color-accent);
+    padding-inline-start: calc(var(--spacing) * 4);
+    color: var(--color-ink-muted);
+  }
+
+  .prose-club img {
+    width: 100%;
+  }
+
+  .prose-club hr {
+    border: 0;
+    border-block-start: 1px solid var(--color-rule);
+  }
+
+  /* --- Cricket motifs -----------------------------------------------------
+     Drawn with gradients and borders rather than images: they inherit colour
+     from the tokens above, cost no extra request, and scale without assets.
+     Everything here degrades to a plain rule if the effect is unsupported, and
+     the reduced-motion block above already flattens the animation. */
+
+  /* The seam. Two rows of angled stitching either side of a channel — how a
+     cricket ball is actually sewn, and the detail the badge leads with. Used
+     as a section divider in place of a plain hairline. */
+  .seam {
+    --_thread: var(--color-rule-strong);
+    --_stitch: 2px;
+    --_pitch: 9px;
+    height: calc(var(--spacing) * 3);
+    background:
+      repeating-linear-gradient(
+          114deg,
+          var(--_thread) 0 var(--_stitch),
+          transparent var(--_stitch) var(--_pitch)
+        )
+        top / 100% 38% no-repeat,
+      repeating-linear-gradient(
+          66deg,
+          var(--_thread) 0 var(--_stitch),
+          transparent var(--_stitch) var(--_pitch)
+        )
+        bottom / 100% 38% no-repeat,
+      linear-gradient(var(--color-rule) 0 0) center / 100% 1px no-repeat;
+  }
+
+  /* On navy the thread is the chrome from the badge, not the paper rule. */
+  .seam--onclub {
+    --_thread: var(--color-accent-tint);
+  }
+
+  /* Stitches on, left to right, like a seam being sewn. Purely additive — the
+     seam is fully drawn before the animation starts. */
+  .seam--draw {
+    animation: seam-draw 900ms ease-out both;
+  }
+
+  @keyframes seam-draw {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  /* Link underline as a seam that sews itself in on hover. The underline is
+     always present for current/focus states — the animation only affects how
+     it arrives, never whether it is there. */
+  .stitch-link {
+    position: relative;
+  }
+
+  .stitch-link::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: calc(var(--spacing) * -1.5);
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      currentColor 0 4px,
+      transparent 4px 7px
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms ease-out;
+  }
+
+  .stitch-link:hover::after,
+  .stitch-link:focus-visible::after,
+  .stitch-link[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+
+  /* Result chip. The letter carries the meaning and the colour agrees with it —
+     never colour alone, because a third of a cricket club cannot tell the win
+     green from the loss red. */
+  .result {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: calc(var(--spacing) * 6);
+    padding-inline: calc(var(--spacing) * 1.5);
+    border-radius: var(--radius-chip);
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    font-weight: 600;
+    line-height: 1.6;
+    text-transform: uppercase;
+    color: var(--color-paper);
+    background: var(--color-ink-faint);
+  }
+
+  .result--w {
+    background: var(--color-win);
+  }
+
+  .result--l {
+    background: var(--color-loss);
+  }
+
+  .result--d,
+  .result--t {
+    background: var(--color-draw);
+  }
+
+  /* Abandoned, washed out, bye, forfeit — the ragged cases suburban cricket
+     produces constantly. Outlined rather than filled: nothing was played. */
+  .result--none {
+    background: transparent;
+    color: var(--color-ink-muted);
+    box-shadow: inset 0 0 0 1px var(--color-rule-strong);
+  }
+
+  /* The pitch: a 22-yard strip with a crease at each end. Sits behind hero
+     type as a faint ground marking. */
+  .pitch-strip {
+    background:
+      linear-gradient(var(--color-accent-tint) 0 0) left center / 1px 100% no-repeat,
+      linear-gradient(var(--color-accent-tint) 0 0) right center / 1px 100% no-repeat,
+      linear-gradient(var(--color-accent-tint) 0 0) center top / 100% 1px no-repeat,
+      linear-gradient(var(--color-accent-tint) 0 0) center bottom / 100% 1px no-repeat;
+    opacity: 0.18;
+  }
+
+  /* --- Crest layout -------------------------------------------------------
+     The badge is a shield: symmetrical, banded, numbered. These carry that
+     into the page furniture so the site and the crest read as one thing. */
+
+  /* Section heading with the rule running out to the margin beside it — the
+     ruled headings of a scorebook page, at club-crest weight. */
+  .section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: calc(var(--spacing) * 4);
+    margin-bottom: calc(var(--spacing) * 8);
+  }
+
+  .section-head__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-display);
+    color: var(--color-club);
+    text-wrap: balance;
+  }
+
+  .section-head__rule {
+    flex: 1 1 calc(var(--spacing) * 8);
+    height: 1px;
+    background: var(--color-rule);
+  }
+
+  /* Hero lockup. Two lines of condensed caps at the largest size the scale
+     goes to, tightened up so they stack as a block the way a crest does. */
+  .lockup {
+    font-family: var(--font-display);
+    overflow-wrap: break-word;
+    font-size: clamp(2.25rem, 5.5vw, 3.875rem);
+    line-height: 0.94;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+
+  .lockup__word {
+    display: inline-block;
+    will-change: transform, opacity;
+  }
+
+  /* A card with weight. The accent bar along the top is the club's chrome —
+     it is what stops a white box reading as a generic panel. */
+  .tile {
+    position: relative;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    box-shadow: var(--shadow-tile);
+    transition: box-shadow 200ms ease-out, transform 200ms ease-out;
+  }
+
+  .tile::before {
+    content: '';
+    position: absolute;
+    inset-inline: -1px;
+    top: -1px;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--color-club) 0%,
+      var(--color-accent-tint) 50%,
+      var(--color-club) 100%
+    );
+  }
+
+  a.tile:hover,
+  .tile--lift:hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-2px);
+  }
+
+  /* The scoreboard: what a ground scoreboard looks like, dark with the figures
+     doing the talking. Used for the next fixture and match results. */
+  .scoreboard {
+    background:
+      radial-gradient(120% 140% at 80% 0%, var(--color-club-tint) 0%, transparent 60%),
+      var(--color-club);
+    color: var(--color-paper);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .scoreboard__figure {
+    font-family: var(--font-figures);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-4xl);
+    line-height: 1;
+    color: var(--color-paper);
+  }
+
+  .scoreboard__label {
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-accent-tint);
+  }
+
+  /* Form guide: the last few results as a row of chips. */
+  .form-guide {
+    display: flex;
+    gap: calc(var(--spacing) * 1.5);
+    align-items: center;
+  }
+
+  /* Section on navy with the pitch showing through, for banded pages. */
+  .band-dark {
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 0.04) 0%, transparent 40%),
+      var(--color-club);
+    color: var(--color-paper);
+  }
+
+  /* --- Lord's Cricket Ground Honours Board --------------------------------
+     Faithful to the Lord's dressing room honours boards:
+     - Arched / stepped pediment header with gold inscriptional lettering
+     - Deep polished mahogany/navy timber background with lustrous lighting
+     - Double-beveled gold moulding frame with mitred corners & brass screw inlays
+     - Classical columns: Season, Player Name, Score/Figures, Match Details
+     - Real gold leaf typography and gilt numerals */
+  .honours-board {
+    position: relative;
+    background:
+      radial-gradient(120% 90% at 50% 0%, #1c325e 0%, #0e1b38 55%, #080f22 100%),
+      var(--color-club);
+    border: 3px solid #dfb74c;
+    border-radius: 4px;
+    box-shadow:
+      0 24px 50px -12px rgba(0, 0, 0, 0.9),
+      0 0 0 1px rgba(223, 183, 76, 0.4),
+      inset 0 1px 3px rgba(255, 255, 255, 0.25),
+      inset 0 0 30px rgba(0, 0, 0, 0.6);
+    padding: calc(var(--spacing) * 3);
+  }
+
+  .honours-board__pediment {
+    text-align: center;
+    padding-bottom: calc(var(--spacing) * 4);
+    border-bottom: 2px solid #dfb74c;
+    margin-bottom: calc(var(--spacing) * 5);
+    position: relative;
+  }
+
+  .honours-board__crest {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--spacing) * 9);
+    height: calc(var(--spacing) * 9);
+    margin-bottom: calc(var(--spacing) * 1.5);
+    color: #dfb74c;
+  }
+
+  .honours-board__sub {
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a75c;
+  }
+
+  .honours-board__title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fbfbf9;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    margin-top: calc(var(--spacing) * 1);
+  }
+
+  .honours-board__inner {
+    /* Header and rows share these tracks — defined once so the Score column
+       always lines up with the figures under it. minmax(0, 1fr) lets a long
+       name wrap; a bare 1fr is floored at its longest word and overflows. */
+    --honours-cols: 6ch minmax(0, 1fr) auto;
+    border: 1px solid rgba(223, 183, 76, 0.4);
+    padding: calc(var(--spacing) * 4) calc(var(--spacing) * 3);
+    background: rgba(7, 15, 34, 0.4);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (min-width: 32rem) {
+    .honours-board__inner {
+      --honours-cols: 8ch minmax(0, 1fr) 10ch;
+      padding: calc(var(--spacing) * 6) calc(var(--spacing) * 5);
+    }
+  }
+
+  .honours-board__head-row {
+    display: grid;
+    grid-template-columns: var(--honours-cols);
+    gap: calc(var(--spacing) * 3);
+    padding-bottom: calc(var(--spacing) * 2.5);
+    border-bottom: 1px solid #dfb74c;
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: #dfb74c;
+  }
+
+  .honours-row {
+    display: grid;
+    grid-template-columns: var(--honours-cols);
+    align-items: baseline;
+    gap: calc(var(--spacing) * 1) calc(var(--spacing) * 3);
+    padding-block: calc(var(--spacing) * 3.5);
+    border-bottom: 1px solid rgba(223, 183, 76, 0.18);
+    transition: background-color 150ms ease-out;
+  }
+
+  .honours-row:hover {
+    background-color: rgba(223, 183, 76, 0.05);
+  }
+
+  .honours-row:last-child {
+    border-bottom: none;
+  }
+
+  .honours-row__year {
+    font-family: var(--font-figures);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-sm);
+    color: #edd07a;
+  }
+
+  .honours-row__name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-paper);
+    /* Long surnames must break rather than widen the track. */
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  .honours-row__figure {
+    font-family: var(--font-figures);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: #f6e4a6;
+    text-align: right;
+    text-shadow: 0 0 12px rgba(223, 183, 76, 0.35);
+  }
+
+  .honours-row__detail {
+    grid-column: 2 / -1;
+    font-size: var(--text-sm);
+    color: rgba(180, 181, 186, 0.85);
+  }
+
+  /* Mobile menu. A <details> disclosure rather than a scripted panel: it opens,
+     closes and takes keyboard focus with no JavaScript, and a static site
+     reloads on navigation so it resets itself. */
+  .nav-disclosure > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .nav-disclosure > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-disclosure[open] .nav-icon--open,
+  .nav-disclosure:not([open]) .nav-icon--close {
+    display: none;
+  }
+
+  /* Rows are tall enough to hit with a thumb. */
+  .nav-panel__link {
+    display: block;
+    padding-block: calc(var(--spacing) * 3.5);
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-accent-tint);
+    transition: color 150ms ease-out, padding-inline 150ms ease-out;
+  }
+
+  .nav-panel__link:hover,
+  .nav-panel__link:focus-visible {
+    color: var(--color-paper);
+    padding-inline-start: calc(var(--spacing) * 2);
+  }
+
+  .nav-panel__link[aria-current='page'] {
+    color: var(--color-paper);
+    font-weight: 600;
+  }
+
+  .eyebrow {
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+}

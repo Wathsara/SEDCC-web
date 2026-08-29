@@ -1,0 +1,117 @@
+---
+import Logo from './Logo.astro';
+import { club, showNews, url } from '../lib/site';
+
+const path = Astro.url.pathname;
+
+const nav = [
+  ...(showNews ? [{ label: 'News', href: url('news') }] : []),
+  { label: 'Teams', href: url('teams') },
+  { label: 'Stats', href: url('stats') },
+  { label: 'Seasons', href: url('seasons') },
+  { label: 'Honour board', href: url('honour-board') },
+  { label: 'Sponsors', href: url('sponsors') },
+  // The store is Tradexco's, not ours — link straight out rather than
+  // bouncing people through a page that only says so.
+  { label: 'Store', href: club.store.url, external: true },
+  { label: 'Contact', href: url('contact') },
+];
+
+const isCurrent = (href: string) => path === href || (href !== url('/') && path.startsWith(href));
+const current = (item: (typeof nav)[number]) => !item.external && isCurrent(item.href);
+
+/* Eight items need roughly 900px laid out in a row, so the horizontal nav
+   starts at lg and everything below that gets the disclosure menu. */
+---
+
+<header class="relative z-40 border-b border-white/10 bg-club text-paper">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5">
+    <a href={url('/')} class="group flex items-center gap-2.5">
+      <Logo class="h-9 w-9 shrink-0 transition-transform group-hover:scale-105" width={36} />
+      <span
+        class="font-display text-xl uppercase tracking-display text-paper transition-colors group-hover:text-accent-tint"
+        >{club.shortName}</span
+      >
+    </a>
+
+    <!-- Desktop -->
+    <nav aria-label="Main" class="hidden items-center gap-x-5 lg:flex">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer external' : undefined}
+            aria-current={current(item) ? 'page' : undefined}
+            class:list={[
+              'stitch-link py-1 font-display text-xs uppercase tracking-eyebrow transition-colors',
+              current(item) ? 'font-semibold text-paper' : 'text-accent-tint hover:text-paper',
+            ]}
+          >
+            {item.label}
+            {item.external && <span class="sr-only"> (opens in a new tab)</span>}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile: a disclosure, so it works with JavaScript off -->
+    <details class="nav-disclosure lg:hidden">
+      <summary
+        class="-mr-2 flex h-11 w-11 items-center justify-center text-accent-tint transition-colors hover:text-paper"
+        aria-label="Menu"
+      >
+        <svg
+          class="nav-icon--open h-6 w-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg
+          class="nav-icon--close h-6 w-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </summary>
+
+      <nav
+        aria-label="Main"
+        class="absolute inset-x-0 top-full z-50 border-b border-white/10 bg-club shadow-lift"
+      >
+        <div class="mx-auto max-w-6xl px-4 pb-4">
+          {
+            nav.map((item) => (
+              <a
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer external' : undefined}
+                aria-current={current(item) ? 'page' : undefined}
+                class="nav-panel__link"
+              >
+                {item.label}
+                {item.external && (
+                  <span aria-hidden="true" class="ml-1 text-sm">
+                    &#8599;
+                  </span>
+                )}
+                {item.external && <span class="sr-only"> (opens in a new tab)</span>}
+              </a>
+            ))
+          }
+        </div>
+      </nav>
+    </details>
+  </div>
+  <div class="seam seam--onclub"></div>
+</header>

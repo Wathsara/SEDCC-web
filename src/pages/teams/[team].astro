@@ -1,0 +1,142 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import FixtureList from '../../components/FixtureList.astro';
+import LadderTable from '../../components/LadderTable.astro';
+import { season, teams, squadFor } from '../../lib/site';
+import { teamFixtures, teamLadder, seasonStats } from '../../lib/playhq';
+
+export const getStaticPaths = (async () => {
+  return teams.map((team) => ({ params: { team: team.slug }, props: { team } }));
+}) satisfies GetStaticPaths;
+
+const { team } = Astro.props;
+
+const fixtures = teamFixtures(team.slug);
+const ladder = teamLadder(team.slug);
+const squad = squadFor(team.slug);
+
+/* Season figures come from the sync and join to the roster by name — the public
+   API has no stable player id. Absent until the first round is played. */
+const statsByName = new Map(
+  (seasonStats.players ?? []).map((p) => [p.displayName.toLowerCase(), p]),
+);
+
+const articles = (
+  await getCollection('articles', ({ data }) => !data.draft && data.team === team.slug)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+
+/*
+  Every panel below is empty until the associations publish grades and the first
+  sync runs. Each one says what it is waiting for rather than showing a zero.
+*/
+---
+
+<Base title={team.name} description={`${team.name} — ${team.competition}, ${team.day}s. Fixtures, ladder, results and squad.`}>
+  <PageHeader
+    eyebrow={`${team.competitionShort} · ${team.day}s`}
+    title={team.name}
+    intro={team.shield ? `${team.shield} — ${team.competition}` : team.competition}
+  />
+
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-12 lg:grid-cols-3">
+      <div class="space-y-12 lg:col-span-2">
+        <section>
+          <SectionHead title="Fixtures" note={season.label} />
+          <div class="mt-6">
+            {
+              fixtures && (fixtures.games.length > 0 || fixtures.byes.length > 0) ? (
+                <FixtureList team={fixtures} />
+              ) : (
+                <EmptyState title="No fixtures yet" />
+              )
+            }
+          </div>
+        </section>
+
+        <section>
+          <SectionHead title="Ladder" note={season.label} />
+          <div class="mt-6">
+            {
+              ladder && ladder.ladders.length > 0 ? (
+                <LadderTable grade={ladder} />
+              ) : (
+                <EmptyState title="No ladder yet" />
+              )
+            }
+          </div>
+        </section>
+
+        <section>
+          <SectionHead title="Articles" note={season.label} />
+          <div class="mt-4">
+            {
+              articles.length > 0 ? (
+                articles.map((article) => <ArticleCard article={article} />)
+              ) : (
+                <EmptyState title="No match reports yet" />
+              )
+            }
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <SectionHead
+          title="Squad"
+          note={squad.length > 0 ? `${season.label} · ${squad.length} players` : season.label}
+        />
+        <div class="mt-6">
+          {
+            squad.length > 0 ? (
+              <ul>
+                {squad.map((p) => {
+                  const stat = statsByName.get(p.name.toLowerCase());
+                  return (
+                    <li class="card-line" data-rule-in>
+                      <span class="card-line__name">
+                        {p.profileUrl ? (
+                          <a
+                            href={p.profileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer external"
+                            class="stitch-link"
+                          >
+                            {p.name}
+                            <span class="sr-only"> — PlayHQ profile (opens in a new tab)</span>
+                          </a>
+                        ) : (
+                          p.name
+                        )}
+                      </span>
+                      {stat && (
+                        <span class="card-line__figures">
+                          {stat.batting.runs} <span class="text-ink-faint">runs</span>{' '}
+                          {stat.bowling.wickets} <span class="text-ink-faint">wkts</span>
+                        </span>
+                      )}
+                      {p.role && <span class="card-line__context">{p.role}</span>}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <EmptyState title="Squad not named" />
+            )
+          }
+        </div>
+      </aside>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

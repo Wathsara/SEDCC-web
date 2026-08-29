@@ -1,0 +1,33 @@
+# Dependencies and build output
+node_modules/
+dist/
+.astro/
+*.tsbuildinfo
+
+# Secrets — PLAYHQ_API_KEY lives here locally and in GitHub Actions secrets.
+# It must never reach the repository or the client bundle.
+.env
+.env.*
+!.env.example
+
+# Local tooling and notes. The repository is public and only needs what is
+# required to build and serve the site.
+.devcontainer/
+.claude/
+.agents/
+CLAUDE.md
+README.md
+skills-lock.json
+src/assets/README.md
+
+# Scratch files
+image.png
+*.local
+
+# OS and editor
+.DS_Store
+**/.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

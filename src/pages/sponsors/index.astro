@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import CricketIcon from '../../components/CricketIcon.astro';
+import SponsorCard from '../../components/SponsorCard.astro';
+import { club, sponsors, url } from '../../lib/site';
+---
+
+<Base
+  title="Sponsors"
+  description={`The businesses backing ${club.name}.`}
+>
+  <PageHeader
+    eyebrow="Our partners"
+    title="Sponsors"
+    intro="The businesses behind the club. Their support puts three sides on the field every weekend."
+  />
+
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    {
+      sponsors.length > 0 ? (
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {sponsors.map((s) => (
+            <SponsorCard sponsor={s} />
+          ))}
+        </div>
+      ) : (
+        <EmptyState title="No sponsors listed yet" />
+      )
+    }
+
+    <div class="mt-16 border-t border-rule pt-10">
+      <div class="flex items-start gap-4">
+        <CricketIcon name="trophy" class="mt-1 h-6 w-6 shrink-0 text-accent" />
+        <div>
+          <h2 class="font-display text-2xl uppercase text-club">Sponsor the club</h2>
+          <p class="mt-3 max-w-prose text-ink-muted">
+            Shirt fronts, sleeves, boundary signage and match-day support are all available.
+            Three senior sides across two competitions, every weekend of the season.
+          </p>
+          <a
+            href={url('contact')}
+            class="mt-6 inline-block bg-club px-6 py-3 font-display text-sm uppercase tracking-eyebrow text-paper transition-colors hover:bg-club-tint"
+            >Get in touch</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

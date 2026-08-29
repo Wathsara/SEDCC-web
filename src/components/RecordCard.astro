@@ -1,0 +1,40 @@
+---
+import CricketIcon from './CricketIcon.astro';
+import { filled } from '../lib/site';
+
+interface Props {
+  label: string;
+  value: string;
+  /** Batting records read runs(balls) where the balls faced are known. */
+  balls?: number | null;
+  holder?: string | null;
+  detail?: string | null;
+  season?: string | null;
+  icon: 'bat' | 'ball' | 'stumps';
+}
+const { label, value, balls, holder, detail, season, icon } = Astro.props;
+
+const context = [filled(detail ?? undefined), filled(season ?? undefined)]
+  .filter(Boolean)
+  .join(' · ');
+---
+
+<div class="tile p-4 sm:p-5 border-t-2 border-t-[#dfb74c] transition-all hover:-translate-y-0.5 hover:shadow-lift" data-rule-in>
+  <div class="flex items-center justify-between gap-2 border-b border-rule pb-2.5">
+    <p class="eyebrow text-accent text-2xs">{label}</p>
+    <div class="flex h-6 w-6 items-center justify-center rounded bg-club/5 text-club">
+      <CricketIcon name={icon} class="h-3.5 w-3.5 shrink-0 text-accent" />
+    </div>
+  </div>
+
+  <div class="mt-3 flex items-baseline justify-between gap-2">
+    <p class="font-figures text-2xl font-bold tabular-nums leading-none text-club">
+      {value}{balls && <span class="text-xs font-normal text-ink-faint"> ({balls}b)</span>}
+    </p>
+    {filled(holder ?? undefined) && (
+      <p class="font-display text-sm uppercase tracking-wide text-ink text-right truncate">{holder}</p>
+    )}
+  </div>
+
+  {context && <p class="mt-2 text-xs text-ink-muted leading-tight">{context}</p>}
+</div>

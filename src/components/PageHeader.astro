@@ -1,0 +1,17 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+}
+const { eyebrow, title, intro } = Astro.props;
+---
+
+<div class="bg-club text-paper relative overflow-hidden">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16 relative z-10">
+    {eyebrow && <p class="eyebrow text-accent-tint">{eyebrow}</p>}
+    <h1 class="mt-2 font-display text-3xl uppercase tracking-display sm:text-4xl text-paper">{title}</h1>
+    {intro && <p class="mt-4 max-w-2xl text-base text-accent-tint/90 leading-relaxed font-light">{intro}</p>}
+  </div>
+  <div class="seam seam--onclub seam--draw"></div>
+</div>

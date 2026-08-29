@@ -22,9 +22,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # First, so that a repository without Pages switched on fails here in
+      # seconds rather than after a full install and build.
+      #
+      # Requires Settings -> Pages -> Source: "GitHub Actions". The action's
+      # `enablement` input can turn it on automatically, but only with a
+      # personal access token — GITHUB_TOKEN is not permitted to do it.
+      - uses: actions/configure-pages@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
         with:
           # astro 7 requires >=22.12; package.json pins the same floor.
           node-version: 22
@@ -77,10 +85,12 @@ jobs:
           test -f dist/index.html || { echo "::error::dist/index.html missing"; exit 1; }
           echo "Built $(find dist -name '*.html' | wc -l) pages"
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
+          # dist/.nojekyll is a dotfile and the action drops hidden files by
+          # default.
+          include-hidden-files: true
 
   deploy:
     needs: build
@@ -90,4 +100,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

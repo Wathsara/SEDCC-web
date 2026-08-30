@@ -5,12 +5,12 @@ import SectionHead from '../../components/SectionHead.astro';
 import EmptyState from '../../components/EmptyState.astro';
 import WeeklyBest from '../../components/WeeklyBest.astro';
 import LeaderTable from '../../components/LeaderTable.astro';
-import { season, url } from '../../lib/site';
+import { club, season, url } from '../../lib/site';
 import { hasWeeklyStats, hasSeasonStats, weekly, seasonStats } from '../../lib/playhq';
 
 ---
 
-<Base title="Stats" description="Weekly top batter and bowler, plus season leaderboards for Dreamers CC.">
+<Base title="Stats" description={`Weekly top batter and bowler, plus season leaderboards for ${club.name}.`}>
   <PageHeader
     eyebrow={season.label}
     title="Stats"

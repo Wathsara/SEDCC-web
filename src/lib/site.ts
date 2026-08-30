@@ -295,3 +295,19 @@ export const intro = filled((club as { intro?: string }).intro);
 
 /** The line under the club name on the home page. */
 export const heroLine = filled((club as { heroLine?: string }).heroLine);
+
+/* ---------------------------------------------------------------------------
+   Vision, mission and values — from the Strategic Development Plan 2025–2030.
+   ------------------------------------------------------------------------ */
+
+export interface ClubValue {
+  name: string;
+  detail: string;
+  icon: 'bat' | 'ball' | 'stumps' | 'trophy' | 'cap' | 'boundary';
+}
+
+export const vision = filled((club as { vision?: string }).vision);
+export const mission = filled((club as { mission?: string }).mission);
+
+export const clubValues = (((club as { values?: ClubValue[] }).values ?? []) as ClubValue[])
+  .filter((v) => filled(v.name));

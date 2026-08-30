@@ -13,7 +13,8 @@ import NextFixture from '../components/NextFixture.astro';
 import FormGuide from '../components/FormGuide.astro';
 import CricketIcon from '../components/CricketIcon.astro';
 import WeeklyBest from '../components/WeeklyBest.astro';
-import { club, season, teams, homeGroundSuburb, homeGroundLabel, suburb, headlineRecords, sponsors, showNews, intro, heroLine, url } from '../lib/site';
+import { club, season, teams, homeGroundSuburb, homeGroundLabel, suburb, headlineRecords, sponsors, showNews, intro, heroLine, vision, url } from '../lib/site';
+import { strategyHighlights, strategyPeriod } from '../lib/strategy';
 import { seasons } from '../lib/history';
 import {
   hasWeeklyStats, hasSeasonStats, weekly, seasonStats,
@@ -134,12 +135,22 @@ const leadingBowl = [...(seasonStats.players ?? [])]
                 <CricketIcon name="ball" class="h-4 w-4 text-accent" />
                 <p class="eyebrow text-club font-semibold">Club Ethos & Vision</p>
               </div>
-              <h2 class="mt-2.5 font-display text-2xl sm:text-3xl uppercase tracking-tight text-club leading-snug">
-                Relentless cricket, brotherhood, and a lasting community legacy.
+              <h2 class="mt-2.5 font-display text-2xl uppercase leading-snug tracking-tight text-club sm:text-3xl">
+                Sporting excellence, personal growth, and inclusivity for everyone.
               </h2>
-              <p class="mt-3.5 text-sm sm:text-base text-ink-muted leading-relaxed font-light">
+              <p class="mt-3.5 text-sm font-light leading-relaxed text-ink-muted sm:text-base">
                 {intro}
               </p>
+              {
+                vision && (
+                  <blockquote class="mt-5 border-l-2 border-accent pl-4 text-sm italic leading-relaxed text-ink sm:text-base">
+                    {vision}
+                    <footer class="mt-2 font-figures text-2xs uppercase not-italic tracking-eyebrow text-ink-faint">
+                      Our vision · Strategic plan 2025–2030
+                    </footer>
+                  </blockquote>
+                )
+              }
               <div class="mt-6 flex flex-wrap items-center gap-4 text-xs font-figures text-ink-faint">
                 <span>Established {club.established}</span>
                 <span>·</span>
@@ -152,18 +163,22 @@ const leadingBowl = [...(seasonStats.players ?? [])]
             </div>
 
             <div class="grid gap-4">
-              <div class="tile p-5 border-l-4 border-l-club">
-                <p class="font-display text-sm uppercase tracking-wide text-club">01 · Brotherhood & Discipline</p>
-                <p class="mt-1 text-xs text-ink-muted leading-relaxed">
-                  Playing hard on the field, backing each other in the dressing room, and upholding the integrity of the game.
-                </p>
-              </div>
-              <div class="tile p-5 border-l-4 border-l-[#dfb74c]">
-                <p class="font-display text-sm uppercase tracking-wide text-club">02 · Premiership Ambition</p>
-                <p class="mt-1 text-xs text-ink-muted leading-relaxed">
-                  Fielding three competitive squads across Saturday ECA and Sunday VSCA to build a winning culture.
-                </p>
-              </div>
+              {
+                strategyHighlights.map((s, i) => (
+                  <a href={url('plan')} class="tile block border-l-4 border-l-club p-5 transition-all hover:-translate-y-0.5">
+                    <p class="font-display text-sm uppercase tracking-wide text-club">
+                      {String(i + 1).padStart(2, '0')} · {s.lead.name}
+                    </p>
+                    <p class="mt-1 text-xs leading-relaxed text-ink-muted">{s.lead.detail}</p>
+                  </a>
+                ))
+              }
+              <a
+                href={url('plan')}
+                class="stitch-link self-start font-display text-xs uppercase tracking-eyebrow text-club"
+              >
+                Strategic plan {strategyPeriod} →
+              </a>
             </div>
           </div>
         </div>

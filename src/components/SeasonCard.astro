@@ -71,13 +71,6 @@ const href = pastSeason(entry.season) ? url(`seasons/${entry.season}`) : null;
           <span class="text-2xs font-figures uppercase text-ink-faint">Current Campaign</span>
         )
       }
-      {
-        entry.clubNameThen && entry.clubNameThen !== 'Dreamers Cricket Club' && (
-          <span class="font-figures text-2xs uppercase text-ink-faint/80">
-            as {entry.clubNameThen}
-          </span>
-        )
-      }
     </div>
   </figcaption>
 </figure>

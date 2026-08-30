@@ -4,6 +4,36 @@
   "abbreviation": "SEDCC",
   "tagline": "Three teams. Two competitions. One club.",
   "intro": "Built on brotherhood, discipline, and community pride, South Eastern Dreamers Cricket Club was founded in 2024 to create a premier home for cricketers in Melbourne's South East. From a single Sunday side to three senior squads competing across the ECA and VSCA, we play relentless cricket with integrity, back each other on every delivery, and forge a lasting legacy for the next generation.",
+  "vision": "To be recognised as a premier cricket club that fosters sporting excellence, nurtures personal growth, and champions inclusivity for all individuals, regardless of age, gender or background.",
+  "mission": "To provide a holistic cricketing environment that promotes player development, leadership, community spirit and competitive excellence, enabling individuals to reach their potential both on and off the field.",
+  "values": [
+    {
+      "name": "Inclusivity",
+      "detail": "Welcoming and supporting individuals from all backgrounds.",
+      "icon": "cap"
+    },
+    {
+      "name": "Excellence",
+      "detail": "Striving for the highest standards in performance, coaching and administration.",
+      "icon": "trophy"
+    },
+    {
+      "name": "Integrity",
+      "detail": "Operating with transparency, honesty and respect at all levels.",
+      "icon": "stumps"
+    },
+    {
+      "name": "Community",
+      "detail": "Building strong connections with local communities.",
+      "icon": "boundary"
+    },
+    {
+      "name": "Development",
+      "detail": "Focusing on continuous learning, growth and leadership at every stage.",
+      "icon": "bat"
+    }
+  ],
+  "_planComment": "Vision, mission and values are taken verbatim from the club's Strategic Development Plan 2025–2030. The plan document refers to the club as 'Dreamers Sports Club'; the club's current name is South Eastern Dreamers Cricket Club and that is what the site uses throughout. Do not paraphrase the vision, mission or values without the committee's agreement.",
   "heroLine": "One-day cricket from October through March. Saturdays for the McCarthy and Reg Lamborn Shields, Sundays for VSCA Grade 4.",
   "_heroLineComment": "The line under the club name on the home page. Every claim here comes from the results in config/results-*.json: all matches are One Day, and both seasons ran between October and March.",
   "established": 2024,
@@ -21,7 +51,7 @@
     }
   },
   "brand": {
-    "_comment": "Sampled from public/brand/logo.jpg. Navy shield + chrome lettering; no gold. Mirrored in src/styles/tokens.css as --color-club / --color-accent-tint \u2014 change both together.",
+    "_comment": "Sampled from public/brand/logo.jpg. Navy shield + chrome lettering; no gold. Mirrored in src/styles/tokens.css as --color-club / --color-accent-tint — change both together.",
     "primary": "#0F1C3F",
     "secondary": "#B4B5BA",
     "logo": "/brand/logo.jpg",
@@ -57,9 +87,9 @@
   },
   "contact": {
     "email": "admin@dreamerssc.com.au",
-    "_formComment": "GitHub Pages cannot process a POST. Pick a provider (Formspree, Web3Forms, Getform), paste the endpoint below, and the contact form posts straight to it. Leave null and the form falls back to a mailto: link.",
-    "formProvider": null,
-    "formEndpoint": null,
+    "_formComment": "GitHub Pages cannot process a POST, so the form posts straight to Web3Forms, which emails the submission to the address registered with that access key. The access key is PUBLIC by design — it appears in the page source and that is how Web3Forms works. It is not a secret, but it can be abused: restrict the allowed domain in the Web3Forms dashboard so only this site can post with it. Clear formEndpoint to fall back to a mailto: link.",
+    "formProvider": "Web3Forms",
+    "formEndpoint": "https://api.web3forms.com/submit",
     "committee": [
       {
         "role": "President",
@@ -88,7 +118,10 @@
       "Playing next season",
       "Something else"
     ],
-    "_privacyComment": "Club email only. The president's phone number and home address were removed: this repository is public, and CLAUDE.md forbids committing personal phone numbers or addresses. Do not add them back. The home ground in location.homeGround is a public reserve and is fine to publish."
+    "_privacyComment": "Club email only. The president's phone number and home address were removed: this repository is public, and CLAUDE.md forbids committing personal phone numbers or addresses. Do not add them back. The home ground in location.homeGround is a public reserve and is fine to publish.",
+    "formAccessKey": "b1e3b24d-f5e1-4466-b970-b7e8cf51af34",
+    "formCaptcha": true,
+    "_captchaComment": "hCaptcha is Web3Forms' free captcha and needs no site key — it proxies through them. ORDER MATTERS: deploy the site with formCaptcha true FIRST, then switch hCaptcha on for this form in the Web3Forms dashboard. The other way round, the backend expects an h-captcha-response the deployed form is not sending yet and submissions are rejected. Google reCAPTCHA and Cloudflare Turnstile are Web3Forms Pro features. The botcheck honeypot stays as a second layer."
   },
   "social": {
     "_comment": "Official club accounts only. Leave null and the link is simply not rendered.",
@@ -108,13 +141,13 @@
     "repository": "https://github.com/Wathsara/SEDCC-web"
   },
   "sponsors": {
-    "_comment": "Club sponsors, shown at /sponsors/. A flat list \u2014 add as many as you like and the page grid grows. 'logo' is a filename in src/assets/sponsors/ so Astro optimises it. Every field except name is optional. 'mission' and 'vision' are stored but not currently rendered; say the word and the card can show them.",
+    "_comment": "Club sponsors, shown at /sponsors/. A flat list — add as many as you like and the page grid grows. 'logo' is a filename in src/assets/sponsors/ so Astro optimises it. Every field except name is optional. 'mission' and 'vision' are stored but not currently rendered; say the word and the card can show them.",
     "list": [
       {
         "name": "WinQuest Finance",
         "strapline": "Your finance partner",
         "logo": "winquest-finance.png",
-        "blurb": "Ready to build your future with confidence? We\u2019re here to be your trusted finance partner every step of the way.",
+        "blurb": "Ready to build your future with confidence? We’re here to be your trusted finance partner every step of the way.",
         "address": "57 Patricia Loop, Keysborough VIC 3173",
         "phone": "+61 420 981 189",
         "phoneLabel": "Hotline",
@@ -122,13 +155,13 @@
       },
       {
         "name": "Bridge Inspection Engineers",
-        "strapline": "Let\u2019s build something creative together",
+        "strapline": "Let’s build something creative together",
         "logo": "bridge-inspection-engineers.png",
         "blurb": "Our experienced professionals have a genuine interest in the quality and safety of structures and their impact on society. That motivated us to form this company in 2022. We are based in Melbourne and operate all around Australia.",
         "address": "16 Martine Court, Hoppers Crossing VIC 3029",
         "email": "info@bieng.com.au",
         "url": "https://bieng.com.au/",
-        "mission": "To deliver high-quality bridge inspection, assessment and maintenance solutions that exceed industry standards. Through advanced technology, skilled expertise and a commitment to safety, we strive to protect and enhance the structural integrity of Australia\u2019s bridge network, supporting the nation\u2019s transportation and economic growth.",
+        "mission": "To deliver high-quality bridge inspection, assessment and maintenance solutions that exceed industry standards. Through advanced technology, skilled expertise and a commitment to safety, we strive to protect and enhance the structural integrity of Australia’s bridge network, supporting the nation’s transportation and economic growth.",
         "vision": "To be recognised by clients as the leading provider of innovative, reliable and sustainable bridge maintenance and inspection services in Australia, ensuring the safety, longevity and efficiency of critical infrastructure for future generations."
       },
       {
@@ -139,13 +172,18 @@
         "phone": "0406 271 004",
         "phoneLabel": "Phone",
         "email": "roger@atrealty.com.au",
-        "_confirm": "Phone was supplied as 406271004 \u2014 assumed to be the mobile 0406 271 004. Confirm.",
+        "_confirm": "Phone was supplied as 406271004 — assumed to be the mobile 0406 271 004. Confirm.",
         "url": "https://www.rogers-realestate.com.au/"
       },
       {
-        "name": "KloudI",
+        "name": "Kloudi",
+        "strapline": "Cloud. Infrastructure. AI.",
         "logo": "kloudi.png",
-        "_confirm": "No details supplied. Needs a strapline, blurb, contact details and a website. Note the supplied artwork reads 'Innovatinve Solutions Company' \u2014 a typo in the logo itself, so it is not repeated as text here."
+        "blurb": "A Melbourne-based IT solutions and consulting company specialising in cloud, infrastructure, architecture and AI. Kloudi designs and delivers secure, scalable, enterprise-grade solutions — cloud transformation, infrastructure modernisation, architecture and strategy, application integration, automation and AI — helping organisations simplify complexity and accelerate digital transformation.",
+        "email": "Indika.Karunathilaka@kloudi.com.au",
+        "url": "https://kloudi.com.au/",
+        "_phoneWithheld": "0401 236 864 was supplied, but it is the same number removed from contact.phone as the president's personal line. Not published without an explicit decision to do so.",
+        "_confirm": "The website was not supplied; kloudi.com.au was inferred from the email domain and returns 200. Confirm it is the right address."
       },
       {
         "name": "Southern Star Property Services",
@@ -154,7 +192,7 @@
         "blurb": "Commercial and domestic premium services across Melbourne, for real estate agents, property managers, builders, site managers, homeowners and developers, in both residential and office environments. Wherever we are, the goal is the same: exceptional work by a proud and professional team.",
         "address": "67 John Russell Rd, Cranbourne West VIC 3977",
         "phone": "0432 491 388",
-        "phoneLabel": "Phone \u00b7 24/7",
+        "phoneLabel": "Phone · 24/7",
         "email": "info@ssproperties.com.au",
         "url": "https://ssproperties.com.au/",
         "_confirm": "The logo reads 'Southern Star Group'; the club supplied the name as 'Southern Star Property Services'. Confirm which should appear."

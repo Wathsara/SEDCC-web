@@ -1,5 +1,5 @@
 {
-  "_comment": "Hand-maintained club history. Nothing here comes from PlayHQ \u2014 it predates it. Add records as the club digs them out of old scorebooks; every field is optional so a partial entry still renders.",
+  "_comment": "Hand-maintained club history. Nothing here comes from PlayHQ — it predates it. Add records as the club digs them out of old scorebooks; every field is optional so a partial entry still renders.",
   "allTimeXI": {
     "title": "Dreamers All-Time XI",
     "note": "Selected by the committee. Argue about it in the clubrooms.",
@@ -9,7 +9,7 @@
         "order": 1,
         "role": "Opening batter",
         "years": "TODO",
-        "blurb": "TODO \u2014 one or two sentences on why.",
+        "blurb": "TODO — one or two sentences on why.",
         "figures": null
       }
     ]
@@ -121,7 +121,7 @@
       "grade": "Grade 4",
       "teams": 1,
       "first": false,
-      "note": "Runners-up in VSCA Grade 4, playing as Dreamers SC.",
+      "note": "Runners-up in VSCA Grade 4.",
       "photo": "2025-26-vsca-grade-4-team.jpg",
       "clubNameThen": "Dreamers SC",
       "teamNameThen": "Dreamers SC - 4",
@@ -143,9 +143,9 @@
       }
     }
   ],
-  "_seasonsComment": "Hand-maintained. Photos live in src/assets/ so Astro optimises them; the filename here must match. The 2024/25 photo was supplied named GRADE-2; the club's own results confirm the grade was 3C.",
+  "_seasonsComment": "Hand-maintained. clubNameThen / teamNameThen record how the side was registered in that season's competition — the club now plays as South Eastern Dreamers Cricket Club, and the site does not call attention to the change. These fields exist so past PlayHQ results stay accurate.",
   "honours": {
-    "_comment": "The two honours boards, Lord's style: centuries and five-wicket hauls. One row per performance, not per player. The site sorts by season, newest first, and preserves the order of this list within each season \u2014 so to move an entry, move it here. Rounds were resolved by cross-referencing each innings against the team totals in config/results-*.json; two are left null because more than one round fits.",
+    "_comment": "The two honours boards, Lord's style: centuries and five-wicket hauls. One row per performance, not per player. The site sorts by season, newest first, and preserves the order of this list within each season — so to move an entry, move it here. Rounds were resolved by cross-referencing each innings against the team totals in config/results-*.json; two are left null because more than one round fits.",
     "centuries": [
       {
         "name": "Aruna Perera",
@@ -240,5 +240,5 @@
       }
     ]
   },
-  "_historicalIdsComment": "playhqGradeId / playhqTeamId on a season here are HISTORICAL \u2014 they belong to that season only. Never copy them into config/season-2026-27.json: the sync would pull last season's fixtures and present them as this season's. Once PLAYHQ_API_KEY exists these can be used to backfill real results for past seasons."
+  "_historicalIdsComment": "playhqGradeId / playhqTeamId on a season here are HISTORICAL — they belong to that season only. Never copy them into config/season-2026-27.json: the sync would pull last season's fixtures and present them as this season's. Once PLAYHQ_API_KEY exists these can be used to backfill real results for past seasons."
 }

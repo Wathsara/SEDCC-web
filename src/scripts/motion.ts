@@ -1,5 +1,5 @@
 /*
-  Cricket motion. Progressive enhancement for Dreamers Cricket Club:
+  Cricket motion. Progressive enhancement:
   1. Scoreboard figures rolling up on view
   2. Heavy bowling delivery, pitch bounce, bat strike impact, and ball hit for six
   3. Scorebook rows ruling in
@@ -420,6 +420,9 @@ function ruleIn(rows: HTMLElement[]): void {
 /* ---------------------------------------------------------------------- */
 
 function init(): void {
+  // Navigation is not motion — it runs even when animation is turned off.
+  wireNavMenus();
+
   if (reduced.matches) return;
 
   for (const el of document.querySelectorAll<HTMLElement>('[data-count]')) {
@@ -472,3 +475,40 @@ if (document.readyState === 'loading') {
   init();
 }
 
+
+/* -------------------------------------------------------------------------
+   Nav dropdowns.
+   The menu is a <details>, so it already opens and closes on its own. This
+   only adds the two conveniences a <details> cannot do by itself: close on
+   Escape, and close when a click lands outside it. With JavaScript off the
+   menu still works — it just stays open until you click the summary again.
+   ---------------------------------------------------------------------- */
+function wireNavMenus(): void {
+  const menus = Array.from(document.querySelectorAll<HTMLDetailsElement>('.nav-menu'));
+  if (menus.length === 0) return;
+
+  const closeAll = (except?: HTMLDetailsElement) => {
+    for (const m of menus) if (m !== except) m.open = false;
+  };
+
+  for (const menu of menus) {
+    // Only one open at a time.
+    menu.addEventListener('toggle', () => {
+      if (menu.open) closeAll(menu);
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (!menus.some((m) => m.contains(target))) closeAll();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const open = menus.find((m) => m.open);
+    if (open) {
+      open.open = false;
+      open.querySelector('summary')?.focus();
+    }
+  });
+}

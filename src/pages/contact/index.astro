@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
-import { club, filled, socials, homeGroundLabel, homeGroundMapUrl } from '../../lib/site';
+import { club, filled, socials, homeGroundLabel, homeGroundMapUrl, url } from '../../lib/site';
 
 const { contact } = club;
 
@@ -14,6 +14,13 @@ const { contact } = club;
   that silently does nothing.
 */
 const endpoint = filled(contact.formEndpoint);
+const accessKey = filled((contact as { formAccessKey?: string }).formAccessKey);
+/* hCaptcha renders only once it has been switched on in the Web3Forms dashboard
+   — see the note in config/club.json. */
+const captcha = (contact as { formCaptcha?: boolean }).formCaptcha === true;
+
+/* Web3Forms needs an absolute URL to send people back to after a submission. */
+const thanksUrl = new URL(url('thanks'), Astro.site ?? 'http://localhost:4321').href;
 const email = filled(contact.email);
 const phone = filled((contact as { phone?: string }).phone);
 const address = filled((contact as { address?: string }).address);
@@ -45,6 +52,24 @@ const details = [
     {
       endpoint ? (
         <form action={endpoint} method="POST" class="max-w-2xl space-y-6">
+          {/* Web3Forms: the access key is public by design — it identifies the
+              form, it does not authorise anything. Restrict the allowed domain
+              in the Web3Forms dashboard. */}
+          {accessKey && <input type="hidden" name="access_key" value={accessKey} />}
+          <input type="hidden" name="subject" value={`${club.shortName} website enquiry`} />
+          <input type="hidden" name="from_name" value={club.name} />
+          <input type="hidden" name="redirect" value={thanksUrl} />
+
+          {/* Honeypot. Real people never see it; bots fill it and are dropped. */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
           <div>
             <label for="name" class="eyebrow block">Your name</label>
             <input
@@ -87,6 +112,8 @@ const details = [
               class="mt-2 w-full border border-rule-strong bg-paper px-3 py-2"
             />
           </div>
+          {captcha && <div class="h-captcha" data-captcha="true" />}
+
           <button
             type="submit"
             class="bg-club px-6 py-3 font-display text-sm uppercase tracking-eyebrow text-paper hover:bg-club-tint"
@@ -165,3 +192,7 @@ const details = [
 <script>
   import '../../scripts/motion.ts';
 </script>
+
+{/* Web3Forms proxies hCaptcha, so no site key is needed. is:inline because it
+    is a third-party script that must not go through the bundler. */}
+{captcha && <script is:inline src="https://web3forms.com/client/script.js" async defer />}

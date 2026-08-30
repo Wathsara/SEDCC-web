@@ -5,7 +5,7 @@ import CricketIcon from '../../components/CricketIcon.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import { pastSeasons, summarise } from '../../lib/seasons';
 import { seasons as history } from '../../lib/history';
-import { season, url } from '../../lib/site';
+import { club, season, url } from '../../lib/site';
 import { results, seasonStats } from '../../lib/playhq';
 
 /* Past completed seasons, newest first. */
@@ -17,7 +17,7 @@ const currentWins = results.filter((r) => r.outcome === 'WON' || r.outcome === '
 const currentLosses = results.filter((r) => r.outcome === 'LOST' || r.outcome === 'LOSS_BY_SUPER_OVER').length;
 ---
 
-<Base title="Seasons & Campaigns" description="Ongoing 2026/27 season campaign and club history for Dreamers Cricket Club.">
+<Base title="Seasons & Campaigns" description={`Season campaigns and club history for ${club.name}.`}>
   <PageHeader
     eyebrow="Club Campaigns"
     title="Seasons & Campaigns"
@@ -51,7 +51,7 @@ const currentLosses = results.filter((r) => r.outcome === 'LOST' || r.outcome ==
               {season.label} Championship Chase
             </h3>
             <p class="mt-2 text-sm text-ink-muted leading-relaxed font-light">
-              Dreamers CC enters {season.label} fielding three senior teams across two major Melbourne associations:
+              {club.shortName} enters {season.label} fielding three senior teams across two major Melbourne associations:
               two Saturday sides in the Eastern Cricket Association (LOC 1 & LOC 3) and one Sunday side in VSCA Grade 4.
             </p>
 

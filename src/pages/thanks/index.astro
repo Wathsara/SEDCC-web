@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import CricketIcon from '../../components/CricketIcon.astro';
+import { club, url } from '../../lib/site';
+
+/* Where Web3Forms sends people after a successful submission, so they land back
+   on the club's own site rather than on the form provider's page. */
+---
+
+<Base title="Thanks" description="Your message has been sent." noindex>
+  <div class="mx-auto max-w-2xl px-4 py-24 text-center">
+    <CricketIcon name="ball" class="mx-auto h-10 w-10 text-accent" />
+    <h1 class="mt-6 font-display text-3xl uppercase text-club sm:text-4xl">Message sent</h1>
+    <p class="mx-auto mt-4 max-w-prose text-lg text-ink-muted">
+      Thanks for getting in touch. Someone from the committee will get back to you.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a
+        href={url('/')}
+        class="bg-club px-6 py-3 font-display text-sm uppercase tracking-eyebrow text-paper transition-colors hover:bg-club-tint"
+        >Back to the club</a
+      >
+      <a
+        href={url('teams')}
+        class="border border-rule-strong px-6 py-3 font-display text-sm uppercase tracking-eyebrow text-club transition-colors hover:bg-paper-sunk"
+        >Our teams</a
+      >
+    </div>
+    <p class="mt-10 text-sm text-ink-faint">
+      Nothing arrived? Email us directly at{' '}
+      <a href={`mailto:${club.contact.email}`} class="stitch-link text-club">
+        {club.contact.email}
+      </a>.
+    </p>
+  </div>
+</Base>

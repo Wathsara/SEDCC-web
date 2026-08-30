@@ -4,7 +4,24 @@ import { club, showNews, url } from '../lib/site';
 
 const path = Astro.url.pathname;
 
-const nav = [
+interface NavItem {
+  label: string;
+  href: string;
+  external?: boolean;
+  children?: Array<{ label: string; href: string }>;
+}
+
+const nav: NavItem[] = [
+  {
+    // About and the strategic plan belong together, and grouping them keeps the
+    // top level from growing to ten.
+    label: 'About',
+    href: url('about'),
+    children: [
+      { label: 'Our story', href: url('about') },
+      { label: 'Strategic plan', href: url('plan') },
+    ],
+  },
   ...(showNews ? [{ label: 'News', href: url('news') }] : []),
   { label: 'Teams', href: url('teams') },
   { label: 'Stats', href: url('stats') },
@@ -19,10 +36,14 @@ const nav = [
 ];
 
 const isCurrent = (href: string) => path === href || (href !== url('/') && path.startsWith(href));
-const current = (item: (typeof nav)[number]) => !item.external && isCurrent(item.href);
+const current = (item: { href: string; external?: boolean }) =>
+  !item.external && isCurrent(item.href);
+/** A parent is marked current when any of its children is. */
+const branchCurrent = (item: NavItem) =>
+  current(item) || (item.children ?? []).some((c) => isCurrent(c.href));
 
-/* Eight items need roughly 900px laid out in a row, so the horizontal nav
-   starts at lg and everything below that gets the disclosure menu. */
+/* Ten items need well over 1000px in a row, so the horizontal nav starts at xl
+   and everything below gets the disclosure menu. */
 ---
 
 <header class="relative z-40 border-b border-white/10 bg-club text-paper">
@@ -36,28 +57,63 @@ const current = (item: (typeof nav)[number]) => !item.external && isCurrent(item
     </a>
 
     <!-- Desktop -->
-    <nav aria-label="Main" class="hidden items-center gap-x-5 lg:flex">
+    <nav aria-label="Main" class="hidden items-center gap-x-5 xl:flex">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            target={item.external ? '_blank' : undefined}
-            rel={item.external ? 'noopener noreferrer external' : undefined}
-            aria-current={current(item) ? 'page' : undefined}
-            class:list={[
-              'stitch-link py-1 font-display text-xs uppercase tracking-eyebrow transition-colors',
-              current(item) ? 'font-semibold text-paper' : 'text-accent-tint hover:text-paper',
-            ]}
-          >
-            {item.label}
-            {item.external && <span class="sr-only"> (opens in a new tab)</span>}
-          </a>
-        ))
+        nav.map((item) =>
+          item.children ? (
+            <details class="nav-menu relative">
+              <summary
+                class:list={[
+                  'flex items-center gap-1 py-1 font-display text-xs uppercase tracking-eyebrow transition-colors',
+                  branchCurrent(item) ? 'font-semibold text-paper' : 'text-accent-tint hover:text-paper',
+                ]}
+              >
+                {item.label}
+                <svg
+                  class="nav-menu__chevron h-3 w-3 transition-transform"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </summary>
+              <div class="nav-menu__panel">
+                {item.children.map((c) => (
+                  <a
+                    href={c.href}
+                    aria-current={isCurrent(c.href) ? 'page' : undefined}
+                    class="nav-menu__link"
+                  >
+                    {c.label}
+                  </a>
+                ))}
+              </div>
+            </details>
+          ) : (
+            <a
+              href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer external' : undefined}
+              aria-current={current(item) ? 'page' : undefined}
+              class:list={[
+                'stitch-link py-1 font-display text-xs uppercase tracking-eyebrow transition-colors',
+                current(item) ? 'font-semibold text-paper' : 'text-accent-tint hover:text-paper',
+              ]}
+            >
+              {item.label}
+              {item.external && <span class="sr-only"> (opens in a new tab)</span>}
+            </a>
+          ),
+        )
       }
     </nav>
 
     <!-- Mobile: a disclosure, so it works with JavaScript off -->
-    <details class="nav-disclosure lg:hidden">
+    <details class="nav-disclosure xl:hidden">
       <summary
         class="-mr-2 flex h-11 w-11 items-center justify-center text-accent-tint transition-colors hover:text-paper"
         aria-label="Menu"
@@ -92,23 +148,42 @@ const current = (item: (typeof nav)[number]) => !item.external && isCurrent(item
       >
         <div class="mx-auto max-w-6xl px-4 pb-4">
           {
-            nav.map((item) => (
-              <a
-                href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noopener noreferrer external' : undefined}
-                aria-current={current(item) ? 'page' : undefined}
-                class="nav-panel__link"
-              >
-                {item.label}
-                {item.external && (
-                  <span aria-hidden="true" class="ml-1 text-sm">
-                    &#8599;
-                  </span>
-                )}
-                {item.external && <span class="sr-only"> (opens in a new tab)</span>}
-              </a>
-            ))
+            /* Children are flattened and indented rather than nested in another
+               disclosure — one tap to anything, no menu inside a menu. */
+            nav.flatMap((item) =>
+              item.children
+                ? [
+                    /* A group label, so the indented children are not orphans
+                       and "About" is still findable by name. */
+                    <p class="nav-panel__group">{item.label}</p>,
+                    ...item.children.map((c) => (
+                      <a
+                        href={c.href}
+                        aria-current={isCurrent(c.href) ? 'page' : undefined}
+                        class="nav-panel__link nav-panel__link--child"
+                      >
+                        {c.label}
+                      </a>
+                    )),
+                  ]
+                : [
+                    <a
+                      href={item.href}
+                      target={item.external ? '_blank' : undefined}
+                      rel={item.external ? 'noopener noreferrer external' : undefined}
+                      aria-current={current(item) ? 'page' : undefined}
+                      class="nav-panel__link"
+                    >
+                      {item.label}
+                      {item.external && (
+                        <span aria-hidden="true" class="ml-1 text-sm">
+                          &#8599;
+                        </span>
+                      )}
+                      {item.external && <span class="sr-only"> (opens in a new tab)</span>}
+                    </a>,
+                  ],
+            )
           }
         </div>
       </nav>

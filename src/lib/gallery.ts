@@ -1,5 +1,5 @@
 import gallery from '@config/gallery.json';
-import { filled } from './site';
+import { club, filled } from './site';
 
 /*
   Club photos. The images live in src/assets/gallery/ so Astro optimises them;
@@ -50,7 +50,7 @@ export const photos: Photo[] = gallery.photos.flatMap((p) => {
       caption: filled(p.caption) ?? '',
       // Alt text is required for a photo to mean anything to a screen reader.
       // Falling back to the caption beats falling back to nothing.
-      alt: filled(p.alt) ?? filled(p.caption) ?? 'Dreamers Cricket Club',
+      alt: filled(p.alt) ?? filled(p.caption) ?? club.name,
       image,
       shape: shapeOf(image),
     },
@@ -63,7 +63,7 @@ export const uncaptioned: Photo[] = [...byName.entries()]
   .map(([name, image]) => ({
     file: name,
     caption: '',
-    alt: 'Dreamers Cricket Club',
+    alt: club.name,
     image,
     shape: shapeOf(image),
   }));

@@ -5,7 +5,7 @@ import SectionHead from '../../components/SectionHead.astro';
 import HonoursBoard from '../../components/HonoursBoard.astro';
 import CricketIcon from '../../components/CricketIcon.astro';
 import RecordCard from '../../components/RecordCard.astro';
-import { allTime, filled, centuries, fiveWicketHauls, seasonLeaders, url } from '../../lib/site';
+import { allTime, club, filled, centuries, fiveWicketHauls, seasonLeaders, url } from '../../lib/site';
 import { seasons as clubSeasons } from '../../lib/history';
 
 // The club's most recent finish, rather than a hard-coded season.
@@ -45,12 +45,12 @@ const lifeMembers = (allTime.lifeMembers ?? []) as LifeMember[];
 
 <Base
   title="Honour board"
-  description="Centuries and five-wicket hauls for Dreamers Cricket Club, newest first."
+  description={`Centuries and five-wicket hauls for ${club.name}, newest first.`}
 >
   <PageHeader
     eyebrow="Club Heritage & Honours"
     title="Pavilion Honour Board"
-    intro="Centuries and Five-Wicket Hauls for Dreamers Cricket Club, crafted in the tradition of the Lord's dressing room honours boards."
+    intro={`Centuries and five-wicket hauls for ${club.name}, in the tradition of the Lord's dressing room honours boards.`}
   />
 
   <div class="band-dark relative overflow-hidden bg-club">
@@ -176,7 +176,7 @@ const lifeMembers = (allTime.lifeMembers ?? []) as LifeMember[];
             </span>
           </div>
           <p class="mt-3 font-display text-xl uppercase tracking-wide text-club">VSCA Grade 4 Grand Finalists</p>
-          <p class="mt-1 text-xs text-ink-muted">Victorian Sunday Cricket Association · Competed as Dreamers SC</p>
+          <p class="mt-1 text-xs text-ink-muted">Victorian Sunday Cricket Association</p>
           <a href={url('seasons/2025-26')} class="stitch-link mt-4 inline-block font-display text-xs uppercase tracking-eyebrow text-club hover:text-accent transition-colors">
             View {lastResult?.label} campaign →
           </a>

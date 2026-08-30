@@ -1,0 +1,189 @@
+{
+  "_comment": "Strategic Development Plan 2025–2030, taken from the club's own document. Wording is the committee's; only Australian spelling was normalised. Two corrections were authorised by the club: the senior target reads 'four teams by 2030' rather than 'from two to four' (the club already fields three), and the clubhouse item no longer carries its 2026 date, which has passed. The Financial Plan section and all financial lines are deliberately not published.",
+  "title": "Strategic plan",
+  "period": "2025–2030",
+  "summary": "Over the five years to 2030 the club aims to consolidate its position as a leading sporting organisation by investing in player development, expanding pathways for juniors and women, enhancing facilities, and strengthening governance and community engagement.",
+  "sections": [
+    {
+      "title": "Senior cricket development",
+      "icon": "bat",
+      "note": null,
+      "items": [
+        {
+          "name": "Expand senior teams",
+          "detail": "Grow to four senior men's teams by 2030, catering for different skill levels and aspirations."
+        },
+        {
+          "name": "Elite performance programs",
+          "detail": "Introduce high-performance training squads, led by accredited Level 2 and 3 coaches."
+        },
+        {
+          "name": "Leadership pathways",
+          "detail": "Implement a Captaincy Leadership Program to develop future club leaders."
+        },
+        {
+          "name": "Player retention",
+          "detail": "Create a strong club culture through mentoring, social engagement and welfare programs addressing mental health, fitness and career development."
+        },
+        {
+          "name": "Tournament participation",
+          "detail": "Aim to qualify for regional and state-level competitions to elevate competitive standards."
+        }
+      ]
+    },
+    {
+      "title": "Junior cricket development",
+      "icon": "cap",
+      "note": null,
+      "items": [
+        {
+          "name": "Pathway establishment",
+          "detail": "Implement a complete junior player pathway from Woolworths Cricket Blast (ages 5–8) through Under-12s, Under-14s and Under-16s competition cricket."
+        },
+        {
+          "name": "School partnerships",
+          "detail": "Forge partnerships with five local schools to run regular cricket clinics and interschool tournaments to boost grassroots participation."
+        },
+        {
+          "name": "Coach development",
+          "detail": "Train at least 10 new Level 1 accredited junior coaches by 2027, ensuring age-appropriate, engaging and skill-based coaching."
+        },
+        {
+          "name": "Parental involvement",
+          "detail": "Develop a “Parents as Volunteers” strategy including team management, scoring, first aid training and event support."
+        },
+        {
+          "name": "Junior academy",
+          "detail": "Establish a Junior Cricket Academy to offer specialised coaching to talented youngsters and provide a clear transition into senior teams."
+        }
+      ]
+    },
+    {
+      "title": "Women's cricket development",
+      "icon": "ball",
+      "note": null,
+      "items": [
+        {
+          "name": "Women's teams",
+          "detail": "Launch two women's cricket teams, one social and one competitive, by 2028, competing in local competitions."
+        },
+        {
+          "name": "Female participation growth",
+          "detail": "Host annual “Girls Cricket Come & Try Days”, aiming for a 20% year-on-year increase in female registrations."
+        },
+        {
+          "name": "Coaching and umpiring pathways",
+          "detail": "Provide subsidised Level 1 coaching and umpiring courses specifically for women involved in the club."
+        },
+        {
+          "name": "Inclusive facilities",
+          "detail": "Upgrade club facilities to provide female-friendly change rooms and amenities by 2029."
+        },
+        {
+          "name": "Leadership representation",
+          "detail": "Ensure that women occupy at least 30% of positions across the Club Committee and Sub-Committees by 2029."
+        }
+      ]
+    },
+    {
+      "title": "Governance and club management",
+      "icon": "stumps",
+      "note": null,
+      "items": [
+        {
+          "name": "Board development",
+          "detail": "Introduce skills-based recruitment for Board positions, ensuring expertise in governance, finance, marketing and cricket operations."
+        },
+        {
+          "name": "Sub-committee structure",
+          "detail": "Create Senior, Junior, Women's Cricket, Finance and Facilities sub-committees for better operational focus."
+        },
+        {
+          "name": "Policy framework",
+          "detail": "Implement formal governance policies covering safeguarding, diversity and inclusion, financial management, conflict of interest and risk management."
+        },
+        {
+          "name": "Volunteer management program",
+          "detail": "Launch a structured volunteer program with role descriptions, induction sessions and annual volunteer awards."
+        },
+        {
+          "name": "Compliance alignment",
+          "detail": "Regularly review club policies to ensure alignment with Cricket Australia's Good Governance Framework."
+        }
+      ]
+    },
+    {
+      "title": "Facilities and infrastructure",
+      "icon": "boundary",
+      "note": null,
+      "items": [
+        {
+          "name": "Clubhouse",
+          "detail": "Obtain a newer council facility in the Cranbourne East, Clyde or Clyde North area, with unisex change rooms, disability access and player lounges. Additional grounds will be required as the number of teams grows."
+        },
+        {
+          "name": "Indoor training facility",
+          "detail": "Partner with local private providers to access year-round indoor cricket facilities."
+        }
+      ]
+    },
+    {
+      "title": "Risk management",
+      "icon": "stumps",
+      "note": null,
+      "items": [
+        {
+          "name": "Volunteer shortages",
+          "detail": "Formal volunteer recruitment and retention programs."
+        },
+        {
+          "name": "Player recruitment",
+          "detail": "School engagement, digital marketing and “Come and Try” events."
+        },
+        {
+          "name": "Facilities delay",
+          "detail": "Early engagement with local council and grants offices."
+        },
+        {
+          "name": "Compliance breaches",
+          "detail": "Annual board and volunteer compliance training."
+        },
+        {
+          "name": "Risk register",
+          "detail": "A dynamic Risk Register reviewed quarterly at Board meetings to address emerging risks proactively."
+        }
+      ]
+    },
+    {
+      "title": "Monitoring and evaluation",
+      "icon": "trophy",
+      "note": "Measured at the end of each playing season.",
+      "items": [
+        {
+          "name": "Annual strategic review",
+          "detail": "Formal review at the end of each playing season measuring performance against key performance indicators."
+        },
+        {
+          "name": "Player growth",
+          "detail": "Increase total registered players by 15% annually."
+        },
+        {
+          "name": "Women's teams",
+          "detail": "Launched by Year 2."
+        },
+        {
+          "name": "Facilities",
+          "detail": "Upgrade on schedule by Year 3."
+        },
+        {
+          "name": "Volunteers",
+          "detail": "Volunteer base growth of 10% annually."
+        },
+        {
+          "name": "Mid-term review",
+          "detail": "Comprehensive review in 2027 to recalibrate the plan based on achievements and challenges."
+        }
+      ]
+    }
+  ]
+}

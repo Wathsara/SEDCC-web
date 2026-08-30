@@ -15,7 +15,13 @@ export default defineConfig({
   // Static only. No SSR, no API routes — GitHub Pages serves files.
   output: 'static',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // The form thank-you page is noindex; keep it out of the sitemap too so
+      // the two do not contradict each other.
+      filter: (page) => !page.includes('/thanks/'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

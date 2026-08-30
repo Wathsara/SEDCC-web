@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import crest from '../assets/crest.jpg';
+import { club } from '../lib/site';
 
 /*
   The club crest. The source is a JPG with the navy already baked into it, so it
@@ -14,7 +15,7 @@ interface Props {
   width?: number;
   alt?: string;
 }
-const { class: className, width = 96, alt = 'Dreamers Cricket Club crest' } = Astro.props;
+const { class: className, width = 96, alt = `${club.name} crest` } = Astro.props;
 ---
 
 <Image src={crest} alt={alt} width={width} height={width} densities={[1, 2]} class={className} />

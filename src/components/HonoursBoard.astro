@@ -1,6 +1,7 @@
 ---
 import CricketIcon from './CricketIcon.astro';
 import type { Honour } from '../lib/site';
+import { club } from '../lib/site';
 
 interface Props {
   title: string;
@@ -20,7 +21,7 @@ const isBatting = field === 'score';
     <div class="honours-board__crest">
       <CricketIcon name={isBatting ? 'bat' : 'ball'} class="h-8 w-8 text-[#dfb74c]" />
     </div>
-    <p class="honours-board__sub">Dreamers Cricket Club · Pavilion Honours</p>
+    <p class="honours-board__sub">{club.name} · Pavilion Honours</p>
     <h2 class="honours-board__title">{title}</h2>
   </div>
 

@@ -670,6 +670,83 @@
     font-weight: 600;
   }
 
+  /* Nav dropdown. Another <details>, so it opens on click and with the keyboard
+     without any script; the script only adds closing on Escape or an outside
+     click, which is a convenience rather than a requirement. */
+  .nav-menu > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .nav-menu > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-menu[open] > summary .nav-menu__chevron {
+    transform: rotate(180deg);
+  }
+
+  .nav-menu__panel {
+    position: absolute;
+    top: calc(100% + var(--spacing) * 2);
+    left: 0;
+    z-index: 50;
+    min-width: 13rem;
+    background: var(--color-club);
+    border: 1px solid rgb(255 255 255 / 0.15);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .nav-menu__link {
+    display: block;
+    padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-accent-tint);
+    transition: background-color 150ms ease-out, color 150ms ease-out;
+  }
+
+  .nav-menu__link + .nav-menu__link {
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .nav-menu__link:hover,
+  .nav-menu__link:focus-visible {
+    background: var(--color-club-tint);
+    color: var(--color-paper);
+  }
+
+  .nav-menu__link[aria-current='page'] {
+    color: var(--color-paper);
+    font-weight: 600;
+  }
+
+  /* Group label above a set of child pages. Not a link — it names the group
+     so the indented items below it are not orphans. */
+  .nav-panel__group {
+    padding-block: calc(var(--spacing) * 3.5) calc(var(--spacing) * 1);
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: rgb(180 181 186 / 0.7);
+  }
+
+  /* Child pages in the mobile panel, indented under their parent. */
+  .nav-panel__link--child {
+    padding-inline-start: calc(var(--spacing) * 4);
+    font-size: var(--text-base);
+    border-top: 0;
+  }
+
+  /* The first item after a group returns to a full-width rule. */
+  .nav-panel__link--child + .nav-panel__link:not(.nav-panel__link--child) {
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+
   .eyebrow {
     font-family: var(--font-figures);
     font-size: var(--text-2xs);

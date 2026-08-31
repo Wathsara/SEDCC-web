@@ -10,7 +10,7 @@ import { glob } from 'astro/loaders';
  * See .claude/skills/content-publishing/SKILL.md for the authoring guide.
  */
 
-const teamSlug = z.enum(['loc-1', 'loc-3', 'grade-4']);
+const teamSlug = z.enum(['loc-1', 'loc-2', 'grade-4']);
 
 const articles = defineCollection({
   // images/ holds article artwork, not content. Without the exclusion its

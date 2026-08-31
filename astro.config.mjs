@@ -14,6 +14,12 @@ export default defineConfig({
   base,
   // Static only. No SSR, no API routes — GitHub Pages serves files.
   output: 'static',
+
+  // The ECA side moved from LOC 3 to LOC 2 for 2026/27. The old URL was live
+  // and indexed, so it redirects rather than 404s.
+  redirects: {
+    '/teams/loc-3/': '/teams/loc-2/',
+  },
   trailingSlash: 'always',
   integrations: [
     sitemap({

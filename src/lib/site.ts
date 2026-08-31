@@ -7,7 +7,7 @@ export const allTime = allTimeReal;
 
 export { club, season, players };
 
-export type TeamSlug = 'loc-1' | 'loc-3' | 'grade-4';
+export type TeamSlug = 'loc-1' | 'loc-2' | 'grade-4';
 
 export type Team = (typeof season.teams)[number];
 

@@ -1,5 +1,5 @@
 {
-  "_comment": "The PlayHQ public cricket API has NO stable player ID \u2014 appearance IDs change every game. Players are matched by NAME. 'aliases' catches the variants PlayHQ actually returns (Mike/Michael, initials, misspellings). After each sync, check data/playhq/stats/unmatched.json and add anything listed there.",
+  "_comment": "The PlayHQ public cricket API has NO stable player ID — appearance IDs change every game. Players are matched by NAME. 'aliases' catches the variants PlayHQ actually returns (Mike/Michael, initials, misspellings). After each sync, check data/playhq/stats/unmatched.json and add anything listed there.",
   "players": [
     {
       "id": "example-player",
@@ -25,7 +25,7 @@
         "M. Kanahara"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -44,7 +44,7 @@
         "Y. Gamalath"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -63,7 +63,7 @@
         "S. Kannangara"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -82,7 +82,7 @@
         "N. Ginigalgodage"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -101,7 +101,7 @@
         "W. Daluwatta"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -120,7 +120,7 @@
         "T. Herath"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -141,7 +141,7 @@
         "Charitha Elvitigala"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -160,7 +160,7 @@
         "S. Galagedara"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -179,7 +179,7 @@
         "S. Kaviraja"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -198,7 +198,7 @@
         "L. Ekanayake"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -217,7 +217,7 @@
         "K. Kumarasinghe"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -236,7 +236,7 @@
         "H. Munasinghe"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -255,8 +255,7 @@
         "A. Perera"
       ],
       "teams": [
-        "loc-3",
-        "grade-4"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -276,7 +275,7 @@
         "N. Wijesinghe"
       ],
       "teams": [
-        "loc-3"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -296,8 +295,7 @@
         "Dilhan Kankanange"
       ],
       "teams": [
-        "loc-3",
-        "grade-4"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -317,8 +315,7 @@
         "R. Dhanasekara"
       ],
       "teams": [
-        "loc-3",
-        "grade-4"
+        "loc-2"
       ],
       "role": null,
       "battingStyle": null,
@@ -331,7 +328,7 @@
       "transferNote": "No ECA games at previous club"
     }
   ],
-  "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game \u2014 matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
-  "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file \u2014 see CLAUDE.md.",
-  "_teamsComment": "teams[] lists every side a player turns out for. The 2026/27 LOC 3 sheet annotated three players '(No ECA Games)'; that referred to their record at their previous club, not to eligibility. All three play LOC 3 and Grade 4."
+  "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game — matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
+  "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file — see CLAUDE.md.",
+  "_teamsComment": "teams[] lists every side a player turns out for. Only the LOC 2 squad is finalised for 2026/27; LOC 1 and Grade 4 are not published yet and their squad sections show an empty state until players are added here. The three players marked '(No ECA Games)' on the transfer sheet are LOC 2 only — do not infer a Grade 4 side from that note."
 }

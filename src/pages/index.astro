@@ -282,7 +282,9 @@ const leadingBowl = [...(seasonStats.players ?? [])]
                 <span class="eyebrow bg-club/5 px-2 py-0.5 rounded text-club font-semibold">{t.competitionShort} · {t.day}</span>
               </div>
               <p class="mt-3.5 font-display text-lg uppercase text-club group-hover:text-accent transition-colors">{t.name}</p>
-              {t.shield && <p class="mt-1 text-xs text-ink-muted">{t.shield}</p>}
+              <p class="mt-1 text-xs text-ink-muted">
+                {[t.gradeLabel, t.shield].filter(Boolean).join(' · ')}
+              </p>
               {guide.length > 0 ? (
                 <div class="mt-3.5 pt-2.5 border-t border-rule">
                   <p class="eyebrow mb-1">Form</p>

@@ -6,8 +6,8 @@
   "teams": [
     {
       "slug": "loc-1",
-      "name": "Dreamers LOC 1",
-      "shortName": "LOC 1",
+      "name": "Dreamers 1st XI",
+      "shortName": "1st XI",
       "competition": "Eastern Cricket Association",
       "competitionShort": "ECA",
       "day": "Saturday",
@@ -19,18 +19,18 @@
       "shield": "McCarthy Shield"
     },
     {
-      "slug": "loc-3",
-      "name": "Dreamers LOC 3",
-      "shortName": "LOC 3",
+      "slug": "loc-2",
+      "name": "Dreamers 2nd XI",
+      "shortName": "2nd XI",
       "competition": "Eastern Cricket Association",
       "competitionShort": "ECA",
       "day": "Saturday",
-      "gradeLabel": "LOC 3",
+      "gradeLabel": "LOC 2",
       "playhqSeasonId": null,
       "playhqGradeId": null,
       "playhqTeamId": null,
       "active": true,
-      "shield": "Reg Lamborn Shield"
+      "shield": "Laws Shield"
     },
     {
       "slug": "grade-4",
@@ -47,5 +47,6 @@
       "shield": null
     }
   ],
-  "_shieldComment": "ECA names its limited-overs divisions after shields: LOC 1 is the McCarthy Shield, LOC 3 the Reg Lamborn Shield. VSCA Grade 4 has no shield name."
+  "_shieldComment": "ECA names its limited-overs divisions after shields: LOC 1 is the McCarthy Shield and LOC 2 the Laws Shield. VSCA Grade 4 has no shield name.",
+  "_namesComment": "name/shortName are what the club calls the side; gradeLabel is the ECA division it plays in. They are different things and both are shown — the 1st XI plays LOC 1 (McCarthy Shield), the 2nd XI plays LOC 2 (Laws Shield). The slugs stay loc-1 / loc-2 because those URLs are already live."
 }

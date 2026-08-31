@@ -34,8 +34,8 @@
     }
   ],
   "_planComment": "Vision, mission and values are taken verbatim from the club's Strategic Development Plan 2025–2030. The plan document refers to the club as 'Dreamers Sports Club'; the club's current name is South Eastern Dreamers Cricket Club and that is what the site uses throughout. Do not paraphrase the vision, mission or values without the committee's agreement.",
-  "heroLine": "One-day cricket from October through March. Saturdays for the McCarthy and Reg Lamborn Shields, Sundays for VSCA Grade 4.",
-  "_heroLineComment": "The line under the club name on the home page. Every claim here comes from the results in config/results-*.json: all matches are One Day, and both seasons ran between October and March.",
+  "heroLine": "One-day cricket from October through March. Saturdays for the McCarthy and Laws Shields, Sundays for VSCA Grade 4.",
+  "_heroLineComment": "The line under the club name on the home page. Every claim comes from the results in config/results-*.json: all matches are One Day, and both seasons ran October to March. The shields come from config/season-2026-27.json.",
   "established": 2024,
   "location": {
     "_comment": "Two different places, deliberately. 'suburb' is where the club is registered (Cranbourne East); the home ground is in Endeavour Hills. Anything telling a visitor where to watch cricket should use homeGround, not suburb.",

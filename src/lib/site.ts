@@ -198,6 +198,11 @@ export const headlineRecords = (
 export interface Sponsor {
   name: string;
   strapline?: string | null;
+  /** Given the top of the sponsors page and a larger slot on the home page. */
+  featured?: boolean;
+  headline?: string | null;
+  /** Extra paragraphs, shown only in the featured layout. */
+  body?: string[];
   logo?: string | null;
   blurb?: string | null;
   address?: string | null;
@@ -225,6 +230,10 @@ const sponsorList =
 export const sponsors: Sponsor[] = sponsorList
   .filter((s) => filled(s.name))
   .map((s) => ({ ...s, image: s.logo ? logoByFile.get(s.logo) : undefined }));
+
+/** At most one sponsor is featured; the rest fill the grid. */
+export const featuredSponsor = sponsors.find((s) => s.featured);
+export const otherSponsors = sponsors.filter((s) => !s.featured);
 
 /* ---------------------------------------------------------------------------
    Social accounts.

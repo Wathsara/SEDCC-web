@@ -13,7 +13,7 @@ import NextFixture from '../components/NextFixture.astro';
 import FormGuide from '../components/FormGuide.astro';
 import CricketIcon from '../components/CricketIcon.astro';
 import WeeklyBest from '../components/WeeklyBest.astro';
-import { club, season, teams, homeGroundSuburb, homeGroundLabel, suburb, headlineRecords, sponsors, showNews, intro, heroLine, vision, url } from '../lib/site';
+import { club, season, teams, homeGroundSuburb, homeGroundLabel, suburb, headlineRecords, sponsors, featuredSponsor, otherSponsors, showNews, intro, heroLine, vision, url } from '../lib/site';
 import { strategyHighlights, strategyPeriod } from '../lib/strategy';
 import { seasons } from '../lib/history';
 import {
@@ -28,6 +28,10 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft))
 
 // The club's most recent finish, for the badge over the hero photo.
 const lastResult = [...seasons].reverse().find((s) => s.result);
+
+// Featured sponsor first, then the rest. Built here so the type is clean —
+// .filter(Boolean) does not narrow away the undefined.
+const sponsorStrip = featuredSponsor ? [featuredSponsor, ...otherSponsors] : otherSponsors;
 
 const nextGame = upcoming[0];
 const recent = results.slice(0, 4);
@@ -413,7 +417,7 @@ const leadingBowl = [...(seasonStats.players ?? [])]
       <section class="mx-auto max-w-6xl px-4 pb-16">
         <SectionHead title="Our sponsors" href={url('sponsors')} linkLabel="All sponsors" />
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {sponsors.map((s) => (
+          {sponsorStrip.map((s) => (
             <a
               href={url('sponsors')}
               class="tile flex items-center justify-center overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lift group"

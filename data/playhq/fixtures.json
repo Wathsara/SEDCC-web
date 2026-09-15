@@ -1,6 +1,387 @@
 {
-  "_comment": "Placeholder until the first sync. Machine-written by scripts/playhq/sync.ts — never hand-edit.",
-  "syncedAt": null,
+  "syncedAt": "2026-09-15T09:16:10.174Z",
   "season": "2026-27",
-  "teams": []
+  "teams": [
+    {
+      "slug": "loc-1",
+      "name": "Dreamers 1st XI",
+      "competition": "Eastern Cricket Association",
+      "gradeLabel": "LOC 1",
+      "gradeId": "c6d23fbe-698c-4244-88c0-107c8be49b79",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "games": [
+        {
+          "id": "84b6938b-83d3-4ed7-98f3-0cab2d6017fc",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 1",
+          "roundShort": "R1",
+          "isFinal": false,
+          "dates": [
+            "2026-10-10T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Deepdene Uniting 2nd XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "1ad7199b-56cb-4437-8ee7-481d50fd7757",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 2",
+          "roundShort": "R2",
+          "isFinal": false,
+          "dates": [
+            "2026-10-17T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Knox City 1st XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "115d2bd3-6ed2-435e-88ac-442a3d053d1b",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 3",
+          "roundShort": "R3",
+          "isFinal": false,
+          "dates": [
+            "2026-10-24T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Monash University 1st XI",
+          "outcome": null,
+          "venue": "Monash University",
+          "ground": "Frearson Oval",
+          "suburb": "CLAYTON",
+          "mapQuery": "Monash%20University%2C%20CLAYTON%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "dcf3aa4f-a065-42ca-9675-33a61ed4952f",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 5",
+          "roundShort": "R5",
+          "isFinal": false,
+          "dates": [
+            "2026-11-14T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Knox Churches 1st XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "b4ecbd8f-c0a7-44ca-9281-3e724ea38f85",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 6",
+          "roundShort": "R6",
+          "isFinal": false,
+          "dates": [
+            "2026-11-21T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "AYC Harlequins 1st XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "a0eb39bf-b9ae-4a5d-9be2-e92e760d63ae",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 7",
+          "roundShort": "R7",
+          "isFinal": false,
+          "dates": [
+            "2026-11-28T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Alphington United 1st XI",
+          "outcome": null,
+          "venue": "Alphington Park",
+          "ground": "Alphington Park",
+          "suburb": "ALPHINGTON",
+          "mapQuery": "Alphington%20Park%2C%20ALPHINGTON%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "b2e90064-a957-407e-8b91-cce560c3d1ae",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 8",
+          "roundShort": "R8",
+          "isFinal": false,
+          "dates": [
+            "2026-12-05T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Deepdene Uniting 2nd XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "391ab164-2be9-4115-92e9-d509e2c1d92b",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 9",
+          "roundShort": "R9",
+          "isFinal": false,
+          "dates": [
+            "2026-12-12T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Knox City 1st XI",
+          "outcome": null,
+          "venue": "Lewis Park Reserve",
+          "ground": "Oval 1",
+          "suburb": "WANTIRNA SOUTH",
+          "mapQuery": "Lewis%20Park%20Reserve%2C%20WANTIRNA%20SOUTH%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "c19aefb8-ce60-4e7a-9f82-8b47336d8dc1",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 10",
+          "roundShort": "R10",
+          "isFinal": false,
+          "dates": [
+            "2026-12-19T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Monash University 1st XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "b677a414-14ee-4eb2-8ba9-e997820fc3c8",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 12",
+          "roundShort": "R12",
+          "isFinal": false,
+          "dates": [
+            "2027-01-16T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Knox Churches 1st XI",
+          "outcome": null,
+          "venue": "Knox Park Reserve",
+          "ground": "Oval 1 - South",
+          "suburb": "KNOXFIELD",
+          "mapQuery": "Knox%20Park%20Reserve%2C%20KNOXFIELD%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "fb0b14f7-9032-4714-aa59-14b9fc0d45ea",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 13",
+          "roundShort": "R13",
+          "isFinal": false,
+          "dates": [
+            "2027-01-30T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "AYC Harlequins 1st XI",
+          "outcome": null,
+          "venue": "Markham Avenue Reserve",
+          "ground": "Markham Avenue Reserve",
+          "suburb": "ASHBURTON",
+          "mapQuery": "Markham%20Avenue%20Reserve%2C%20ASHBURTON%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "763cfc10-106e-40e6-9887-f50c5b04b33d",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 14",
+          "roundShort": "R14",
+          "isFinal": false,
+          "dates": [
+            "2027-02-06T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Alphington United 1st XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "8ea401be-c7ab-4e7f-959c-1406e554fb8a",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 15",
+          "roundShort": "R15",
+          "isFinal": false,
+          "dates": [
+            "2027-02-13T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Deepdene Uniting 2nd XI",
+          "outcome": null,
+          "venue": "Hays Paddock",
+          "ground": "South Oval",
+          "suburb": "KEW EAST",
+          "mapQuery": "Hays%20Paddock%2C%20KEW%20EAST%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "8a83a721-2f79-4a51-98ad-f047df7e95d0",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 16",
+          "roundShort": "R16",
+          "isFinal": false,
+          "dates": [
+            "2027-02-20T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Knox City 1st XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "c34f2fed-e666-409a-be7e-dd22573ff221",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 17",
+          "roundShort": "R17",
+          "isFinal": false,
+          "dates": [
+            "2027-02-27T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Monash University 1st XI",
+          "outcome": null,
+          "venue": "Monash University",
+          "ground": "Frearson Oval",
+          "suburb": "CLAYTON",
+          "mapQuery": "Monash%20University%2C%20CLAYTON%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        }
+      ],
+      "byes": [
+        {
+          "round": "Round 4",
+          "roundShort": "R4"
+        },
+        {
+          "round": "Round 11",
+          "roundShort": "R11"
+        }
+      ]
+    },
+    {
+      "slug": "loc-2",
+      "name": "Dreamers 2nd XI",
+      "competition": "Eastern Cricket Association",
+      "gradeLabel": "LOC 2",
+      "gradeId": "2521ddb6-6c4f-4e37-bff9-e0d3dcd38147",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "games": [
+        {
+          "id": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 1",
+          "roundShort": "R1",
+          "isFinal": false,
+          "dates": [
+            "2026-10-10T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Salvation Army Waverley 1st XI",
+          "outcome": null,
+          "venue": "Scoresby Secondary College",
+          "ground": "Scoresby Secondary College",
+          "suburb": "SCORESBY",
+          "mapQuery": "Scoresby%20Secondary%20College%2C%20SCORESBY%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "073bda70-ee77-4c76-a7f3-b161e12eaef1",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 2",
+          "roundShort": "R2",
+          "isFinal": false,
+          "dates": [
+            "2026-10-17T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "STC South Camberwell 2nd XI",
+          "outcome": null,
+          "venue": "Nettleton Park",
+          "ground": "East pitch",
+          "suburb": "GLEN IRIS",
+          "mapQuery": "Nettleton%20Park%2C%20GLEN%20IRIS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        }
+      ],
+      "byes": []
+    },
+    {
+      "slug": "grade-4",
+      "name": "Dreamers Grade 4",
+      "competition": "Victorian Sunday Cricket Association",
+      "gradeLabel": "Grade 4",
+      "gradeId": null,
+      "teamId": null,
+      "games": [],
+      "byes": []
+    }
+  ]
 }

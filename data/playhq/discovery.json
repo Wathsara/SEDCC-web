@@ -1,0 +1,129 @@
+{
+  "discoveredAt": "2026-09-15T08:59:14.243Z",
+  "organisations": [
+    {
+      "label": "South Eastern Dreamers Cricket Club",
+      "id": "3e34387e-2fd6-48b6-8318-9659939e2c29",
+      "seasons": [
+        {
+          "id": "56bebbf4-e9bf-4b0b-a24c-47623f13716e",
+          "name": "Summer 2026/27",
+          "status": "UPCOMING",
+          "competition": "Eastern Cricket Association (ECA) - Seniors",
+          "grades": [
+            {
+              "id": "68313450-2bbf-4cca-a66d-080c0a81bf0e",
+              "name": "01. Dunstan Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "2c2b6fb1-7e59-4c42-a70e-8f5e35635d3a",
+              "name": "21. LOC 8 McIntyre Shield North East (36 Overs)",
+              "ourTeams": []
+            },
+            {
+              "id": "06b44627-5464-46fd-a9b8-b1137c79e315",
+              "name": "20. LOC 8 Carr Shield South East (36 Overs)",
+              "ourTeams": []
+            },
+            {
+              "id": "f8599bc2-a02d-4711-9081-5d8350a5eecd",
+              "name": "19. LOC 7 Fitzwilliam Shield (36 Overs)",
+              "ourTeams": []
+            },
+            {
+              "id": "26131a47-3610-4163-9c14-2ac586ff3999",
+              "name": "18. LOC 6 Bingley Shield (36 Overs)",
+              "ourTeams": []
+            },
+            {
+              "id": "957eff5f-8c62-4d1a-928a-1ad777543c7c",
+              "name": "17. LOC 5 Minahan Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "8207f607-af23-4a83-9154-d984d578e2d3",
+              "name": "16. LOC 4 Tobias Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "db5a3723-a23f-4b0f-b844-30565fcd21e1",
+              "name": "15. LOC 3 Lamborn Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "2521ddb6-6c4f-4e37-bff9-e0d3dcd38147",
+              "name": "14. LOC 2 Laws Shield",
+              "ourTeams": [
+                {
+                  "id": "ca12b473-b355-408d-afe4-a285d0127dd3",
+                  "club": "South Eastern Dreamers Cricket Club"
+                }
+              ]
+            },
+            {
+              "id": "c6d23fbe-698c-4244-88c0-107c8be49b79",
+              "name": "13. LOC 1 McCarthy Shield",
+              "ourTeams": [
+                {
+                  "id": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+                  "club": "South Eastern Dreamers Cricket Club"
+                }
+              ]
+            },
+            {
+              "id": "c9aa43b3-eddf-4b2c-b759-bfeeacac3b17",
+              "name": "11. A Synthetic Menzies Mackay Shield (40/72 Overs)",
+              "ourTeams": []
+            },
+            {
+              "id": "1efcadcf-b831-4850-905a-e9db94b5c6fb",
+              "name": "10. Burt Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "894238a9-3a3d-45d9-8bb6-f6d414109fe1",
+              "name": "09. MacGibbon Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "b1d866fc-84b7-4c78-ad68-14d3398cd582",
+              "name": "08. F Turf Patterson Shield (LOC)",
+              "ourTeams": []
+            },
+            {
+              "id": "5f3fe1e2-286e-41e6-a1a4-05dc6d82cd44",
+              "name": "07. E Turf Cohen Shield (72 Overs)",
+              "ourTeams": []
+            },
+            {
+              "id": "0b87ad27-25d5-4f9a-bd4f-a121f05824ce",
+              "name": "06. D Turf Mair Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "241b789e-29d0-462a-81b5-d6230ab48ee5",
+              "name": "05. C Turf Thomson Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "ab4bb121-0201-4cf8-84c0-e193cc181795",
+              "name": "04. B Turf Armstrong Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "7d40a0ca-6783-48cf-89ae-f8a0c59bbb9f",
+              "name": "03. A Turf Sturgess Shield",
+              "ourTeams": []
+            },
+            {
+              "id": "ddb7fdcb-167b-4921-a0e2-6bba507544ba",
+              "name": "02. Wright Shield",
+              "ourTeams": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

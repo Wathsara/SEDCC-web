@@ -1,8 +1,7 @@
 {
-  "_comment": "Placeholder until the first sync. Machine-written by scripts/playhq/aggregate.ts — never hand-edit.",
   "week": null,
-  "generatedAt": null,
   "topBatter": null,
   "topBowler": null,
-  "performances": []
+  "performances": [],
+  "generatedAt": "2026-09-07T13:02:38.182Z"
 }

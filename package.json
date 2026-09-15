@@ -15,7 +15,21 @@
     "playhq:sync": "tsx scripts/playhq/sync.ts",
     "playhq:stats": "tsx scripts/playhq/aggregate.ts",
     "playhq:all": "npm run playhq:sync && npm run playhq:stats",
-    "format": "prettier --write ."
+    "graphic:sample": "node scripts/graphics/match-summary.mjs scripts/graphics/sample-match.json match-summary.png",
+    "graphic:game": "node scripts/graphics/from-game.mjs",
+    "summary:loc1": "node scripts/graphics/render-html.mjs Match-Summary/LOC1.html match-summary-loc1.png Match-Summary/sample-data.json 1080x1080",
+    "summary:loc2": "node scripts/graphics/render-html.mjs Match-Summary/LOC2.html match-summary-loc2.png Match-Summary/sample-data.json 1080x1080",
+    "format": "prettier --write .",
+    "summary:all": "npm run summary:loc1 && npm run summary:loc2 && npm run summary:grade4",
+    "summary:grade4": "node scripts/graphics/render-html.mjs Match-Summary/grade4.html match-summary-grade4.png Match-Summary/sample-data.json 1080x1080",
+    "summary:weekend": "node scripts/graphics/weekend-summary.mjs",
+    "playhq:test-2025-26": "SEASON=2025-26 PLAYHQ_DATA_DIR=.playhq-test tsx scripts/playhq/sync.ts",
+    "summary:test-2025-26": "PLAYHQ_DATA_DIR=.playhq-test node scripts/graphics/weekend-summary.mjs grade-4",
+    "playhq:discover-test": "PLAYHQ_DATA_DIR=.playhq-test tsx scripts/playhq/discover.ts",
+    "cards:2025-26": "PLAYHQ_DATA_DIR=.playhq-test node scripts/graphics/season-cards.mjs grade-4 --season 2025-26 --out season-cards",
+    "playhq:probe": "tsx scripts/playhq/probe.ts",
+    "season:2025-26": "npm run playhq:test-2025-26 && npm run cards:2025-26",
+    "mvp": "node scripts/graphics/mvp-card.mjs"
   },
   "dependencies": {
     "astro": "^7.2.9"
@@ -27,6 +41,8 @@
     "@types/node": "^22.0.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.0",
+    "puppeteer": "^25.10.0",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.12",
     "typescript": "^5.6.0"

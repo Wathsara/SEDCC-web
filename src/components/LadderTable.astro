@@ -1,4 +1,7 @@
 ---
+import Logo from './Logo.astro';
+import CricketIcon from './CricketIcon.astro';
+import { getClubLogo } from '../lib/logos';
 import type { LadderGrade } from '../lib/playhq-types';
 
 interface Props {
@@ -6,53 +9,204 @@ interface Props {
 }
 const { grade } = Astro.props;
 
-/*
-  Column definitions come from PlayHQ, not from us — different grades return
-  different columns. Rendering headers[] positionally against values[] is the
-  only safe way to do this.
-*/
+function monogram(name: string): string {
+  return (name || '')
+    .replace(/\s*-\s*\d+$/, '')
+    .replace(/\b(1st|2nd|3rd|4th)\s+XI\b/i, '')
+    .replace(/\bGrade\b.*$/i, '')
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
 ---
 
-{
-  grade.ladders.map((block) => (
-    <div class="overflow-x-auto">
-      {block.pool && <p class="eyebrow mb-2">{block.pool.name}</p>}
-      <table class="w-full min-w-[32rem] border-collapse text-left">
-        <thead>
-          <tr class="border-b border-rule-strong">
-            <th scope="col" class="py-2 pr-3 font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
-              Team
-            </th>
-            {block.headers.map((h) => (
-              <th
-                scope="col"
-                class="py-2 px-2 text-right font-display text-2xs uppercase tracking-eyebrow text-ink-muted"
-              >
-                <abbr title={h.name}>{h.shortName}</abbr>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {block.standings.map((row, i) => {
-            const ours = row.team?.id === grade.ourTeamId;
-            return (
-              <tr
-                class:list={['border-b border-rule', ours && 'bg-paper-sunk font-semibold text-club']}
-              >
-                <th scope="row" class="py-2.5 pr-3 text-left font-normal">
-                  <span class="mr-3 text-ink-faint tabular-nums">{i + 1}</span>
-                  {row.team?.name ?? 'Unnamed team'}
-                  {ours && <span class="sr-only"> (Dreamers)</span>}
-                </th>
-                {row.values.map((v) => (
-                  <td class="py-2.5 px-2 text-right tabular-nums">{v}</td>
-                ))}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-  ))
-}
+<div class="space-y-8">
+  {
+    grade.ladders.map((block) => {
+      // Find index for NRR and PTS for special styling
+      const nrrIdx = block.headers.findIndex((h) => h.key.toLowerCase().includes('netrunrate') || h.shortName === 'NRR');
+      const ptsIdx = block.headers.findIndex((h) => h.key.toLowerCase().includes('points') || h.shortName === 'PTS');
+
+      return (
+        <div class="tile overflow-hidden border border-rule bg-paper shadow-tile" data-rule-in>
+          {/* Table Top Header Banner */}
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-rule bg-paper-sunk/70 px-5 py-3.5">
+            <div class="flex items-center gap-2.5">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-club text-paper shadow-sm">
+                <CricketIcon name="trophy" class="h-3.5 w-3.5" />
+              </span>
+              <div>
+                <h3 class="font-display text-sm uppercase tracking-wider text-club font-bold">
+                  {block.pool?.name ?? `${grade.gradeLabel} Standings`}
+                </h3>
+                <p class="font-figures text-2xs text-ink-muted">{grade.competition}</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-club/8 px-2.5 py-0.5 font-display text-2xs uppercase tracking-eyebrow text-club">
+                <span class="h-1.5 w-1.5 rounded-full bg-club"></span>
+                Top 4 Qualify for Finals
+              </span>
+            </div>
+          </div>
+
+          {/* Table Container */}
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+              <thead>
+                <tr class="border-b border-rule bg-paper-sunk/30">
+                  <th scope="col" class="w-14 py-3 pl-4 pr-2 text-center font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
+                    Pos
+                  </th>
+                  <th scope="col" class="min-w-[200px] py-3 px-3 font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
+                    Team
+                  </th>
+                  {block.headers.map((h, hIndex) => (
+                    <th
+                      scope="col"
+                      class:list={[
+                        'py-3 px-2.5 text-right font-display text-2xs uppercase tracking-eyebrow',
+                        hIndex === ptsIdx ? 'text-club font-bold' : 'text-ink-muted',
+                      ]}
+                    >
+                      <abbr title={h.name} class="no-underline">{h.shortName}</abbr>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-rule/60">
+                {block.standings.map((row, i) => {
+                  const isTop4 = i < 4;
+                  const isOurs = row.team?.id === grade.ourTeamId;
+                  const teamName = row.team?.name ?? 'Unnamed Team';
+                  const teamLogo = isOurs ? null : getClubLogo(teamName, row.team?.id);
+
+                  return (
+                    <tr
+                      class:list={[
+                        'transition-colors duration-150',
+                        isOurs
+                          ? 'bg-club text-paper font-semibold shadow-sm'
+                          : isTop4
+                            ? 'hover:bg-paper-sunk/60 bg-paper'
+                            : 'hover:bg-paper-sunk/40 bg-paper/60 opacity-95',
+                      ]}
+                    >
+                      {/* Rank Position */}
+                      <td class="py-3.5 pl-4 pr-2 text-center">
+                        <div class="flex items-center justify-center gap-1.5">
+                          {isTop4 && (
+                            <span
+                              class:list={[
+                                'h-3.5 w-1 rounded-full',
+                                isOurs ? 'bg-accent-tint' : 'bg-club/40',
+                              ]}
+                              title="Playoffs Zone"
+                            ></span>
+                          )}
+                          <span
+                            class:list={[
+                              'font-figures text-xs font-bold tabular-nums',
+                              isOurs ? 'text-paper' : isTop4 ? 'text-club' : 'text-ink-muted',
+                            ]}
+                          >
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* Team Name and Badge */}
+                      <th scope="row" class="py-3.5 px-3 text-left font-normal">
+                        <div class="flex items-center gap-2.5">
+                          {isOurs ? (
+                            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-paper/20 border border-white/30 p-0.5">
+                              <Logo class="h-4 w-4" width={18} />
+                            </div>
+                          ) : teamLogo ? (
+                            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-rule bg-white p-0.5 shadow-xs overflow-hidden">
+                              <img
+                                src={teamLogo}
+                                alt={teamName}
+                                class="h-full w-full object-contain"
+                                loading="lazy"
+                                onerror="this.style.display='none'"
+                              />
+                            </div>
+                          ) : (
+                            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-rule bg-paper-sunk font-display text-2xs uppercase font-bold text-ink-muted">
+                              {monogram(teamName)}
+                            </div>
+                          )}
+
+                          <div class="flex flex-wrap items-center gap-1.5">
+                            <span
+                              class:list={[
+                                'font-display uppercase tracking-tight',
+                                isOurs ? 'text-paper font-bold' : 'text-ink font-semibold',
+                              ]}
+                            >
+                              {teamName}
+                            </span>
+                            {isOurs && (
+                              <span class="rounded bg-accent-tint px-1.5 py-0.5 font-display text-2xs uppercase tracking-eyebrow text-club">
+                                Dreamers
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </th>
+
+                      {/* Stat Values */}
+                      {row.values.map((v, vIndex) => {
+                        const isPts = vIndex === ptsIdx;
+                        const isNrr = vIndex === nrrIdx;
+                        const numVal = typeof v === 'number' ? v : parseFloat(String(v));
+                        const isPositiveNrr = isNrr && !isNaN(numVal) && numVal > 0;
+                        const isNegativeNrr = isNrr && !isNaN(numVal) && numVal < 0;
+
+                        return (
+                          <td
+                            class:list={[
+                              'py-3.5 px-2.5 text-right font-figures tabular-nums text-xs sm:text-sm',
+                              isPts && (isOurs ? 'text-accent-tint font-bold text-base' : 'text-club font-bold text-base'),
+                              !isPts && (isOurs ? 'text-paper/90' : 'text-ink'),
+                              isPositiveNrr && !isOurs && 'text-win font-medium',
+                              isNegativeNrr && !isOurs && 'text-loss font-medium',
+                            ]}
+                          >
+                            {isPositiveNrr ? `+${v}` : v}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Table Footer: Legend & Rules */}
+          <div class="flex flex-wrap items-center justify-between gap-4 border-t border-rule bg-paper-sunk/40 px-5 py-3 text-2xs text-ink-muted">
+            <div class="flex items-center gap-4">
+              <span class="flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-club"></span>
+                <span>Top 4: Semifinals Qualification</span>
+              </span>
+              <span class="flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-club"></span>
+                <span>SEDCC: South Eastern Dreamers CC</span>
+              </span>
+            </div>
+
+            <div class="font-figures text-ink-faint">
+              <span>Points: Win = 6 · Tie/Draw = 3 · Loss = 0</span>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>

@@ -1,0 +1,87 @@
+---
+/**
+ * A squad card: portrait, name, role.
+ *
+ * The portrait carries the card — it fills the frame and the name sits on a
+ * gradient over the foot of it, so a grid of these reads as a team sheet rather
+ * than a list of boxes. Season figures, where the sync has them, sit under the
+ * name as the one piece of hard data a supporter looks for.
+ */
+import PlayerPortrait from './PlayerPortrait.astro';
+import { portraitFor } from '../lib/portraits';
+import type { RosterPlayer } from '../lib/site';
+
+interface Props {
+  player: RosterPlayer;
+  /** From the PlayHQ season aggregate, when the player has appearances. */
+  stat?: { batting: { runs: number }; bowling: { wickets: number } } | undefined;
+  loading?: 'eager' | 'lazy';
+}
+const { player, stat, loading = 'lazy' } = Astro.props;
+
+const runs = stat?.batting?.runs ?? 0;
+const wickets = stat?.bowling?.wickets ?? 0;
+const hasFigures = runs > 0 || wickets > 0;
+
+const profileUrl = (player as RosterPlayer & { profileUrl?: string }).profileUrl;
+
+/* The scrim exists to keep the name readable over an unpredictable photo. Over
+   the drawn silhouette there is nothing to fight, and laying it on anyway just
+   muddies the lower half of the card. */
+const hasPhoto = Boolean(portraitFor(player.id));
+---
+
+<article class="group relative overflow-hidden bg-club" data-rule-in>
+  <div class="aspect-[4/5] w-full">
+    <PlayerPortrait
+      id={player.id}
+      name={player.name}
+      loading={loading}
+      class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+    />
+  </div>
+
+  {
+    hasPhoto && (
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-club via-club/85 to-transparent"
+        aria-hidden="true"
+      />
+    )
+  }
+
+  <div class="absolute inset-x-0 bottom-0 p-4">
+    <h3 class="font-display text-lg uppercase leading-tight tracking-display text-paper">
+      {
+        profileUrl ? (
+          <a
+            href={profileUrl}
+            target="_blank"
+            rel="noopener noreferrer external"
+            class="stitch-link transition-colors hover:text-accent-tint"
+          >
+            {player.name}
+            <span class="sr-only">(PlayHQ profile, opens in a new tab)</span>
+          </a>
+        ) : (
+          player.name
+        )
+      }
+    </h3>
+
+    {player.role && <p class="mt-0.5 text-xs text-accent-tint">{player.role}</p>}
+
+    {
+      hasFigures && (
+        <p class="mt-2 flex gap-4 border-t border-white/15 pt-2 font-figures text-2xs text-paper/85">
+          <span>
+            {runs} <span class="text-paper/55">runs</span>
+          </span>
+          <span>
+            {wickets} <span class="text-paper/55">wkts</span>
+          </span>
+        </p>
+      )
+    }
+  </div>
+</article>

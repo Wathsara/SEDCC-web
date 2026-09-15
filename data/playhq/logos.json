@@ -1,0 +1,690 @@
+{
+  "syncedAt": "2026-09-15T09:16:10.172Z",
+  "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts \u2014 do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
+  "logos": {
+    "ayc-harlequins-cricket-club": {
+      "name": "AYC Harlequins Cricket Club",
+      "file": "data/playhq/logos/ayc-harlequins-cricket-club.jpg",
+      "teamIds": [
+        "ca47da2b-41e7-4ba2-b372-f30a1e8616e6",
+        "dd851fe7-2292-4388-a4f4-c23dfae194fa",
+        "f9d5e7eb-f095-4c2d-8346-1e5d18d4fa80"
+      ],
+      "matchKey": "aycharlequins",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7d48319b-b7d8-4f60-92c0-0e3d1acaf2b8/1686645551542/logo.jpg?_a=BAMAMifg0"
+    },
+    "abbotsford-anglers-cricket-club": {
+      "name": "Abbotsford Anglers Cricket Club",
+      "file": "data/playhq/logos/abbotsford-anglers-cricket-club.jpg",
+      "teamIds": [
+        "411628d1-7a3a-4a3d-8e71-88d184ed2eaa"
+      ],
+      "matchKey": "abbotsfordanglers",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/f635b92b-0fd4-4384-966d-95331a2ec4bd/1685234917245/logo.jpg?_a=BAMAMifg0"
+    },
+    "alphington-united-cricket-club": {
+      "name": "Alphington United Cricket Club",
+      "file": "data/playhq/logos/alphington-united-cricket-club.jpg",
+      "teamIds": [
+        "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+        "d52c64c4-ea54-4384-85ad-85c2b7126869"
+      ],
+      "matchKey": "alphingtonunited",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/fa679fb0-830a-4f4f-bd11-a34f7a13ecd3/1751195014674/logo.jpg?_a=BAMAMifg0"
+    },
+    "ashburton-willows-cricket-club": {
+      "name": "Ashburton Willows Cricket Club",
+      "file": "data/playhq/logos/ashburton-willows-cricket-club.jpg",
+      "teamIds": [
+        "997106f5-9784-464a-bdb1-1e514a6695cb",
+        "16bb58e7-2f6f-42fa-a10b-e0ef8703d989",
+        "143b443e-bbfe-44bc-b187-a6d179063ed7",
+        "a6aef421-2c62-4af9-93e9-fe5bb8a173f2",
+        "d868db2e-fc99-4cee-bcc2-949d5d68ea0c"
+      ],
+      "matchKey": "ashburtonwillows",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/55f5bdce-d021-45bd-bdca-571edcbdefd7/1685759347830/logo.jpg?_a=BAMAMifg0"
+    },
+    "ashwood-cricket-club": {
+      "name": "Ashwood Cricket Club",
+      "file": "data/playhq/logos/ashwood-cricket-club.png",
+      "teamIds": [
+        "ccc02245-ec89-4a00-b114-6197f16f1b38",
+        "7ea87f2f-7e1c-4cb9-a7ec-22ff5426d31d",
+        "55ce6f63-40d1-4b35-b480-8e7bf33d2664",
+        "0632e71f-8d5b-4966-8758-9160a7d201d5",
+        "9503b3a0-b5b5-44eb-a57f-6954fe8d6cf7",
+        "7e1a4da7-98a3-4be8-950f-96d842a88974"
+      ],
+      "matchKey": "ashwood",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/1f17cfb2-b189-4eaf-8030-ab830cc48fe1/1685234465363/logo.png?_a=BAMAMifg0"
+    },
+    "balwyn-saints-cricket-club": {
+      "name": "Balwyn Saints Cricket Club",
+      "file": "data/playhq/logos/balwyn-saints-cricket-club.jpg",
+      "teamIds": [
+        "3b5ee211-0108-412d-8846-3c3f6d532de2",
+        "7eaf9aff-8946-4637-8942-5e3b1401a529",
+        "ed1f6eb0-5ca6-4b39-9126-10d8e3e70604",
+        "dd7c8f7e-6466-4bf9-971b-8f372ceda5db",
+        "ca4a7cf0-d844-4e6b-9ac2-cedc79259157"
+      ],
+      "matchKey": "balwynsaints",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/59c268b5-a98d-4b42-ab3e-f4f3863e66e1/1757933670775/logo.jpg?_a=BAMAMifg0"
+    },
+    "blackburn-north-united-cricket-club": {
+      "name": "Blackburn North United Cricket Club",
+      "file": "data/playhq/logos/blackburn-north-united-cricket-club.jpg",
+      "teamIds": [
+        "bc09e1aa-b60a-43f4-8d17-c1d6c64f4224",
+        "eab2b8cd-7af9-4445-9490-67298b40ae9c",
+        "f1b5d2a2-0fa8-42c8-9f60-f35abdf01601"
+      ],
+      "matchKey": "blackburnnorthunited",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/d7662dd5-8087-4234-bfc6-0b5fcf50bd94/1692671909558/logo.jpg?_a=BAMAMifg0"
+    },
+    "boronia-cricket-club": {
+      "name": "Boronia Cricket Club",
+      "file": "data/playhq/logos/boronia-cricket-club.jpg",
+      "teamIds": [
+        "adbf3027-9269-4bfe-b4f3-7686818926cc",
+        "49ae277a-930a-468c-83d6-21c512822142",
+        "ab369635-f270-4e9e-b3fb-38d8374d7b7a"
+      ],
+      "matchKey": "boronia",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/90e26893-35cb-44b7-88ba-56251bb6229a/1685352082532/logo.jpg?_a=BAMAMifg0"
+    },
+    "bulleen-cricket-club": {
+      "name": "Bulleen Cricket Club",
+      "file": "data/playhq/logos/bulleen-cricket-club.png",
+      "teamIds": [
+        "71c9043d-b160-46b9-aa68-718a8e22908f",
+        "9ccde6f5-3fd9-45bf-a2b7-d2b66de019c0",
+        "2a0c3a57-efbc-46be-b08b-d3381bf50027",
+        "4cf6ee39-a32c-40ed-adfb-4dfc1ef7f966"
+      ],
+      "matchKey": "bulleen",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/4e8d94ea-0a67-472f-9998-4fcf4d6e752d/1685351932034/logo.png?_a=BAMAMifg0"
+    },
+    "burnley-c-y-m-s-cricket-club": {
+      "name": "Burnley C.Y.M.S Cricket Club",
+      "file": "data/playhq/logos/burnley-c-y-m-s-cricket-club.jpg",
+      "teamIds": [
+        "8d9f226e-0158-4fd0-af07-a1eda5f15e4e"
+      ],
+      "matchKey": "burnleycyms",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/a3d6165e-9ee0-4911-a6f1-e65a74a15db7/1685413415846/logo.jpg?_a=BAMAMifg0"
+    },
+    "burwood-cricket-club": {
+      "name": "Burwood Cricket Club",
+      "file": "data/playhq/logos/burwood-cricket-club.png",
+      "teamIds": [
+        "19fe0a9a-5a46-48f2-a363-be242de1f8fc",
+        "6f34af83-26f2-41bc-becc-827a6f6d94e8",
+        "7bd3eaaf-60bd-4f75-a37e-04ed1be47aa1",
+        "ff9eca99-8386-4870-9f75-ccec4c9d8504",
+        "7c882583-3a71-4fff-940f-64c0e40178a3"
+      ],
+      "matchKey": "burwood",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/3c5ac44d-34a3-4eab-8d1b-e1f6f8d74216/1685612059904/logo.png?_a=BAMAMifg0"
+    },
+    "burwood-uniting-canterbury-cricket-club": {
+      "name": "Burwood Uniting Canterbury Cricket Club",
+      "file": "data/playhq/logos/burwood-uniting-canterbury-cricket-club.png",
+      "teamIds": [
+        "97140b25-3030-4ca0-b063-159f41a67ddc",
+        "7fc07769-22ac-4832-9128-30dc3333e646",
+        "d328694a-a764-4fdb-9e66-80c440f515a2",
+        "a9dc0d96-f849-40e8-bf26-55c3469bd5a5",
+        "0f256a54-1393-4390-a838-00aee87ea4be"
+      ],
+      "matchKey": "burwoodunitingcanterbury",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/03d93d33-8d96-4121-a96e-c344d71a427c/1684842875083/logo.png?_a=BAMAMifg0"
+    },
+    "canterbury-cricket-club": {
+      "name": "Canterbury Cricket Club",
+      "file": "data/playhq/logos/canterbury-cricket-club.jpg",
+      "teamIds": [
+        "6fef4435-9bfb-4fdc-881d-9e822b78732b",
+        "0f0161b9-1cec-4931-b5cc-5cf1285b6bb5",
+        "cff4980f-87f9-4029-9211-9e38400584c3"
+      ],
+      "matchKey": "canterbury",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/aa85e03d-42dd-4fe3-a554-9b33a5e3f841/1687343818721/logo.jpg?_a=BAMAMifg0"
+    },
+    "clifton-hill-cricket-club": {
+      "name": "Clifton Hill Cricket Club",
+      "file": "data/playhq/logos/clifton-hill-cricket-club.png",
+      "teamIds": [
+        "85c4dd48-386d-498d-ad10-bea07c3daa24",
+        "4d3d370c-a29e-49c5-bc7c-95919b88b147",
+        "1c689acc-018f-4a84-84c3-f997301d4295",
+        "2cba9ca7-15e1-43ad-a621-5397ec7286f3",
+        "abe86525-d253-4a5e-8810-b74e1c7297c3"
+      ],
+      "matchKey": "cliftonhill",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/56a9830b-61e3-476d-a27d-9629d3893dfc/1685005572169/logo.png?_a=BAMAMifg0"
+    },
+    "deepdene-bears-cricket-club": {
+      "name": "Deepdene Bears Cricket Club",
+      "file": "data/playhq/logos/deepdene-bears-cricket-club.png",
+      "teamIds": [
+        "9705f946-cb3a-4695-96eb-fba0f0fd83df",
+        "9d4ccd79-0414-4404-8109-e4e3163ed2d2",
+        "0ecaaceb-a265-4949-9547-6b76d5b5cee6"
+      ],
+      "matchKey": "deepdenebears",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7e3945ee-1e56-489b-b65e-8a8c47b1698e/1697613552681/logo.png?_a=BAMAMifg0"
+    },
+    "deepdene-uniting-cricket-club": {
+      "name": "Deepdene Uniting Cricket Club",
+      "file": "data/playhq/logos/deepdene-uniting-cricket-club.jpg",
+      "teamIds": [
+        "651561de-9682-48af-a96f-21b54e56867e",
+        "9b5c4f26-ae57-44bc-9ce7-caa7e2f9ed0a",
+        "38767029-95df-4d2d-86f7-6c582d3d09a7"
+      ],
+      "matchKey": "deepdeneuniting",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/bfb58518-4a41-4c99-9ce5-6c8a7687a24f/1681204017702/logo.jpg?_a=BAMAMifg0"
+    },
+    "donvale-cricket-club": {
+      "name": "Donvale Cricket Club",
+      "file": "data/playhq/logos/donvale-cricket-club.png",
+      "teamIds": [
+        "ec5af812-079c-497b-b3b9-0cfcf40befff",
+        "e97e3e65-86a3-49b6-90f2-a83252a44038",
+        "5ab59d97-8f28-4a50-b977-763ea41c600d"
+      ],
+      "matchKey": "donvale",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/37aac28e-e97a-4a2c-8ecb-c448973f06f9/1690111562406/logo.png?_a=BAMAMifg0"
+    },
+    "doveton-cricket-club": {
+      "name": "Doveton Cricket Club",
+      "file": "data/playhq/logos/doveton-cricket-club.png",
+      "teamIds": [
+        "0301d87b-a663-40d0-a8ce-a7b94f352fbf",
+        "ea904659-08df-43c0-9692-8cc6e81c3481"
+      ],
+      "matchKey": "doveton",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/cefa5d81-8d20-456a-b3a0-b59ae01d4d5e/1721943931668/logo.png?_a=BAMAMifg0"
+    },
+    "east-doncaster-cricket-club": {
+      "name": "East Doncaster Cricket Club",
+      "file": "data/playhq/logos/east-doncaster-cricket-club.png",
+      "teamIds": [
+        "d0390cf7-bf26-4018-82bb-418486b80c80",
+        "77f15162-f766-4aaf-b072-9e85f2ea1098",
+        "50948500-290c-4d88-9e05-70a7499e501b",
+        "79dba4d1-23e6-4ab2-b790-a0ce151e6dfe",
+        "a0d61fa5-247b-4da1-a452-7384d923c158",
+        "59bc1b9f-501b-4fab-a2d8-0c4c167536da",
+        "e6374c15-8912-4477-9529-94a2c8ca1b00"
+      ],
+      "matchKey": "eastdoncaster",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/84f1d260-447d-4f5b-86d2-315fca5780d2/1686140448123/logo.png?_a=BAMAMifg0"
+    },
+    "east-malvern-tooronga-cricket-club": {
+      "name": "East Malvern Tooronga Cricket Club",
+      "file": "data/playhq/logos/east-malvern-tooronga-cricket-club.jpg",
+      "teamIds": [
+        "e1a2622e-6914-4a67-adad-78962eec6d5a",
+        "daf9b31b-40c7-437e-be95-cd7b42cb73d4",
+        "42b7e2ae-35d7-4935-9a5e-aba4cfdd2515",
+        "025662e6-a3a8-4c13-a4c0-7b8fa7773481",
+        "e2b01e57-1a2a-446f-a0e0-141415c88412"
+      ],
+      "matchKey": "eastmalverntooronga",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/0cee6e85-275e-4cd6-b438-9b1363a12138/1691567496973/logo.jpg?_a=BAMAMifg0"
+    },
+    "edinburgh-cricket-club": {
+      "name": "Edinburgh Cricket Club",
+      "file": "data/playhq/logos/edinburgh-cricket-club.jpg",
+      "teamIds": [
+        "69ba4715-e046-4a14-959d-a920d598070a",
+        "f9d76dc6-3fa2-40c9-a4ff-1968fbbe81bd",
+        "fbd91d81-4a3f-4857-a19b-5d448f4f4fd4",
+        "bc984e4a-e0e2-4f48-b8ca-d6d5250e98f6",
+        "ae26c5c8-2095-48d3-923b-bd611adaedf8",
+        "9bf90408-ed86-42d9-bc0e-b9aa3282d32e",
+        "a8e0b413-91f7-4ee5-a81a-89e5af1d8bf7"
+      ],
+      "matchKey": "edinburgh",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/2500998f-183e-4eec-a9d8-082d292e7db2/1685359734043/logo.jpg?_a=BAMAMifg0"
+    },
+    "endeavour-hills-cricket-club": {
+      "name": "Endeavour Hills Cricket Club",
+      "file": "data/playhq/logos/endeavour-hills-cricket-club.jpg",
+      "teamIds": [
+        "fbdfb57e-8296-4342-add7-6d4ab830efa1",
+        "b9fd6f2e-3866-4a5c-aeab-90a8a169160b"
+      ],
+      "matchKey": "endeavourhills",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/f1b54310-cd7d-4b70-9cfd-cc65de591a77/1686135564551/logo.jpg?_a=BAMAMifg0"
+    },
+    "glen-iris-cricket-club": {
+      "name": "Glen Iris Cricket Club",
+      "file": "data/playhq/logos/glen-iris-cricket-club.jpg",
+      "teamIds": [
+        "71e9fddf-1258-44e2-9d07-09191b0409fc",
+        "714ee464-a63b-4178-8a4b-283314eac833",
+        "76363212-1fb7-483e-bc94-9075787ef80e",
+        "e721c2d8-e10c-43be-a764-ec1f09516bd3",
+        "4cfd7438-5bda-41c0-aeb1-b877066ae029",
+        "42db8c67-f7a9-4644-9e9b-d43bfc816674"
+      ],
+      "matchKey": "gleniris",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/2beda9f7-7c25-41d5-8c7a-dbb04a207056/1686215933895/logo.jpg?_a=BAMAMifg0"
+    },
+    "greythorn-cricket-club": {
+      "name": "Greythorn Cricket Club",
+      "file": "data/playhq/logos/greythorn-cricket-club.png",
+      "teamIds": [
+        "001e19d9-9814-440b-bb23-e492d406ad5d"
+      ],
+      "matchKey": "greythorn",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/a16154cd-b67a-4f36-9a0e-f8a02527fbb0/1754025084818/logo.png?_a=BAMAMifg0"
+    },
+    "hawthorn-boroondara-cricket-club": {
+      "name": "Hawthorn Boroondara Cricket Club",
+      "file": "data/playhq/logos/hawthorn-boroondara-cricket-club.png",
+      "teamIds": [
+        "2f553a02-e5bd-4ee7-a146-0c5bc3a1eb32",
+        "07e881a6-0e22-4ba8-a463-48a2fe815486",
+        "d72fac59-11f4-4b86-8dc2-072af855f4fe",
+        "fe004ad2-1b72-4955-be4b-b8612863a600",
+        "b9db8a04-877e-4c0d-854b-8ad92c107b36",
+        "a1274fca-b935-4b3f-b9df-9a0d59158593",
+        "5de05c7d-698e-4cb2-9438-cce2ea88ec5c",
+        "8254c386-df3a-400f-81a3-61b46703fd3a"
+      ],
+      "matchKey": "hawthornboroondara",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/8032389e-b42b-45db-bbee-5ef63edaee9e/1726986711392/logo.png?_a=BAMAMifg0"
+    },
+    "heathmont-cricket-club": {
+      "name": "Heathmont Cricket Club",
+      "file": "data/playhq/logos/heathmont-cricket-club.png",
+      "teamIds": [
+        "90eae5ec-663f-4448-9924-1e4b86371e7a",
+        "21498a96-98c5-45ec-8956-12a22d1349ad",
+        "3bf73ddb-33e6-4162-ba89-b370a243bffc",
+        "78cac5ea-9fd6-435e-a0d4-11ba419725a0",
+        "da218f19-9731-4cec-876e-cb662f678589",
+        "823a5191-effc-4a67-9c43-ea485670fe3c"
+      ],
+      "matchKey": "heathmont",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/b2549d61-6c01-427e-8fee-1712217c5a63/1776997838293/logo.png?_a=BAMAMifg0"
+    },
+    "holy-trinity-cricket-club": {
+      "name": "Holy Trinity Cricket Club",
+      "file": "data/playhq/logos/holy-trinity-cricket-club.png",
+      "teamIds": [
+        "2a5b7779-0097-4edd-b23c-61e329466a00",
+        "3c7e3475-ba04-41c3-b2aa-b719a89c783d",
+        "5afdd335-86f8-4cd1-8f4c-1feff70e7a84",
+        "6c9db42c-b5dd-448b-ac00-bf8e7cd78c4a",
+        "0e0945ab-a715-44b3-99f5-eeee5917474a",
+        "8fcda0bf-9dad-413d-834f-af2808b402cb"
+      ],
+      "matchKey": "holytrinity",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/8e870a8e-92f3-4d87-8f10-5bddd1e124ba/1685523804661/logo.png?_a=BAMAMifg0"
+    },
+    "knox-churches-cricket-club": {
+      "name": "Knox Churches Cricket Club",
+      "file": "data/playhq/logos/knox-churches-cricket-club.jpg",
+      "teamIds": [
+        "4bba393f-8aac-4a9b-806c-006c114a7e5a",
+        "6ceb8200-1569-4736-b89a-8db6e2b8a3a1",
+        "8b2e4a0d-66f6-4148-bd19-920ba6699d68",
+        "6313056d-5ba1-4d76-8b5f-1071e3e4098f"
+      ],
+      "matchKey": "knoxchurches",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/3a6e1ba0-2158-4b4d-9fa8-4ae47af68782/1686649056607/logo.jpg?_a=BAMAMifg0"
+    },
+    "knox-city-cricket-club": {
+      "name": "Knox City Cricket Club",
+      "file": "data/playhq/logos/knox-city-cricket-club.png",
+      "teamIds": [
+        "17606286-9310-4be3-815c-49500d8ada4d",
+        "5f3de99d-2543-4057-9e63-0f3437e7e084",
+        "d972f235-5c87-40ce-90f9-fc3e2151c5d8"
+      ],
+      "matchKey": "knoxcity",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7f263fe9-71e8-4e71-a6f1-343becedd93b/1690938984137/logo.png?_a=BAMAMifg0"
+    },
+    "malvern-valley-cricket-club": {
+      "name": "Malvern Valley Cricket Club",
+      "file": "data/playhq/logos/malvern-valley-cricket-club.png",
+      "teamIds": [
+        "8a37b904-851e-46d5-a727-12e663ecee4d",
+        "13989007-bdc1-4722-964c-802a36c637fb"
+      ],
+      "matchKey": "malvernvalley",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/6481dfa2-9100-47e4-92fd-0cd52cfb8246/1690329168839/logo.png?_a=BAMAMifg0"
+    },
+    "manningham-cricket-club": {
+      "name": "Manningham Cricket Club",
+      "file": "data/playhq/logos/manningham-cricket-club.png",
+      "teamIds": [
+        "f607744b-f920-40b2-a310-b78a2e7d4279",
+        "74391570-5561-482f-b88c-64f830edc134",
+        "d21d8da4-5800-4435-992c-d6c431135ebd"
+      ],
+      "matchKey": "manningham",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7faf3398-e8a3-4b33-bd11-00778a7dfa0f/1688622930270/logo.png?_a=BAMAMifg0"
+    },
+    "marcellin-oc-cricket-club": {
+      "name": "Marcellin OC Cricket Club",
+      "file": "data/playhq/logos/marcellin-oc-cricket-club.png",
+      "teamIds": [
+        "36ecc057-fe21-4ca0-81bd-ed44b49bec3f",
+        "1e85193e-6be2-4e7c-bca5-2c411d471068",
+        "6569a35d-4e64-4fcf-bb7a-4486dc91b528"
+      ],
+      "matchKey": "marcellinoc",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/f8d9f05a-1864-4f66-8889-4ee4421cf262/1685524390536/logo.png?_a=BAMAMifg0"
+    },
+    "mazenod-old-collegians-cricket-club": {
+      "name": "Mazenod Old Collegians Cricket Club",
+      "file": "data/playhq/logos/mazenod-old-collegians-cricket-club.jpg",
+      "teamIds": [
+        "e415da76-11cd-4183-99cc-4f620da9d273",
+        "d78da5ec-72f5-4336-8554-e0b383577be2",
+        "7dae49d0-f357-4cc6-afd1-b28adbc1b105",
+        "2f9da409-ce85-4958-8205-e754c8868f50"
+      ],
+      "matchKey": "mazenodoldcollegians",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/6acea983-b62f-43e5-adcf-8a7a51b16e00/1690809767653/logo.jpg?_a=BAMAMifg0"
+    },
+    "melbourne-deaf-cricket-club": {
+      "name": "Melbourne Deaf Cricket Club",
+      "file": "data/playhq/logos/melbourne-deaf-cricket-club.png",
+      "teamIds": [
+        "04258e26-b3c4-41f0-8466-b86862d9d434"
+      ],
+      "matchKey": "melbournedeaf",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/6d60b2d1-3214-4988-9384-9faf18e3ac90/1692158200299/logo.png?_a=BAMAMifg0"
+    },
+    "melbourne-sixers-sports-club": {
+      "name": "Melbourne Sixers Sports Club",
+      "file": "data/playhq/logos/melbourne-sixers-sports-club.jpg",
+      "teamIds": [
+        "01d9a0e5-d922-456b-9ab0-62f47d577d88"
+      ],
+      "matchKey": "melbournesixerssports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/b0a90bb9-f0df-4a66-bdb7-9aee3517da25/1681449992340/logo.jpg?_a=BAMAMifg0"
+    },
+    "monash-university-cricket-club": {
+      "name": "Monash University Cricket Club",
+      "file": "data/playhq/logos/monash-university-cricket-club.png",
+      "teamIds": [
+        "75957c0f-53b6-4d34-b1c8-6af85d700d98",
+        "f46d3634-1334-4048-96f8-ba73df193f59",
+        "c5f20cf7-965d-4a68-955c-0a523f226316",
+        "a751e8fd-a71c-48c2-8b54-05ca3c424cd3"
+      ],
+      "matchKey": "monashuniversity",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/43ca56f3-cdb0-44af-9f27-3f407a8aa4dd/1767331049187/logo.png?_a=BAMAMifg0"
+    },
+    "mont-albert-cricket-club": {
+      "name": "Mont Albert Cricket Club",
+      "file": "data/playhq/logos/mont-albert-cricket-club.jpg",
+      "teamIds": [
+        "bfc9d34d-a35d-438c-861f-8f78f44191e6",
+        "eaf15919-6d70-4685-974d-922d619c533a",
+        "f130cf58-4397-4172-ac83-fb6695733210",
+        "26ae30fd-2f78-4738-ada1-0d2f65010e58",
+        "d511ff0c-41b9-47a4-8f3f-a2d9f4a8e6d5",
+        "6c0f6028-91cc-4ec9-ac2c-5d94afb48a64"
+      ],
+      "matchKey": "montalbert",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/e462f203-c1d8-4fba-8f93-971e711ca344/1686443610980/logo.jpg?_a=BAMAMifg0"
+    },
+    "mount-waverley-uniting-cricket-club": {
+      "name": "Mount Waverley Uniting Cricket Club",
+      "file": "data/playhq/logos/mount-waverley-uniting-cricket-club.jpg",
+      "teamIds": [
+        "ceaa0b4b-ee9e-40cb-b990-c1b28ed81cfd",
+        "f2bafce7-a333-4fff-bb4a-8d5c346e8d6b",
+        "570e849a-a7ea-4526-a4fa-df9544ddb39a"
+      ],
+      "matchKey": "mountwaverleyuniting",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/07d264fe-c2c9-4180-b0d8-1b23234b67a5/1755214991869/logo.jpg?_a=BAMAMifg0"
+    },
+    "mulgrave-cricket-club": {
+      "name": "Mulgrave Cricket Club",
+      "file": "data/playhq/logos/mulgrave-cricket-club.png",
+      "teamIds": [
+        "5a7fbc6a-16c8-40da-86bb-2471fb7abeba",
+        "468e04cf-e344-44aa-a486-2070417a17ee",
+        "acb7d480-5dcc-49f9-9d91-c562f6900fd6",
+        "a3ae6b11-decc-417c-9bed-d4a7f21a763b",
+        "bef0c7dc-a9f6-434f-b14f-1dece9442934"
+      ],
+      "matchKey": "mulgrave",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/20945e8b-3abc-4f4b-93aa-e428d2aa8e91/1768191446979/logo.png?_a=BAMAMifg0"
+    },
+    "north-alphington-cricket-club": {
+      "name": "North Alphington Cricket Club",
+      "file": "data/playhq/logos/north-alphington-cricket-club.jpg",
+      "teamIds": [
+        "09b1f4d6-92f2-442e-b4f5-4aa52e9607f6",
+        "f89e89c5-f116-4092-ba50-1d31bd05b4c6"
+      ],
+      "matchKey": "northalphington",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/8827841f-2e9e-4e29-8459-0b1e318b9a22/1686540035214/logo.jpg?_a=BAMAMifg0"
+    },
+    "north-balwyn-cricket-club": {
+      "name": "North Balwyn Cricket Club",
+      "file": "data/playhq/logos/north-balwyn-cricket-club.png",
+      "teamIds": [
+        "8ee552f6-2c94-405d-8078-7e3c1bb638dc",
+        "e031cca0-b056-4288-a59c-c51986bd300b",
+        "438a0c73-725b-4532-8883-a166e83796c7",
+        "3c474620-c159-4e90-9948-04f6853ae5a8"
+      ],
+      "matchKey": "northbalwyn",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/4d512da1-020e-4bef-bf78-6aca954bb6da/1788044678528/logo.png?_a=BAMAMifg0"
+    },
+    "north-dandenong-cricket-club": {
+      "name": "North Dandenong Cricket Club",
+      "file": "data/playhq/logos/north-dandenong-cricket-club.png",
+      "teamIds": [
+        "c698fe15-a42e-4f4f-adfb-c3d67345788b"
+      ],
+      "matchKey": "northdandenong",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/945877dd-cc31-4c7f-bac5-8fdebd5f235f/1686647202461/logo.png?_a=BAMAMifg0"
+    },
+    "old-carey-cricket-club": {
+      "name": "Old Carey Cricket Club",
+      "file": "data/playhq/logos/old-carey-cricket-club.png",
+      "teamIds": [
+        "66414447-84d5-44dd-a0e7-b485dd0cc555",
+        "435172e9-544f-48af-96ba-49bc0e415df9",
+        "d6eb0bf8-3e08-431a-8a6d-b074f48e0157"
+      ],
+      "matchKey": "oldcarey",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/2bc5a1ab-9da5-40bb-987e-1d13db35de30/1691731687428/logo.png?_a=BAMAMifg0"
+    },
+    "preston-baseballers-cricket-club": {
+      "name": "Preston Baseballers Cricket Club",
+      "file": "data/playhq/logos/preston-baseballers-cricket-club.jpg",
+      "teamIds": [
+        "0e0bbd56-1a52-448c-99a7-b00398b34dee",
+        "03e0a3a6-a4ab-4bd7-9b38-8feacd85e603",
+        "7a832d9f-cd6c-479f-8592-32ea2ffe1471"
+      ],
+      "matchKey": "prestonbaseballers",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/2479732f-94ea-4cfb-8a04-efa95eb16ff8/1685053855010/logo.jpg?_a=BAMAMifg0"
+    },
+    "richmond-city-cricket-club": {
+      "name": "Richmond City Cricket Club",
+      "file": "data/playhq/logos/richmond-city-cricket-club.png",
+      "teamIds": [
+        "8efed837-5176-4e1d-8833-a91e2878aeea",
+        "b0ce0fa2-ba2d-4afa-84f9-96e2a66e4e75",
+        "904c7192-47e0-4433-85d0-a6969cc3ce55",
+        "8846cc40-ddaa-46f4-8a74-dfb722181252"
+      ],
+      "matchKey": "richmondcity",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/a4225b45-feaf-4107-bb34-3e158dac7f84/1685234723077/logo.png?_a=BAMAMifg0"
+    },
+    "richmond-union-cricket-club": {
+      "name": "Richmond Union Cricket Club",
+      "file": "data/playhq/logos/richmond-union-cricket-club.png",
+      "teamIds": [
+        "401dce17-f1a4-4c92-846b-4b24be24dd76",
+        "8870402f-a3ca-4764-88e6-ceda450479bb",
+        "1df78742-25b1-4e5d-b523-49c0de4d5008",
+        "33f65fea-de03-4291-a3be-1bee90db4be3",
+        "18349738-f85a-47fa-bcee-a13cb82752ed",
+        "d8cc018b-1b0c-40a3-9e56-77f8231e0c2a"
+      ],
+      "matchKey": "richmondunion",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/e162c82d-36d8-4dd6-9917-0b3195e27ae4/1685019923900/logo.png?_a=BAMAMifg0"
+    },
+    "stc-south-camberwell-cricket-club": {
+      "name": "STC South Camberwell Cricket Club",
+      "file": "data/playhq/logos/stc-south-camberwell-cricket-club.png",
+      "teamIds": [
+        "cec44a80-7927-4f6e-acb2-7ebd5e3a55f3",
+        "076979e2-82b5-4c2f-be75-860e3c4dc1ab",
+        "d61a41f3-7c9c-4abb-ad14-4bbf6b5b0458",
+        "5c1d9162-1cbb-4b06-a2ef-d03f8376e345",
+        "6243e07b-07e8-4c47-8eb4-31af8b179a84",
+        "f0d1cab8-3605-48bd-815d-eac3c179adb5"
+      ],
+      "matchKey": "stcsouthcamberwell",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/a4256ca4-8758-43ac-8836-3b37f7e0ece3/1685069474379/logo.png?_a=BAMAMifg0"
+    },
+    "salesian-old-boys-cricket-club": {
+      "name": "Salesian Old Boys Cricket Club",
+      "file": "data/playhq/logos/salesian-old-boys-cricket-club.jpg",
+      "teamIds": [
+        "005479b1-4bb1-424b-a5bc-a182a5d724a6",
+        "6c3e60af-3632-4028-9b16-b02a60e3c361",
+        "c397bf33-7597-4a3c-b7d1-9f4283ab947b"
+      ],
+      "matchKey": "salesianoldboys",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/ecd29360-62a3-4a5f-b0a3-ec7f5b612543/1729172957075/logo.jpg?_a=BAMAMifg0"
+    },
+    "salvation-army-waverley-cricket-club": {
+      "name": "Salvation Army Waverley Cricket Club",
+      "file": "data/playhq/logos/salvation-army-waverley-cricket-club.png",
+      "teamIds": [
+        "9c5a84fe-aa1c-4615-9634-b6a8cf9b84f9"
+      ],
+      "matchKey": "salvationarmywaverley",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/c9685c9f-4596-4642-8f32-efaa164f98ad/1739176761393/logo.png?_a=BAMAMifg0"
+    },
+    "south-eastern-dreamers-cricket-club": {
+      "name": "South Eastern Dreamers Cricket Club",
+      "file": "data/playhq/logos/south-eastern-dreamers-cricket-club.png",
+      "teamIds": [
+        "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+        "ca12b473-b355-408d-afe4-a285d0127dd3"
+      ],
+      "matchKey": "southeasterndreamers",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/3e34387e-2fd6-48b6-8318-9659939e2c29/1757915787164/logo.png?_a=BAMAMifg0"
+    },
+    "st-andrews-gardiner-cricket-club": {
+      "name": "St. Andrews Gardiner Cricket Club",
+      "file": "data/playhq/logos/st-andrews-gardiner-cricket-club.png",
+      "teamIds": [
+        "e6e8a503-1d9e-4e82-8d60-523ec42f8b07",
+        "1daf971a-1604-425b-bdd7-79c97fba40a7",
+        "03a0a182-0914-484d-86d9-dda6a56e95d1"
+      ],
+      "matchKey": "standrewsgardiner",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/11e4c1d5-3723-425f-8b5e-1822bc17e34d/1681122018737/logo.png?_a=BAMAMifg0"
+    },
+    "st-kevins-old-collegians-cricket-club": {
+      "name": "St Kevins Old Collegians Cricket Club",
+      "file": "data/playhq/logos/st-kevins-old-collegians-cricket-club.jpg",
+      "teamIds": [
+        "5fc42aee-a59b-4935-85f8-16067ca24a4e",
+        "e54d9ba7-8353-4f47-a50e-8b9194662839"
+      ],
+      "matchKey": "stkevinsoldcollegians",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/90cc69a7-c6ad-4d94-b12e-8b2bb9f44d1e/1685234941052/logo.jpg?_a=BAMAMifg0"
+    },
+    "st-pauls-cricket-club": {
+      "name": "St Pauls Cricket Club",
+      "file": "data/playhq/logos/st-pauls-cricket-club.png",
+      "teamIds": [
+        "0b6b4d51-be58-4bc7-9da7-46c3e549c673",
+        "feb7fa7e-36f2-4127-9906-66f8bd74a33a",
+        "ade36bb9-6ff3-45d1-9e0c-bbf00ac579f0",
+        "450a2908-e4af-4159-8641-17b9924244ec"
+      ],
+      "matchKey": "stpauls",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7f4e9c11-11d3-4943-ae73-001afb82e0ae/1751076443663/logo.png?_a=BAMAMifg0"
+    },
+    "surrey-hills-cricket-club": {
+      "name": "Surrey Hills Cricket Club",
+      "file": "data/playhq/logos/surrey-hills-cricket-club.jpg",
+      "teamIds": [
+        "4a8cd7ab-5f88-434c-87d6-0ede4698450d",
+        "5f773c9e-d255-49f6-806a-07308f58492a",
+        "bcff543f-ced0-4746-abbc-4fd09e0d9918",
+        "4d7dcafe-a0d4-410d-b0b6-16d6d1b027e9",
+        "a22b30c5-fb5f-4dfc-b8b0-b3973c4c4690"
+      ],
+      "matchKey": "surreyhills",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/907ef6c7-f3a6-44f1-b372-ba0efb1d3e6b/1679299642676/logo.jpg?_a=BAMAMifg0"
+    },
+    "toorak-prahran-cricket-club": {
+      "name": "Toorak-Prahran Cricket Club",
+      "file": "data/playhq/logos/toorak-prahran-cricket-club.jpg",
+      "teamIds": [
+        "a3cdc5d0-c332-4133-83fb-f4090c6e1bc8",
+        "beb6af11-d90b-4e9d-8468-85148158a476",
+        "cee8908d-c8e9-40b9-a5f8-aef5d1c2e80c",
+        "d6f93f0c-8cb4-450d-88a2-e5b8e875484d",
+        "6cc00b18-9da5-4f46-8f67-df3047a1403e"
+      ],
+      "matchKey": "toorakprahran",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/3329eadd-ee61-471c-a2d9-cfd137dfb967/1680504423786/logo.jpg?_a=BAMAMifg0"
+    },
+    "trinity-willison-cricket-club": {
+      "name": "Trinity Willison Cricket Club",
+      "file": "data/playhq/logos/trinity-willison-cricket-club.png",
+      "teamIds": [
+        "9e2f4e53-3235-4591-9549-98d0ed6716fa",
+        "d0e31e4f-ea91-4edc-99bc-0c315dc5d135",
+        "e43c81d0-5fc4-4ac1-812a-f9547b3e8261",
+        "c9b38d36-1782-46d0-bdbb-296c04a45762",
+        "cc32c80e-6077-45d2-bb01-d283a1b2e700"
+      ],
+      "matchKey": "trinitywillison",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/01fb3721-a91a-4975-9bf5-49588c1f6631/1685350922166/logo.png?_a=BAMAMifg0"
+    },
+    "west-ivanhoe-united-cricket-club": {
+      "name": "West Ivanhoe United Cricket Club",
+      "file": "data/playhq/logos/west-ivanhoe-united-cricket-club.jpg",
+      "teamIds": [
+        "940aebb7-719a-44b9-a8eb-8c15902e0744",
+        "cb594487-f020-4612-8e62-fd1f91ac603e",
+        "d33b7362-74d9-4e72-938d-0488dcbde85a"
+      ],
+      "matchKey": "westivanhoeunited",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/3ff72caa-a50e-49ff-9930-ad4c2d4bd975/1691299475790/logo.jpg?_a=BAMAMifg0"
+    },
+    "whitefriars-cricket-club": {
+      "name": "Whitefriars Cricket Club",
+      "file": "data/playhq/logos/whitefriars-cricket-club.jpg",
+      "teamIds": [
+        "518f9d10-a1dd-4468-8e15-d91096ecdcc8",
+        "811968de-2066-4f4b-8f56-9ae6fb635c8a"
+      ],
+      "matchKey": "whitefriars",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/d2c58659-3e68-48e4-812c-8d0f8a1484da/1689596629932/logo.jpg?_a=BAMAMifg0"
+    },
+    "eastern-cricket-association": {
+      "name": "Eastern Cricket Association",
+      "file": "data/playhq/logos/eastern-cricket-association.png",
+      "teamIds": [],
+      "matchKey": "easternassociation",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/05ee99c2-3e3e-481f-aee1-dcbdaaf6bc87/1773376003171/logo.png?_a=BAMAMifg0"
+    }
+  }
+}

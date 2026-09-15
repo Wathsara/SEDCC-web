@@ -10,7 +10,26 @@ import { club, season, teams, url } from '../../lib/site';
     title="The Three Sides"
     intro="Two sides in the Eastern Cricket Association on Saturdays, one in the Victorian Sunday Cricket Association on Sundays."
   />
-  <div class="mx-auto max-w-6xl px-4 py-16">
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    {/* Match Centre Teaser Banner */}
+    <div class="mb-10 tile p-5 bg-gradient-to-r from-club/5 via-paper to-paper border-l-4 border-l-club flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <p class="eyebrow text-club font-bold">Official Competition Hub</p>
+        <h3 class="mt-1 font-display text-xl uppercase tracking-tight text-club font-bold">
+          2026/27 Fixtures & Standings
+        </h3>
+        <p class="mt-1 text-xs text-ink-muted">
+          Track real-time schedules, match venues, results, and ladder positions across all three divisions.
+        </p>
+      </div>
+      <a
+        href={url('fixtures')}
+        class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold transition-colors shrink-0"
+      >
+        View Fixtures & Ladder →
+      </a>
+    </div>
+
     <div class="grid gap-8 md:grid-cols-3">
       {
         teams.map((t, i) => (

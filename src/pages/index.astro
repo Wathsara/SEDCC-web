@@ -22,6 +22,9 @@ import {
 } from '../lib/playhq';
 import { formatDate, isoDate } from '../lib/format';
 
+import { getClubLogo } from '../lib/logos';
+import type { GameWithTeam } from '../lib/playhq';
+
 const articles = (await getCollection('articles', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
@@ -33,7 +36,11 @@ const lastResult = [...seasons].reverse().find((s) => s.result);
 // .filter(Boolean) does not narrow away the undefined.
 const sponsorStrip = featuredSponsor ? [featuredSponsor, ...otherSponsors] : otherSponsors;
 
-const nextGame = upcoming[0];
+// Next game for each side (LOC 1, LOC 2, Grade 4) so both Saturday games show
+const upcomingBySide = teams
+  .map((t) => upcoming.find((g) => g.teamSlug === t.slug))
+  .filter((g): g is GameWithTeam => Boolean(g));
+
 const recent = results.slice(0, 4);
 
 const growth = [
@@ -190,61 +197,51 @@ const leadingBowl = [...(seasonStats.players ?? [])]
     )
   }
 
-  <!-- Next fixture + recent results -->
+  <!-- Match Centre: Show upcoming games for both LOC 1 & LOC 2 -->
   <section class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-    <SectionHead title="Match Centre" note={season.label} href={url('teams')} linkLabel="All Fixtures" />
-    <div class="grid gap-6 lg:grid-cols-[1.15fr_1fr]">
-      <div>
-        {
-          nextGame ? (
-            <NextFixture game={nextGame} />
-          ) : (
-            <EmptyState title="No fixtures yet" />
-          )
-        }
-      </div>
+    <SectionHead
+      title="Match Centre"
+      note={season.label}
+      href={url('teams')}
+      linkLabel="All Teams & Squads"
+    />
 
-      <div class="tile p-5 sm:p-6">
-        <div class="flex items-baseline justify-between gap-4 border-b border-rule pb-3">
-          <h2 class="font-display text-base uppercase text-club">
-            Recent results
-            <span class="ml-2 font-figures text-2xs tracking-eyebrow text-ink-faint">
-              {season.label}
-            </span>
-          </h2>
-          {recent.length > 0 && <CricketIcon name="bat" class="h-3.5 w-3.5 text-accent" />}
-        </div>
-        {
-          recent.length > 0 ? (
-            <ul class="mt-3">
-              {recent.map((g) => (
-                <li class="card-line" data-rule-in>
-                  <span class="card-line__name text-sm">
-                    {g.isHome ? 'v' : '@'} {g.opponent}
-                  </span>
-                  <span class="card-line__figures text-xs">
-                    {g.ourScore ? (
-                      g.ourScore
-                    ) : (
-                      <time datetime={isoDate(g.dates[0])}>
-                        {formatDate(g.dates[0], { day: 'numeric', month: 'short' })}
-                      </time>
-                    )}
-                  </span>
-                  <span class="card-line__context text-2xs">
-                    {g.teamName} · {g.roundShort}
-                  </span>
-                </li>
+    <div class="mt-6">
+      {
+        upcomingBySide.length > 0 ? (
+          <div>
+            {/* Multi-match Grid: Show both LOC 1 and LOC 2 on Round 1 */}
+            <div class="grid gap-6 md:grid-cols-2">
+              {upcomingBySide.map((game) => (
+                <NextFixture game={game} />
               ))}
-            </ul>
-          ) : (
-            <p class="mt-3">
-              <span class="eyebrow block text-accent">Coming soon</span>
-              <span class="mt-1 block font-display text-sm uppercase text-ink">No results yet</span>
-            </p>
-          )
-        }
-      </div>
+            </div>
+
+            {/* Grade 4 Competition Kickoff Card */}
+            <div
+              class="mt-6 tile p-4 bg-paper-sunk/60 border border-rule flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs"
+              data-rule-in
+            >
+              <div class="flex items-center gap-3">
+                <span class="rounded bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 text-2xs font-display font-bold uppercase tracking-wider text-amber-800">
+                  VSCA Grade 4
+                </span>
+                <span class="text-xs text-ink-muted">
+                  Sunday XI season draw releasing October 2026.
+                </span>
+              </div>
+              <a
+                href={url('teams/grade-4')}
+                class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold shrink-0"
+              >
+                View Grade 4 Side & Squad →
+              </a>
+            </div>
+          </div>
+        ) : (
+          <EmptyState title="No fixtures yet" />
+        )
+      }
     </div>
   </section>
 

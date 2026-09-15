@@ -1,0 +1,55 @@
+---
+/**
+ * A player's portrait, or a stand-in until the club has photographed them.
+ *
+ * Drop a file into src/assets/players/portraits/ named after the player's
+ * roster id and it replaces the stand-in on the next build, with no code
+ * change. Photos go through astro:assets, so they are resized and served as
+ * webp.
+ *
+ * The stand-in is drawn rather than loaded: head and shoulders on the club
+ * navy, sitting on the base line so it crops the way a real portrait does. An
+ * SVG costs nothing to serve, stays sharp at any size, and takes its colours
+ * from the tokens — so a squad with no photos still looks composed rather than
+ * broken.
+ */
+import { Image } from 'astro:assets';
+import { portraitFor } from '../lib/portraits';
+
+interface Props {
+  id: string;
+  name: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+const { id, name, class: className, loading = 'lazy' } = Astro.props;
+const photo = portraitFor(id);
+---
+
+{
+  photo ? (
+    <Image
+      src={photo}
+      alt={name}
+      widths={[240, 400, 640]}
+      sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+      loading={loading}
+      class={className}
+    />
+  ) : (
+    <svg
+      class={className}
+      viewBox="0 0 320 400"
+      role="img"
+      aria-label={`${name} — no photograph yet`}
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <rect width="320" height="400" fill="var(--color-club)" />
+      <g fill="var(--color-club-tint)">
+        <circle cx="160" cy="150" r="66" />
+        {/* Shoulders run off the bottom edge, as they would in a cropped photo. */}
+        <path d="M160 234c-70 0-127 50-136 116h272c-9-66-66-116-136-116Z" />
+      </g>
+    </svg>
+  )
+}

@@ -8,7 +8,10 @@ import EmptyState from '../../components/EmptyState.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import FixtureList from '../../components/FixtureList.astro';
 import LadderTable from '../../components/LadderTable.astro';
-import { season, teams, squadFor } from '../../lib/site';
+import PlayerCard from '../../components/PlayerCard.astro';
+import CricketIcon from '../../components/CricketIcon.astro';
+import Logo from '../../components/Logo.astro';
+import { season, teams, squadFor, url, homeGroundLabel } from '../../lib/site';
 import { teamFixtures, teamLadder, seasonStats } from '../../lib/playhq';
 
 export const getStaticPaths = (async () => {
@@ -21,8 +24,7 @@ const fixtures = teamFixtures(team.slug);
 const ladder = teamLadder(team.slug);
 const squad = squadFor(team.slug);
 
-/* Season figures come from the sync and join to the roster by name — the public
-   API has no stable player id. Absent until the first round is played. */
+/* Season figures come from the sync and join to the roster by name */
 const statsByName = new Map(
   (seasonStats.players ?? []).map((p) => [p.displayName.toLowerCase(), p]),
 );
@@ -31,11 +33,8 @@ const articles = (
   await getCollection('articles', ({ data }) => !data.draft && data.team === team.slug)
 ).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-
-/*
-  Every panel below is empty until the associations publish grades and the first
-  sync runs. Each one says what it is waiting for rather than showing a zero.
-*/
+const totalGames = fixtures?.games.length ?? 0;
+const hasLadder = ladder && ladder.ladders.length > 0;
 ---
 
 <Base title={team.name} description={`${team.name} — ${team.competition}, ${team.day}s. Fixtures, ladder, results and squad.`}>
@@ -47,98 +46,325 @@ const articles = (
       .join(' — ')}
   />
 
-  <div class="mx-auto max-w-6xl px-4 py-12">
-    <div class="grid gap-12 lg:grid-cols-3">
-      <div class="space-y-12 lg:col-span-2">
-        <section>
-          <SectionHead title="Fixtures" note={season.label} />
-          <div class="mt-6">
-            {
-              fixtures && (fixtures.games.length > 0 || fixtures.byes.length > 0) ? (
-                <FixtureList team={fixtures} />
-              ) : (
-                <EmptyState title="No fixtures yet" />
-              )
-            }
-          </div>
-        </section>
+  <div class="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+    {/*
+      Fixtures / Ladder / Squad.
 
-        <section>
-          <SectionHead title="Ladder" note={season.label} />
-          <div class="mt-6">
-            {
-              ladder && ladder.ladders.length > 0 ? (
-                <LadderTable grade={ladder} />
-              ) : (
-                <EmptyState title="No ladder yet" />
-              )
-            }
-          </div>
-        </section>
+      A real tablist: role="tab" with aria-selected and aria-controls, so the
+      arrow keys and a screen reader both work. Marking the container a tablist
+      while the children stay plain buttons announces a list with nothing in it.
+    */}
+    <div class="mb-8 border-b border-rule">
+      <div class="flex flex-wrap gap-x-6 gap-y-2" role="tablist" aria-label="Team information">
+        <button
+          type="button"
+          role="tab"
+          id="tab-fixtures"
+          aria-controls="panel-fixtures"
+          aria-selected="true"
+          data-team-tab="fixtures"
+          class="team-view-tab -mb-px border-b-2 border-club px-0.5 pb-3 font-display text-sm uppercase tracking-eyebrow text-club transition-colors"
+        >
+          Fixtures
+          {totalGames > 0 && <span class="ml-1.5 font-figures text-2xs text-ink-faint">{totalGames}</span>}
+        </button>
 
-        <section>
-          <SectionHead title="Articles" note={season.label} />
-          <div class="mt-4">
-            {
-              articles.length > 0 ? (
-                articles.map((article) => <ArticleCard article={article} />)
-              ) : (
-                <EmptyState title="No match reports yet" />
-              )
-            }
-          </div>
-        </section>
+        <button
+          type="button"
+          role="tab"
+          id="tab-ladder"
+          aria-controls="panel-ladder"
+          aria-selected="false"
+          data-team-tab="ladder"
+          class="team-view-tab -mb-px border-b-2 border-transparent px-0.5 pb-3 font-display text-sm uppercase tracking-eyebrow text-ink-muted transition-colors hover:text-ink"
+        >
+          Ladder
+        </button>
+
+        <button
+          type="button"
+          role="tab"
+          id="tab-squad"
+          aria-controls="panel-squad"
+          aria-selected="false"
+          data-team-tab="squad"
+          class="team-view-tab -mb-px border-b-2 border-transparent px-0.5 pb-3 font-display text-sm uppercase tracking-eyebrow text-ink-muted transition-colors hover:text-ink"
+        >
+          Squad
+          {squad.length > 0 && <span class="ml-1.5 font-figures text-2xs text-ink-faint">{squad.length}</span>}
+        </button>
+
+        {articles.length > 0 && (
+          <button
+            type="button"
+            role="tab"
+            id="tab-reports"
+            aria-controls="panel-reports"
+            aria-selected="false"
+            data-team-tab="reports"
+            class="team-view-tab -mb-px border-b-2 border-transparent px-0.5 pb-3 font-display text-sm uppercase tracking-eyebrow text-ink-muted transition-colors hover:text-ink"
+          >
+            Reports
+            <span class="ml-1.5 font-figures text-2xs text-ink-faint">{articles.length}</span>
+          </button>
+        )}
       </div>
+    </div>
 
-      <aside>
-        <SectionHead
-          title="Squad"
-          note={squad.length > 0 ? `${season.label} · ${squad.length} players` : season.label}
-        />
-        <div class="mt-6">
+    <div id="panel-fixtures" class="team-tab-panel space-y-6" role="tabpanel" aria-labelledby="tab-fixtures">
+      <div class="grid gap-10 lg:grid-cols-3">
+        <div class="lg:col-span-2 space-y-6">
+          <SectionHead
+            title="Match Schedule"
+            note={`${season.label} · ${team.competitionShort}`}
+          />
           {
-            squad.length > 0 ? (
-              <ul>
-                {squad.map((p) => {
-                  const stat = statsByName.get(p.name.toLowerCase());
-                  return (
-                    <li class="card-line" data-rule-in>
-                      <span class="card-line__name">
-                        {p.profileUrl ? (
-                          <a
-                            href={p.profileUrl}
-                            target="_blank"
-                            rel="noopener noreferrer external"
-                            class="stitch-link"
-                          >
-                            {p.name}
-                            <span class="sr-only"> — PlayHQ profile (opens in a new tab)</span>
-                          </a>
-                        ) : (
-                          p.name
-                        )}
-                      </span>
-                      {stat && (
-                        <span class="card-line__figures">
-                          {stat.batting.runs} <span class="text-ink-faint">runs</span>{' '}
-                          {stat.bowling.wickets} <span class="text-ink-faint">wkts</span>
-                        </span>
-                      )}
-                      {p.role && <span class="card-line__context">{p.role}</span>}
-                    </li>
-                  );
-                })}
-              </ul>
+            fixtures && (fixtures.games.length > 0 || fixtures.byes.length > 0) ? (
+              <FixtureList team={fixtures} />
+            ) : team.slug === 'grade-4' ? (
+              /* The draw is not out. Say so plainly — a pulsing dot and a
+                 "coming soon" headline dress up an absence of information. */
+              <div class="border border-rule bg-paper px-6 py-10 text-center">
+                <h3 class="font-display text-xl uppercase tracking-display text-club">
+                  Fixtures are published in October
+                </h3>
+                <p class="mx-auto mt-2 max-w-md text-sm leading-relaxed text-ink-muted">
+                  The Victorian Sunday Cricket Association releases the {season.label} draw
+                  closer to the season. Fixtures, grounds and results appear here automatically
+                  once it does.
+                </p>
+                <button
+                  type="button"
+                  data-switch-to="squad"
+                  class="mt-5 bg-club px-5 py-2 font-display text-xs uppercase tracking-eyebrow text-paper transition-colors hover:bg-club-tint"
+                >
+                  View the squad
+                </button>
+              </div>
             ) : (
-              <EmptyState title="Squad not named" />
+              <EmptyState title="No fixtures yet" />
             )
           }
         </div>
-      </aside>
+
+        {/*
+          The two cards that stood here were navigation, not information: a
+          heading, a sentence restating the heading, and a button that did what
+          the tab above already does. This carries the details of where and when
+          the side plays instead — which is not on the page anywhere else.
+        */}
+        <aside class="space-y-6">
+          <div class="border border-rule bg-paper p-5">
+            <h3 class="font-display text-sm uppercase tracking-eyebrow text-club">Team details</h3>
+            <dl class="mt-4 space-y-3 text-sm">
+              <div class="flex justify-between gap-4 border-b border-rule pb-3">
+                <dt class="text-ink-muted">Competition</dt>
+                <dd class="text-right text-ink">{team.competition}</dd>
+              </div>
+              <div class="flex justify-between gap-4 border-b border-rule pb-3">
+                <dt class="text-ink-muted">Grade</dt>
+                <dd class="text-right text-ink">
+                  {team.gradeLabel}
+                  {team.shield && <span class="block text-xs text-ink-muted">{team.shield}</span>}
+                </dd>
+              </div>
+              <div class="flex justify-between gap-4 border-b border-rule pb-3">
+                <dt class="text-ink-muted">Match day</dt>
+                <dd class="text-right text-ink">{team.day}s</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-ink-muted">Home ground</dt>
+                <dd class="text-right text-ink">{homeGroundLabel}</dd>
+              </div>
+            </dl>
+          </div>
+
+          {squad.length > 0 && (
+            <div class="border border-rule bg-paper p-5">
+              <h3 class="font-display text-sm uppercase tracking-eyebrow text-club">
+                Squad
+                <span class="ml-1 font-figures text-2xs text-ink-faint">{squad.length}</span>
+              </h3>
+              {/* Real names, not a truncated comma list ending in an ellipsis. */}
+              <ul class="mt-3 space-y-1.5 text-sm text-ink">
+                {squad.slice(0, 6).map((p) => (
+                  <li>{p.name}</li>
+                ))}
+              </ul>
+              {squad.length > 6 && (
+                <button
+                  type="button"
+                  data-switch-to="squad"
+                  class="stitch-link mt-3 font-display text-2xs uppercase tracking-eyebrow text-club transition-colors hover:text-accent"
+                >
+                  All {squad.length} players
+                </button>
+              )}
+            </div>
+          )}
+        </aside>
+      </div>
     </div>
+
+    {/* =====================================================================
+        TAB 2: LADDER / STANDINGS (Instant view without scrolling!)
+        ===================================================================== */}
+    <div id="panel-ladder" class="team-tab-panel space-y-6 hidden" role="tabpanel" aria-labelledby="tab-ladder">
+      <div class="flex items-center justify-between">
+        <SectionHead
+          title={`${team.gradeLabel} Points Table`}
+          note={`${team.competition} · ${season.label}`}
+        />
+        <button
+          type="button"
+          data-switch-to="fixtures"
+          class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold"
+        >
+          ← Back to Fixtures
+        </button>
+      </div>
+
+      {
+        ladder && ladder.ladders.length > 0 ? (
+          <LadderTable grade={ladder} />
+        ) : team.slug === 'grade-4' ? (
+          <div class="tile p-8 text-center border border-rule bg-paper">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-club/10 text-club mb-3">
+              <CricketIcon name="trophy" class="h-6 w-6 text-club" />
+            </div>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-club/10 px-3 py-0.5 font-display text-2xs font-bold uppercase tracking-wider text-club">
+              VSCA Sunday Standings
+            </span>
+            <h3 class="mt-3 font-display text-2xl uppercase text-club font-bold">
+              Grade 4 Points Table Pending Kickoff
+            </h3>
+            <p class="mt-2 text-sm text-ink-muted max-w-md mx-auto">
+              Standings, points, and Net Run Rate (NRR) rankings will be tracked live following Round 1 of the Victorian Sunday Cricket Association.
+            </p>
+          </div>
+        ) : (
+          <EmptyState title="No ladder data available yet" />
+        )
+      }
+    </div>
+
+    {/* =====================================================================
+        TAB 3: SQUAD ROSTER
+        ===================================================================== */}
+    <div id="panel-squad" class="team-tab-panel space-y-6 hidden" role="tabpanel" aria-labelledby="tab-squad">
+      <div class="flex items-center justify-between">
+        <SectionHead
+          title={`${team.name} Squad`}
+          note={squad.length > 0 ? `${squad.length} Players Named` : season.label}
+        />
+        <button
+          type="button"
+          data-switch-to="fixtures"
+          class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold"
+        >
+          ← Back to Fixtures
+        </button>
+      </div>
+
+      {
+        squad.length > 0 ? (
+          <ul class="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+            {squad.map((p, i) => (
+              <li>
+                <PlayerCard
+                  player={p}
+                  stat={statsByName.get(p.name.toLowerCase())}
+                  loading={i < 4 ? 'eager' : 'lazy'}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <EmptyState title="Squad not named yet" />
+        )
+      }
+    </div>
+
+    {/* =====================================================================
+        TAB 4: MATCH REPORTS (Articles)
+        ===================================================================== */}
+    {articles.length > 0 && (
+      <div id="panel-reports" class="team-tab-panel space-y-6 hidden" role="tabpanel" aria-labelledby="tab-reports">
+        <SectionHead title="Match Reports & Articles" note={season.label} />
+        <div class="grid gap-4 sm:grid-cols-2">
+          {articles.map((article) => <ArticleCard article={article} />)}
+        </div>
+      </div>
+    )}
   </div>
 </Base>
 
 <script>
   import '../../scripts/motion.ts';
+
+  const TABS = ['fixtures', 'ladder', 'squad', 'reports'] as const;
+
+  /** Classes that differ between the selected tab and the rest. */
+  const ON = ['border-club', 'text-club'];
+  const OFF = ['border-transparent', 'text-ink-muted', 'hover:text-ink'];
+
+  function setupTeamTabs() {
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-team-tab]'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.team-tab-panel'));
+    const switchButtons = document.querySelectorAll<HTMLButtonElement>('[data-switch-to]');
+    if (!tabs.length) return;
+
+    const tabBar = tabs[0].closest('[role="tablist"]');
+
+    function setTab(key: string, { focus = false } = {}) {
+      for (const tab of tabs) {
+        const on = tab.dataset.teamTab === key;
+        tab.classList.toggle('active-tab', on);
+        tab.classList.add(...(on ? ON : OFF));
+        tab.classList.remove(...(on ? OFF : ON));
+        tab.setAttribute('aria-selected', String(on));
+        // Only the selected tab is in the tab order; arrows move between them.
+        tab.tabIndex = on ? 0 : -1;
+        if (on && focus) tab.focus();
+      }
+
+      for (const panel of panels) panel.classList.toggle('hidden', panel.id !== `panel-${key}`);
+
+      history.replaceState(null, '', `#${key}`);
+    }
+
+    for (const tab of tabs) {
+      tab.addEventListener('click', () => {
+        if (tab.dataset.teamTab) setTab(tab.dataset.teamTab);
+      });
+    }
+
+    // Arrow keys, as a tablist is expected to behave.
+    tabBar?.addEventListener('keydown', (event) => {
+      const e = event as KeyboardEvent;
+      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      const current = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+      const next = tabs[(current + step + tabs.length) % tabs.length];
+      if (next?.dataset.teamTab) setTab(next.dataset.teamTab, { focus: true });
+    });
+
+    for (const btn of switchButtons) {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.switchTo;
+        if (!target) return;
+        setTab(target);
+        // Scroll to the tabs themselves rather than to a guessed offset, which
+        // landed in the wrong place on any viewport but the one it was tuned on.
+        tabBar?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    const hash = window.location.hash.replace('#', '');
+    setTab((TABS as readonly string[]).includes(hash) ? hash : 'fixtures');
+  }
+
+  setupTeamTabs();
+  document.addEventListener('astro:page-load', setupTeamTabs);
 </script>

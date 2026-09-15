@@ -1,0 +1,428 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import FixtureList from '../../components/FixtureList.astro';
+import LadderTable from '../../components/LadderTable.astro';
+import CricketIcon from '../../components/CricketIcon.astro';
+import Logo from '../../components/Logo.astro';
+import { club, season, teams, homeGroundLabel, url } from '../../lib/site';
+import { teamFixtures, teamLadder } from '../../lib/playhq';
+
+const loc1Fixtures = teamFixtures('loc-1');
+const loc1Ladder = teamLadder('loc-1');
+
+const loc2Fixtures = teamFixtures('loc-2');
+const loc2Ladder = teamLadder('loc-2');
+
+const grade4Fixtures = teamFixtures('grade-4');
+const grade4Ladder = teamLadder('grade-4');
+
+const grade4Team = teams.find((t) => t.slug === 'grade-4');
+const loc1Team = teams.find((t) => t.slug === 'loc-1');
+const loc2Team = teams.find((t) => t.slug === 'loc-2');
+---
+
+<Base
+  title="Fixtures & Standings"
+  description={`Official match fixtures, live schedules, and points table ladder for ${club.name} across LOC 1, LOC 2, and Grade 4 for the ${season.label}.`}
+>
+  {/* IPL Tournament Header */}
+  <div class="relative isolate overflow-hidden bg-club text-paper border-b border-white/10">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(180,181,186,0.18),rgba(15,28,63,1))]"></div>
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="rounded bg-accent-tint/20 px-2.5 py-0.5 font-display text-2xs uppercase tracking-eyebrow text-accent-tint font-bold">
+              {season.label} Match Centre
+            </span>
+            <span class="font-figures text-2xs text-paper/70">· ECA & VSCA</span>
+          </div>
+          <h1 class="mt-3 font-display text-3xl sm:text-5xl uppercase tracking-tight text-paper font-bold">
+            Fixtures & Ladder
+          </h1>
+          <p class="mt-2 max-w-2xl text-sm sm:text-base text-paper/85 leading-relaxed font-light">
+            Match schedules, grounds, and competition standings for South Eastern Dreamers CC across all three senior divisions.
+          </p>
+        </div>
+
+        {/* Quick Stats Grid */}
+        <div class="flex flex-wrap gap-3 sm:gap-4">
+          <div class="tile bg-paper/10 border border-white/15 px-4 py-2.5 backdrop-blur-sm">
+            <span class="block font-figures text-2xs uppercase text-accent-tint">Sides</span>
+            <span class="font-display text-xl sm:text-2xl uppercase text-paper font-bold">03 Teams</span>
+          </div>
+          <div class="tile bg-paper/10 border border-white/15 px-4 py-2.5 backdrop-blur-sm">
+            <span class="block font-figures text-2xs uppercase text-accent-tint">Home Ground</span>
+            <span class="font-display text-sm sm:text-base uppercase text-paper font-bold truncate max-w-[140px] sm:max-w-none">
+              {homeGroundLabel}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seam seam--onclub"></div>
+  </div>
+
+  {/* Main Tournament Hub Container */}
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+    
+    {/*
+      Division and view switchers.
+
+      The same underline tabs the team pages use — one tab pattern across the
+      site, not two. The three coloured dots that sat here encoded nothing: a
+      green, a blue and an amber that meant only "first, second, third".
+    */}
+    <div class="flex flex-col gap-4 border-b border-rule sm:flex-row sm:items-end sm:justify-between">
+      <div class="flex flex-wrap gap-x-6 gap-y-2" role="tablist" aria-label="Division">
+        {[
+          { slug: 'loc-1', label: 'LOC 1', note: '1st XI' },
+          { slug: 'loc-2', label: 'LOC 2', note: '2nd XI' },
+          { slug: 'grade-4', label: 'Grade 4', note: 'Sunday XI' },
+        ].map((d, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${d.slug}`}
+            aria-controls={`panel-${d.slug}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            data-grade-tab={d.slug}
+            class:list={[
+              'grade-tab -mb-px border-b-2 px-0.5 pb-3 font-display text-sm uppercase tracking-eyebrow transition-colors',
+              i === 0
+                ? 'border-club text-club'
+                : 'border-transparent text-ink-muted hover:text-ink',
+            ]}
+          >
+            {d.label}
+            <span class="ml-1.5 font-figures text-2xs text-ink-faint">{d.note}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Fixtures or ladder, within whichever division is showing. */}
+      <div class="mb-3 flex items-center gap-4">
+        <button
+          type="button"
+          data-view-toggle="fixtures"
+          class="view-btn font-display text-2xs uppercase tracking-eyebrow text-club transition-colors"
+          aria-pressed="true"
+        >
+          Fixtures
+        </button>
+        <span class="text-rule-strong" aria-hidden="true">|</span>
+        <button
+          type="button"
+          data-view-toggle="ladder"
+          class="view-btn font-display text-2xs uppercase tracking-eyebrow text-ink-muted transition-colors hover:text-ink"
+          aria-pressed="false"
+        >
+          Ladder
+        </button>
+      </div>
+    </div>
+
+    {/* =====================================================================
+        DIVISION 1: LOC 1 (1st XI - McCarthy Shield)
+        ===================================================================== */}
+    <div id="panel-loc-1" class="grade-panel mt-8 space-y-8" role="tabpanel" aria-labelledby="tab-loc-1">
+      {/* Grade Hero Info Card */}
+      <div class="tile p-5 bg-gradient-to-r from-club/5 via-paper to-paper border-l-4 border-l-club flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="eyebrow text-club font-bold">1st XI · Eastern Cricket Association</span>
+            <span class="text-ink-faint">·</span>
+            <span class="font-figures text-2xs text-ink-muted">Saturdays · One Day 40 Overs</span>
+          </div>
+          <h2 class="mt-1 font-display text-2xl uppercase tracking-tight text-club font-bold">
+            LOC 1 — McCarthy Shield
+          </h2>
+          <p class="mt-1 text-xs text-ink-muted">
+            Saturday one-day cricket. The top four qualify for finals.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href={url('teams/loc-1')}
+            class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold transition-colors shrink-0"
+          >
+            View 1st XI Squad →
+          </a>
+        </div>
+      </div>
+
+      {/* LOC 1: Fixtures View */}
+      <div data-view-content="fixtures" class="space-y-6">
+        <div class="flex items-center justify-between">
+          <SectionHead
+            title="LOC 1 Match Schedule"
+            note={`${loc1Fixtures?.games.length ?? 0} rounds`}
+          />
+        </div>
+        {
+          loc1Fixtures && loc1Fixtures.games.length > 0 ? (
+            <FixtureList team={loc1Fixtures} />
+          ) : (
+            <div class="tile p-8 text-center text-ink-muted">No fixtures available.</div>
+          )
+        }
+      </div>
+
+      {/* LOC 1: Ladder View */}
+      <div data-view-content="ladder" class="space-y-6 hidden">
+        <div class="flex items-center justify-between">
+          <SectionHead title="LOC 1 Points Table" note="Official ECA Standings" />
+        </div>
+        {
+          loc1Ladder && loc1Ladder.ladders.length > 0 ? (
+            <LadderTable grade={loc1Ladder} />
+          ) : (
+            <div class="tile p-8 text-center text-ink-muted">No ladder data available.</div>
+          )
+        }
+      </div>
+    </div>
+
+    {/* =====================================================================
+        DIVISION 2: LOC 2 (2nd XI - Laws Shield)
+        ===================================================================== */}
+    <div id="panel-loc-2" class="grade-panel mt-8 space-y-8 hidden" role="tabpanel" aria-labelledby="tab-loc-2">
+      {/* Grade Hero Info Card */}
+      <div class="tile p-5 bg-gradient-to-r from-club/5 via-paper to-paper border-l-4 border-l-accent flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="eyebrow text-club font-bold">2nd XI · Eastern Cricket Association</span>
+            <span class="text-ink-faint">·</span>
+            <span class="font-figures text-2xs text-ink-muted">Saturdays · One Day 40 Overs</span>
+          </div>
+          <h2 class="mt-1 font-display text-2xl uppercase tracking-tight text-club font-bold">
+            LOC 2 — Laws Shield
+          </h2>
+          <p class="mt-1 text-xs text-ink-muted">
+            Rounds 1 & 2 published by ECA. Subsequent rounds will be populated following the association schedule update.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href={url('teams/loc-2')}
+            class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold transition-colors shrink-0"
+          >
+            View 2nd XI Squad →
+          </a>
+        </div>
+      </div>
+
+      {/* Partial Schedule Alert Banner */}
+      <div class="border border-rule bg-paper-sunk/60 p-4 flex items-start gap-3.5">
+        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-club font-figures text-2xs text-paper" aria-hidden="true">i</span>
+        <div class="text-xs text-ink">
+          <p class="font-semibold font-display uppercase tracking-wider">Schedule Notice</p>
+          <p class="mt-0.5 leading-relaxed text-ink-muted">
+            ECA has confirmed opening rounds 1 and 2. The remaining season rounds will automatically update in real-time once published on PlayHQ.
+          </p>
+        </div>
+      </div>
+
+      {/* LOC 2: Fixtures View */}
+      <div data-view-content="fixtures" class="space-y-6">
+        <div class="flex items-center justify-between">
+          <SectionHead
+            title="LOC 2 Match Schedule"
+            note={`${loc2Fixtures?.games.length ?? 0} rounds`}
+          />
+        </div>
+        {
+          loc2Fixtures && loc2Fixtures.games.length > 0 ? (
+            <FixtureList team={loc2Fixtures} />
+          ) : (
+            <div class="tile p-8 text-center text-ink-muted">No fixtures available yet.</div>
+          )
+        }
+      </div>
+
+      {/* LOC 2: Ladder View */}
+      <div data-view-content="ladder" class="space-y-6 hidden">
+        <div class="flex items-center justify-between">
+          <SectionHead title="LOC 2 Points Table" note="Official ECA Standings" />
+        </div>
+        {
+          loc2Ladder && loc2Ladder.ladders.length > 0 ? (
+            <LadderTable grade={loc2Ladder} />
+          ) : (
+            <div class="tile p-8 text-center text-ink-muted">No ladder data available.</div>
+          )
+        }
+      </div>
+    </div>
+
+    {/* =====================================================================
+        DIVISION 3: GRADE 4 (Sunday XI - VSCA)
+        ===================================================================== */}
+    <div id="panel-grade-4" class="grade-panel mt-8 space-y-8 hidden" role="tabpanel" aria-labelledby="tab-grade-4">
+      {/* Grade Hero Info Card */}
+      <div class="border border-rule border-l-2 border-l-club bg-paper p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="eyebrow text-ink-muted">Sunday XI · Victorian Sunday Cricket Association</span>
+            <span class="text-ink-faint">·</span>
+            <span class="font-figures text-2xs text-ink-muted">Sundays · One Day 40 Overs</span>
+          </div>
+          <h2 class="mt-1 font-display text-2xl uppercase tracking-tight text-club font-bold">
+            VSCA Grade 4 Tournament Centre
+          </h2>
+          <p class="mt-1 text-xs text-ink-muted">
+            Runners-up in 2025/26. The VSCA draw is published ahead of the October start.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href={url('teams/grade-4')}
+            class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold transition-colors shrink-0"
+          >
+            View Grade 4 Squad →
+          </a>
+        </div>
+      </div>
+
+      {/* Premium IPL-Style "Coming Soon" Tournament Stage */}
+      <div class="tile overflow-hidden border border-rule bg-paper p-8 text-center shadow-tile">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-club text-paper shadow-md">
+          <Logo class="h-10 w-10" width={40} />
+        </div>
+        
+          <p class="mt-5 font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
+            VSCA draw published in October
+          </p>
+
+        <h3 class="mt-4 font-display text-2xl sm:text-3xl uppercase tracking-tight text-club font-bold">
+          Grade 4 Fixtures & Standings
+        </h3>
+        <p class="mx-auto mt-2 max-w-xl text-sm text-ink-muted leading-relaxed">
+          The Victorian Sunday Cricket Association is currently compiling the 2026/27 division fixtures. As soon as the official draw is declared, live match cards and the competition ladder will synchronize here automatically.
+        </p>
+
+        {/* Tournament Highlights Bento */}
+        <div class="mt-8 grid gap-4 sm:grid-cols-3 text-left">
+          <div class="tile bg-paper-sunk/60 p-4 border border-rule">
+            <p class="font-figures text-2xs uppercase text-ink-faint">Matchday</p>
+            <p class="mt-1 font-display text-base uppercase text-club font-bold">Every Sunday</p>
+            <p class="mt-1 text-2xs text-ink-muted">1:00 PM – 40 Overs Format</p>
+          </div>
+          <div class="tile bg-paper-sunk/60 p-4 border border-rule">
+            <p class="font-figures text-2xs uppercase text-ink-faint">Home Ground</p>
+            <p class="mt-1 font-display text-base uppercase text-club font-bold">{homeGroundLabel}</p>
+            <p class="mt-1 text-2xs text-ink-muted">Endeavour Hills, Victoria</p>
+          </div>
+          <div class="tile bg-paper-sunk/60 p-4 border border-rule">
+            <p class="font-figures text-2xs uppercase text-ink-faint">Last season</p>
+            <p class="mt-1 font-display text-base uppercase text-club font-bold">Runners-up</p>
+            <p class="mt-1 text-2xs text-ink-muted">VSCA Grade 4, 2025/26</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href={url('teams/grade-4')}
+            class="bg-club px-6 py-2.5 font-display text-xs uppercase tracking-wider text-paper transition-colors hover:bg-club-tint font-semibold shadow-sm"
+          >
+            Explore Grade 4 Squad
+          </a>
+          <a
+            href={url('seasons/2025-26')}
+            class="border border-rule-strong bg-paper px-6 py-2.5 font-display text-xs uppercase tracking-wider text-ink transition-colors hover:bg-paper-sunk font-semibold"
+          >
+              View 2025/26 season
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/motion.ts';
+
+  const GRADES = ['loc-1', 'loc-2', 'grade-4'] as const;
+
+  const TAB_ON = ['border-club', 'text-club'];
+  const TAB_OFF = ['border-transparent', 'text-ink-muted', 'hover:text-ink'];
+  const VIEW_ON = ['text-club'];
+  const VIEW_OFF = ['text-ink-muted', 'hover:text-ink'];
+
+  function setupTabs() {
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-grade-tab]'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.grade-panel'));
+    const viewButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-view-toggle]'));
+    if (!tabs.length) return;
+
+    const tabBar = tabs[0].closest('[role="tablist"]');
+    let activeView: 'fixtures' | 'ladder' = 'fixtures';
+
+    function showPanels(grade: string) {
+      for (const panel of panels) panel.classList.toggle('hidden', panel.id !== `panel-${grade}`);
+      // Within the visible division, show either the fixtures or the ladder.
+      for (const block of document.querySelectorAll<HTMLElement>('[data-view-content]')) {
+        block.classList.toggle('hidden', block.dataset.viewContent !== activeView);
+      }
+    }
+
+    function setGrade(grade: string, { focus = false } = {}) {
+      for (const tab of tabs) {
+        const on = tab.dataset.gradeTab === grade;
+        tab.classList.add(...(on ? TAB_ON : TAB_OFF));
+        tab.classList.remove(...(on ? TAB_OFF : TAB_ON));
+        tab.setAttribute('aria-selected', String(on));
+        tab.tabIndex = on ? 0 : -1;
+        if (on && focus) tab.focus();
+      }
+      showPanels(grade);
+      history.replaceState(null, '', `#${grade}`);
+    }
+
+    function setView(view: 'fixtures' | 'ladder') {
+      activeView = view;
+      for (const btn of viewButtons) {
+        const on = btn.dataset.viewToggle === view;
+        btn.classList.add(...(on ? VIEW_ON : VIEW_OFF));
+        btn.classList.remove(...(on ? VIEW_OFF : VIEW_ON));
+        btn.setAttribute('aria-pressed', String(on));
+      }
+      const current = tabs.find((t) => t.getAttribute('aria-selected') === 'true');
+      showPanels(current?.dataset.gradeTab ?? 'loc-1');
+    }
+
+    for (const tab of tabs) {
+      tab.addEventListener('click', () => {
+        if (tab.dataset.gradeTab) setGrade(tab.dataset.gradeTab);
+      });
+    }
+
+    tabBar?.addEventListener('keydown', (event) => {
+      const e = event as KeyboardEvent;
+      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      const at = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+      const next = tabs[(at + step + tabs.length) % tabs.length];
+      if (next?.dataset.gradeTab) setGrade(next.dataset.gradeTab, { focus: true });
+    });
+
+    for (const btn of viewButtons) {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.viewToggle;
+        if (v === 'fixtures' || v === 'ladder') setView(v);
+      });
+    }
+
+    const hash = window.location.hash.replace('#', '');
+    setView('fixtures');
+    setGrade((GRADES as readonly string[]).includes(hash) ? hash : 'loc-1');
+  }
+
+  setupTabs();
+  document.addEventListener('astro:page-load', setupTabs);
+</script>

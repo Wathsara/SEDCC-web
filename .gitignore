@@ -22,6 +22,9 @@ src/assets/README.md
 
 # Scratch files
 image.png
+image copy.png
+match-summary.png
+match-summary*.png
 *.local
 
 # OS and editor
@@ -31,3 +34,22 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# The field map weekend-summary.mjs writes beside each card, kept only so a
+# card that looks wrong can be traced back to the data that made it.
+.summary-*.json
+
+# Output of a backfill/test sync against an old season.
+.playhq-test/
+
+# Batch-rendered cards from a past season.
+season-cards/
+
+# Player photos for the MVP posters. Images of real people — keep the originals
+# somewhere the club controls, not in a public repo. The README stays.
+MVP/players/*
+!MVP/players/README.md
+
+# MVP poster output and the field map that produced it.
+.mvp-*.json
+mvp-*.png

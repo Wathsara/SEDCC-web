@@ -1,89 +1,312 @@
 ---
-import ResultChip from './ResultChip.astro';
+import Logo from './Logo.astro';
+import CricketIcon from './CricketIcon.astro';
 import { formatDate, isoDate } from '../lib/format';
-import type { TeamFixtures, Outcome } from '../lib/playhq-types';
+import { getClubLogo } from '../lib/logos';
+import type { TeamFixtures, Outcome, NormalisedGame } from '../lib/playhq-types';
 
 interface Props {
   team: TeamFixtures;
+  limit?: number;
 }
-const { team } = Astro.props;
+const { team, limit } = Astro.props;
 
-/*
-  Fixture lists are ragged: byes, washouts, forfeits, two-day games spanning a
-  fortnight, games not yet played. Each of those gets its own treatment rather
-  than being forced into a won/lost column.
-*/
-const CHIP: Record<string, { letter: 'W' | 'L' | 'D' | 'T' | 'N'; label: string }> = {
-  WON: { letter: 'W', label: 'Won' },
-  LOST: { letter: 'L', label: 'Lost' },
-  DRAWN: { letter: 'D', label: 'Drawn' },
-  TIED: { letter: 'T', label: 'Tied' },
-  WON_BY_SUPER_OVER: { letter: 'W', label: 'Won on super over' },
-  LOSS_BY_SUPER_OVER: { letter: 'L', label: 'Lost on super over' },
-  WASHOUT: { letter: 'N', label: 'Washed out' },
-  FORFEIT: { letter: 'N', label: 'Forfeit' },
+/**
+ * Result chips.
+ *
+ * Colour comes from the result tokens, never from Tailwind's own palette —
+ * and it is always paired with a letter, because colour must not be the only
+ * signal.
+ *
+ * Outcome is not a closed set: one real season produced WON_BY_FORFEIT and
+ * WON_BY_CUSTOM_TARGET, neither of which was listed here, so those games drew
+ * no chip at all. Match on the WON_/LOST_ prefix and an unseen variant still
+ * reads correctly.
+ */
+const CHIP_STYLE = {
+  win: 'border-win/30 bg-win/10 text-win',
+  loss: 'border-loss/30 bg-loss/10 text-loss',
+  draw: 'border-draw/30 bg-draw/10 text-draw',
+  none: 'border-rule-strong bg-paper-sunk text-ink-muted',
+} as const;
+
+const OUTCOME_LABEL: Record<string, string> = {
+  WON: 'Won',
+  LOST: 'Lost',
+  DRAWN: 'Drawn',
+  TIED: 'Tied',
+  WON_BY_SUPER_OVER: 'Won on super over',
+  LOST_BY_SUPER_OVER: 'Lost on super over',
+  WON_BY_FORFEIT: 'Won by forfeit',
+  LOST_BY_FORFEIT: 'Lost by forfeit',
+  WON_BY_CUSTOM_TARGET: 'Won',
+  LOST_BY_CUSTOM_TARGET: 'Lost',
+  WASHOUT: 'Washed out',
+  ABANDONED: 'Abandoned',
+  FORFEIT: 'Forfeit',
 };
 
-const chipFor = (o: Outcome) => (o ? CHIP[o] : undefined);
+function chipFor(outcome: Outcome) {
+  if (!outcome) return undefined;
+  const o = String(outcome);
+  const label = OUTCOME_LABEL[o] ?? o.replace(/_/g, ' ').toLowerCase();
 
-/** Two dates means a two-day game spanning a fortnight. */
-const dateLabel = (dates: string[]) =>
-  dates.length > 1
-    ? `${formatDate(dates[0], { day: 'numeric', month: 'short' })} & ${formatDate(dates[dates.length - 1], { day: 'numeric', month: 'short' })}`
-    : formatDate(dates[0], { weekday: 'short', day: 'numeric', month: 'short' });
+  if (/^WON(_|$)/.test(o)) return { letter: 'W' as const, label, bgClass: CHIP_STYLE.win };
+  if (/^LOST(_|$)/.test(o)) return { letter: 'L' as const, label, bgClass: CHIP_STYLE.loss };
+  if (o === 'TIED') return { letter: 'T' as const, label, bgClass: CHIP_STYLE.draw };
+  if (o === 'DRAWN') return { letter: 'D' as const, label, bgClass: CHIP_STYLE.draw };
+  return { letter: 'N' as const, label, bgClass: CHIP_STYLE.none };
+}
+
+
+function monogram(name: string): string {
+  return (name || '')
+    .replace(/\s*-\s*\d+$/, '')
+    .replace(/\b(1st|2nd|3rd|4th)\s+XI\b/i, '')
+    .replace(/\bGrade\b.*$/i, '')
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
+
+const dateLabel = (dates: string[]) => {
+  if (!dates || dates.length === 0) return 'Date TBC';
+  if (dates.length > 1) {
+    return `${formatDate(dates[0], { weekday: 'short', day: 'numeric', month: 'short' })} & ${formatDate(dates[dates.length - 1], { weekday: 'short', day: 'numeric', month: 'short' })}`;
+  }
+  return formatDate(dates[0], { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+};
+
+const formatMatchTime = (dateStr?: string) => {
+  if (!dateStr) return '1:30 PM AEDT';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleTimeString('en-AU', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'Australia/Melbourne' });
+  } catch {
+    return '1:30 PM AEDT';
+  }
+};
+
+/**
+ * Games and byes in one sequence, in round order.
+ *
+ * A bye is part of the season's shape — the week the side did not play — so it
+ * belongs where it falls, not in a list of leftovers after the last round.
+ * Rendering them separately put a Round 4 bye below Round 14.
+ *
+ * Ordering is by round number where there is one. Finals carry names rather
+ * than numbers (Preliminary Final, Grand Final), so they keep the order the
+ * sync produced, which is date order, and sort after the home-and-away rounds.
+ */
+const roundNumber = (label: string): number => {
+  const n = /(\d+)/.exec(label ?? '');
+  return n ? Number(n[1]) : Number.POSITIVE_INFINITY;
+};
+
+type Entry =
+  | { kind: 'game'; round: string; order: number; seq: number; game: NormalisedGame }
+  | { kind: 'bye'; round: string; order: number; seq: number };
+
+const entries: Entry[] = [
+  ...team.games.map((game, i) => ({
+    kind: 'game' as const,
+    round: game.round,
+    order: game.isFinal ? Number.POSITIVE_INFINITY : roundNumber(game.roundShort || game.round),
+    seq: i,
+    game,
+  })),
+  ...team.byes.map((b, i) => ({
+    kind: 'bye' as const,
+    round: b.round,
+    order: roundNumber(b.roundShort || b.round),
+    seq: team.games.length + i,
+  })),
+].sort((a, b) => a.order - b.order || a.seq - b.seq);
+
+const toDisplay = limit ? entries.slice(0, limit) : entries;
+const gamesToDisplay = toDisplay;
 ---
 
-<ul>
+<div class="space-y-4">
   {
-    team.games.map((g) => {
-      const chip = chipFor(g.outcome);
-      const played = g.status === 'FINAL';
-      return (
-        <li class="card-line" data-rule-in>
-          <span class="card-line__name flex items-center gap-3">
-            {chip ? (
-              <ResultChip outcome={chip.letter} label={chip.label} />
-            ) : (
-              <span class="result result--none" aria-hidden="true">
-                –
+      gamesToDisplay.map((entry) => {
+        if (entry.kind === 'bye') {
+          return (
+            <div class="border-l-2 border-l-rule-strong bg-paper-sunk/50 px-4 py-3" data-rule-in>
+              <span class="font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
+                {entry.round}
               </span>
-            )}
-            <span>
-              {g.isHome ? 'v' : '@'} {g.opponent}
-            </span>
-          </span>
-          <span class="card-line__figures">
-            {played && g.ourScore ? (
-              <>
-                {g.ourScore} <span class="text-ink-faint">/</span> {g.theirScore}
-              </>
-            ) : (
-              <time datetime={isoDate(g.dates[0])}>{dateLabel(g.dates)}</time>
-            )}
-          </span>
-          <span class="card-line__context">
-            {g.roundShort} · {g.ground ?? 'Ground TBC'}
-            {!played && g.status !== 'FINAL' && g.ourScore === null && chip === undefined && (
-              <> · {g.status === 'UPCOMING' ? 'Upcoming' : g.status}</>
-            )}
-            {chip && !g.ourScore && <> · {chip.label}</>}
-          </span>
-        </li>
+              <span class="mx-2 text-ink-faint" aria-hidden="true">·</span>
+              <span class="text-sm text-ink-muted">Bye</span>
+            </div>
+          );
+        }
+        const g = entry.game;
+      const chip = chipFor(g.outcome);
+      const isPlayed = g.status === 'FINAL' || g.outcome !== null;
+      const opponentLogo = getClubLogo(g.opponent);
+      const mapUrl = g.mapQuery
+        ? `https://www.google.com/maps/search/?api=1&query=${g.mapQuery}`
+        : g.ground
+          ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${g.ground}, ${g.suburb ?? 'VIC'}`)}`
+          : null;
+
+      return (
+        <article
+          class:list={[
+            'tile relative overflow-hidden transition-all duration-300 hover:shadow-lift hover:-translate-y-0.5 border',
+            isPlayed ? 'border-rule' : 'border-club/20 bg-paper',
+            g.isHome ? 'border-l-4 border-l-club' : 'border-l-4 border-l-accent',
+          ]}
+          data-rule-in
+        >
+          {/* Card Top Banner: IPL Style */}
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-rule bg-paper-sunk/60 px-4 py-2.5 text-2xs sm:px-5">
+            <div class="flex items-center gap-2">
+              <span class="rounded bg-club px-2 py-0.5 font-display uppercase tracking-wider text-paper font-semibold">
+                {g.round}
+              </span>
+              <span class="font-figures text-ink-muted uppercase tracking-wider">
+                One Day · 40 Overs
+              </span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="flex items-center gap-1 font-figures text-ink">
+                <time datetime={isoDate(g.dates[0])}>{dateLabel(g.dates)}</time>
+                <span class="text-ink-faint">·</span>
+                <span>{formatMatchTime(g.dates[0])}</span>
+              </span>
+
+              {chip ? (
+                <span class:list={['rounded border px-2 py-0.5 font-display text-2xs uppercase tracking-wider font-bold', chip.bgClass]}>
+                  {chip.label}
+                </span>
+              ) : (
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-club/10 px-2.5 py-0.5 font-display text-2xs font-semibold uppercase tracking-wider text-club">
+                  <span class="h-1.5 w-1.5 rounded-full bg-club animate-pulse"></span>
+                  Upcoming
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Matchup Arena */}
+          <div class="p-4 sm:p-5">
+            <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
+              {/* Left / Dreamers Team */}
+              <div class="flex items-center justify-between md:justify-start md:gap-3.5">
+                <div class="flex items-center gap-3">
+                  <div class="relative flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-full bg-club shadow-sm border border-white/20 p-1">
+                    <Logo class="h-8 w-8 sm:h-9 sm:w-9" width={36} />
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="font-display text-base sm:text-lg uppercase tracking-tight text-club font-bold">
+                        {team.name}
+                      </span>
+                      {g.isHome && (
+                        <span class="rounded bg-club/10 px-1.5 py-0.2 text-[10px] font-display font-semibold uppercase tracking-wider text-club">
+                          Home
+                        </span>
+                      )}
+                    </div>
+                    <p class="font-figures text-2xs text-ink-muted">South Eastern Dreamers CC</p>
+                  </div>
+                </div>
+
+                {isPlayed && g.ourScore && (
+                  <div class="font-figures text-xl sm:text-2xl font-bold text-club tracking-tight">
+                    {g.ourScore}
+                  </div>
+                )}
+              </div>
+
+              {/* VS Divider */}
+              <div class="flex items-center justify-center py-1 md:py-0">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-paper-sunk border border-rule font-display text-2xs uppercase font-bold text-ink-muted shadow-inner">
+                  VS
+                </span>
+              </div>
+
+              {/* Right / Opponent Team */}
+              <div class="flex items-center justify-between md:flex-row-reverse md:justify-start md:gap-3.5">
+                <div class="flex items-center gap-3 md:flex-row-reverse md:text-right">
+                  {opponentLogo ? (
+                    <div class="flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-full border border-rule bg-white p-1 shadow-sm overflow-hidden">
+                      <img
+                        src={opponentLogo}
+                        alt={g.opponent}
+                        class="h-full w-full object-contain"
+                        loading="lazy"
+                        onerror="this.style.display='none'"
+                      />
+                    </div>
+                  ) : (
+                    <div class="flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-full border border-rule-strong bg-paper-sunk font-display text-sm sm:text-base font-bold uppercase text-ink-muted shadow-sm">
+                      {monogram(g.opponent)}
+                    </div>
+                  )}
+                  <div class="min-w-0 flex-1">
+                    <div class="flex items-center gap-1.5 md:flex-row-reverse">
+                      <span class="font-display text-sm sm:text-base font-bold uppercase tracking-tight text-ink leading-tight line-clamp-2 max-w-[180px] sm:max-w-[240px]">
+                        {g.opponent}
+                      </span>
+                      {!g.isHome && (
+                        <span class="rounded bg-accent/15 px-1.5 py-0.2 text-[10px] font-display font-semibold uppercase tracking-wider text-accent shrink-0">
+                          Home
+                        </span>
+                      )}
+                    </div>
+                    <p class="font-figures text-2xs text-ink-muted">
+                      {g.isHome ? 'Away Team' : 'Host Team'}
+                    </p>
+                  </div>
+                </div>
+
+                {isPlayed && g.theirScore && (
+                  <div class="font-figures text-xl sm:text-2xl font-bold text-ink-muted tracking-tight">
+                    {g.theirScore}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Match Details & Venue Bar */}
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-rule pt-3 text-xs text-ink-muted">
+              <div class="flex items-center gap-1.5 font-figures">
+                <CricketIcon name="boundary" class="h-3.5 w-3.5 text-club shrink-0" />
+                {mapUrl ? (
+                  <a
+                    href={mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="stitch-link inline-flex items-center gap-1 font-medium text-ink hover:text-club hover:underline transition-colors truncate max-w-[260px] sm:max-w-[340px]"
+                    title="Open ground location in Google Maps"
+                  >
+                    <span class="truncate">{g.ground ?? g.venue ?? 'Ground TBC'}</span>
+                    <span class="text-[10px] text-accent" aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <span class="font-medium text-ink truncate max-w-[260px] sm:max-w-[340px]">
+                    {g.ground ?? g.venue ?? 'Ground TBC'}
+                  </span>
+                )}
+                {g.suburb && <span class="text-ink-faint">({g.suburb})</span>}
+              </div>
+
+              <div class="flex items-center gap-3">
+                <span class="rounded bg-paper-sunk px-2 py-0.5 font-figures text-2xs text-ink-muted">
+                  {team.competition}
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
       );
     })
   }
-  {
-    team.byes.map((b) => (
-      <li class="card-line" data-rule-in>
-        <span class="card-line__name flex items-center gap-3">
-          <span class="result result--none" aria-hidden="true">
-            –
-          </span>
-          <span class="text-ink-muted">Bye</span>
-        </span>
-        <span class="card-line__figures text-ink-faint">No game</span>
-        <span class="card-line__context">{b.roundShort}</span>
-      </li>
-    ))
-  }
-</ul>
+
+</div>

@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PlayerCard from '../../components/PlayerCard.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import { season, teams, squadFor, url } from '../../lib/site';
+import { seasonStats } from '../../lib/playhq';
+
+/* Figures come from the sync and join to the roster by name — there is no
+   stable player id in the PlayHQ public API. */
+const statsByName = new Map(
+  (seasonStats.players ?? []).map((p) => [p.displayName.toLowerCase(), p]),
+);
+
+const sides = teams
+  .map((team) => ({ team, squad: squadFor(team.slug) }))
+  .filter((s) => s.squad.length > 0);
+
+const named = sides.reduce((n, s) => n + s.squad.length, 0);
+---
+
+<Base
+  title="Players"
+  description={`The ${season.label} playing group across all Dreamers sides.`}
+>
+  <PageHeader
+    eyebrow={season.label}
+    title="Players"
+    intro={
+      named > 0
+        ? `${named} players named across ${sides.length} ${sides.length === 1 ? 'side' : 'sides'}.`
+        : 'Squads are named before the first round.'
+    }
+  />
+
+  <div class="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+    {
+      sides.length > 0 ? (
+        <div class="space-y-14">
+          {sides.map(({ team, squad }, sideIndex) => (
+            <section>
+              <div class="mb-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-rule pb-3">
+                <h2 class="font-display text-2xl uppercase tracking-display text-club">
+                  {team.name}
+                  <span class="ml-2 font-figures text-2xs text-ink-faint">{squad.length}</span>
+                </h2>
+                <p class="font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
+                  {team.competitionShort} {team.gradeLabel}
+                  <span class="mx-1.5 text-ink-faint" aria-hidden="true">·</span>
+                  {team.day}s
+                </p>
+              </div>
+
+              <ul class="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+                {squad.map((player, i) => (
+                  <li>
+                    <PlayerCard
+                      player={player}
+                      stat={statsByName.get(player.name.toLowerCase())}
+                      loading={sideIndex === 0 && i < 4 ? 'eager' : 'lazy'}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <EmptyState title="Squads are not published yet" />
+      )
+    }
+
+    {
+      teams.some((t) => squadFor(t.slug).length === 0) && (
+        <p class="mt-12 border-t border-rule pt-4 text-xs text-ink-muted">
+          {teams
+            .filter((t) => squadFor(t.slug).length === 0)
+            .map((t) => t.name)
+            .join(' and ')}{' '}
+          {teams.filter((t) => squadFor(t.slug).length === 0).length === 1 ? 'is' : 'are'} not
+          published yet.
+          <a
+            href={url('teams')}
+            class="stitch-link ml-1 font-display uppercase tracking-eyebrow text-club transition-colors hover:text-accent"
+          >
+            All teams
+          </a>
+        </p>
+      )
+    }
+  </div>
+</Base>

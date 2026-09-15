@@ -1,0 +1,22 @@
+{
+  "season": "2025-26",
+  "label": "2025/26 Season",
+  "startsAround": "2025-10-05",
+  "_comment": "BACKFILL / TEST ONLY. Last season: one side, VSCA Grade 4, registered as 'Dreamers SC - 4'. The season and grade IDs came from 'npm run playhq:discover-test -- --all' and are confirmed by the club. NOTE: the grade ID recorded in config/all-time.json (e3e0d509-...) is WRONG \u2014 it 404s \u2014 and should be corrected there. playhqTeamId is null on purpose: the sync resolves it from the grade fixture using club.playhq.clubNameMatch. These IDs are historical; never copy them into season-2026-27.json. Run with SEASON=2025-26 PLAYHQ_DATA_DIR=.playhq-test so the committed data is untouched.",
+  "teams": [
+    {
+      "slug": "grade-4",
+      "name": "Dreamers SC - 4",
+      "shortName": "Grade 4",
+      "competition": "Victorian Sunday Cricket Association",
+      "competitionShort": "VSCA",
+      "day": "Sunday",
+      "gradeLabel": "Grade 4",
+      "playhqSeasonId": "a983e771-487b-4090-a052-4c84d378b665",
+      "playhqGradeId": "b46b57fc-fb65-4410-89c6-e047ef597aa0",
+      "playhqTeamId": null,
+      "active": true,
+      "shield": null
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 ---
+import Logo from './Logo.astro';
 import CricketIcon from './CricketIcon.astro';
 import { formatDate, isoDate } from '../lib/format';
 import { teamBySlug, url } from '../lib/site';
+import { getClubLogo } from '../lib/logos';
 import type { GameWithTeam } from '../lib/playhq';
 
 interface Props {
@@ -9,43 +11,168 @@ interface Props {
 }
 const { game } = Astro.props;
 const team = teamBySlug(game.teamSlug);
+const opponentLogo = getClubLogo(game.opponent);
+
+function monogram(name: string): string {
+  return (name || '')
+    .replace(/\s*-\s*\d+$/, '')
+    .replace(/\b(1st|2nd|3rd|4th)\s+XI\b/i, '')
+    .replace(/\bGrade\b.*$/i, '')
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
+
+const formatMatchTime = (dateStr?: string) => {
+  if (!dateStr) return '1:30 PM AEDT';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleTimeString('en-AU', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'Australia/Melbourne' });
+  } catch {
+    return '1:30 PM AEDT';
+  }
+};
+
+const mapUrl = game.mapQuery
+  ? `https://www.google.com/maps/search/?api=1&query=${game.mapQuery}`
+  : game.ground
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${game.ground}, ${game.suburb ?? 'VIC'}`)}`
+    : null;
 ---
 
-<a href={url(`teams/${game.teamSlug}`)} class="scoreboard block p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-lift relative overflow-hidden border border-white/10 group">
-  <div class="flex items-center justify-between gap-4 border-b border-white/10 pb-3">
+<article
+  class="scoreboard group relative flex flex-col justify-between overflow-hidden border border-white/15 bg-gradient-to-b from-[#111f44] via-[#0d1836] to-[#091126] text-paper shadow-lift transition-all duration-300 hover:-translate-y-1 hover:border-accent-tint/50 hover:shadow-2xl"
+  data-rule-in
+>
+  {/* Atmospheric Radial Gradient Lighting */}
+  <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent-tint/10 blur-3xl transition-opacity group-hover:opacity-100"></div>
+  <div class="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-club-tint/20 blur-3xl"></div>
+
+  {/* Top Banner Ribbon */}
+  <div class="relative flex flex-wrap items-center justify-between gap-2 border-b border-white/10 bg-black/20 px-4 py-2.5 sm:px-6 sm:py-3 text-2xs">
     <div class="flex items-center gap-2">
-      <span class="inline-block h-2 w-2 rounded-full bg-accent-tint animate-pulse"></span>
-      <span class="scoreboard__label">Next Fixture · {game.roundShort}</span>
+      <span class="rounded bg-white/10 px-2 py-0.5 font-display text-[11px] font-bold uppercase tracking-wider text-paper">
+        {game.round}
+      </span>
+      <span class="font-figures uppercase tracking-wider text-accent-tint">
+        {team?.day ?? 'Saturday'} Matchday
+      </span>
     </div>
-    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-white/5 border border-white/10 text-accent-tint group-hover:text-paper transition-colors">
-      <CricketIcon name="stumps" class="h-3.5 w-3.5" />
+
+    <div class="flex items-center gap-2">
+      <span class="rounded border border-white/15 bg-white/5 px-2.5 py-0.5 font-display text-[10px] font-semibold uppercase tracking-wider text-paper/90">
+        {team?.shield ?? `${team?.competitionShort} · ${team?.gradeLabel}`}
+      </span>
     </div>
   </div>
 
-  <p class="mt-4 font-display text-xl sm:text-2xl uppercase leading-snug break-words text-paper">
-    {team?.shortName ?? game.teamName}
-    <span class="text-accent-tint/80 font-light">{game.isHome ? ' v ' : ' @ '}</span>
-    {game.opponent}
-  </p>
+  {/* Center Matchup Arena */}
+  <div class="relative p-4 sm:p-6">
+    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4">
+      
+      {/* Left Team: Dreamers CC */}
+      <div class="flex flex-col items-center text-center sm:flex-row sm:text-left sm:items-center gap-2 sm:gap-3.5 min-w-0">
+        <div class="relative flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-full bg-club shadow-sm border border-white/20 p-1">
+          <Logo class="h-8 w-8 sm:h-9 sm:w-9" width={36} />
+        </div>
+        <div class="min-w-0 w-full sm:w-auto">
+          <a href={url(`teams/${game.teamSlug}`)} class="stitch-link hover:text-accent-tint">
+            <h3 class="font-display text-sm sm:text-base font-bold uppercase tracking-tight text-paper leading-tight line-clamp-2">
+              {team?.name ?? game.teamName}
+            </h3>
+          </a>
+          <div class="mt-1 flex items-center justify-center sm:justify-start gap-1 font-figures text-[11px] text-paper/60">
+            <span class="hidden sm:inline">SEDCC ·</span>
+            <span class:list={[
+              'rounded px-1.5 py-0.2 font-display uppercase tracking-wider text-[10px] font-bold',
+              game.isHome ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-white/10 text-paper/80'
+            ]}>
+              {game.isHome ? 'Home' : 'Away'}
+            </span>
+          </div>
+        </div>
+      </div>
 
-  <dl class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 border-t border-white/10 pt-4">
-    <div>
-      <dt class="scoreboard__label">Date</dt>
-      <dd class="mt-0.5 font-figures text-sm tabular-nums text-paper">
-        <time datetime={isoDate(game.dates[0])}>
-          {formatDate(game.dates[0], { weekday: 'short', day: 'numeric', month: 'short' })}
+      {/* Center VS Divider & Format Tag */}
+      <div class="flex flex-col items-center justify-center px-1">
+        <span class="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 font-display text-[10px] sm:text-[11px] font-bold uppercase text-accent-tint shadow-inner">
+          VS
+        </span>
+        <span class="mt-1 font-figures text-[8px] sm:text-[9px] uppercase tracking-wider text-paper/50">
+          40 OVR
+        </span>
+      </div>
+
+      {/* Right Team: Opponent Club */}
+      <div class="flex flex-col items-center text-center sm:flex-row-reverse sm:text-right sm:items-center gap-2 sm:gap-3.5 min-w-0">
+        {opponentLogo ? (
+          <div class="flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white p-1 shadow-md transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+            <img
+              src={opponentLogo}
+              alt={game.opponent}
+              class="h-full w-full object-contain"
+              loading="lazy"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        ) : (
+          <div class="flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 font-display text-xs sm:text-sm font-bold uppercase text-paper/90 shadow-md">
+            {monogram(game.opponent)}
+          </div>
+        )}
+        <div class="min-w-0 w-full sm:w-auto">
+          <h3 class="font-display text-sm sm:text-base font-bold uppercase tracking-tight text-paper leading-tight line-clamp-2">
+            {game.opponent}
+          </h3>
+          <div class="mt-1 flex items-center justify-center sm:justify-end gap-1 font-figures text-[11px] text-paper/60">
+            <span class:list={[
+              'rounded px-1.5 py-0.2 font-display uppercase tracking-wider text-[10px] font-bold',
+              !game.isHome ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-white/10 text-paper/80'
+            ]}>
+              {!game.isHome ? 'Home' : 'Away'}
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {/* Match Info Footer */}
+  <div class="relative border-t border-white/10 bg-black/30 px-4 py-3 sm:px-6 sm:py-3.5">
+    <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-figures text-2xs sm:text-xs">
+      {/* Date & Time */}
+      <div class="flex items-center gap-1.5 text-paper">
+        <CricketIcon name="calendar" class="h-3.5 w-3.5 text-accent-tint shrink-0" />
+        <time datetime={isoDate(game.dates?.[0])} class="font-semibold text-paper">
+          {formatDate(game.dates?.[0], { weekday: 'short', day: 'numeric', month: 'short' })}
         </time>
-      </dd>
+        <span class="text-white/30">·</span>
+        <span class="text-accent-tint font-medium">{formatMatchTime(game.dates?.[0])}</span>
+      </div>
+
+      {/* Ground location with direct map link */}
+      <div class="flex items-center gap-1.5 text-paper/85">
+        <CricketIcon name="boundary" class="h-3.5 w-3.5 text-accent-tint shrink-0" />
+        {mapUrl ? (
+          <a
+            href={mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="stitch-link truncate max-w-[220px] sm:max-w-[300px] font-normal text-paper/90 hover:text-paper hover:underline transition-colors inline-flex items-center gap-1"
+            title="Open venue in Google Maps"
+          >
+            <span class="truncate">{game.ground ?? 'Ground TBC'}</span>
+            <span class="text-[9px] text-accent-tint" aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <span class="truncate max-w-[220px] sm:max-w-[300px] font-normal text-paper/80">
+            {game.ground ?? 'Ground TBC'}
+          </span>
+        )}
+      </div>
     </div>
-    <div>
-      <dt class="scoreboard__label">Time</dt>
-      <dd class="mt-0.5 font-figures text-sm tabular-nums text-accent-tint font-semibold">
-        {formatDate(game.dates[0], { hour: 'numeric', minute: '2-digit' })}
-      </dd>
-    </div>
-    <div class="col-span-2 sm:col-span-1">
-      <dt class="scoreboard__label">Ground</dt>
-      <dd class="mt-0.5 text-xs text-paper/90 font-medium truncate">{game.ground ?? 'Venue TBC'}</dd>
-    </div>
-  </dl>
-</a>
+  </div>
+</article>

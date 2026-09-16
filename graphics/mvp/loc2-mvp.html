@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Player Performance Poster - White Kit Edition</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&amp;family=Oswald:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #07101b;
+      color: #ffffff;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .poster-container {
+      width: 100%;
+      max-width: 675px;
+      min-height: 843.75px;
+      position: relative;
+      background: radial-gradient(circle at 50% 52%, #142844 0%, #0c182c 45%, #050b14 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+    }
+    /* Subtle floodlight & atmosphere for white kit separation */
+    .floodlight-aura {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      width: 380px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(70, 120, 185, 0.32) 0%, rgba(20, 48, 85, 0.18) 50%, rgba(5, 11, 20, 0) 75%);
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .stadium-beam-left {
+      position: absolute;
+      top: -40px;
+      left: -30px;
+      width: 220px;
+      height: 520px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(13, 27, 42, 0) 70%);
+      transform: rotate(18deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .stadium-beam-right {
+      position: absolute;
+      top: -40px;
+      right: -30px;
+      width: 220px;
+      height: 520px;
+      background: linear-gradient(225deg, rgba(255,255,255,0.06) 0%, rgba(13, 27, 42, 0) 70%);
+      transform: rotate(-18deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* Decorative geometric graphic shards matching cricket poster dynamism */
+    .shard-1 {
+      position: absolute;
+      right: -18px;
+      top: 40%;
+      width: 32px;
+      height: 180px;
+      background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+      transform: skewY(-28deg);
+      box-shadow: 0 8px 25px rgba(217, 119, 6, 0.35);
+      z-index: 2;
+    }
+    .shard-2 {
+      position: absolute;
+      right: -10px;
+      top: 48%;
+      width: 22px;
+      height: 130px;
+      background: linear-gradient(180deg, #ec4899 0%, #be185d 100%);
+      transform: skewY(-28deg);
+      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
+      z-index: 2;
+    }
+    .shard-3 {
+      position: absolute;
+      right: -4px;
+      top: 66%;
+      width: 18px;
+      height: 90px;
+      background: linear-gradient(180deg, #d97706 0%, #f59e0b 100%);
+      transform: skewY(-28deg);
+      z-index: 2;
+    }
+    /* Player image frame */
+    .player-image-layer {
+      position: absolute;
+      top: 240px;
+      bottom: 72px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .player-img {
+      max-height: 100%;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 45px rgba(255, 255, 255, 0.12));
+      transform: scale(1.08);
+      transform-origin: bottom center;
+    }
+    /* Typography */
+    .font-oswald {
+      font-family: 'Oswald', sans-serif;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(180deg, #FFE885 0%, #F5B82E 50%, #D4900C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Stats Glassmorphic Card */
+    .stats-card {
+      background: rgba(10, 24, 46, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(82, 126, 184, 0.35);
+      border-radius: 18px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+    /* Sponsor pod */
+    .sponsor-pod {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+      height: 38px;
+      transition: transform 0.2s ease;
+    }
+    .sponsor-pod-gold {
+      background: #ffffff;
+      border: 1.5px solid #F5B82E;
+      border-radius: 8px;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(245, 184, 46, 0.35);
+      height: 38px;
+    }
+  </style>
+</head>
+<body style="font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: #d8d3c8; color: #0f172a; overflow-x: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+<div data-capture class="poster-container" style="background: radial-gradient(circle at 50% 30%, rgb(255, 255, 255) 0%, rgb(247, 244, 237) 50%, rgb(234, 227, 210) 100%); color: rgb(15, 23, 42); box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 60px; min-height: 843.75px; height: 843.75px; max-width: 675px; overflow: hidden; position: relative;">
+<!-- Atmospheric Stadium Lighting Effects -->
+<!-- Bold Geometric Accents on side -->
+<div class="shard-1" style="position: absolute; right: -25px; top: 54%; width: 65px; height: 180px; background: linear-gradient(135deg, rgb(249, 115, 22) 0%, rgb(234, 88, 12) 100%); transform: skewY(-22deg) rotate(-10deg); box-shadow: rgba(234, 88, 12, 0.45) 0px 10px 30px; z-index: 2; border-radius: 4px;"></div>
+<div class="shard-2" style="position: absolute; right: -18px; top: 62%; width: 48px; height: 140px; background: linear-gradient(135deg, rgb(236, 72, 153) 0%, rgb(219, 39, 119) 50%, rgb(190, 24, 93) 100%); transform: skewY(-22deg) rotate(-10deg); box-shadow: rgba(219, 39, 119, 0.4) 0px 10px 25px; z-index: 2; border-radius: 4px;"></div>
+
+<!-- Cutout Player Layer (White Jersey Edition) -->
+<div class="player-image-layer" style="top: 118px; bottom: 60px; z-index: 3;">
+<img alt="Saman Kumara - Dreamers CC White Kit" class="player-img" data-photo="player" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8U5BAcenT8inDsbQ7pWHz7_N05sIFldEgYfn7bcCt_z_4OCIp6icTgu4duIpwuyVLF6nP5o6ZDdJOxgXwnhb4hi1wXlJeaNFIyKqS04-BlXSC-Pu8tY3xIXNYEiTo0hmmFeoeIBmi9jtC6OCb2HLCiY2j7BtmNic3Fi4PJR0y8odl_qvzqXroaJJuYhPUnivAIlhBIKA-DSssJ6XSzkKmUnKV3AV9BC8WADj-Lk3tyhP3ykSJ--NWFUZ7F_xIcLThSg" style="max-height: 100%; width: auto; object-fit: contain; filter: drop-shadow(rgba(0, 0, 0, 0.22) 0px 15px 25px); transform: scale(1.32); transform-origin: center top 0px;">
+<div class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#020712] via-[#020712]/80 to-transparent pointer-events-none z-10"></div></div>
+<!-- Top Section: League Crest, Tournament Badge, Club Crest & Player Header -->
+<div class="relative z-10 pt-5 px-5 flex flex-col items-center">
+<!-- Top Crests Row -->
+<div class="w-full flex items-center justify-between">
+<!-- VSCA Crest -->
+<div class="w-[86px] h-[74px] flex items-center justify-center filter drop-shadow-md"><img alt="ECA Logo" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeoum2xN1KrnOl2zXLu4OjZ8CkbYS4HVZdnaMwT8YxUm6zQ9lHNC1rjBTgPeuOP9St0oofXqH784dI5CuKi9bdGCo5KPKo9gH-yLEHqV3fOzo_G_kiWVKK_4hmZh9oTki2kAVPEtPh9qtwTlVpgx14hIdDA9pmVn4WikS-l846_BsR5QljZPsSZxxeYGdTQU5bx2Xa0mbDp5g2RQse6LwaLEuSZFZ2tG261hydfaNa38okvD7ZYfyqKiMC0fCrIYbI8w"></div>
+<!-- Competition Badge Pill -->
+<div class="bg-white/95 border border-[#d6cbbe] rounded-full px-5 py-2 flex items-center gap-1.5 shadow-sm backdrop-blur-md"><span class="text-[#0f172a] text-[17px] font-black tracking-wider uppercase"><span data-field="meta.competition">ECA 2026/27 LOC 2</span></span></div>
+<!-- Dreamers Club Crest -->
+<div class="w-[74px] h-[86px] flex items-center justify-center filter drop-shadow-md">
+<img alt="Dreamers CC Crest" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCszzNqh5stzISA92B3WTi_ExTN9e-43KCD4PPtAsaFOnruR80-VITJCP-LyYDA4Ks8c11PfUtkFFdOCMvMZ6hLHyP2AJmy4f7LbsYZ9yT14lDp_DT1AiS0c6B95WaR0obEa02JUarDwsP7fPP2LdrU7HnVPsYz5DRyO5sijL3szEcju-KzCpx4LT3Wik2a-fjUfrT5YYWILfD2cExPJg_VvBhRFXkd0xiam8RiZI3t3JKmCjnzUh3_sh_tNNZC9Xet7g">
+</div>
+</div>
+<!-- Player Nameplate in Top Header -->
+<div class="mt-4 text-center">
+<h1 class="text-[42px] font-black uppercase tracking-tight leading-none text-[#0f172a] drop-shadow-sm"><span data-field="player.first">SAMAN</span> <span class=""><span data-field="player.last">KUMARA</span></span></h1>
+</div>
+<!-- Centered Performance Glassmorphic Card -->
+<div data-statblock class="w-full max-w-[340px] mt-3 px-4 relative overflow-hidden rounded-2xl bg-white/95 border border-[#d6cbbe] backdrop-blur-md shadow-xl py-3" style="width: 400px; max-width: 94%; margin-left: auto; margin-right: auto; position: relative; z-index: 20; padding-top: 8px; padding-bottom: 8px;"><div class="grid grid-cols-3 divide-x divide-slate-200" data-stat-grid><div data-panel="bat" class="px-2 flex flex-col items-center justify-center text-center"><span class="text-[14px] font-bold uppercase tracking-wider text-slate-500 mb-1 leading-none">BATTING</span><div class="flex items-baseline justify-center gap-1.5"><span class="font-oswald text-[64px] font-bold leading-none tracking-tight text-[#0f172a]"><span data-field="bat.runs">86</span><span class="text-[#b47d0e] text-[34px] ml-0.5" data-field="bat.notout">*</span></span><span class="font-oswald text-[29px] font-semibold text-slate-500 tracking-tight"><span data-field="bat.balls">(64)</span></span></div><span class="text-[13px] font-semibold text-slate-500 mt-2 tracking-wider uppercase leading-none"><span data-field="bat.boundaries">10x4 • 2x6</span></span></div><div data-panel="bowl" class="px-2 flex flex-col items-center justify-center text-center"><span class="text-[14px] font-bold uppercase tracking-wider text-slate-500 mb-1 leading-none">BOWLING</span><div class="flex items-baseline justify-center"><span class="font-oswald text-[64px] font-bold leading-none tracking-tight text-[#b47d0e]"><span data-field="bowl.figures">3/28</span></span></div><span class="text-[13px] font-semibold text-slate-500 mt-2 tracking-wider uppercase leading-none"><span data-field="bowl.detail">7 OVS • ECON 4.00</span></span></div><div data-panel="field" class="px-2 flex flex-col items-center justify-center text-center"><span class="text-[14px] font-bold uppercase tracking-wider text-slate-500 mb-1 leading-none">FIELDING</span><div class="flex items-baseline justify-center"><span class="font-oswald text-[64px] font-bold leading-none tracking-tight text-[#0f172a]"><span data-field="field.figures">3</span></span></div><span class="text-[13px] font-semibold text-slate-500 mt-2 tracking-wider uppercase leading-none"><span data-field="field.detail">2 CT • 1 RO</span></span></div></div></div>
+</div>
+<!-- Bottom Section: Accolade & Official Sponsors Footer -->
+<div class="relative z-10 w-full flex flex-col items-center">
+<!-- MVP Accolade Banner -->
+<div class="text-center mb-3"><h2 class="text-[30px] font-black uppercase tracking-[0.2em] text-amber-300 drop-shadow-[0_2px_10px_rgba(245,158,11,0.6)]"><span data-field="award">MVP OF THE MATCH</span></h2><p class="text-[20px] font-black uppercase tracking-widest text-white drop-shadow-md mt-1"><span data-field="meta.opponent">VS EASTERN REBELS</span></p><p class="text-[15px] font-bold uppercase tracking-widest text-amber-300 drop-shadow-sm mt-0.5"><span data-field="meta.round">ROUND 14</span> • <span data-field="meta.date">08 FEB 2026</span></p></div>
+<!-- Official Sponsors Footer Bar -->
+<div class="w-full bg-white/95 border-t border-[#ded5c6] pt-2.5 pb-3 px-3 backdrop-blur-md"><div class="flex items-center justify-between px-1 mb-2"><span class="text-[8.5px] font-extrabold tracking-widest uppercase text-slate-500">OFFICIAL CLUB SPONSORS</span><span class="text-[9px] font-black tracking-wider text-[#b47d0e]">#DREAMERSCC</span></div><div class="grid grid-cols-5 gap-1.5 w-full"><div class="sponsor-pod-gold border-[1.5px] border-[#c68a14] bg-white rounded-lg p-1 flex items-center justify-center h-[38px] shadow-sm"><img alt="WinQuest Finance" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXqUO_hrVh5iHukQhJzlS9ppNVV9rDJ3k1-6yErTFpziP7qBvBG7Y4j9Q4cujMSl47Qzgf0LiVpJxgA15W78oOsxI-KJ272uMc6unlGKH3lUsZp1Z8y_VszScE-QQXIm1nwuqBQDJdxDAf46oH5YW7D2or6WJJe08weEkKcDMGxohYIlCg0j4Gq5eEgENCZPsiDBfI2BUOf4Qr4SVWv7QnKlos9FeMB3e90jcPVDwnzkxBpGPZBHaJbJmSk4V0noSUVw"></div><div class="sponsor-pod bg-white border border-[#e2dcd0] rounded-lg p-1 flex items-center justify-center h-[38px] shadow-sm"><img alt="Rogers Real Estate" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCipw01cULh32XjRD9X8Ux7C_ne9bNGiqoDxUpeMRJT8K5ke6OyYbRsYffmA_6YULIyNZYZJAkDI5K_iDwW2a7G0aUNAP9sgbRPRWEWZEvdnroObVmEUjf5IEfFjOXEdBSdMe0niRy1ZL_0E0hcxQXchl14en-53V1Rx7XLVYR7-mth3X7FQcVEzYSPSU9e3XQl5La7IrUiEj8xvJkMF_NCJwiOAjHYhlc4WbC8GC1mGvVLhoH660xlRUadEVRa4miI7w"></div><div class="sponsor-pod bg-white border border-[#e2dcd0] rounded-lg p-1 flex items-center justify-center h-[38px] shadow-sm"><img alt="Kloudi" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkTaG5VeR1c_KEf72BncIY07Z_pJal4LfW9qtgqCOfzGhIEkGnlErpYlbmpNVEvAJDUo1ZXXT7nm-Q2CEeAtZyRTSo0Vsy9H2yKJeshCifcURtYmryzKIreMB50bhPylrQzOstcbHJGcJg4_C4p-btLcKALUqgOLji7NGX1t18cWsjQ38pHlRvioT9HLxSM36tArLeNpFrDHhSR3DZ-enCqq3DCbAGGvQ-3BonZ3OoFr_IA1BMmatqBvgwRZh52WVpEQ"></div><div class="sponsor-pod bg-white border border-[#e2dcd0] rounded-lg p-1 flex items-center justify-center h-[38px] shadow-sm"><img alt="Bridge Inspection Engineers" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm9ang1F8uU7eR7ZV3m48uJDN2bS3NutFhd-F-dHh8pDQMxMvumC2I2Ddk78osqCebEUom2SVfxFFwMBv9OlyZRlL8L2SLhHAAbSf8Rbo_MOMfbCeEnSBPZ0olbPA46siHVkDd_vTQLvELY-dmY9igFUsAUVewumggDn_FWZ5G2Z95QFbTJ167O_2HS8_gAKkUle-_zqbUzl2qoOzCbtZ-q_04XGcxGh64kwU-WJp7ZPtZTaJZsy3XLvHJnUUL2R3laA"></div><div class="sponsor-pod bg-white border border-[#e2dcd0] rounded-lg p-1 flex items-center justify-center h-[38px] shadow-sm"><img alt="Southern Star Group" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA9NUkopqhfwtcT1GqLmO_1YmdBmfDVWrxzsRoTwMqQ1O9kwncqmzTj_QzKFd8CliXpQ_rZaiVDlzrEwMUFzljQRoLFStAb1zGX4GPeaGuUb110tjQ73podn7fqxVpLQzTRJmPjTMW4pfRXAaGyxpCOr32I1SzDlSNcyjm_4v4oNNV6eK-lhvQ8Lry0ngmB6rsghcfrI7VQEvzAHvBqq1fDHbJboY_aEd9Yqt82Kyy81-wsFu6DCO1yin1xNd5xadvBg"></div></div></div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

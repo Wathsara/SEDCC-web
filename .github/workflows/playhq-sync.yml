@@ -1,0 +1,173 @@
+name: PlayHQ sync
+
+# Pull fixtures, ladders, scorecards and club crests every morning, and commit
+# them only when something actually changed.
+#
+# 6am Melbourne, which is 19:00 UTC the previous day in summer (AEDT) and 20:00
+# in winter (AEST). GitHub cron is UTC and has never heard of daylight saving,
+# so both are scheduled and a guard drops whichever is not 6am today. One of the
+# two always no-ops.
+#
+# Daily rather than weekly because scorers submit late: a Saturday game is often
+# not final until Sunday or Monday, and a grade that has not published its draw
+# can publish it any day of the week.
+#
+# A side effect worth keeping: GitHub disables scheduled workflows in a repo
+# with no activity for 60 days. A daily commit during the season keeps this and
+# the match-summary schedule alive through the quiet months.
+
+on:
+  schedule:
+    - cron: '0 19 * * *' # 6am AEDT (summer)
+    - cron: '0 20 * * *' # 6am AEST (winter)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Ignore the 6am guard'
+        type: boolean
+        default: true
+
+# The job commits to the default branch, and asks the deploy workflow to run.
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: playhq-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Is it 6am in Melbourne?
+        id: when
+        run: |
+          HOUR=$(TZ=Australia/Melbourne date +%H)
+          DATE=$(TZ=Australia/Melbourne date +%F)
+          echo "Melbourne: $DATE ${HOUR}:00"
+
+          if [ "${{ inputs.force }}" = "true" ]; then
+            echo "Manual run — skipping the time guard."
+          elif [ "$HOUR" != "06" ]; then
+            echo "Not 6am in Melbourne (it is ${HOUR}:00) — this is the other cron. Stopping."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "go=true" >> "$GITHUB_OUTPUT"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v7
+        if: steps.when.outputs.go == 'true'
+
+      - uses: actions/setup-node@v7
+        if: steps.when.outputs.go == 'true'
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        if: steps.when.outputs.go == 'true'
+        # The sync talks to an API and writes JSON. It never opens a browser,
+        # so there is no reason to pull down a ~650MB Chrome build here.
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+        run: npm ci
+
+      - name: Sync fixtures, ladders, scorecards and crests
+        if: steps.when.outputs.go == 'true'
+        env:
+          PLAYHQ_API_KEY: ${{ secrets.PLAYHQ_API_KEY }}
+        run: npm run playhq:all
+
+      - name: What changed?
+        id: diff
+        if: steps.when.outputs.go == 'true'
+        run: |
+          # Only data/ is machine-written. If the sync ever touches anything
+          # else, that is a bug and this must not quietly commit it.
+          if [ -n "$(git status --porcelain -- ':!data')" ]; then
+            echo "::error::The sync modified files outside data/:"
+            git status --porcelain -- ':!data'
+            exit 1
+          fi
+
+          # syncedAt changes on every run, so a timestamp-only diff is not news.
+          # Compare with it stripped, and let a real change through.
+          CHANGED=$(git diff --numstat -- data | awk '$1+$2 > 0 {print $3}')
+          SUBSTANTIVE=""
+          for f in $CHANGED; do
+            case "$f" in
+              *.json)
+                if ! diff -q \
+                  <(git show "HEAD:$f" 2>/dev/null | sed -E 's/"(syncedAt|discoveredAt)":[^,}]*//') \
+                  <(sed -E 's/"(syncedAt|discoveredAt)":[^,}]*//' "$f") >/dev/null 2>&1; then
+                  SUBSTANTIVE="$SUBSTANTIVE $f"
+                fi
+                ;;
+              *) SUBSTANTIVE="$SUBSTANTIVE $f" ;;
+            esac
+          done
+          # New files (crests, scorecards) are never in HEAD, so count them too.
+          UNTRACKED=$(git ls-files --others --exclude-standard -- data)
+          SUBSTANTIVE="$SUBSTANTIVE $UNTRACKED"
+          SUBSTANTIVE=$(echo $SUBSTANTIVE | xargs -n1 2>/dev/null | sort -u | xargs || true)
+
+          if [ -z "$SUBSTANTIVE" ]; then
+            echo "No change beyond the sync timestamp."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Changed:"
+            for f in $SUBSTANTIVE; do echo "  $f"; done
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "files<<EOF" >> "$GITHUB_OUTPUT"
+            for f in $SUBSTANTIVE; do echo "  $f"; done >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit
+        id: commit
+        if: steps.when.outputs.go == 'true' && steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data
+          git commit -m "Sync PlayHQ data — ${{ steps.when.outputs.date }}
+
+          Fixtures, ladders, scorecards and club crests, pulled from the PlayHQ
+          public API by .github/workflows/playhq-sync.yml.
+
+          Files:
+          ${{ steps.diff.outputs.files }}"
+
+          # Someone may have pushed while the sync was running.
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Rebuild the site
+        if: steps.commit.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # A commit made with GITHUB_TOKEN does NOT trigger other workflows —
+        # GitHub blocks that to stop runaway loops. So the deploy has to be
+        # asked for explicitly, or fresh data would sit in the repo unpublished
+        # until someone happened to push.
+        run: gh workflow run deploy.yml --ref "${GITHUB_REF_NAME}"
+
+      - name: Summary
+        if: always() && steps.when.outputs.go == 'true'
+        run: |
+          {
+            echo "### PlayHQ sync — ${{ steps.when.outputs.date }}"
+            echo
+            if [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
+              echo "Committed and queued a rebuild."
+              echo
+              echo '```'
+              echo "${{ steps.diff.outputs.files }}"
+              echo '```'
+            else
+              echo "No change — nothing committed."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

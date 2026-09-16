@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>MVP Poster — ECA LOC 1</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Montserrat & Anton for impactful sports graphics -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,900&amp;display=swap" rel="stylesheet">
+<style data-purpose="custom-typography">
+  .font-impact-stat {
+    font-family: 'Anton', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+  }
+  .font-sports-title {
+    font-family: 'Montserrat', sans-serif;
+  }
+</style>
+<style data-purpose="visual-effects">
+  /* Deep sports lighting gradient */
+  .sports-gradient-bg {
+    background: radial-gradient(circle at 50% 28%, #133b7b 0%, #09204a 45%, #040c1d 85%);
+  }
+  /* Player image frame — the same geometry loc2-mvp.html uses. Both posters
+     render 844px tall, so these are shared pixel offsets rather than
+     percentages; percentages of differing canvases would not in fact match. */
+  .player-image-layer {
+    top: 118px;
+    bottom: 60px;
+  }
+  .player-img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    transform: scale(1.32);
+    transform-origin: center top;
+  }
+  .stat-glow {
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+</style>
+</head>
+<body class="bg-black text-white flex justify-center items-center min-h-screen selection:bg-amber-500 selection:text-black font-sports-title">
+<!-- ECA LOC 1 (McCarthy Shield). Coloured-kit side, so this follows the dark
+     treatment of grade4-mvp.html rather than the white-kit loc2-mvp.html.
+     Only the association badge and the competition default differ. -->
+<!-- BEGIN: PosterContainer -->
+<!-- Mobile canvas, 412px max width, 100vh or standard phone height, zero overflow, layered properly -->
+<main data-capture class="relative w-full max-w-[675px] h-[843.75px] max-h-screen sports-gradient-bg overflow-hidden flex flex-col justify-between shadow-2xl border border-white/5" style="background: linear-gradient(180deg, #020712 0%, #06152e 32%, #0a254c 54%, #071933 80%, #031015 100%);">
+<!-- BACKGROUND GRAPHIC ACCENTS — the same two shards as loc2-mvp.html, so
+     the coloured-kit and white-kit posters share one accent treatment. -->
+<div class="pointer-events-none select-none">
+<div class="shard-1" style="position: absolute; right: -25px; top: 54%; width: 65px; height: 180px; background: linear-gradient(135deg, rgb(249, 115, 22) 0%, rgb(234, 88, 12) 100%); transform: skewY(-22deg) rotate(-10deg); box-shadow: rgba(234, 88, 12, 0.45) 0px 10px 30px; z-index: 2; border-radius: 4px;"></div>
+<div class="shard-2" style="position: absolute; right: -18px; top: 62%; width: 48px; height: 140px; background: linear-gradient(135deg, rgb(236, 72, 153) 0%, rgb(219, 39, 119) 50%, rgb(190, 24, 93) 100%); transform: skewY(-22deg) rotate(-10deg); box-shadow: rgba(219, 39, 119, 0.4) 0px 10px 25px; z-index: 2; border-radius: 4px;"></div>
+</div>
+<!-- Subtle vignette & background glow -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden"><div class="absolute -top-10 left-1/2 -translate-x-1/2 w-[340px] h-[480px] rounded-full opacity-60 blur-3xl" style="background: radial-gradient(ellipse at 50% 45%, rgba(56, 189, 248, 0.35) 0%, rgba(30, 58, 138, 0.2) 50%, transparent 75%);"></div><div class="absolute top-0 left-[-40px] w-48 h-[650px] opacity-25 -rotate-[22deg] origin-top-left pointer-events-none" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(56, 189, 248, 0.25) 35%, transparent 80%); filter: blur(16px);"></div><div class="absolute top-0 right-[-40px] w-48 h-[650px] opacity-25 rotate-[22deg] origin-top-right pointer-events-none" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(56, 189, 248, 0.25) 35%, transparent 80%); filter: blur(16px);"></div><div class="absolute bottom-0 inset-x-0 h-40 pointer-events-none" style="background: radial-gradient(ellipse at 50% 120%, rgba(16, 85, 52, 0.22) 0%, transparent 70%);"></div></div>
+<!-- 1. TOP HEADER BAR: Safe padding, Crests on edges, pill badge in center -->
+<header class="relative z-30 px-4 flex items-center justify-between" style="padding-top: 28px;">
+<!-- ECA Official Crest (Top Left) -->
+<div class="h-[74px] w-[74px] flex-shrink-0 flex items-center justify-start filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]">
+<img alt="ECA Logo" class="h-full w-auto max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeoum2xN1KrnOl2zXLu4OjZ8CkbYS4HVZdnaMwT8YxUm6zQ9lHNC1rjBTgPeuOP9St0oofXqH784dI5CuKi9bdGCo5KPKo9gH-yLEHqV3fOzo_G_kiWVKK_4hmZh9oTki2kAVPEtPh9qtwTlVpgx14hIdDA9pmVn4WikS-l846_BsR5QljZPsSZxxeYGdTQU5bx2Xa0mbDp5g2RQse6LwaLEuSZFZ2tG261hydfaNa38okvD7ZYfyqKiMC0fCrIYbI8w">
+</div>
+<!-- Center Match Badge / Context Pill -->
+<div class="flex flex-col items-center gap-1.5 mx-2 z-30"><div class="flex items-center justify-center px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"><span class="text-[14px] font-black tracking-widest text-amber-300 uppercase leading-none" data-field="meta.competition">ECA 2026/27 <span class="text-white/40">•</span> LOC 1</span></div></div>
+<!-- Dreamers CC Crest (Top Right) -->
+<div class="h-[74px] w-[74px] flex-shrink-0 flex items-center justify-end filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]">
+<img alt="Dreamers CC Logo" class="h-full w-auto max-w-full object-contain rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1oEaB5PbNV20Rs4bygwBjMkuZIwjbb8kjk7J2YFXYIqTbs2M90TfUeuowkKLOSqcatqsjr71PhQoEwugJE5-qCuJUzZ9ZKO5aIOySIQ8evSK73ETC0EXeyKJHttx5M2goJ98yg7c9SHeMg3yXvoinDZsOiYdLEi1UMuuVAXQinq7Mc86VAS8x6SnAe5bKJPbrXM7c48dWOaZJHi_Di2tdzvVvqjWfeEyPX_tPne6gWJ5_961m94bSGVQdJF6GCI0E_g">
+</div>
+</header>
+<!-- 2. STATS & HEADLINE SECTION: Sits cleanly between header and hero chest without overlapping crests -->
+<section class="relative z-20 px-5 pt-2 flex flex-col pointer-events-none" style="padding-top: 24px;"><div class="flex flex-col items-center justify-center text-center mb-2.5"><div class="relative flex items-center justify-center leading-none"><span class="absolute -top-3 text-[42px] font-black text-white/5 tracking-[0.2em] select-none pointer-events-none uppercase"><span data-field="player.watermark">KUMARA</span></span><div class="relative z-10 flex items-center justify-center gap-2 w-full"><span class="text-[42px] font-black text-white tracking-wider stat-glow drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]"><span data-field="player.first">SAMAN</span></span><span class="text-[42px] font-black text-white tracking-wider stat-glow drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]"><span data-field="player.last">KUMARA</span></span></div></div></div><div class="flex items-center justify-center gap-3 w-full"><div data-statblock class="relative z-30 flex items-center justify-center px-5 rounded-2xl bg-blue-950/95 border border-blue-400/40 backdrop-blur-md shadow-2xl py-1.5 drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]"><div class="flex items-center gap-3"><div data-panel="bat" class="flex flex-col items-center text-center"><span class="text-[14px] font-bold text-slate-300 uppercase tracking-wider leading-none">BATTING</span><div class="flex items-baseline justify-center"><span class="font-impact-stat text-[64px] leading-none text-white stat-glow font-normal"><span data-field="bat.runs">86</span><span class="text-amber-400 text-[32px] ml-0.5 leading-none" data-field="bat.notout">*</span></span><span class="font-impact-stat text-[27px] text-blue-100/90 ml-1.5 tracking-wide drop-shadow"><span data-field="bat.balls">(64)</span></span></div><span class="text-[13px] font-semibold text-blue-200/80 tracking-wider uppercase leading-none mt-1"><span data-field="bat.boundaries">8x4 • 2x6</span></span></div><div data-divider-for="bowl" class="w-px h-14 bg-white/15 mx-1.5"></div><div data-panel="bowl" class="flex flex-col items-center text-center"><span class="text-[14px] font-bold text-slate-300 uppercase tracking-wider leading-none">BOWLING</span><div class="flex items-baseline justify-center"><span class="font-impact-stat text-[64px] leading-none text-amber-300 stat-glow font-normal"><span data-field="bowl.figures">3/28</span></span></div><span class="text-[13px] font-semibold text-blue-200/80 tracking-wider uppercase leading-none mt-1"><span data-field="bowl.detail">7 OVS • ECON 4.00</span></span></div><div data-divider-for="field" class="w-px h-14 bg-white/15 mx-1.5"></div><div data-panel="field" class="flex flex-col items-center text-center"><span class="text-[14px] font-bold text-slate-300 uppercase tracking-wider leading-none">FIELDING</span><div class="flex items-baseline justify-center"><span class="font-impact-stat text-[64px] leading-none text-sky-300 stat-glow font-normal"><span data-field="field.figures">3</span></span></div><span class="text-[13px] font-semibold text-blue-200/80 tracking-wider uppercase leading-none mt-1"><span data-field="field.detail">2 CT • 1 RO</span></span></div></div></div></div></section>
+<!-- 3. PLAYER HERO CUTOUT (Layered in the mid-lower section, cleanly integrated) -->
+<div class="player-image-layer absolute inset-x-0 z-10 flex justify-center items-end pointer-events-none overflow-hidden select-none"><div class="relative w-full h-full flex justify-center items-end"><div class="absolute top-10 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full bg-sky-400/20 blur-2xl pointer-events-none"></div><img data-photo="player" alt="Saman Kumara - Dreamers CC" class="player-img w-auto object-contain object-bottom filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)] brightness-[1.03] contrast-[1.06] relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHW11cdduzd9GLg0cluyt4oFD8bsqqj6rzbmM2xAbB_anvLsFDrbvyUrRmL1v85jOfdlhuZIysFwlvOWEVq0VmWC563gcddYwh-WHryWluHk4SBeXXSULOEaH5dPwYOA7kW5Rf9Kq7gvrR7hzX_HZKNgpUUzA_z9HawTxejmsxGqUQ6L2-KWumKSyTazfLEzjfzJY22iVHsAYgvslDrXbcYrqdJb4bU2QJohLuuQ_nnFPB4-mXFs1Ot-UHV6J7zCstsA"><div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#020712] via-[#020712]/90 to-transparent pointer-events-none z-20"></div></div></div>
+<!-- 4. PLAYER NAME & CLUB BADGE (Anchored safely on the right side over player torso) -->
+<div class="relative z-20 px-5 mb-2 mt-auto flex flex-col items-center justify-center text-center pointer-events-none"><div class="inline-flex items-center justify-center mb-1"><span class="text-[30px] font-black tracking-[0.2em] text-amber-300 uppercase leading-none drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]"><span data-field="award">MVP OF THE MATCH</span></span></div><span class="text-[20px] font-extrabold text-white tracking-widest uppercase leading-tight"><span data-field="meta.opponent">VS EASTERN REBELS</span></span><span class="text-[15px] font-bold tracking-[0.2em] text-amber-400 uppercase mt-1.5"><span data-field="meta.round">ROUND 14</span> <span class="text-white/40">•</span> <span data-field="meta.date">08 FEB 2026</span></span></div>
+<!-- 5. DEDICATED SPONSORS FOOTER (All 5 club sponsors neatly structured, zero overlap) -->
+<footer class="relative z-30 px-3 pt-2 pb-3.5 bg-[#030917] border-t border-white/10 shadow-2xl">
+<div class="flex items-center justify-between px-1 mb-1.5">
+<span class="text-[8px] font-extrabold tracking-[0.2em] text-slate-400 uppercase">
+        OFFICIAL CLUB SPONSORS
+      </span>
+<span class="text-[8px] font-bold text-amber-400 tracking-wider">
+        #DREAMERSCC
+      </span>
+</div>
+<!-- 5 Clean Sponsor Logo Cards -->
+<div class="grid grid-cols-5 gap-1.5 items-center">
+<!-- 1. WinQuest Finance -->
+<div class="h-8 bg-white rounded flex items-center justify-center p-1 shadow-sm overflow-hidden hover:brightness-105 transition-all">
+<img alt="WinQuest Finance" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU1VuVJCCyGmuj59BCJVCG6eqjN813oKo_0vrsVhGg8i49gK9n7UDydJGVjHco5K6VnvD9DauOwI8steGx5yJqkJcUT4v4OzeA1TAHndGd7URSGBuMwQvM0Bgids_lRee0VB0b9EL-J4hD89fhxYnT4hU2yBQpFRdaxRoAWyqu3WGlG8vKRKJHiw8hHJqnzGPTcUBDks6VrGqPNCrtb4S9Y1fgzcsMnMfZKEw-h99TMuf8SzfQuzghJnHr3CuXhJjhTg">
+</div>
+<!-- 2. Rogers Real Estate -->
+<div class="h-8 bg-white rounded flex items-center justify-center p-1 shadow-sm overflow-hidden hover:brightness-105 transition-all">
+<img alt="Rogers Real Estate" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKJB-hV9S75ZyMp6WWl2SDpd4BCbT_dFudm2B6JC8EhkYeHgI4ptANQYDsVGgIGx3xgblJU4EKTEJ5xrL8Tii27SqGWRoXopFNXmm0C_G6TD4pV3SwDFp7rgj363HmHMUXDKWySM_xnX1TYtbX7TPiFfpl8xQdUQqzhmudaknPnA-pw55HRaKXAmcyQhjjNyF4PqUnmpyEvdv65F3so6PL6z46iWN1i8yFcggj6hg8nO-ByX4-MR5rFK2q3CROZa-h5A">
+</div>
+<!-- 3. Kloudi -->
+<div class="h-8 bg-white rounded flex items-center justify-center p-1 shadow-sm overflow-hidden hover:brightness-105 transition-all">
+<img alt="Kloudi" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6jpCfslsS9EKLZIgL7x40d4hCgVoWGfX65cz60gY2UVK24adE2U6iEE38OVgQhmbi4P36xIRT8Bv0hdq5r9WxgRi6CKDryNXa_17yvCRx_LvUNJqEsi4NJIYtO-pmXDUn6WWgqni0SogROpyMqpRUWjkyKoafJe0c_COczHgjrX9VKmC6Ucb06_gTR05QP-7FRVy4TRTy0F4fwnKtQMULzeg1wBGAgePjbfIkfSGF2tpQaXXhKP8pHYDopch6UnuzQw">
+</div>
+<!-- 4. Bridge Inspection Engineers -->
+<div class="h-8 bg-white rounded flex items-center justify-center p-1 shadow-sm overflow-hidden hover:brightness-105 transition-all">
+<img alt="Bridge Inspection Engineers" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo-hOpeA3X4TJLtj_tsDMV6SXjXAOiwusKAwuZVjsVkN1Ws05gdpMvUaratX_UN5u7M1_yd9-4BxeHlt1vRIWGwtEEcR_73jB1GpDoLrrtFjbkd3prEmV2n57B4_UvQKl1qeQO38Hy1gKe3ZR-Xdh8-pp-UJ9LsOXBxX4D_bpTAugzuwtF4qheyBNyK9ipkroaqs0QAjsBKrI7ol-Gr3rDrUrxNmG6xbtX-9dikPUsXk6FggmuYu2BwyGJdtnXuPglqg">
+</div>
+<!-- 5. Southern Star Group -->
+<div class="h-8 bg-white rounded flex items-center justify-center p-1 shadow-sm overflow-hidden hover:brightness-105 transition-all">
+<img alt="Southern Star Group" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtqkzsKPNsXxSxY21cQ2DVvf7uaX0vP9ntLaO39GQ6Bk81gnIkGMmjGugkLGENnaiHtmGNzupcKZINKfai1qF1oa8jeI8Zx-DM5yZLwjg2yu-wzz_zq3GbqvM7j-U8WA9HAaSUFfpXAMDh3YxlGpJU07e9tSmFtdli1gtukyz8k6TR5n_mMCrlPF9YhgNcr2AJDvr6VoeCyEo68mq4LnoMt-YEYOvykOKh5h0QRi5FYc02i1yRQWbR1Nzzhf7ozWNwpg">
+</div>
+</div>
+</footer>
+</main>
+<!-- END: PosterContainer -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

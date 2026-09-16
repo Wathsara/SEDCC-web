@@ -47,9 +47,12 @@ season-cards/
 
 # Player photos for the MVP posters. Images of real people — keep the originals
 # somewhere the club controls, not in a public repo. The README stays.
-MVP/players/*
-!MVP/players/README.md
+graphics/mvp/players/*
+!graphics/mvp/players/README.md
 
 # MVP poster output and the field map that produced it.
 .mvp-*.json
 mvp-*.png
+
+# Sample posters rendered from the MVP templates.
+mvp-samples/

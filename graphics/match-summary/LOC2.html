@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Cricket Match Summary</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Permanent Marker & Montserrat / Oswald for authentic sports typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;family=Oswald:wght@500;600;700;800;900&amp;family=Permanent+Marker&amp;display=swap" rel="stylesheet">
+<!-- Core Layout Styles -->
+<style data-purpose="layout-and-background">
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #020710;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .match-canvas {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      max-width: 1440px;
+      margin: 0 auto;
+      background: radial-gradient(circle at 80% 15%, #0e3059 0%, #061730 45%, #020914 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    /* Stadium Left Overlay with Grass & Floodlight Bleed */
+    .stadium-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 32%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at top left, rgba(255,255,255,0.35) 0%, rgba(200,235,255,0.12) 30%, transparent 60%),
+        repeating-linear-gradient(45deg, rgba(20,40,65,0.85) 0px, rgba(20,40,65,0.85) 6px, rgba(12,24,42,0.95) 7px, rgba(12,24,42,0.95) 16px),
+        linear-gradient(to bottom, #163252 0%, #07172b 45%, #092015 75%, #18440e 100%);
+      clip-path: polygon(0 0, 100% 0, 48% 65%, 42% 100%, 0 100%);
+      z-index: 1;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* Green Cricket Grass on lower-left */
+    .grass-texture {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 25%;
+      height: 48%;
+      background: radial-gradient(circle at 10% 90%, #589e13 0%, #326e0b 45%, #143d06 85%);
+      box-shadow: inset -10px 10px 25px rgba(0,0,0,0.6);
+      clip-path: polygon(0 0, 100% 12%, 85% 100%, 0 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Complex Sweeping Swooshes constrained so they don't cover text */
+    .swoosh-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+  </style>
+<!-- Typography & Graphic Badge Styles -->
+<style data-purpose="typography-and-decorations">
+    .font-marker {
+      font-family: 'Permanent Marker', cursive;
+    }
+    .font-sports {
+      font-family: 'Oswald', sans-serif;
+    }
+    .title-shadow {
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.85));
+    }
+    /* Solid, crisp white high-contrast banner */
+    .white-pill-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f0f4f9 100%);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.25);
+    }
+    /* Stats glass box */
+    .broadcast-glass {
+      background: linear-gradient(135deg, rgba(8, 24, 48, 0.85) 0%, rgba(4, 14, 30, 0.92) 100%);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px -4px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.12);
+    }
+  </style>
+</head>
+<body class="bg-[#f4f6f8] text-slate-900 flex items-center justify-center min-h-screen" style="background-color: rgb(226, 223, 216); margin: 0px; padding: 0px; font-family: &quot;Montserrat&quot;, sans-serif; overflow-x: hidden;">
+<!-- BEGIN: MatchGraphicMainContainer -->
+<main class="match-canvas shadow-2xl relative select-none px-4 md:px-8 py-8" data-purpose="cricket-match-summary-card" style="background: radial-gradient(circle at 50% 12%, rgb(246, 244, 239) 0%, rgb(236, 232, 223) 55%, rgb(223, 218, 208) 100%); min-height: 100vh; box-shadow: rgba(28, 25, 23, 0.16) 0px 25px 60px -15px; border-left: 1px solid rgb(214, 208, 196); border-right: 1px solid rgb(214, 208, 196);">
+<!-- Background Layer: Stadium Seating & Floodlights -->
+<!-- Background Layer: Field Grass -->
+<!-- Vector Swoosh Overlays across the bottom & left, kept strictly to edges -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0"><div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-slate-200/50 blur-3xl"></div><div class="absolute top-1/4 -right-32 w-96 h-96 rounded-full bg-amber-200/30 blur-3xl"></div><div class="absolute -bottom-40 left-1/3 w-[600px] h-80 rounded-full bg-slate-300/30 blur-3xl"></div><svg class="absolute inset-0 w-full h-full opacity-30" fill="none" xmlns="http://www.w3.org/2000/svg"><line stroke="#94a3b8" stroke-dasharray="6 8" stroke-width="1" x1="-100" x2="1600" y1="300" y2="150"></line><line opacity="0.5" stroke="#d4af37" stroke-dasharray="4 12" stroke-width="1" x1="-100" x2="1600" y1="750" y2="600"></line><circle cx="240" cy="265" fill="#64748b" r="3"></circle><circle cx="1200" cy="635" fill="#d4af37" r="3"></circle></svg></div>
+<!-- BEGIN: TopBarAndHeaders -->
+<header class="relative z-10 w-full px-6 flex flex-col items-center mt-8 pt-3 mb-1.5">
+<div class="w-full flex justify-between items-start">
+<!-- ECA Shield Logo (Left) -->
+<div class="flex items-center shrink-0" data-purpose="veca-association-logo"><div class="relative w-24 h-20 flex items-center justify-center"><img alt="ECA - Eastern Cricket Association" class="w-full h-full object-contain filter drop-shadow-md select-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBePHPY8ndeRwASzDkt_aovHjzhOFs4L5M79UhjidmE6m4zn2P04w4zl2dY-u5A4eGR__iaoCeRGjqlVK1IByQsMsQvs0dSxjiRw7lV_JCO5CrCuGfyUzjADheykFGBx8p2YJVlWO7kFI31t4g3DWfWjrm9ujLqpaC5l94C7vH2kNWuL-Nkq2MnGV98LPOdz96uSst2KgTntu_r0-hFlRpXfWJ1WRk5RWtcHbUn4IEkhyyYJKIIf2JV9cZzFSglqZNZqA"></div></div>
+<!-- Center Match Title & Info -->
+<div class="text-center flex-1 -mt-1 px-4"><h1 class="font-marker text-6xl md:text-7xl lg:text-[5.25rem] whitespace-nowrap tracking-wider text-[#0f172a] transform -rotate-1 leading-none drop-shadow-sm">MATCH SUMMARY</h1><div class="mt-2 flex flex-col items-center justify-center"><div class="inline-flex items-center gap-2 mb-1.5 px-3 py-1 rounded-full bg-white border border-slate-300 shadow-sm" style="background-color: rgb(250, 249, 246); border-color: rgb(211, 205, 193);"><span class="w-2.5 h-2.5 rounded-full bg-[#0f172a] shrink-0"></span><span class="font-sports text-xs font-black tracking-widest text-slate-700 uppercase">ONE DAY •</span><span class="font-sports text-xs md:text-sm font-black tracking-widest text-amber-600 uppercase" data-field="meta.competition">ECA LOC 2</span></div><h2 class="font-sports text-xl md:text-2xl font-black tracking-widest uppercase text-[#0f172a] flex items-center gap-3"><span class=""><span data-field="header.away">EASTERN REBELS G4</span></span><span class="text-slate-400 text-base font-light">VS</span><span class="text-slate-700"><span data-field="header.home">DREAMERS G4</span></span></h2><div class="flex items-center justify-center gap-2 mt-1 text-base font-sports font-bold tracking-wider text-slate-600 uppercase"><span class="text-slate-900 font-extrabold"><span data-field="meta.round">ROUND 14</span></span><span class="text-slate-300">•</span><span class="text-slate-600"><span data-field="meta.season">SEASON 2025/26</span></span><span class="text-slate-300">•</span><span class="text-amber-700 font-extrabold flex items-center gap-1"><span class="text-slate-700">🏏</span><span data-field="meta.venue">VENUE: OVAL 1 (DAY 2)</span></span></div><div class="flex items-center gap-2 mt-1.5"><span class="h-[2px] w-10 bg-gradient-to-r from-transparent to-slate-400"></span><span class="h-[2px] w-10 bg-gradient-to-l from-transparent to-slate-400"></span></div></div></div>
+<!-- WinQuest Finance Sponsor Logo (Right) -->
+<div class="w-32 h-24 shrink-0 flex flex-col items-center justify-center"><div class="bg-white/95 rounded-xl px-3 py-2 h-16 w-full flex items-center justify-center shadow-lg border-2 border-amber-300/60 hover:bg-white transition" style="background-color: rgb(250, 248, 245); border-color: rgb(226, 201, 126);"><img alt="WinQuest Finance - Principal Partner" class="h-12 max-h-12 w-auto max-w-full object-contain filter drop-shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr3nWBD6kMFakebXBaiHddD45HHoMGc-qcfZgss-Lw30WhZnJlD-c5pKDlxXZ3CQyl49LKtjTLsfL_X4W3pnG-qsd__oLybMnmCJ6pBgY1G394UA3V7O7LIck1LVl8rZWZceOgO6z-jCQIeIRb7sF5QPimtT1QmmYsASE_5oTdyI4DP_zMTkW_Rad4_sdXilarMBUR8vm_8-xw9FoGd8xLZroYZA-7XIxUd-FQZz6X43bFmpaU6fheEB6EWWwgrj0EZQ"></div></div>
+</div>
+</header>
+<!-- END: TopBarAndHeaders -->
+<!-- BEGIN: InningsScoreCardsAndStats -->
+<section class="relative z-20 w-full px-6 md:px-14 flex flex-col justify-center my-auto gap-3" data-purpose="match-statistics-container">
+<!-- ================= INNINGS 1: DREAMERS CC ================= -->
+<article class="w-full flex flex-col items-center relative z-20" data-purpose="innings-dreamers">
+<!-- Score Banner Bar with Team Crest docked consistently -->
+<div class="w-full max-w-5xl flex items-center relative"><div class="absolute -left-5 sm:-left-6 top-1/2 transform -translate-y-1/2 z-30 flex flex-col items-center justify-center" data-purpose="team-crest" data-crest="i1"><div class="w-20 h-20 rounded-2xl bg-white border-2 border-slate-300 p-1 shadow-xl flex items-center justify-center overflow-hidden ring-2 ring-amber-400/40"><img alt="Dreamers CC Official Crest" class="w-full h-full object-contain filter drop-shadow-sm rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0uNSv1havzLEukyhbAxXYxsB1__Sxd0uvm1e9C7MavqlAhbIBmN1jb1VsEmCm-fozSGFZ6foj2iFZ_3aq4cGv-FPeW00nWn448FmKiFixbBrcRCf3ZQUYfYk2HUqbBkgxpDqNa_f-j6HxIul3TGcJNyHKtL13-zYNvAL_b9RZBZ1oUR4-9bwnxij3tNSIipUmHw1dB-WB5HiQFiI3h04XFfTCUuyo59tR2gyM6Kt0L8cPud7tYFdRARZLYzD7y2NrVA"></div></div><div class="w-full bg-white rounded-r-2xl rounded-l-full py-2.5 pl-20 pr-8 flex items-center justify-between ml-8 border border-slate-200 shadow-lg relative overflow-hidden" style="background: linear-gradient(rgb(250, 248, 244) 0%, rgb(243, 239, 231) 100%); border-color: rgb(213, 206, 191); box-shadow: rgba(44, 38, 30, 0.08) 0px 10px 25px -5px;"><div class="flex items-center gap-3"><span class="font-sports text-3xl md:text-4xl font-black tracking-tight text-[#0f172a] uppercase"><span data-field="i1.team">DREAMERS CC</span></span></div><div data-toss="i1" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 shadow-sm"><div class="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center shadow border border-amber-200 shrink-0"><svg class="w-3 h-3 text-[#0f172a] fill-current drop-shadow-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" stroke-width="2"></circle><path d="M12 6v12M9 9h6"></path></svg></div><span class="font-sports text-[11px] font-extrabold tracking-wider text-amber-900 uppercase"><span data-field="i1.toss">WON TOSS</span></span></div><span class="font-sports text-2xl md:text-3xl font-bold tracking-wide text-slate-600 uppercase"><span data-field="i1.overs">40 OVERS</span></span><div class="flex items-baseline"><span class="font-sports text-5xl md:text-6xl font-black tracking-tight text-[#0f172a]"><span data-field="i1.score">7-250</span></span></div></div></div>
+<!-- Detailed Stats Table (Batting Left, Bowling Right) with bright, crisp typography -->
+<div class="w-full max-w-4xl grid grid-cols-2 gap-x-6 pt-2.5 px-2 relative z-20"><div class="bg-white/90 backdrop-blur-md rounded-xl p-3.5 space-y-1.5 border border-slate-200/80 shadow-md" style="background: rgba(250, 248, 245, 0.92); border-color: rgb(220, 214, 201);"><div class="flex justify-between items-center pb-1 mb-1 border-b border-slate-200 text-xs font-sports font-bold tracking-widest uppercase text-slate-500"><span class="">BATTER</span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-[#0f172a] tracking-wide text-lg md:text-xl font-bold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#0f172a] shrink-0"></span><span data-field="i1.bat.0.name">Saman Kumara</span></span><span class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#0f172a]"><span data-field="i1.bat.0.runs">86</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i1.bat.1.name">Aruna Perera</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800"><span data-field="i1.bat.1.runs">41</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i1.bat.2.name">Kavindu Fernando</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800"><span data-field="i1.bat.2.runs">21</span></span></div></div><div class="bg-white/90 backdrop-blur-md rounded-xl p-3.5 space-y-1.5 border border-slate-200/80 shadow-md" style="background: rgba(250, 248, 245, 0.92); border-color: rgb(220, 214, 201);"><div class="flex justify-between items-center pb-1 mb-1 border-b border-slate-200 text-xs font-sports font-bold tracking-widest uppercase text-slate-500"><span class="">BOWLER</span><span class="">W/R</span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-[#0f172a] tracking-wide text-lg md:text-xl font-bold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#0f172a] shrink-0"></span><span data-field="i1.bowl.0.name">Supun Jayasekara</span></span><span class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#0f172a] text-right"><span data-field="i1.bowl.0.figures">1-14</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i1.bowl.1.name">Mahisha arachchilage</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800 text-right"><span data-field="i1.bowl.1.figures">1-56</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i1.bowl.2.name">Nuwan Samarasingha</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800 text-right"><span data-field="i1.bowl.2.figures">1-74</span></span></div></div></div>
+</article>
+<!-- ================= INNINGS 2: EASTERN REBELS G4 ================= -->
+<article class="w-full flex flex-col items-center relative z-20" data-purpose="innings-eastern-rebels">
+<!-- Score Banner Bar with Team Crest docked consistently -->
+<div class="w-full max-w-5xl flex items-center relative"><div class="absolute -left-5 sm:-left-6 top-1/2 transform -translate-y-1/2 z-30 flex flex-col items-center justify-center" data-purpose="team-crest" data-crest="i2"><div class="w-20 h-20 rounded-2xl bg-white border-2 border-slate-300 p-1 shadow-xl flex items-center justify-center overflow-hidden ring-2 ring-amber-300/40"><div class="w-full h-full rounded-xl border border-slate-200 bg-gradient-to-b from-white to-[#f5f1eb] flex flex-col items-center justify-center p-1 text-[#0d2243] shadow-inner"><span class="text-[7px] font-sports font-black tracking-widest text-slate-500 uppercase">EASTERN</span><span class="text-[8px] font-sports font-black tracking-tight text-slate-800 uppercase -mt-0.5 leading-none">REBELS</span><span class="font-sports text-2xl font-black leading-none text-[#16060c] my-0.5">ER</span><span class="text-[7px] font-sports font-bold text-slate-500 tracking-wider">EST. 2019</span></div></div></div><div class="w-full bg-white rounded-r-2xl rounded-l-full py-2.5 pl-20 pr-8 flex items-center justify-between ml-8 border border-slate-200 shadow-lg relative overflow-hidden" style="background: linear-gradient(rgb(250, 248, 244) 0%, rgb(243, 239, 231) 100%); border-color: rgb(213, 206, 191); box-shadow: rgba(44, 38, 30, 0.08) 0px 10px 25px -5px;"><span class="font-sports text-3xl md:text-4xl font-black tracking-tight text-[#0f172a] uppercase"><span data-field="i2.team">EASTERN REBELS G4</span></span><span class="font-sports text-2xl md:text-3xl font-bold tracking-wide text-slate-600 uppercase"><span data-field="i2.overs">35.1 OVERS</span></span><span class="font-sports text-5xl md:text-6xl font-black tracking-tight text-[#0f172a]"><span data-field="i2.score">7-185</span></span></div></div>
+<!-- Detailed Stats Table (Batting Left, Bowling Right) with bright, crisp typography -->
+<div class="w-full max-w-4xl grid grid-cols-2 gap-x-6 pt-2.5 px-2 relative z-20"><div class="bg-white/90 backdrop-blur-md rounded-xl p-3.5 space-y-1.5 border border-slate-200/80 shadow-md" style="background: rgba(250, 248, 245, 0.92); border-color: rgb(220, 214, 201);"><div class="flex justify-between items-center pb-1 mb-1 border-b border-slate-200 text-xs font-sports font-bold tracking-widest uppercase text-slate-500"><span class="">BATTER</span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-[#0f172a] tracking-wide text-lg md:text-xl font-bold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#0f172a] shrink-0"></span><span data-field="i2.bat.0.name">Janith Thennakoon</span></span><span class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#0f172a]"><span data-field="i2.bat.0.runs">79</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i2.bat.1.name">Thevinu Dilneh</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800"><span data-field="i2.bat.1.runs">50</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i2.bat.2.name">Rukshan Ranawaka</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800"><span data-field="i2.bat.2.runs">19</span></span></div></div><div class="bg-white/90 backdrop-blur-md rounded-xl p-3.5 space-y-1.5 border border-slate-200/80 shadow-md" style="background: rgba(250, 248, 245, 0.92); border-color: rgb(220, 214, 201);"><div class="flex justify-between items-center pb-1 mb-1 border-b border-slate-200 text-xs font-sports font-bold tracking-widest uppercase text-slate-500"><span class="">BOWLER</span><span class="">W/R</span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-[#0f172a] tracking-wide text-lg md:text-xl font-bold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#0f172a] shrink-0"></span><span data-field="i2.bowl.0.name">Indika Karunathilaka</span></span><span class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#0f172a] text-right"><span data-field="i2.bowl.0.figures">1-14</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i2.bowl.1.name">Arjun Kamalnath</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800 text-right"><span data-field="i2.bowl.1.figures">1-56</span></span></div><div class="flex justify-between items-center px-2 py-0.5 rounded hover:bg-slate-50 transition"><span class="text-slate-700 tracking-wide text-lg md:text-xl font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span><span data-field="i2.bowl.2.name">Dilan samarakoon</span></span><span class="font-sports font-bold text-2xl md:text-3xl tracking-wider text-slate-800 text-right"><span data-field="i2.bowl.2.figures">1-74</span></span></div></div></div>
+</article>
+</section>
+<!-- END: InningsScoreCardsAndStats -->
+<!-- BEGIN: MatchResultFooter (Proper bottom breathing room, fully unclipped) -->
+<footer class="relative z-30 w-full pt-3 pb-6 flex justify-center items-center"><div class="w-full max-w-4xl relative group mx-auto px-4"><div class="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-300/30 via-slate-300/40 to-amber-300/30 blur-md opacity-80 pointer-events-none"></div><div class="relative w-full bg-white py-3.5 px-8 rounded-full shadow-xl flex items-center justify-between border-2 border-amber-300/60 overflow-hidden" style="background: linear-gradient(rgb(253, 251, 247) 0%, rgb(245, 241, 232) 100%); border-color: rgb(226, 201, 126); box-shadow: rgba(44, 38, 30, 0.12) 0px 12px 28px -6px;"><div class="flex items-center justify-center gap-3 relative z-10 mx-auto"><div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-amber-400 to-amber-300 flex items-center justify-center shadow border border-amber-200 shrink-0"><svg class="w-5 h-5 text-[#0f172a] fill-current" viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V19H7v2h10v-2h-4v-3.1c1.9-.41 3.37-1.85 3.61-3.96C19.08 11.63 21 9.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"></path></svg></div><p class="font-sports text-2xl sm:text-3xl md:text-4xl font-black text-[#0f172a] tracking-wide uppercase text-center"><span class="text-[#0f172a]"><span data-field="result.team">DREAMERS CC</span></span> <span class="text-slate-600 font-extrabold"><span data-field="result.verb">WON BY</span></span> <span class="text-[#0f172a] font-black"><span data-field="result.margin">65 RUNS</span></span></p></div></div></div></footer><aside class="relative z-30 w-full px-4 flex flex-col items-center justify-center pb-6" data-purpose="official-sponsors-section"><div class="w-full max-w-5xl rounded-2xl bg-white/80 border border-slate-300/70 backdrop-blur-md px-6 py-2.5 shadow-lg flex flex-col items-center" style="background: rgba(247, 244, 238, 0.88); border-color: rgb(213, 206, 191);"><div class="flex items-center justify-center gap-2 mb-1.5"><span class="h-[1px] w-12 bg-gradient-to-r from-transparent to-slate-400"></span><span class="font-sports text-[10px] md:text-xs font-bold tracking-[0.25em] text-slate-600 uppercase">OFFICIAL SPONSORS</span><span class="h-[1px] w-12 bg-gradient-to-l from-transparent to-slate-400"></span></div><div class="w-full grid grid-cols-5 gap-3 items-center"><div class="relative bg-white rounded-xl px-2.5 py-1.5 h-12 flex items-center justify-center shadow-md border-2 border-amber-400 ring-1 ring-amber-400/40 hover:bg-white transition" style="background-color: rgb(250, 248, 245);"><img alt="WinQuest Finance - Principal Partner" class="max-h-8 w-auto max-w-full object-contain filter drop-shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzRxxjUJ9zN3hGCHOUQiaJJS-BXmKUFa5mLsDVOTDKCcs01K4OQE-2LEh83WjtkajfyNHuzdwpHq4yY1JJI27BftIgfQtaC-tQPBplv4xgnzaKW4MSA9bNFZ78F8vvivNGJIHp-wYt_3bebhkBfJGwUW6wAU4iXD3AAfLm3_6a6y_HN1Xv8A3aQo2p2Qe8s6plZwqt3pZJ0cNzUFuyoXjqUcI68Dz0C-y4-dvnpFTB0PJav6QbJWVTmEIcrlb6zyjekQ"></div><div class="bg-white/95 rounded-xl px-2.5 py-1.5 h-12 flex items-center justify-center shadow-sm border border-white/60 hover:bg-white transition" style="background-color: rgb(250, 248, 245);"><img alt="Rogers Real Estate" class="max-h-8 w-auto max-w-full object-contain filter drop-shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzfBrKPJZ51zEPqCf1ifomAB7s4WH2pEodzPxEDfpSiD56NJHP_4DxmYklqbWewSMY8eeRasC68r-gTvsKmoHOdej-_VlHMsBQjzl1Jm43G9hb9AMPg_32m-W-3z2_lM1p73hnVXctsJG3vtfUE03S_oG9L9dRPda7MDH8_28wmKnHZ_dBpzR3OTv9SxONDzd27qrAIAshcp8WUWnFgK_MKVthgj94twuXcKotXDOn_zjYq1hesVxXxfYfpaVTOmt-vg"></div><div class="bg-white/95 rounded-xl px-2.5 py-1.5 h-12 flex items-center justify-center shadow-sm border border-white/60 hover:bg-white transition" style="background-color: rgb(250, 248, 245);"><img alt="Kloudi" class="max-h-8 w-auto max-w-full object-contain filter drop-shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKaifKx3U0xogEiGV3V-5OMhqnhgq12NyOAEjUWMnJcazvambnmn1QoK8OgHIJPcjxMFcxaT4iKIlG1EWn8PBQ1EjiZ9S8WAlO6fTpzFoUz3lquk8J8bO0u_aETkbeHC1TsjpxEzUNWTLeXC-mnlUWkYCmhz3q8t_3UG-sFyywUPC-urlhiXhvVs25B4Mof9rvqtM1c9HbxVDEs4l5WKlIf5HSAqWf6QpZ0LZ3tVILeD4XoeHbJ8cwnTy4tSane3hI1w"></div><div class="bg-white/95 rounded-xl px-2.5 py-1.5 h-12 flex items-center justify-center shadow-sm border border-white/60 hover:bg-white transition" style="background-color: rgb(250, 248, 245);"><img alt="Bridge Inspection Engineers" class="max-h-8 w-auto max-w-full object-contain filter drop-shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmILgFwSJIsae3pBVYKJ3IhG7YkNzwVYZoN4HMtV3Fc4UZUoV5gAJhsd9vygb9evsL18avpFAcnBMVtO_X4y9i5IhnvstqWvm1aZZUvj5wi_QPZVg7otHIT4m6y0MUfE3-81CPb3RCns3qJuWFY3izjUbjT55VFem8ps5jjoqwn6p372vAxGd_4preIDsH3LCmNLX2fVRq8_HWl1QWVN9HFsmIrI5p6CtYi7549EKOahEV67ye_QSllXHiB1bFFwaGtg"></div><div class="bg-white/95 rounded-xl px-2.5 py-1.5 h-12 flex items-center justify-center shadow-sm border border-white/60 hover:bg-white transition" style="background-color: rgb(250, 248, 245);"><img alt="Southern Star Group" class="max-h-8 w-auto max-w-full object-contain filter drop-shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5RX0a6SGzofrCP_bST6Y0ikWQQ4y7yQVTM_AoT6INOkdXBP-T0EAVkgOpkIMQOSPmBIb2_wezGd_ZsiT2IbkwZRx-5CtnVuZYUo3KATbEBiES_bVllcjx00nHG9aUt8k5UKYQFxLQmHzqnIPAaNRjXuk4aHONwd4OXhN-qiiu04GaPjlR90t-3tnPYW-1qlV24OHMH6XRJeGhQDZOcCDCHZM-DJGJiH6Vy3z4Ou9jlj9ZAG324904e2r_pMVLVtqrw"></div></div></div></aside>
+<!-- END: MatchResultFooter -->
+</main>
+<!-- END: MatchGraphicMainContainer -->
+
+
+
+
+</body></html>

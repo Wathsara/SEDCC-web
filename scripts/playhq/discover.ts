@@ -60,8 +60,12 @@ async function main() {
       log.info(`\n  ${season.name} [${season.status}] ${season.id}`);
       log.info(`    competition: ${season.competition?.name ?? '—'}`);
       if (!relevant) {
-        log.info('    (completed — skipping grade lookup, pass --all to include)');
-        if (!process.argv.includes('--all')) continue;
+        // Say what is actually about to happen, not what happens by default.
+        if (!process.argv.includes('--all')) {
+          log.info('    (completed — skipping grade lookup, pass --all to include)');
+          continue;
+        }
+        log.info('    (completed — included because --all was passed)');
       }
 
       const [grades, teams] = await Promise.all([

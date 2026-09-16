@@ -6,6 +6,7 @@
  */
 
 import type {
+  GradeGame,
   Grade,
   Ladder,
   PagedResponse,
@@ -94,7 +95,12 @@ export async function request<T>(path: string): Promise<T> {
     }
     if (res.status === 404) {
       throw new Error(
-        `PlayHQ 404 on ${path}. Check the ID exists and is set to VISIBLE in the ` +
+        `PlayHQ 404 on ${path}. Three things give a 404 here, in order of ` +
+        `likelihood: the key is scoped to a different organisation and simply ` +
+        `cannot see this one (an ECA key cannot read VSCA grades, or vice ` +
+        `versa); the season is finished and no longer public; or the ID is ` +
+        `wrong. Run 'npm run playhq:discover' to see what this key CAN see. ` +
+        `Check too that the ID exists and is set to VISIBLE in the ` +
           `PlayHQ admin portal — hidden entities are absent from public endpoints.`,
       );
     }
@@ -147,7 +153,16 @@ export const gradesForSeason = (seasonId: string) =>
 export const teamsForSeason = (seasonId: string) =>
   getAllPages<SeasonTeam>(`/v1/seasons/${seasonId}/teams`);
 
-/** v2 — v1 fixture endpoints do not work for cricket. */
+/**
+ * Games in a grade. This is the fixture endpoint: /grades/{id}/fixture does
+ * not exist on v1 or v2 — both answer "404 page not found", a router 404 —
+ * while /v1/grades/{id}/games returns the full list. Verified with
+ * scripts/playhq/probe.ts against a real grade.
+ */
+export const gamesForGrade = (gradeId: string) =>
+  getAllPages<GradeGame>(`/v1/grades/${gradeId}/games`);
+
+/** Kept for the old shape; see gamesForGrade, which is what the sync uses. */
 export const fixtureForGrade = async (gradeId: string) =>
   unwrap(await request<GradeFixture | { data: GradeFixture }>(`/v2/grades/${gradeId}/fixture`));
 

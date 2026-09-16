@@ -6,7 +6,27 @@ import { fileURLToPath } from 'node:url';
 import type { RosterPlayer, SeasonConfig, Statistic } from './types.js';
 
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-export const DATA_DIR = resolve(ROOT, 'data/playhq');
+
+// .env.example tells the reader to copy it to .env and paste the key, so
+// something has to actually read that file. Node has done this natively since
+// 20.12; without it the documented local workflow just reports a missing key.
+// Real environment variables already set always win.
+if (existsSync(resolve(ROOT, '.env'))) {
+  try {
+    process.loadEnvFile(resolve(ROOT, '.env'));
+  } catch {
+    // A malformed .env should not stop a run that has the key set another way.
+  }
+}
+/**
+ * Where the sync writes. Overridable so a backfill or a test run against an
+ * old season cannot overwrite the committed current-season files:
+ *
+ *   PLAYHQ_DATA_DIR=.playhq-test SEASON=2025-26 npm run playhq:sync
+ */
+export const DATA_DIR = process.env.PLAYHQ_DATA_DIR
+  ? resolve(ROOT, process.env.PLAYHQ_DATA_DIR)
+  : resolve(ROOT, 'data/playhq');
 export const CONFIG_DIR = resolve(ROOT, 'config');
 
 // --- stats lookup ---------------------------------------------------------

@@ -1,4 +1,13 @@
-import logosData from '../../data/playhq/logos.json';
+/*
+  Loaded by glob rather than by a direct import so the site still builds before
+  the first sync has run — a bare `import ... from 'logos.json'` is a hard
+  build failure when the file is not there, which takes the whole deploy down
+  over data that is, by design, machine-written and regenerable.
+*/
+const logoModules = import.meta.glob<{ default: unknown }>('../../data/playhq/logos.json', {
+  eager: true,
+});
+const logosData = (Object.values(logoModules)[0]?.default ?? { logos: {} }) as unknown;
 import { url } from './site';
 
 export interface LogoEntry {

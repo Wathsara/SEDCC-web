@@ -1,7 +1,33 @@
-import fixturesRaw from '@data/playhq/fixtures.json';
-import laddersRaw from '@data/playhq/ladders.json';
-import weeklyRaw from '@data/playhq/stats/latest-weekly.json';
-import seasonStatsRaw from '@data/playhq/stats/season.json';
+/*
+  The sync output is committed, but the site must still build without it: a
+  fresh clone, or a season whose data has been cleared, would otherwise fail
+  the build outright rather than falling back to the empty states these pages
+  already have. Glob imports yield nothing when the file is absent, where a
+  direct import throws at build time.
+*/
+const dataFile = <T,>(
+  modules: Record<string, { default: unknown }>,
+  fallback: T,
+): T => (Object.values(modules)[0]?.default as T) ?? fallback;
+
+const fixturesRaw = dataFile(
+  import.meta.glob<{ default: unknown }>('../../data/playhq/fixtures.json', { eager: true }),
+  { teams: [] },
+);
+const laddersRaw = dataFile(
+  import.meta.glob<{ default: unknown }>('../../data/playhq/ladders.json', { eager: true }),
+  { grades: [] },
+);
+const weeklyRaw = dataFile(
+  import.meta.glob<{ default: unknown }>('../../data/playhq/stats/latest-weekly.json', {
+    eager: true,
+  }),
+  {},
+);
+const seasonStatsRaw = dataFile(
+  import.meta.glob<{ default: unknown }>('../../data/playhq/stats/season.json', { eager: true }),
+  { players: [] },
+);
 import type { LadderGrade, TeamFixtures, WeeklyStats, SeasonStats } from './playhq-types';
 
 /*

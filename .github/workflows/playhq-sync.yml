@@ -21,11 +21,6 @@ on:
     - cron: '0 19 * * *' # 6am AEDT (summer)
     - cron: '0 20 * * *' # 6am AEST (winter)
   workflow_dispatch:
-    inputs:
-      force:
-        description: 'Ignore the 6am guard'
-        type: boolean
-        default: true
 
 # The job commits to the default branch, and asks the deploy workflow to run.
 permissions:
@@ -47,8 +42,8 @@ jobs:
           DATE=$(TZ=Australia/Melbourne date +%F)
           echo "Melbourne: $DATE ${HOUR}:00"
 
-          if [ "${{ inputs.force }}" = "true" ]; then
-            echo "Manual run — skipping the time guard."
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "Triggered by ${{ github.event_name }}, not the schedule — running regardless of the time."
           elif [ "$HOUR" != "06" ]; then
             echo "Not 6am in Melbourne (it is ${HOUR}:00) — this is the other cron. Stopping."
             echo "go=false" >> "$GITHUB_OUTPUT"

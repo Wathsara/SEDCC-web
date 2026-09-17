@@ -1,5 +1,5 @@
 {
-  "_comment": "The PlayHQ public cricket API has NO stable player ID — appearance IDs change every game. Players are matched by NAME. 'aliases' catches the variants PlayHQ actually returns (Mike/Michael, initials, misspellings). After each sync, check data/playhq/stats/unmatched.json and add anything listed there.",
+  "_comment": "The PlayHQ public cricket API has NO stable player ID \u2014 appearance IDs change every game. Players are matched by NAME. 'aliases' catches the variants PlayHQ actually returns (Mike/Michael, initials, misspellings). After each sync, check data/playhq/stats/unmatched.json and add anything listed there.",
   "players": [
     {
       "id": "example-player",
@@ -326,9 +326,251 @@
       "profileUrl": "https://play.cricket.com.au/player/6a1dc3ff-af47-4a04-a5f6-0e632f9173a0/ruchira-dhanasekara",
       "transferFrom": "Mavericks",
       "transferNote": "No ECA games at previous club"
+    },
+    {
+      "id": "santhuka-de-silva",
+      "name": "Santhuka De Silva",
+      "aliases": [
+        "S Silva",
+        "S. Silva"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "c0191682-95a7-4433-8a58-4728c1a20a43",
+      "profileUrl": "https://play.cricket.com.au/player/c0191682-95a7-4433-8a58-4728c1a20a43/santhuka-de-silva"
+    },
+    {
+      "id": "ruranga-jayarathna",
+      "name": "Ruranga Jayarathna",
+      "aliases": [
+        "E Jayarathna",
+        "Edippuli Arachchige Don Ruranga Isuru Jayarathna",
+        "R Jayarathna",
+        "R. Jayarathna"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "31c593ea-3551-47f4-b6b2-6d3fa623b160",
+      "profileUrl": "https://play.cricket.com.au/player/31c593ea-3551-47f4-b6b2-6d3fa623b160/edippuli-arachchige-don-ruranga-isuru-jayarathna",
+      "_nameNote": "PlayHQ registers this player as \"Edippuli Arachchige Don Ruranga Isuru Jayarathna\". The club uses \"Ruranga Jayarathna\"; the registered form is in aliases so the stats sync can match them."
+    },
+    {
+      "id": "sandun-kahandawala",
+      "name": "Sandun Kahandawala",
+      "aliases": [
+        "S Kahandawala",
+        "S. Kahandawala",
+        "Sandun Kahandawala Arachchige Don"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "318158c0-89cd-4a05-8f74-ffcbb95ede71",
+      "profileUrl": "https://play.cricket.com.au/player/318158c0-89cd-4a05-8f74-ffcbb95ede71/sandun-kahandawala-arachchige-don",
+      "_nameNote": "PlayHQ registers this player as \"Sandun Kahandawala Arachchige Don\". The club uses \"Sandun Kahandawala\"; the registered form is in aliases so the stats sync can match them.",
+      "_aliasNote": "Dropped the alias \"S Don\": three players in this squad have \"Don\" as their final name, so an initial plus Don identifies no one."
+    },
+    {
+      "id": "ivan-udakara",
+      "name": "Ivan Udakara",
+      "aliases": [
+        "I Udakara",
+        "I. Udakara"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "4909a7d6-c7e3-4c93-99c0-3a16b7d9c686",
+      "profileUrl": "https://play.cricket.com.au/player/4909a7d6-c7e3-4c93-99c0-3a16b7d9c686/ivan-udakara"
+    },
+    {
+      "id": "udara-usliyanage",
+      "name": "Udara Usliyanage",
+      "aliases": [
+        "U Usliyanage",
+        "U. Usliyanage"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "aeaffa8a-289d-4a0b-acaf-0dc88ce93c3f",
+      "profileUrl": "https://play.cricket.com.au/player/aeaffa8a-289d-4a0b-acaf-0dc88ce93c3f/udara-usliyanage"
+    },
+    {
+      "id": "yadeesha-deerasooriya",
+      "name": "Yadeesha Deerasooriya",
+      "aliases": [
+        "Y Deerasooriya",
+        "Y. Deerasooriya"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "799526d8-1d40-430d-87f8-0fdbb45c4b40",
+      "profileUrl": "https://play.cricket.com.au/player/799526d8-1d40-430d-87f8-0fdbb45c4b40/yadeesha-deerasooriya"
+    },
+    {
+      "id": "dinuth-deerasooriya",
+      "name": "Dinuth Deerasooriya",
+      "aliases": [
+        "D Deerasooriya",
+        "D. Deerasooriya"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "44bdcc05-eac2-4412-a4fb-efecf22cf5da",
+      "profileUrl": "https://play.cricket.com.au/player/44bdcc05-eac2-4412-a4fb-efecf22cf5da/dinuth-deerasooriya"
+    },
+    {
+      "id": "buwaneka-wakishta",
+      "name": "Buwaneka Wakishta",
+      "aliases": [
+        "B Wakishta",
+        "B. Wakishta"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "bcc15a98-67a8-4113-9dce-8a4b53ecd23e",
+      "profileUrl": "https://play.cricket.com.au/player/bcc15a98-67a8-4113-9dce-8a4b53ecd23e/buwaneka-wakishta"
+    },
+    {
+      "id": "yasindu-hendavitharana",
+      "name": "Yasindu Hendavitharana",
+      "aliases": [
+        "Y Hendavitharana",
+        "Y. Hendavitharana"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "b6fbadc5-0aba-4fcc-ad11-9a5c4e3a2cc3",
+      "profileUrl": "https://play.cricket.com.au/player/b6fbadc5-0aba-4fcc-ad11-9a5c4e3a2cc3/yasindu-hendavitharana"
+    },
+    {
+      "id": "sheshan-andrahennadige",
+      "name": "Sheshan Andrahennadige",
+      "aliases": [
+        "S Andrahennadige",
+        "S. Andrahennadige"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "ff15048c-904e-45e5-b64d-04e5ac57d696",
+      "profileUrl": "https://play.cricket.com.au/player/ff15048c-904e-45e5-b64d-04e5ac57d696/sheshan-andrahennadige"
+    },
+    {
+      "id": "pasindu-sunilchandra",
+      "name": "Pasindu Sunilchandra",
+      "aliases": [
+        "P Sunilchandra",
+        "P. Sunilchandra"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "66640bde-b924-4243-8026-2af8bf5e5d2f",
+      "profileUrl": "https://play.cricket.com.au/player/66640bde-b924-4243-8026-2af8bf5e5d2f/pasindu-sunilchandra"
+    },
+    {
+      "id": "janaka-don",
+      "name": "Janaka Don",
+      "aliases": [
+        "J Don",
+        "J. Don",
+        "Janaka Lokubalasuriyage Don"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "285fc967-74f8-406f-befe-b66270c2ec4a",
+      "profileUrl": "https://play.cricket.com.au/player/285fc967-74f8-406f-befe-b66270c2ec4a/janaka-lokubalasuriyage-don",
+      "_nameNote": "PlayHQ registers this player as \"Janaka Lokubalasuriyage Don\". The club uses \"Janaka Don\"; the registered form is in aliases so the stats sync can match them."
+    },
+    {
+      "id": "thineth-don",
+      "name": "Thineth Don",
+      "aliases": [
+        "T Don",
+        "T. Don"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "f5ae1cdb-72ef-40b0-8033-5051000e56d4",
+      "profileUrl": "https://play.cricket.com.au/player/f5ae1cdb-72ef-40b0-8033-5051000e56d4/thineth-don"
     }
   ],
-  "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game — matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
-  "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file — see CLAUDE.md.",
-  "_teamsComment": "teams[] lists every side a player turns out for. Only the LOC 2 squad is finalised for 2026/27; LOC 1 and Grade 4 are not published yet and their squad sections show an empty state until players are added here. The three players marked '(No ECA Games)' on the transfer sheet are LOC 2 only — do not infer a Grade 4 side from that note."
+  "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game \u2014 matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
+  "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file \u2014 see CLAUDE.md.",
+  "_teamsComment": "teams[] lists every side a player turns out for. Only the LOC 2 squad is finalised for 2026/27; LOC 1 and Grade 4 are not published yet and their squad sections show an empty state until players are added here. The three players marked '(No ECA Games)' on the transfer sheet are LOC 2 only \u2014 do not infer a Grade 4 side from that note."
 }

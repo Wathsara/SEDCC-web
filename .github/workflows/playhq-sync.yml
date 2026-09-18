@@ -35,17 +35,35 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Is it 6am in Melbourne?
+      - name: Is this the right cron for today?
         id: when
         run: |
-          HOUR=$(TZ=Australia/Melbourne date +%H)
+          # GitHub cron is UTC and has no daylight saving, so 6am Melbourne is
+          # two different UTC times across the year and both are scheduled.
+          #
+          # Deciding which one to keep by looking at the clock does NOT work:
+          # GitHub's scheduler is best-effort, and a run can start well after
+          # its slot — one started two hours late and was thrown away by a
+          # guard asking "is it 6am now". Ask instead which cron fired, which
+          # the event payload states outright and no delay can change.
+          OFFSET=$(TZ=Australia/Melbourne date +%z)
           DATE=$(TZ=Australia/Melbourne date +%F)
-          echo "Melbourne: $DATE ${HOUR}:00"
+          FIRED='${{ github.event.schedule }}'
+
+          case "$OFFSET" in
+            +1100) WANT='0 19 * * *' ;;   # AEDT, summer
+            +1000) WANT='0 20 * * *' ;;   # AEST, winter
+            *)     WANT='' ;;             # an offset Melbourne does not use
+          esac
+
+          echo "Melbourne $DATE, UTC$OFFSET — today's 6am cron is '$WANT'"
 
           if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "Triggered by ${{ github.event_name }}, not the schedule — running regardless of the time."
-          elif [ "$HOUR" != "06" ]; then
-            echo "Not 6am in Melbourne (it is ${HOUR}:00) — this is the other cron. Stopping."
+            echo "Triggered by ${{ github.event_name }} — running regardless."
+          elif [ -z "$WANT" ]; then
+            echo "::warning::Unrecognised Melbourne offset $OFFSET — running anyway."
+          elif [ "$FIRED" != "$WANT" ]; then
+            echo "Fired by '$FIRED', which is the other half of the year. Stopping."
             echo "go=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi

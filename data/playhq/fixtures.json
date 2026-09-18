@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-16T04:28:30.311Z",
+  "syncedAt": "2026-09-18T22:01:11.553Z",
   "season": "2026-27",
   "teams": [
     {
@@ -23,10 +23,10 @@
           "isHome": true,
           "opponent": "Deepdene Uniting 2nd XI",
           "outcome": null,
-          "venue": "Singleton Recreation Reserve",
-          "ground": "Singleton Reserve",
-          "suburb": "ENDEAVOUR HILLS",
-          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "venue": "Donnelly Recreation Reserve",
+          "ground": "Oval 1",
+          "suburb": "CRANBOURNE",
+          "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
           "ourScore": null,
           "theirScore": null
         },
@@ -382,6 +382,86 @@
           ],
           "isHome": true,
           "opponent": "St. Pauls Oakleigh 3rd XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 4",
+          "roundShort": "R4",
+          "isFinal": false,
+          "dates": [
+            "2026-11-07T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Balwyn Saints 3rd XI",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "61b56a73-03ec-44f4-a655-de9c68971395",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 5",
+          "roundShort": "R5",
+          "isFinal": false,
+          "dates": [
+            "2026-11-14T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Malvern Valley 1st XI",
+          "outcome": null,
+          "venue": "Basil Reserve",
+          "ground": "Oval 1 - West",
+          "suburb": "EAST MALVERN",
+          "mapQuery": "Basil%20Reserve%2C%20EAST%20MALVERN%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 6",
+          "roundShort": "R6",
+          "isFinal": false,
+          "dates": [
+            "2026-11-21T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Melbourne Sixers 1st X1",
+          "outcome": null,
+          "venue": "Norman Luth Reserve",
+          "ground": "Norman Luth Reserve",
+          "suburb": "SPRINGVALE",
+          "mapQuery": "Norman%20Luth%20Reserve%2C%20SPRINGVALE%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "9b4124f2-afe9-4e04-b2da-3ac4502003e8",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 7",
+          "roundShort": "R7",
+          "isFinal": false,
+          "dates": [
+            "2026-11-28T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Manningham 1st XI",
           "outcome": null,
           "venue": "Singleton Recreation Reserve",
           "ground": "Singleton Reserve",

@@ -1,0 +1,362 @@
+---
+/**
+ * The match strip: every side's recent and upcoming games in one horizontal
+ * scroller across the top of the home page.
+ *
+ * Modelled on the strip cricket sites run above the masthead, and for the same
+ * reason — a supporter arriving wants to know what just happened and what is on
+ * next, before anything else. A grid of two cards answers that for two sides; a
+ * club with three sides across two associations needs something that scrolls.
+ *
+ * Order is results newest-first, then fixtures soonest-first, which puts the
+ * boundary between "what happened" and "what's next" in the middle. The script
+ * opens on that boundary, so the next game is the card in view and the last
+ * result is one swipe to the left.
+ *
+ * Set on paper, not navy: the page alternates light and dark bands, and the
+ * header and hero either side of this are both navy — a third navy band between
+ * them had nothing to sit against and disappeared into both.
+ */
+import Logo from './Logo.astro';
+import { formatDate, isoDate } from '../lib/format';
+import { teamBySlug, url } from '../lib/site';
+import { getClubLogo } from '../lib/logos';
+import type { GameWithTeam } from '../lib/playhq';
+
+interface Props {
+  results: GameWithTeam[];
+  upcoming: GameWithTeam[];
+  /** A strip is a glance, not a fixture list — /fixtures is one card away. */
+  max?: number;
+  /** Results are history; past a handful they stop being news. */
+  maxResults?: number;
+}
+const { results, upcoming, max = 9, maxResults = 3 } = Astro.props;
+
+/*
+  Fill to `max`, favouring what is still to come but never dropping the recent
+  results entirely. Early in a season there is nothing played and the strip is
+  all fixtures; late on there are few fixtures left and the results take up the
+  slack, so neither limit is applied on its own.
+*/
+const keptResults = results.slice(0, maxResults);
+const next = upcoming.slice(0, max - keptResults.length);
+const past = keptResults.slice(0, max - next.length);
+const games = [...past, ...next];
+
+/** Index of the first upcoming card, for the initial scroll position. */
+const nextIndex = past.length;
+
+/** Initials, for a club whose crest PlayHQ has not published. */
+const monogram = (name: string) =>
+  (name || '')
+    .replace(/\s*-\s*\d+$/, '')
+    .replace(/\b\d+(st|nd|rd|th)\s+XI\b/i, '')
+    .replace(/\bGrade\b.*$/i, '')
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+
+/**
+ * Outcome is not a closed set — one real season produced WON_BY_FORFEIT and
+ * WON_BY_CUSTOM_TARGET — so match on the prefix rather than an exact value.
+ *
+ * The tone comes back with it. On paper the result tokens are legible (they are
+ * specified for exactly this ground), and a row of five cards is much faster to
+ * read with them; the wording carries the meaning on its own, so colour is
+ * reinforcing rather than the only signal.
+ */
+const outcome = (value: string | null, ours: string) => {
+  if (!value) return null;
+  if (/^WON(_|$)/.test(value)) return { text: `${ours} won`, tone: 'text-win' };
+  if (/^LOST(_|$)/.test(value)) return { text: `${ours} lost`, tone: 'text-loss' };
+  if (value === 'TIED') return { text: 'Match tied', tone: 'text-draw' };
+  if (value === 'DRAWN') return { text: 'Match drawn', tone: 'text-draw' };
+  return {
+    text: value.replace(/_/g, ' ').toLowerCase().replace(/^./, (c) => c.toUpperCase()),
+    tone: 'text-ink-muted',
+  };
+};
+
+const startTime = (iso?: string) => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleTimeString('en-AU', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZone: 'Australia/Melbourne',
+  });
+};
+
+/** Home side first, the way a scorecard is written. */
+const sides = (game: GameWithTeam) => {
+  const team = teamBySlug(game.teamSlug);
+  const us = {
+    name: team?.name ?? game.teamName,
+    score: game.ourScore,
+    ours: true,
+    logo: null as string | null,
+  };
+  const them = {
+    name: game.opponent,
+    score: game.theirScore,
+    ours: false,
+    logo: getClubLogo(game.opponent),
+  };
+  return game.isHome ? [us, them] : [them, us];
+};
+---
+
+{
+  games.length > 0 && (
+    <section class="border-b border-rule bg-paper-sunk">
+      <div class="relative mx-auto max-w-6xl px-4">
+        {/*
+          tabindex makes the scroller reachable by keyboard, which a plain
+          overflow container is not — without it the arrow keys never get a
+          chance to scroll and the cards past the fold are unreachable.
+        */}
+        <ul
+          data-match-strip
+          data-next-index={nextIndex}
+          tabindex="0"
+          role="region"
+          aria-label="Recent results and upcoming fixtures"
+          class="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 py-4 scroll-pl-5 sm:px-4 sm:scroll-pl-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-club"
+        >
+          {games.map((game, i) => {
+            const team = teamBySlug(game.teamSlug);
+            const played = game.status === 'FINAL' || game.outcome !== null;
+            const result = outcome(game.outcome, team?.shortName ?? 'Dreamers');
+            const time = startTime(game.dates?.[0]);
+
+            return (
+              <li class="w-80 shrink-0 snap-start" data-strip-card data-index={i}>
+                <a
+                  href={url(`teams/${game.teamSlug}`)}
+                  class="flex h-full flex-col justify-between gap-3 border border-rule bg-paper px-4 py-3 transition-colors hover:border-rule-strong hover:bg-paper-sunk/50"
+                >
+                  <p class="flex items-baseline justify-between gap-2 font-display text-2xs uppercase tracking-eyebrow">
+                    <span class="shrink-0 text-ink-faint">{played ? 'Result' : 'Upcoming'}</span>
+                    <span class="truncate text-ink-muted">
+                      {team?.competitionShort} {team?.gradeLabel}
+                      <span class="mx-1 text-rule-strong" aria-hidden="true">
+                        ·
+                      </span>
+                      {game.roundShort || game.round}
+                    </span>
+                  </p>
+
+                  <div class="space-y-1.5">
+                    {sides(game).map((side) => (
+                      <div class="flex items-center gap-2">
+                        {side.ours ? (
+                          <Logo class="h-5 w-5 shrink-0" width={20} />
+                        ) : side.logo ? (
+                          <img
+                            src={side.logo}
+                            alt=""
+                            loading="lazy"
+                            class="h-5 w-5 shrink-0 object-contain"
+                          />
+                        ) : (
+                          <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-paper-sunk font-display text-[0.55rem] uppercase text-ink-muted">
+                            {monogram(side.name)}
+                          </span>
+                        )}
+
+                        <span
+                          class:list={[
+                            'min-w-0 flex-1 truncate font-display text-sm uppercase tracking-display',
+                            side.ours ? 'text-club' : 'text-ink',
+                          ]}
+                        >
+                          {side.name}
+                        </span>
+
+                        {played && (
+                          <span class="shrink-0 font-figures text-sm tabular-nums text-ink">
+                            {side.score ?? '—'}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <p
+                    class:list={[
+                      'truncate border-t border-rule pt-2 font-figures text-2xs',
+                      // A result is the headline of a played card; a date is
+                      // supporting detail for one still to come.
+                      played ? result?.tone : 'text-ink-muted',
+                    ]}
+                  >
+                    {played ? (
+                      result?.text
+                    ) : (
+                      <>
+                        <time datetime={isoDate(game.dates?.[0])} class="text-ink">
+                          {formatDate(game.dates?.[0], {
+                            weekday: 'short',
+                            day: 'numeric',
+                            month: 'short',
+                          })}
+                        </time>
+                        {time && (
+                          <>
+                            <span class="mx-1.5 text-rule-strong" aria-hidden="true">
+                              ·
+                            </span>
+                            <span>{time}</span>
+                          </>
+                        )}
+                        {game.ground && (
+                          <>
+                            <span class="mx-1.5 text-rule-strong" aria-hidden="true">
+                              ·
+                            </span>
+                            <span>{game.ground}</span>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </p>
+                </a>
+              </li>
+            );
+          })}
+
+          {/*
+            The last card, because /fixtures is not in the main navigation and a
+            strip that simply stops leaves nowhere to go. Reaching the end of the
+            scroll is exactly when someone wants the full list.
+          */}
+          <li class="w-44 shrink-0 snap-start">
+            <a
+              href={url('fixtures')}
+              class="flex h-full flex-col justify-center gap-1 border border-dashed border-rule-strong px-4 py-3 text-center transition-colors hover:border-club hover:bg-paper"
+            >
+              <span class="font-display text-sm uppercase tracking-display text-club">
+                All fixtures
+              </span>
+              <span class="font-figures text-2xs text-ink-muted">Every side, every round</span>
+            </a>
+          </li>
+        </ul>
+
+        <button
+          type="button"
+          data-strip-prev
+          hidden
+          aria-label="Scroll to earlier matches"
+          class="absolute left-1 top-1/2 hidden -translate-y-1/2 items-center justify-center border border-rule bg-paper p-1.5 text-ink-muted shadow-lift transition-colors hover:text-club md:flex"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="h-4 w-4"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          data-strip-next
+          hidden
+          aria-label="Scroll to later matches"
+          class="absolute right-1 top-1/2 hidden -translate-y-1/2 items-center justify-center border border-rule bg-paper p-1.5 text-ink-muted shadow-lift transition-colors hover:text-club md:flex"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="h-4 w-4"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  /* The scrollbar is noise on a strip this short; the arrows and the partly
+     visible next card are the affordance. Scrolling itself is untouched. */
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The buttons carry `md:flex`, which sets display and so beats the `hidden`
+     attribute's display:none — the arrows showed even when the script had
+     hidden them, sitting on top of the first card. Astro's scoping raises these
+     selectors above the utility, so `hidden` means hidden again. */
+  [data-strip-prev][hidden],
+  [data-strip-next][hidden] {
+    display: none;
+  }
+</style>
+
+<script>
+  function setupMatchStrip() {
+    for (const strip of document.querySelectorAll<HTMLElement>('[data-match-strip]')) {
+      if (strip.dataset.ready) continue;
+      strip.dataset.ready = 'true';
+
+      const wrap = strip.parentElement;
+      const prev = wrap?.querySelector<HTMLButtonElement>('[data-strip-prev]');
+      const next = wrap?.querySelector<HTMLButtonElement>('[data-strip-next]');
+
+      const step = () => {
+        const card = strip.querySelector<HTMLElement>('[data-strip-card]');
+        // Two cards a press on a wide screen, one on a narrow one.
+        return (card?.offsetWidth ?? 320) * (strip.clientWidth > 700 ? 2 : 1);
+      };
+
+      const update = () => {
+        // The scroller carries its own horizontal padding, so a strip resting
+        // at its first card sits at scrollLeft = paddingLeft, not 0. Comparing
+        // against 0 left the "earlier" arrow showing over the first card.
+        const style = getComputedStyle(strip);
+        const padLeft = parseFloat(style.paddingLeft) || 0;
+        const padRight = parseFloat(style.paddingRight) || 0;
+
+        const overflows = strip.scrollWidth > strip.clientWidth + 1;
+        const atStart = strip.scrollLeft <= padLeft + 4;
+        const atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - padRight - 4;
+
+        if (prev) prev.hidden = !overflows || atStart;
+        if (next) next.hidden = !overflows || atEnd;
+      };
+
+      prev?.addEventListener('click', () => strip.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next?.addEventListener('click', () => strip.scrollBy({ left: step(), behavior: 'smooth' }));
+      strip.addEventListener('scroll', update, { passive: true });
+      new ResizeObserver(update).observe(strip);
+
+      // Open on the next fixture, so the last result sits one swipe to its left.
+      // Jumped rather than animated: a strip that slides on every page load
+      // reads as a glitch, and it would fight a restored scroll position.
+      const i = Number(strip.dataset.nextIndex ?? 0);
+      const target = strip.querySelector<HTMLElement>(`[data-strip-card][data-index="${i}"]`);
+      if (target && i > 0) strip.scrollLeft = target.offsetLeft - strip.offsetLeft;
+
+      update();
+    }
+  }
+
+  setupMatchStrip();
+  document.addEventListener('astro:page-load', setupMatchStrip);
+</script>

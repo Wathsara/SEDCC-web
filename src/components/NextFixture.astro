@@ -142,7 +142,6 @@ const mapUrl = game.mapQuery
     <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-figures text-2xs sm:text-xs">
       {/* Date & Time */}
       <div class="flex items-center gap-1.5 text-paper">
-        <CricketIcon name="calendar" class="h-3.5 w-3.5 text-accent-tint shrink-0" />
         <time datetime={isoDate(game.dates?.[0])} class="font-semibold text-paper">
           {formatDate(game.dates?.[0], { weekday: 'short', day: 'numeric', month: 'short' })}
         </time>

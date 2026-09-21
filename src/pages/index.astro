@@ -9,10 +9,10 @@ import Logo from '../components/Logo.astro';
 import TeamPhoto from '../components/TeamPhoto.astro';
 import SixBall from '../components/SixBall.astro';
 import SeasonCard from '../components/SeasonCard.astro';
-import NextFixture from '../components/NextFixture.astro';
 import FormGuide from '../components/FormGuide.astro';
 import CricketIcon from '../components/CricketIcon.astro';
 import WeeklyBest from '../components/WeeklyBest.astro';
+import MatchStrip from '../components/MatchStrip.astro';
 import { club, season, teams, homeGroundSuburb, homeGroundLabel, suburb, headlineRecords, sponsors, featuredSponsor, otherSponsors, showNews, intro, heroLine, vision, url } from '../lib/site';
 import { strategyHighlights, strategyPeriod } from '../lib/strategy';
 import { seasons } from '../lib/history';
@@ -36,12 +36,6 @@ const lastResult = [...seasons].reverse().find((s) => s.result);
 // .filter(Boolean) does not narrow away the undefined.
 const sponsorStrip = featuredSponsor ? [featuredSponsor, ...otherSponsors] : otherSponsors;
 
-// Next game for each side (LOC 1, LOC 2, Grade 4) so both Saturday games show
-const upcomingBySide = teams
-  .map((t) => upcoming.find((g) => g.teamSlug === t.slug))
-  .filter((g): g is GameWithTeam => Boolean(g));
-
-const recent = results.slice(0, 4);
 
 const growth = [
   { count: 3, figure: '03', label: 'Seasons', detail: 'Since 2024/25', icon: 'boundary' as const },
@@ -61,6 +55,9 @@ const leadingBowl = [...(seasonStats.players ?? [])]
 ---
 
 <Base title={club.name} bareTitle>
+  <!-- Match strip: every side's results and fixtures, before anything else -->
+  <MatchStrip results={results} upcoming={upcoming} />
+
   <!-- Hero -->
   <section data-hero class="relative isolate overflow-hidden bg-club text-paper">
     {/* Subtle atmospheric background */}
@@ -196,54 +193,6 @@ const leadingBowl = [...(seasonStats.players ?? [])]
       </section>
     )
   }
-
-  <!-- Match Centre: Show upcoming games for both LOC 1 & LOC 2 -->
-  <section class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
-    <SectionHead
-      title="Match Centre"
-      note={season.label}
-      href={url('teams')}
-      linkLabel="All Teams & Squads"
-    />
-
-    <div class="mt-6">
-      {
-        upcomingBySide.length > 0 ? (
-          <div>
-            {/* Multi-match Grid: Show both LOC 1 and LOC 2 on Round 1 */}
-            <div class="grid gap-6 md:grid-cols-2">
-              {upcomingBySide.map((game) => (
-                <NextFixture game={game} />
-              ))}
-            </div>
-
-            {/* Grade 4 Competition Kickoff Card */}
-            <div
-              class="mt-6 tile p-4 bg-paper-sunk/60 border border-rule flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs"
-              data-rule-in
-            >
-              <div class="flex items-center gap-3">
-                <span class="rounded bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 text-2xs font-display font-bold uppercase tracking-wider text-amber-800">
-                  VSCA Grade 4
-                </span>
-                <span class="text-xs text-ink-muted">
-                  Sunday XI season draw releasing October 2026.
-                </span>
-              </div>
-              <a
-                href={url('teams/grade-4')}
-                class="stitch-link font-display text-xs uppercase tracking-wider text-club hover:text-accent font-semibold shrink-0"
-              >
-                View Grade 4 Side & Squad →
-              </a>
-            </div>
-          </div>
-        ) : (
-          <EmptyState title="No fixtures yet" />
-        )
-      }
-    </div>
-  </section>
 
   <!-- Club figures -->
   <section class="band-dark border-y border-white/10">

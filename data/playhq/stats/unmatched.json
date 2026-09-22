@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21T22:54:59.407Z",
+  "generatedAt": "2026-09-22T22:29:19.526Z",
   "note": "Names in PlayHQ scorecards with no match in config/players.json. Add each as a new player or as an alias of an existing one.",
   "names": []
 }

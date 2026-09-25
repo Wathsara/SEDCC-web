@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-23T22:32:20.298Z",
+  "syncedAt": "2026-09-25T22:55:11.785Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -140,6 +140,18 @@
       ],
       "matchKey": "burwoodunitingcanterbury",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/03d93d33-8d96-4121-a96e-c344d71a427c/1684842875083/logo.png?_a=BAMAMifg0"
+    },
+    "mazenod-old-collegians-cricket-club": {
+      "name": "Mazenod Old Collegians Cricket Club",
+      "file": "data/playhq/logos/mazenod-old-collegians-cricket-club.jpg",
+      "teamIds": [
+        "2f9da409-ce85-4958-8205-e754c8868f50",
+        "e415da76-11cd-4183-99cc-4f620da9d273",
+        "d78da5ec-72f5-4336-8554-e0b383577be2",
+        "7dae49d0-f357-4cc6-afd1-b28adbc1b105"
+      ],
+      "matchKey": "mazenodoldcollegians",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/6acea983-b62f-43e5-adcf-8a7a51b16e00/1690809767653/logo.jpg?_a=BAMAMifg0"
     },
     "canterbury-cricket-club": {
       "name": "Canterbury Cricket Club",
@@ -322,8 +334,7 @@
         "3c7e3475-ba04-41c3-b2aa-b719a89c783d",
         "5afdd335-86f8-4cd1-8f4c-1feff70e7a84",
         "6c9db42c-b5dd-448b-ac00-bf8e7cd78c4a",
-        "0e0945ab-a715-44b3-99f5-eeee5917474a",
-        "8fcda0bf-9dad-413d-834f-af2808b402cb"
+        "0e0945ab-a715-44b3-99f5-eeee5917474a"
       ],
       "matchKey": "holytrinity",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/8e870a8e-92f3-4d87-8f10-5bddd1e124ba/1685523804661/logo.png?_a=BAMAMifg0"
@@ -383,18 +394,6 @@
       "matchKey": "marcellinoc",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/f8d9f05a-1864-4f66-8889-4ee4421cf262/1685524390536/logo.png?_a=BAMAMifg0"
     },
-    "mazenod-old-collegians-cricket-club": {
-      "name": "Mazenod Old Collegians Cricket Club",
-      "file": "data/playhq/logos/mazenod-old-collegians-cricket-club.jpg",
-      "teamIds": [
-        "e415da76-11cd-4183-99cc-4f620da9d273",
-        "d78da5ec-72f5-4336-8554-e0b383577be2",
-        "7dae49d0-f357-4cc6-afd1-b28adbc1b105",
-        "2f9da409-ce85-4958-8205-e754c8868f50"
-      ],
-      "matchKey": "mazenodoldcollegians",
-      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/6acea983-b62f-43e5-adcf-8a7a51b16e00/1690809767653/logo.jpg?_a=BAMAMifg0"
-    },
     "melbourne-deaf-cricket-club": {
       "name": "Melbourne Deaf Cricket Club",
       "file": "data/playhq/logos/melbourne-deaf-cricket-club.png",
@@ -408,6 +407,7 @@
       "name": "Melbourne Sixers Sports Club",
       "file": "data/playhq/logos/melbourne-sixers-sports-club.jpg",
       "teamIds": [
+        "36f4ed9a-2399-46d2-a853-c5990584935e",
         "01d9a0e5-d922-456b-9ab0-62f47d577d88"
       ],
       "matchKey": "melbournesixerssports",

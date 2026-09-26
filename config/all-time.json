@@ -49,10 +49,10 @@
     "bowling": [
       {
         "label": "Best bowling figures",
-        "value": "5/38",
-        "holder": "Anuradha Kannangara",
-        "detail": "8 overs, v Melbourne Crickeroos",
-        "season": "2025/26"
+        "value": "5/5",
+        "holder": "Kavindu Heshan Fernando",
+        "detail": "4 overs, v Thunders Sports Club Grade 3C",
+        "season": "2024/25"
       },
       {
         "label": "Most wickets in a season",
@@ -237,6 +237,19 @@
         "opponent": "Hartley CC - 4",
         "grade": "VSCA Grade 4",
         "round": "Round 1"
+      },
+      {
+        "name": "Kavindu Heshan Fernando",
+        "season": "2024/25",
+        "figures": "5/5",
+        "overs": 4,
+        "runs": 5,
+        "maidens": 0,
+        "economy": 1.25,
+        "opponent": "Thunders Sports Club Grade 3C",
+        "grade": "VSCA Grade 3C",
+        "round": "Round 4",
+        "_matchNote": "Sun 27 Oct 2024 at Singleton Reserve. The club lost by 21 runs chasing 203 — the five-for is the individual performance, not the result."
       }
     ]
   },

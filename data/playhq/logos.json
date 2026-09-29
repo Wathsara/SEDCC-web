@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-29T00:02:38.568Z",
+  "syncedAt": "2026-09-29T23:16:16.909Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {

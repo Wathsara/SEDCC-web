@@ -56,3 +56,9 @@ mvp-*.png
 
 # Sample posters rendered from the MVP templates.
 mvp-samples/
+
+# Raw player photos as the club drops them in — multi-megabyte cut-outs, one per
+# team folder. `npm run players:photos` turns them into the optimised webp files
+# in portraits/, and those are what the site builds from and what gets committed.
+src/assets/players/*/
+!src/assets/players/portraits/

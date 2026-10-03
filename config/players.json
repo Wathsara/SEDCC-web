@@ -1,5 +1,5 @@
 {
-  "_comment": "The PlayHQ public cricket API has NO stable player ID \u2014 appearance IDs change every game. Players are matched by NAME. 'aliases' catches the variants PlayHQ actually returns (Mike/Michael, initials, misspellings). After each sync, check data/playhq/stats/unmatched.json and add anything listed there.",
+  "_comment": "The PlayHQ public cricket API has NO stable player ID — appearance IDs change every game. Players are matched by NAME. 'aliases' catches the variants PlayHQ actually returns (Mike/Michael, initials, misspellings). After each sync, check data/playhq/stats/unmatched.json and add anything listed there.",
   "players": [
     {
       "id": "example-player",
@@ -343,7 +343,8 @@
       "joined": 2026,
       "active": true,
       "playhqProfileId": "c0191682-95a7-4433-8a58-4728c1a20a43",
-      "profileUrl": "https://play.cricket.com.au/player/c0191682-95a7-4433-8a58-4728c1a20a43/santhuka-de-silva"
+      "profileUrl": "https://play.cricket.com.au/player/c0191682-95a7-4433-8a58-4728c1a20a43/santhuka-de-silva",
+      "captain": true
     },
     {
       "id": "ruranga-jayarathna",
@@ -568,9 +569,27 @@
       "active": true,
       "playhqProfileId": "f5ae1cdb-72ef-40b0-8033-5051000e56d4",
       "profileUrl": "https://play.cricket.com.au/player/f5ae1cdb-72ef-40b0-8033-5051000e56d4/thineth-don"
+    },
+    {
+      "id": "tharindu-demika",
+      "name": "Tharindu Demika",
+      "aliases": [
+        "T Demika",
+        "T. Demika",
+        "Demika"
+      ],
+      "teams": [
+        "loc-1"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "_profileNote": "No PlayHQ profile yet — first season of senior cricket. Add playhqProfileId and profileUrl once the association registers him, and the squad card will link to his career page like the others."
     }
   ],
-  "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game \u2014 matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
-  "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file \u2014 see CLAUDE.md.",
-  "_teamsComment": "teams[] lists every side a player turns out for. Only the LOC 2 squad is finalised for 2026/27; LOC 1 and Grade 4 are not published yet and their squad sections show an empty state until players are added here. The three players marked '(No ECA Games)' on the transfer sheet are LOC 2 only \u2014 do not infer a Grade 4 side from that note."
+  "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game — matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
+  "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file — see CLAUDE.md.",
+  "_teamsComment": "teams[] lists every side a player turns out for. Only the LOC 2 squad is finalised for 2026/27; LOC 1 and Grade 4 are not published yet and their squad sections show an empty state until players are added here. The three players marked '(No ECA Games)' on the transfer sheet are LOC 2 only — do not infer a Grade 4 side from that note."
 }

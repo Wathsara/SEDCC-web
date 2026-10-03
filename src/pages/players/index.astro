@@ -4,6 +4,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import PlayerCard from '../../components/PlayerCard.astro';
 import EmptyState from '../../components/EmptyState.astro';
 import { season, teams, squadFor, url } from '../../lib/site';
+import { squadOrder } from '../../lib/portraits';
 import { seasonStats } from '../../lib/playhq';
 
 /* Figures come from the sync and join to the roster by name — there is no
@@ -13,7 +14,7 @@ const statsByName = new Map(
 );
 
 const sides = teams
-  .map((team) => ({ team, squad: squadFor(team.slug) }))
+  .map((team) => ({ team, squad: squadOrder(squadFor(team.slug)) }))
   .filter((s) => s.squad.length > 0);
 
 const named = sides.reduce((n, s) => n + s.squad.length, 0);

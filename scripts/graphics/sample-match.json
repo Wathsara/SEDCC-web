@@ -1,0 +1,30 @@
+{
+  "_comment": "Example input for match-summary.mjs. Real fixture and scores from config/results-2025-26.json; the player rows are placeholders so this can never be posted by mistake. Replace them, or use from-game.mjs to read a real scorecard.",
+  "subtitle": "Dreamers SC - 4 v Melbourne Titans - 4",
+  "meta": "ROUND 13 · VSCA GRADE 4 · BERWICK FIELDS · 1 FEB 2026",
+  "innings": [
+    {
+      "name": "Dreamers SC - 4",
+      "score": "5-347",
+      "overs": "40 OV",
+      "batting": [
+        { "name": "Sample Batter A", "runs": "118", "balls": "(71)" },
+        { "name": "Sample Batter B", "runs": "84", "balls": "(52)" },
+        { "name": "Sample Batter C", "runs": "61*", "balls": "(38)" }
+      ],
+      "bowling": []
+    },
+    {
+      "name": "Melbourne Titans - 4",
+      "score": "6-272",
+      "overs": "40 OV",
+      "batting": [],
+      "bowling": [
+        { "name": "Sample Bowler A", "figures": "3/44" },
+        { "name": "Sample Bowler B", "figures": "2/51" },
+        { "name": "Sample Bowler C", "figures": "1/38" }
+      ]
+    }
+  ],
+  "result": "DREAMERS WIN BY 75 RUNS"
+}

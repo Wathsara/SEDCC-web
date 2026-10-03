@@ -19,7 +19,7 @@ const isBatting = field === 'score';
   <!-- Lord's Style Pediment / Crown Header -->
   <div class="honours-board__pediment">
     <div class="honours-board__crest">
-      <CricketIcon name={isBatting ? 'bat' : 'ball'} class="h-8 w-8 text-[#dfb74c]" />
+      <CricketIcon name={isBatting ? 'bat' : 'ball'} class="h-8 w-8 text-honour" />
     </div>
     <p class="honours-board__sub">{club.name} · Pavilion Honours</p>
     <h2 class="honours-board__title">{title}</h2>
@@ -68,7 +68,7 @@ const isBatting = field === 'score';
                 <div>
                   <span class="honours-row__name block">{r.name}</span>
                   {(isBatting ? extraBatting : extraBowling) && (
-                    <span class="mt-0.5 block font-figures text-2xs text-[#dfb74c]/85">
+                    <span class="mt-0.5 block font-figures text-2xs text-honour/85">
                       {isBatting ? extraBatting : extraBowling}
                     </span>
                   )}

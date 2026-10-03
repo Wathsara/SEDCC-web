@@ -10,9 +10,15 @@
 @theme {
   /* --- Club colours -------------------------------------------------------
      Sampled from public/brand/Dreamers-With-Background-Final.avif. The badge is
-     a two-colour identity: navy shield, chrome lettering and ball. There is no
-     gold in it, so the accent is the chrome, split into the two values it
-     actually needs — silver only works on navy, never on paper.
+     a two-colour identity: navy shield, chrome lettering and ball. The badge
+     has no gold in it, so the accent is the chrome, split into the two values
+     it actually needs — silver only works on navy, never on paper.
+
+     The club has since adopted a gold for honours — the boards, the records,
+     the name on a squad card. It is not in the badge, which is why it is named
+     for its job rather than as a brand colour. Recorded here because it was
+     already in use as a bare #dfb74c in six files, and a token the code
+     contradicts is worse than no token.
 
        club       shield navy, 36.7% of the badge   16.1:1 on paper
        club-tint  same hue, lighter, for fills      12.5:1 under white text
@@ -24,6 +30,8 @@
   --color-club-tint: #1c3069;
   --color-accent: #55606e;
   --color-accent-tint: #b4b5ba;
+  /* Honours gold. 9.2:1 on club navy, so it holds a name or a record. */
+  --color-honour: #dfb74c;
 
   /* --- Surfaces and ink ---------------------------------------------------
      Warm near-black rather than #000: pen on paper, not a terminal.
@@ -83,6 +91,13 @@
      the rule keeps the scorebook edge. Never a soft glow. */
   --shadow-tile: 0 1px 2px rgb(15 28 63 / 0.06), 0 8px 24px -12px rgb(15 28 63 / 0.28);
   --shadow-lift: 0 2px 4px rgb(15 28 63 / 0.08), 0 18px 40px -16px rgb(15 28 63 / 0.42);
+
+  /* For a cut-out that breaks out of its panel — the squad cards. A box shadow
+     would trace the image's rectangle, including the transparent margin around
+     the player; drop-shadow follows the alpha, so it falls from the figure
+     itself. Same navy and weight as --shadow-tile, so a card that lifts and a
+     player who leans out read as the same material. */
+  --drop-shadow-cutout: 0 12px 18px rgb(15 28 63 / 0.28);
 
   /* --- Measure ------------------------------------------------------------ */
   --container-prose: 68ch;

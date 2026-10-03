@@ -44,6 +44,8 @@ export interface RosterPlayer {
   bowlingStyle: string | null;
   joined: number | null;
   active: boolean;
+  /** Club captain of the side(s) in `teams`. Shown as a C on the squad card. */
+  captain?: boolean;
   /** play.cricket.com.au public profile. Not the API's appearance id. */
   profileUrl?: string;
   playhqProfileId?: string;

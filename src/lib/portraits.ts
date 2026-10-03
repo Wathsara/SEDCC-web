@@ -25,3 +25,21 @@ export function portraitFor(id: string): ImageMetadata | undefined {
 }
 
 export const portraitCount = byId.size;
+
+/**
+ * Squad order: the captain, then players with a photograph, then the rest —
+ * alphabetically within each group.
+ *
+ * The captain leads because that is how a team sheet is read. Photographs come
+ * next because a grid alternating portraits and silhouettes looks broken rather
+ * than like a squad part-way through a photo shoot; grouped, the silhouettes
+ * become an obvious tail instead of gaps scattered through it.
+ */
+export function squadOrder<T extends { id: string; name: string; captain?: boolean }>(
+  players: T[],
+): T[] {
+  const rank = (p: T) => (p.captain ? 0 : byId.has(p.id) ? 1 : 2);
+  return [...players].sort(
+    (a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name, 'en-AU'),
+  );
+}

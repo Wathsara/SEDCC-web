@@ -29,7 +29,8 @@
     "cards:2025-26": "PLAYHQ_DATA_DIR=.playhq-test node scripts/graphics/season-cards.mjs grade-4 --season 2025-26 --out season-cards",
     "playhq:probe": "tsx scripts/playhq/probe.ts",
     "season:2025-26": "npm run playhq:test-2025-26 && npm run cards:2025-26",
-    "mvp": "node scripts/graphics/mvp-card.mjs"
+    "mvp": "node scripts/graphics/mvp-card.mjs",
+    "players:photos": "node scripts/players/portraits.mjs"
   },
   "dependencies": {
     "astro": "^7.2.9"

@@ -9,6 +9,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
 import FixtureList from '../../components/FixtureList.astro';
 import LadderTable from '../../components/LadderTable.astro';
 import PlayerCard from '../../components/PlayerCard.astro';
+import { squadOrder } from '../../lib/portraits';
 import CricketIcon from '../../components/CricketIcon.astro';
 import { season, teams, squadFor, url, homeGroundLabel } from '../../lib/site';
 import { teamFixtures, teamLadder, seasonStats } from '../../lib/playhq';
@@ -21,7 +22,7 @@ const { team } = Astro.props;
 
 const fixtures = teamFixtures(team.slug);
 const ladder = teamLadder(team.slug);
-const squad = squadFor(team.slug);
+const squad = squadOrder(squadFor(team.slug));
 
 /* Season figures come from the sync and join to the roster by name */
 const statsByName = new Map(

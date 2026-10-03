@@ -1,11 +1,23 @@
 ---
 /**
- * A squad card: portrait, name, role.
+ * A squad card: portrait over a navy panel, name on a band across the foot.
  *
- * The portrait carries the card — it fills the frame and the name sits on a
- * gradient over the foot of it, so a grid of these reads as a team sheet rather
- * than a list of boxes. Season figures, where the sync has them, sit under the
- * name as the one piece of hard data a supporter looks for.
+ * The portrait sits in front of the panel rather than inside it, and the panel
+ * starts a little way down — so the player's head rises above its top edge.
+ * That break is the whole effect: a cut-out contained in a box reads as a
+ * photograph of someone, while one crossing the edge reads as the person
+ * standing there.
+ *
+ * It only works because these are cut-outs cropped tight to the top (measured:
+ * 2-3% of image height). A photo with its background still on would show a
+ * rectangle hanging over the panel, so the silhouette fallback stays inside it.
+ *
+ * Colour follows the club's own palette rather than the reference design's:
+ * that reference is a lighter, more saturated version of the same 222° navy the
+ * badge already uses, so the panel is simply club-tint falling to club, and the
+ * band is the navy at full depth. The name is the honours gold — the colour
+ * already carrying the records and the honour boards — so a squad card belongs
+ * to this club rather than resembling another one.
  */
 import PlayerPortrait from './PlayerPortrait.astro';
 import { portraitFor } from '../lib/portraits';
@@ -24,64 +36,86 @@ const wickets = stat?.bowling?.wickets ?? 0;
 const hasFigures = runs > 0 || wickets > 0;
 
 const profileUrl = (player as RosterPlayer & { profileUrl?: string }).profileUrl;
+const isCaptain = Boolean(player.captain);
 
-/* The scrim exists to keep the name readable over an unpredictable photo. Over
-   the drawn silhouette there is nothing to fight, and laying it on anyway just
-   muddies the lower half of the card. */
+/* A drawn silhouette has no head worth breaking the edge with — crossing it
+   would read as a rendering fault rather than as a flourish. */
 const hasPhoto = Boolean(portraitFor(player.id));
 ---
 
-<article class="group relative overflow-hidden bg-club" data-rule-in>
-  <div class="aspect-[4/5] w-full">
-    <PlayerPortrait
-      id={player.id}
-      name={player.name}
-      loading={loading}
-      class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-    />
-  </div>
-
-  {
-    hasPhoto && (
-      <div
-        class="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-club via-club/85 to-transparent"
-        aria-hidden="true"
-      />
-    )
-  }
-
-  <div class="absolute inset-x-0 bottom-0 p-4">
-    <h3 class="font-display text-lg uppercase leading-tight tracking-display text-paper">
-      {
-        profileUrl ? (
-          <a
-            href={profileUrl}
-            target="_blank"
-            rel="noopener noreferrer external"
-            class="stitch-link transition-colors hover:text-accent-tint"
-          >
-            {player.name}
-            <span class="sr-only">(PlayHQ profile, opens in a new tab)</span>
-          </a>
-        ) : (
-          player.name
-        )
-      }
-    </h3>
-
-    {player.role && <p class="mt-0.5 text-xs text-accent-tint">{player.role}</p>}
+<article class="group">
+  <div class="relative aspect-[2/3]">
+    {/* The panel, inset from the top to leave room for the head. */}
+    <div
+      class="absolute inset-x-0 bottom-0 top-[11%] rounded-2xl bg-gradient-to-b from-club-tint to-club"
+      aria-hidden="true"
+    >
+    </div>
 
     {
-      hasFigures && (
-        <p class="mt-2 flex gap-4 border-t border-white/15 pt-2 font-figures text-2xs text-paper/85">
-          <span>
-            {runs} <span class="text-paper/55">runs</span>
-          </span>
-          <span>
-            {wickets} <span class="text-paper/55">wkts</span>
-          </span>
-        </p>
+      hasPhoto ? (
+        <PlayerPortrait
+          id={player.id}
+          name={player.name}
+          loading={loading}
+          class="absolute inset-0 z-10 h-full w-full object-cover object-top drop-shadow-cutout transition-transform duration-500 group-hover:-translate-y-1"
+        />
+      ) : (
+        <div class="absolute inset-x-0 bottom-0 top-[11%] z-10 overflow-hidden rounded-2xl">
+          <PlayerPortrait
+            id={player.id}
+            name={player.name}
+            loading={loading}
+            class="h-full w-full object-cover object-top"
+          />
+        </div>
       )
     }
+
+    {
+      isCaptain && (
+        <span
+          class="absolute right-3 top-[11%] z-30 flex h-7 w-7 translate-y-2 items-center justify-center rounded-full bg-honour font-display text-sm leading-none text-club"
+          title="Captain"
+        >
+          <span aria-hidden="true">C</span>
+          <span class="sr-only">Captain</span>
+        </span>
+      )
+    }
+
+    {/* The name band, over the foot of the portrait. */}
+    <div class="absolute inset-x-0 bottom-0 z-20 rounded-b-2xl bg-club px-4 pb-3 pt-2.5">
+      <h3 class="font-display text-lg leading-tight tracking-display text-honour">
+        {
+          profileUrl ? (
+            <a
+              href={profileUrl}
+              target="_blank"
+              rel="noopener noreferrer external"
+              class="stitch-link transition-colors hover:text-paper"
+            >
+              {player.name}
+              <span class="sr-only">(PlayHQ profile, opens in a new tab)</span>
+            </a>
+          ) : (
+            player.name
+          )
+        }
+      </h3>
+
+      {
+        hasFigures && (
+          <p class="mt-2 flex gap-3 border-t border-white/15 pt-2 font-figures text-2xs text-paper/70">
+            <span>
+              <span class="text-paper">{runs}</span> runs
+            </span>
+            <span>
+              <span class="text-paper">{wickets}</span> wkts
+            </span>
+          </p>
+        )
+      }
+    </div>
   </div>
 </article>

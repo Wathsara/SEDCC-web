@@ -113,7 +113,7 @@ const currentLosses = results.filter((r) => r.outcome === 'LOST' || r.outcome ==
             const results = pastSeasons.find((s) => s.season === entry.season);
             const sum = results ? summarise(results) : null;
             return (
-              <div class="tile p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-[#dfb74c] group transition-all hover:-translate-y-1 hover:shadow-lift" data-rule-in>
+              <div class="tile p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-honour group transition-all hover:-translate-y-1 hover:shadow-lift" data-rule-in>
                 <div>
                   <div class="flex flex-wrap items-center justify-between gap-x-2 gap-y-2 border-b border-rule pb-3">
                     <div class="flex flex-wrap items-center gap-2.5">

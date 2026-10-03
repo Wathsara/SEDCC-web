@@ -314,10 +314,10 @@ const leadingBowl = [...(seasonStats.players ?? [])]
         <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
           <div class="section-head">
             <h2 class="section-head__title text-paper">Pavilion Honours & Records</h2>
-            <span class="section-head__rule bg-[#dfb74c]/40" />
+            <span class="section-head__rule bg-honour/40" />
             <a
               href={url('honour-board')}
-              class="stitch-link shrink-0 font-display text-xs uppercase tracking-eyebrow text-[#dfb74c] hover:text-paper transition-colors"
+              class="stitch-link shrink-0 font-display text-xs uppercase tracking-eyebrow text-honour hover:text-paper transition-colors"
             >
               Pavilion Board →
             </a>
@@ -325,10 +325,10 @@ const leadingBowl = [...(seasonStats.players ?? [])]
 
           <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {headlineRecords.map((r) => (
-              <div class="border border-[#dfb74c]/40 bg-white/5 p-5 relative overflow-hidden transition-all hover:border-[#dfb74c] hover:bg-white/10 hover:-translate-y-1 shadow-md" data-rule-in>
+              <div class="border border-honour/40 bg-white/5 p-5 relative overflow-hidden transition-all hover:border-honour hover:bg-white/10 hover:-translate-y-1 shadow-md" data-rule-in>
                 <div class="flex items-center justify-between gap-3">
-                  <p class="eyebrow text-[#dfb74c]">{r.short}</p>
-                  <CricketIcon name={r.icon} class="h-3.5 w-3.5 shrink-0 text-[#dfb74c]" />
+                  <p class="eyebrow text-honour">{r.short}</p>
+                  <CricketIcon name={r.icon} class="h-3.5 w-3.5 shrink-0 text-honour" />
                 </div>
                 <p class="mt-3 font-figures text-3xl font-bold tabular-nums leading-none text-[#f6e4a6]">
                   {r.value}

@@ -12,6 +12,7 @@
 import { readFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { displayName } from './names.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -24,20 +25,6 @@ const stat = (stats, type, fallback = 0) => {
   return hit && typeof hit.value === 'number' ? hit.value : fallback;
 };
 
-/**
- * Hidden profiles and unregistered fill-ins come back with null names.
- *
- * Names longer than two words are cut to the first two. PlayHQ splits on
- * first/last, but a first name is often several words — "Thisara Nilupul
- * Lankathilake" arrives as firstName "Thisara Nilupul" — and the full string
- * squeezes the scorecard type down to nothing.
- */
-const displayName = (a) => {
-  const full = `${a.firstName ?? ''} ${a.lastName ?? ''}`.trim();
-  if (!full) return 'Fill-in player';
-  const words = full.split(/\s+/);
-  return words.length > 2 ? words.slice(0, 2).join(' ') : full;
-};
 
 
 const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];

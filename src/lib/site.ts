@@ -44,8 +44,15 @@ export interface RosterPlayer {
   bowlingStyle: string | null;
   joined: number | null;
   active: boolean;
-  /** Club captain of the side(s) in `teams`. Shown as a C on the squad card. */
-  captain?: boolean;
+  /**
+   * Captain or vice-captain of the side(s) in `teams`. Shown as a C or VC on
+   * the squad card.
+   *
+   * It hangs off the player rather than off the team because nobody in the
+   * roster leads one side and plays in another. The day someone does, this has
+   * to become a per-team map — they would otherwise be marked on both cards.
+   */
+  captaincy?: 'captain' | 'vice-captain';
   /** play.cricket.com.au public profile. Not the API's appearance id. */
   profileUrl?: string;
   playhqProfileId?: string;

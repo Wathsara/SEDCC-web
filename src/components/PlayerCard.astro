@@ -21,6 +21,7 @@
  */
 import PlayerPortrait from './PlayerPortrait.astro';
 import { portraitFor } from '../lib/portraits';
+import { nameLines } from '../lib/names';
 import type { RosterPlayer } from '../lib/site';
 
 interface Props {
@@ -36,11 +37,23 @@ const wickets = stat?.bowling?.wickets ?? 0;
 const hasFigures = runs > 0 || wickets > 0;
 
 const profileUrl = (player as RosterPlayer & { profileUrl?: string }).profileUrl;
-const isCaptain = Boolean(player.captain);
+const captaincy = player.captaincy;
+const badge = captaincy === 'captain' ? 'C' : captaincy === 'vice-captain' ? 'VC' : null;
+const badgeLabel = captaincy === 'captain' ? 'Captain' : 'Vice-captain';
 
 /* A drawn silhouette has no head worth breaking the edge with — crossing it
    would read as a rendering fault rather than as a flourish. */
 const hasPhoto = Boolean(portraitFor(player.id));
+
+/*
+  Given name on the first line, surname on the second. Left to wrap on its own,
+  a two-column phone grid broke the long names and left the short ones on one
+  line, so the name bands finished at different heights down the column. Every
+  card gets the same two lines instead, whether or not the second is needed.
+*/
+const { given, surname } = nameLines(player.name);
+/* A one-word name still gets its second line, or its card finishes short. */
+const surnameLine = surname || '\u00a0';
 ---
 
 <article class="group">
@@ -73,33 +86,37 @@ const hasPhoto = Boolean(portraitFor(player.id));
     }
 
     {
-      isCaptain && (
+      badge && (
         <span
-          class="absolute right-3 top-[11%] z-30 flex h-7 w-7 translate-y-2 items-center justify-center rounded-full bg-honour font-display text-sm leading-none text-club"
-          title="Captain"
+          class="absolute right-3 top-[11%] z-30 flex h-7 min-w-7 translate-y-2 items-center justify-center rounded-full bg-honour px-1.5 font-display text-sm leading-none text-club"
+          title={badgeLabel}
         >
-          <span aria-hidden="true">C</span>
-          <span class="sr-only">Captain</span>
+          <span aria-hidden="true">{badge}</span>
+          <span class="sr-only">{badgeLabel}</span>
         </span>
       )
     }
 
     {/* The name band, over the foot of the portrait. */}
     <div class="absolute inset-x-0 bottom-0 z-20 rounded-b-2xl bg-club px-4 pb-3 pt-2.5">
-      <h3 class="font-display text-lg leading-tight tracking-display text-honour">
+      <h3 class="font-display text-base leading-tight tracking-display text-honour sm:text-lg" title={player.name}>
         {
           profileUrl ? (
             <a
               href={profileUrl}
               target="_blank"
               rel="noopener noreferrer external"
-              class="stitch-link transition-colors hover:text-paper"
+              class="stitch-link block transition-colors hover:text-paper"
             >
-              {player.name}
+              <span class="block truncate">{given}</span>
+              <span class="block truncate">{surnameLine}</span>
               <span class="sr-only">(PlayHQ profile, opens in a new tab)</span>
             </a>
           ) : (
-            player.name
+            <>
+              <span class="block truncate">{given}</span>
+              <span class="block truncate">{surnameLine}</span>
+            </>
           )
         }
       </h3>

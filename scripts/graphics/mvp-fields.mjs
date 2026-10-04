@@ -16,6 +16,7 @@
 import { readFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { displayName, nameParts } from './names.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const DATA_DIR = resolve(ROOT, process.env.PLAYHQ_DATA_DIR ?? 'data/playhq');
@@ -25,13 +26,6 @@ const MON = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','
 /** Stats are {type,value} in unstable order, and a zero is often simply absent. */
 const stat = (list, type) => list?.find((s) => s.type === type)?.value ?? 0;
 
-/** Same rule the match summary uses: hidden profiles and long names. */
-const displayName = (a) => {
-  const full = `${a.firstName ?? ''} ${a.lastName ?? ''}`.trim();
-  if (!full) return 'Fill-in player';
-  const words = full.split(/\s+/);
-  return words.length > 2 ? words.slice(0, 2).join(' ') : full;
-};
 
 /**
  * @param {string} gameId
@@ -75,9 +69,7 @@ export async function mvpFields(gameId, { clubMatch = 'dreamers', competition } 
   const sixes = stat(player.statistics, 'SIXES');
 
   const name = nameById.get(player.id) ?? 'Fill-in player';
-  const parts = name.split(/\s+/);
-  const first = parts.length > 1 ? parts.slice(0, -1).join(' ') : name;
-  const last = parts.length > 1 ? parts[parts.length - 1] : '';
+  const { first, last } = nameParts(name);
 
   const f = {
     'player.first': first.toUpperCase(),

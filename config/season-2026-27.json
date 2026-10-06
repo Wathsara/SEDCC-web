@@ -15,6 +15,7 @@
       "playhqSeasonId": null,
       "playhqGradeId": null,
       "playhqTeamId": null,
+      "playCricketTeamId": "739d5ed1-a4ce-4022-bef7-45858f3f366d",
       "active": true,
       "shield": "McCarthy Shield"
     },
@@ -29,6 +30,7 @@
       "playhqSeasonId": null,
       "playhqGradeId": null,
       "playhqTeamId": null,
+      "playCricketTeamId": "05af9280-b589-45f5-a40c-8ce7b8fac75e",
       "active": true,
       "shield": "Laws Shield"
     },
@@ -43,10 +45,12 @@
       "playhqSeasonId": null,
       "playhqGradeId": null,
       "playhqTeamId": null,
+      "playCricketTeamId": null,
       "active": true,
       "shield": null
     }
   ],
   "_shieldComment": "ECA names its limited-overs divisions after shields: LOC 1 is the McCarthy Shield and LOC 2 the Laws Shield. VSCA Grade 4 has no shield name.",
-  "_namesComment": "name/shortName are what the club calls the side; gradeLabel is the ECA division it plays in. They are different things and both are shown — the 1st XI plays LOC 1 (McCarthy Shield), the 2nd XI plays LOC 2 (Laws Shield). The slugs stay loc-1 / loc-2 because those URLs are already live."
+  "_namesComment": "name/shortName are what the club calls the side; gradeLabel is the ECA division it plays in. They are different things and both are shown — the 1st XI plays LOC 1 (McCarthy Shield), the 2nd XI plays LOC 2 (Laws Shield). The slugs stay loc-1 / loc-2 because those URLs are already live.",
+  "_playCricketTeamId": "play.cricket.com.au runs on different identifiers from the PlayHQ API — the same fixture has one id in /v1/grades/{id}/games and another in /match/{id}, so a match centre link cannot be built from the synced game id. This is the club's team id on the public site, used to look the real ones up. Get it from any match centre URL for that side: npm run playhq:links -- --seed <url>. Null means that side's matches are not linked."
 }

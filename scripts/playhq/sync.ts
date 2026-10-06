@@ -13,6 +13,7 @@
 import { resolve } from 'node:path';
 
 import { syncLogos } from './logos.js';
+import { linksFor } from './match-links.js';
 import {
   gamesForGrade,
   gradesForSeason,
@@ -389,6 +390,22 @@ async function main() {
     if (finished.length) log.ok(`${summaries.size}/${finished.length} scorecard(s)`);
 
     const { games, byes } = normaliseGames(allGames, team.playhqTeamId, summaries);
+
+    // Match centre links. A separate public API with its own ids, so a failure
+    // here costs the links and nothing else.
+    if (team.playCricketTeamId) {
+      const links = await linksFor(team.playCricketTeamId);
+      let linked = 0;
+      for (const game of games) {
+        const url = links.get(game.round);
+        if (url) {
+          game.matchCentreUrl = url;
+          linked++;
+        }
+      }
+      if (linked) log.ok(`${linked}/${games.length} match centre link(s)`);
+    }
+
     fixturesOut.push({
       slug: team.slug, name: team.name, competition: team.competition,
       gradeLabel: team.gradeLabel, gradeId: team.playhqGradeId, teamId: team.playhqTeamId,

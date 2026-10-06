@@ -298,6 +298,19 @@ const gamesToDisplay = toDisplay;
               </div>
 
               <div class="flex items-center gap-3">
+                {g.matchCentreUrl && (
+                  <a
+                    href={g.matchCentreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer external"
+                    class="stitch-link inline-flex items-center gap-1 font-display text-2xs uppercase tracking-eyebrow text-club transition-colors hover:text-accent"
+                    title="Scorecard and match details on PlayCricket"
+                  >
+                    {isPlayed ? 'Scorecard' : 'Match centre'}
+                    <span class="text-[10px] text-accent" aria-hidden="true">↗</span>
+                    <span class="sr-only">(opens in a new tab)</span>
+                  </a>
+                )}
                 <span class="rounded bg-paper-sunk px-2 py-0.5 font-figures text-2xs text-ink-muted">
                   {team.competition}
                 </span>

@@ -279,6 +279,12 @@ export interface TeamConfig {
   playhqSeasonId: string | null;
   playhqGradeId: string | null;
   playhqTeamId: string | null;
+  /**
+   * The club's team id on play.cricket.com.au, which is a different identifier
+   * from playhqTeamId. Seeds the match centre lookup; null leaves that side's
+   * games unlinked. See scripts/playhq/match-links.ts.
+   */
+  playCricketTeamId?: string | null;
   active: boolean;
 }
 
@@ -322,6 +328,12 @@ export interface NormalisedGame {
   mapQuery: string | null;
   ourScore: string | null;
   theirScore: string | null;
+  /**
+   * play.cricket.com.au match centre. Looked up, not built from `id` — the
+   * public site uses different identifiers. See scripts/playhq/match-links.ts.
+   * Absent when the side has no playCricketTeamId or the lookup failed.
+   */
+  matchCentreUrl?: string;
 }
 
 export interface TeamFixtures {

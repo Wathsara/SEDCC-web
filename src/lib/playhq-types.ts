@@ -28,6 +28,12 @@ export interface NormalisedGame {
   mapQuery: string | null;
   ourScore: string | null;
   theirScore: string | null;
+  /**
+   * play.cricket.com.au match centre for this game, when the sync could find
+   * it. Looked up rather than built from `id`: the public site runs on
+   * different identifiers. Absent is normal — render no link, not a dead one.
+   */
+  matchCentreUrl?: string;
 }
 
 export interface TeamFixtures {

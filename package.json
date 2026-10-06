@@ -13,6 +13,7 @@
     "check": "astro check",
     "playhq:discover": "tsx scripts/playhq/discover.ts",
     "playhq:sync": "tsx scripts/playhq/sync.ts",
+    "playhq:links": "tsx scripts/playhq/match-links.ts",
     "playhq:stats": "tsx scripts/playhq/aggregate.ts",
     "playhq:all": "npm run playhq:sync && npm run playhq:stats",
     "graphic:sample": "node scripts/graphics/match-summary.mjs scripts/graphics/sample-match.json match-summary.png",

@@ -137,11 +137,22 @@ const sides = (game: GameWithTeam) => {
             return (
               <li class="w-80 shrink-0 snap-start" data-strip-card data-index={i}>
                 <a
-                  href={url(`teams/${game.teamSlug}`)}
+                  href={game.matchCentreUrl ?? url(`teams/${game.teamSlug}`)}
+                  {...(game.matchCentreUrl
+                    ? { target: '_blank', rel: 'noopener noreferrer external' }
+                    : {})}
                   class="flex h-full flex-col justify-between gap-3 border border-rule bg-paper px-4 py-3 transition-colors hover:border-rule-strong hover:bg-paper-sunk/50"
                 >
                   <p class="flex items-baseline justify-between gap-2 font-display text-2xs uppercase tracking-eyebrow">
-                    <span class="shrink-0 text-ink-faint">{played ? 'Result' : 'Upcoming'}</span>
+                    <span class="shrink-0 text-ink-faint">
+                      {played ? 'Result' : 'Upcoming'}
+                      {game.matchCentreUrl && (
+                        <>
+                          <span class="ml-1 text-accent" aria-hidden="true">↗</span>
+                          <span class="sr-only">(match centre on PlayCricket, opens in a new tab)</span>
+                        </>
+                      )}
+                    </span>
                     <span class="truncate text-ink-muted">
                       {team?.competitionShort} {team?.gradeLabel}
                       <span class="mx-1 text-rule-strong" aria-hidden="true">

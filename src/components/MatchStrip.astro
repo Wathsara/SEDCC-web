@@ -141,8 +141,20 @@ const sides = (game: GameWithTeam) => {
                   {...(game.matchCentreUrl
                     ? { target: '_blank', rel: 'noopener noreferrer external' }
                     : {})}
-                  class="flex h-full flex-col justify-between gap-3 border border-rule bg-paper px-4 py-3 transition-colors hover:border-rule-strong hover:bg-paper-sunk/50"
+                  class="relative flex h-full flex-col justify-between gap-3 border border-rule bg-paper px-4 py-3 transition-colors hover:border-rule-strong hover:bg-paper-sunk/50"
                 >
+                  {/*
+                    `relative` is load-bearing. The card carries an .sr-only
+                    span, which Tailwind implements as position:absolute, and an
+                    absolutely positioned element is clipped by its containing
+                    block — not by whatever scroller it happens to sit in. With
+                    no positioned ancestor inside the strip it resolved to the
+                    section wrapper outside it, escaped the scroller's
+                    overflow-x, and dragged the whole document out to 2781px on
+                    a 390px phone: the page itself scrolled sideways into blank
+                    white. overflow:hidden on the scroller does not fix that;
+                    only giving the span a containing block within the card does.
+                  */}
                   <p class="flex items-baseline justify-between gap-2 font-display text-2xs uppercase tracking-eyebrow">
                     <span class="shrink-0 text-ink-faint">
                       {played ? 'Result' : 'Upcoming'}

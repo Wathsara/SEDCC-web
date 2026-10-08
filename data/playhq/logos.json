@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-06T00:42:06.170Z",
+  "syncedAt": "2026-10-07T23:31:50.835Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -11,7 +11,7 @@
         "f9d5e7eb-f095-4c2d-8346-1e5d18d4fa80"
       ],
       "matchKey": "aycharlequins",
-      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7d48319b-b7d8-4f60-92c0-0e3d1acaf2b8/1686645551542/logo.jpg?_a=BAMAMifg0"
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7d48319b-b7d8-4f60-92c0-0e3d1acaf2b8/1791254896013/logo.jpg?_a=BAMAMifg0"
     },
     "abbotsford-anglers-cricket-club": {
       "name": "Abbotsford Anglers Cricket Club",

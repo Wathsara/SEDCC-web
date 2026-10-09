@@ -32,9 +32,6 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft))
 // The club's most recent finish, for the badge over the hero photo.
 const lastResult = [...seasons].reverse().find((s) => s.result);
 
-// Featured sponsor first, then the rest. Built here so the type is clean —
-// .filter(Boolean) does not narrow away the undefined.
-const sponsorStrip = featuredSponsor ? [featuredSponsor, ...otherSponsors] : otherSponsors;
 
 
 const growth = [
@@ -362,8 +359,76 @@ const leadingBowl = [...(seasonStats.players ?? [])]
     sponsors.length > 0 && (
       <section class="mx-auto max-w-6xl px-4 pb-16">
         <SectionHead title="Our sponsors" href={url('sponsors')} linkLabel="All sponsors" />
+
+        {/*
+          The featured partner gets its own panel rather than a place in the
+          grid. In the grid every tile is the same height, so a logo is sized by
+          whichever dimension runs out first — and on a phone the tiles are
+          358x98, far wider than they are tall. A wordmark fills that; a square
+          mark is height-limited and lands at about a third of the width. The
+          partner paying the most was rendering smallest.
+        */}
+        {featuredSponsor && (
+          <article class="tile mb-6 overflow-hidden" data-rule-in>
+            {featuredSponsor.tier && (
+              <p class="border-b border-rule bg-club px-4 py-2 text-center font-display text-2xs uppercase tracking-eyebrow text-honour">
+                {featuredSponsor.tier}
+              </p>
+            )}
+
+            <div class="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+              {featuredSponsor.wideImage && (
+                <span class="flex h-36 w-full items-center justify-center bg-white p-6 sm:h-40 md:h-full md:py-8">
+                  <Image
+                    src={featuredSponsor.wideImage}
+                    alt={`${featuredSponsor.name} logo`}
+                    widths={[400, 800]}
+                    sizes="(min-width: 768px) 420px, 100vw"
+                    class="max-h-full w-auto object-contain"
+                  />
+                </span>
+              )}
+
+              <div class="border-t border-rule px-5 py-5 md:border-l md:border-t-0 md:py-6">
+                <h3 class="font-display text-lg uppercase tracking-display text-club">
+                  {featuredSponsor.name}
+                </h3>
+                {featuredSponsor.headline && (
+                  <p class="mt-1.5 font-display text-sm leading-snug text-ink">
+                    {featuredSponsor.headline}
+                  </p>
+                )}
+                {featuredSponsor.blurb && (
+                  <p class="mt-2.5 text-sm leading-relaxed text-ink-muted">{featuredSponsor.blurb}</p>
+                )}
+
+                <p class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  {featuredSponsor.url && (
+                    <a
+                      href={featuredSponsor.url}
+                      target="_blank"
+                      rel="noopener noreferrer external"
+                      class="stitch-link inline-flex items-center gap-1 font-display text-2xs uppercase tracking-eyebrow text-club transition-colors hover:text-accent"
+                    >
+                      Visit website
+                      <span class="text-[10px] text-accent" aria-hidden="true">↗</span>
+                      <span class="sr-only">(opens in a new tab)</span>
+                    </a>
+                  )}
+                  <a
+                    href={url('sponsors')}
+                    class="stitch-link font-display text-2xs uppercase tracking-eyebrow text-ink-muted transition-colors hover:text-club"
+                  >
+                    More about our sponsors
+                  </a>
+                </p>
+              </div>
+            </div>
+          </article>
+        )}
+
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {sponsorStrip.map((s) => (
+          {otherSponsors.map((s) => (
             <a
               href={url('sponsors')}
               class="tile flex items-center justify-center overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lift group"

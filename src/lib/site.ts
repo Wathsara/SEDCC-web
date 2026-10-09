@@ -207,12 +207,20 @@ export const headlineRecords = (
 export interface Sponsor {
   name: string;
   strapline?: string | null;
-  /** Given the top of the sponsors page and a larger slot on the home page. */
+  /** Given the top of the sponsors page and its own panel on the home page. */
   featured?: boolean;
+  /** Printed on the featured panel, e.g. "Platinum partner". Optional. */
+  tier?: string | null;
   headline?: string | null;
   /** Extra paragraphs, shown only in the featured layout. */
   body?: string[];
   logo?: string | null;
+  /**
+   * Optional alternative mark for the home page's featured panel, which is far
+   * wider than it is tall. A square logo is height-limited there and renders
+   * small; a wordmark fills the slot. The sponsors page always uses `logo`.
+   */
+  wideLogo?: string | null;
   blurb?: string | null;
   address?: string | null;
   phone?: string | null;
@@ -221,6 +229,8 @@ export interface Sponsor {
   url?: string | null;
   /** Resolved from src/assets/sponsors/ so Astro optimises the image. */
   image?: ImageMetadata;
+  /** Resolved from `wideLogo`; falls back to `image` when not supplied. */
+  wideImage?: ImageMetadata;
 }
 
 const sponsorLogos = import.meta.glob<{ default: ImageMetadata }>(
@@ -238,7 +248,11 @@ const sponsorList =
 /** Every sponsor the club lists, in config order. */
 export const sponsors: Sponsor[] = sponsorList
   .filter((s) => filled(s.name))
-  .map((s) => ({ ...s, image: s.logo ? logoByFile.get(s.logo) : undefined }));
+  .map((s) => {
+    const image = s.logo ? logoByFile.get(s.logo) : undefined;
+    const wide = s.wideLogo ? logoByFile.get(s.wideLogo) : undefined;
+    return { ...s, image, wideImage: wide ?? image };
+  });
 
 /** At most one sponsor is featured; the rest fill the grid. */
 export const featuredSponsor = sponsors.find((s) => s.featured);

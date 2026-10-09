@@ -62,3 +62,8 @@ mvp-samples/
 # in portraits/, and those are what the site builds from and what gets committed.
 src/assets/players/*/
 !src/assets/players/portraits/
+
+# Rendered matchday posters. Regenerate with npm run graphics:matchday.
+# Anchored: an unanchored "matchday/" also swallowed graphics/matchday/, which
+# is the template, not output.
+/matchday/

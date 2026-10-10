@@ -285,7 +285,8 @@
       "bowlingStyle": null,
       "joined": 2026,
       "active": true,
-      "_profileNote": "No PlayHQ profile URL yet. He appears in the club's 2025/26 PlayHQ scorecards under this exact name, so the player is real; the public profile link just has not been supplied. Add playhqProfileId and profileUrl when the club sends them and his squad card becomes a link."
+      "playhqProfileId": "7a75a99f-f439-450a-ba77-cf2c6ac85fa3",
+      "profileUrl": "https://play.cricket.com.au/player/7a75a99f-f439-450a-ba77-cf2c6ac85fa3/harith-perera"
     },
     {
       "id": "nimsara-wijesinghe",
@@ -597,7 +598,10 @@
       "aliases": [
         "T Demika",
         "T. Demika",
-        "Demika"
+        "Demika",
+        "Tharindu Samaranayake",
+        "T Samaranayake",
+        "Samaranayake"
       ],
       "teams": [
         "loc-1"
@@ -607,7 +611,8 @@
       "bowlingStyle": null,
       "joined": 2026,
       "active": true,
-      "_profileNote": "No PlayHQ profile yet — first season of senior cricket. Add playhqProfileId and profileUrl once the association registers him, and the squad card will link to his career page like the others."
+      "playhqProfileId": "d847db41-d497-4784-8cdc-eb1f903828af",
+      "profileUrl": "https://play.cricket.com.au/player/d847db41-d497-4784-8cdc-eb1f903828af/tharindu-samaranayake"
     }
   ],
   "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game — matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",

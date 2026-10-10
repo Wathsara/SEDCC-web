@@ -41,7 +41,9 @@ const longestName = rows.reduce((n, r) => Math.max(n, r.name.length), 1);
   <div class="honours-board__inner" style={`--honours-name-ch: ${longestName}`}>
     <div class="honours-board__head-row">
       <span>Season</span>
-      <span>{isBatting ? 'Batter' : 'Bowler'}</span>
+      {/* The name has a row of its own on a phone, so this label would sit
+          over the season rather than over anything it describes. */}
+      <span class="hidden sm:inline">{isBatting ? 'Batter' : 'Bowler'}</span>
       <span class="text-right">{isBatting ? 'Score' : 'Figures'}</span>
     </div>
 

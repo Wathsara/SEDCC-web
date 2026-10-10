@@ -581,7 +581,7 @@
 
   .honours-board__head-row {
     display: grid;
-    grid-template-columns: var(--honours-cols);
+    grid-template-columns: 1fr auto;
     gap: calc(var(--spacing) * 3);
     padding-bottom: calc(var(--spacing) * 2.5);
     border-bottom: 1px solid #dfb74c;
@@ -601,7 +601,8 @@
     grid-template-columns: 1fr auto;
     grid-template-areas:
       'year figure'
-      'person person';
+      'person person'
+      'detail detail';
     align-items: baseline;
     gap: calc(var(--spacing) * 1) calc(var(--spacing) * 3);
     padding-block: calc(var(--spacing) * 3.5);
@@ -640,9 +641,15 @@
   }
 
   @media (min-width: 32rem) {
+    .honours-board__head-row {
+      grid-template-columns: var(--honours-cols);
+    }
+
     .honours-row {
       grid-template-columns: var(--honours-cols);
-      grid-template-areas: 'year person figure';
+      grid-template-areas:
+        'year person figure'
+        '.    detail detail';
     }
   }
 
@@ -681,8 +688,11 @@
     text-shadow: 0 0 12px rgba(223, 183, 76, 0.35);
   }
 
+  /* Placed by area, not by column number. grid-column: 2 / -1 was written for
+     the three-column ledger and, once the row restacked on a phone, started the
+     line in the second column — indented away from the name it belongs to. */
   .honours-row__detail {
-    grid-column: 2 / -1;
+    grid-area: detail;
     font-size: var(--text-sm);
     color: rgba(180, 181, 186, 0.85);
   }

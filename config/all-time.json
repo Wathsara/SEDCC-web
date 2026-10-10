@@ -148,6 +148,34 @@
     "_comment": "The two honours boards, Lord's style: centuries and five-wicket hauls. One row per performance, not per player. The site sorts by season, newest first, and preserves the order of this list within each season — so to move an entry, move it here. Rounds were resolved by cross-referencing each innings against the team totals in config/results-*.json; two are left null because more than one round fits.",
     "centuries": [
       {
+        "name": "Yadeesha Deerasooriya",
+        "season": "2026/27",
+        "score": "144",
+        "balls": 110,
+        "fours": 15,
+        "sixes": 3,
+        "strikeRate": 130.9,
+        "opponent": "Deepdene Uniting 2nd XI",
+        "grade": "ECA LOC 1",
+        "round": "Round 1",
+        "dismissal": "Bowled",
+        "_note": "b R Siddiqui. Dreamers 1st XI 6-349, won by 208 runs at Donnelly Recreation Reserve — the first two centuries of the ECA era, in the same innings."
+      },
+      {
+        "name": "Sheshan Andrahennadige",
+        "season": "2026/27",
+        "score": "132",
+        "balls": 94,
+        "fours": 17,
+        "sixes": 3,
+        "strikeRate": 140.42,
+        "opponent": "Deepdene Uniting 2nd XI",
+        "grade": "ECA LOC 1",
+        "round": "Round 1",
+        "dismissal": "Caught",
+        "_note": "The scorecard reads \"c: b: R Smeaton\" with no fielder recorded, so this may be caught and bowled. Listed as caught, with R Smeaton the bowler either way; correct it if the club confirms otherwise."
+      },
+      {
         "name": "Aruna Perera",
         "season": "2025/26",
         "score": "131",

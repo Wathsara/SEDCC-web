@@ -592,9 +592,16 @@
     color: #dfb74c;
   }
 
+  /* On a phone the name column is 115px wide, and no readable size fits a
+     22-character name in it — so below 32rem the name takes a row of its own
+     and the season and figure share the line above it. The ledger keeps its
+     three parts; they just stop competing for one line. */
   .honours-row {
     display: grid;
-    grid-template-columns: var(--honours-cols);
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'year figure'
+      'person person';
     align-items: baseline;
     gap: calc(var(--spacing) * 1) calc(var(--spacing) * 3);
     padding-block: calc(var(--spacing) * 3.5);
@@ -617,15 +624,51 @@
     color: #edd07a;
   }
 
+  /* The name cell measures itself so the name can be sized against it. */
+  .honours-row__person {
+    grid-area: person;
+    container-type: inline-size;
+    min-width: 0;
+  }
+
+  .honours-row__year {
+    grid-area: year;
+  }
+
+  .honours-row__figure {
+    grid-area: figure;
+  }
+
+  @media (min-width: 32rem) {
+    .honours-row {
+      grid-template-columns: var(--honours-cols);
+      grid-template-areas: 'year person figure';
+    }
+  }
+
   .honours-row__name {
     font-family: var(--font-display);
-    font-size: var(--text-xl);
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--color-paper);
-    /* Long surnames must break rather than widen the track. */
-    overflow-wrap: break-word;
     min-width: 0;
+
+    /* One line, always. Measured against the rendered board, the display face
+       averages 0.72em per uppercase character once the letter-spacing is
+       counted, so a name of N characters needs 0.72 * N em; turned around, the
+       size that fits the cell is 100cqw / (0.72 * N) — the 138cqw below. 0.66
+       was measured off the glyphs alone and left names overflowing by 6-13px. --honours-name-ch is the longest
+       name on this board, set by the component, so every row shares one size
+       instead of each name being scaled on its own and leaving the column
+       ragged. Capped at the design size. The floor is 12px rather than
+       14px because the two-column desktop band squeezes the cell hardest, and
+       a floor above the size that fits is a floor that overflows. */
+    white-space: nowrap;
+    font-size: clamp(
+      0.75rem,
+      calc(138cqw / var(--honours-name-ch, 18)),
+      var(--text-xl)
+    );
   }
 
   .honours-row__figure {

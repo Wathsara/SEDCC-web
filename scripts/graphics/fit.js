@@ -281,5 +281,27 @@ window.__fitMatchSummary = function fit() {
     applied.push({ field: longKey, len, base: Math.round(base), size, scaled: true, forced: guard < 24 });
   }
 
+  // 6. One size per column.
+  //
+  //    Each name is fitted on its own, so a panel could finish with three
+  //    different sizes — 17px, 15px and 19px down one batting card, which reads
+  //    as sloppy rather than as careful fitting. Drop every name in a column to
+  //    the smallest its own column needed. Only ever downward, so nothing that
+  //    had to shrink is pushed back into an overflow.
+  for (const inns of ['i1', 'i2']) {
+    for (const role of ['bat', 'bowl']) {
+      const els = [0, 1, 2]
+        .map((n) => q(`${inns}.${role}.${n}.name`))
+        .filter((el) => el && el.getClientRects().length);
+      if (els.length < 2) continue;
+      const smallest = Math.min(...els.map((el) => parseFloat(getComputedStyle(el).fontSize)));
+      for (const el of els) {
+        if (parseFloat(getComputedStyle(el).fontSize) > smallest) {
+          el.style.fontSize = `${smallest}px`;
+        }
+      }
+    }
+  }
+
   return applied;
 };

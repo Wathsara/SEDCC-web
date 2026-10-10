@@ -79,6 +79,7 @@
       "id": "nisitha-ginigalgodage",
       "name": "Nisitha Ginigalgodage",
       "aliases": [
+        "Nishitha",
         "N Ginigalgodage",
         "N. Ginigalgodage"
       ],
@@ -268,6 +269,23 @@
       "profileUrl": "https://play.cricket.com.au/player/de6c9fbf-25da-4c54-9e79-6673f540a4b4/aruna-perera",
       "transferFrom": "Dreamers SC",
       "transferNote": "No ECA games at previous club"
+    },
+    {
+      "id": "harith-perera",
+      "name": "Harith Perera",
+      "aliases": [
+        "H Perera",
+        "H. Perera"
+      ],
+      "teams": [
+        "loc-2"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "_profileNote": "No PlayHQ profile URL yet. He appears in the club's 2025/26 PlayHQ scorecards under this exact name, so the player is real; the public profile link just has not been supplied. Add playhqProfileId and profileUrl when the club sends them and his squad card becomes a link."
     },
     {
       "id": "nimsara-wijesinghe",

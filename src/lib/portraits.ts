@@ -41,7 +41,19 @@ export function squadOrder<
 >(players: T[]): T[] {
   const rank = (p: T) =>
     p.captaincy === 'captain' ? 0 : p.captaincy === 'vice-captain' ? 1 : byId.has(p.id) ? 2 : 3;
-  return [...players].sort(
-    (a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name, 'en-AU'),
-  );
+
+  /*
+    Captains keep the order config/players.json lists them in; everyone else is
+    alphabetical. A side can have more than one captain, and which of them leads
+    the card is the club's call, not the alphabet's — sorting them by name put
+    Malith Kanahara ahead of Yasuntha Gamalath, which is not the order the club
+    wanted. Move the entries in players.json to change it.
+  */
+  const listed = new Map(players.map((p, i) => [p.id, i]));
+  return [...players].sort((a, b) => {
+    const byRank = rank(a) - rank(b);
+    if (byRank !== 0) return byRank;
+    if (rank(a) === 0) return listed.get(a.id)! - listed.get(b.id)!;
+    return a.name.localeCompare(b.name, 'en-AU');
+  });
 }

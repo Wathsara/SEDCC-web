@@ -18,26 +18,6 @@
       "active": false
     },
     {
-      "id": "malith-kanahara",
-      "name": "Malith Kanahara",
-      "aliases": [
-        "M Kanahara",
-        "M. Kanahara"
-      ],
-      "teams": [
-        "loc-2"
-      ],
-      "captaincy": "captain",
-      "role": null,
-      "battingStyle": null,
-      "bowlingStyle": null,
-      "joined": 2026,
-      "active": true,
-      "playhqProfileId": "be9369a0-f4c1-46be-8fbc-b3e50f825d00",
-      "profileUrl": "https://play.cricket.com.au/player/be9369a0-f4c1-46be-8fbc-b3e50f825d00/malith-kanahara",
-      "transferFrom": "Melbourne Sixers"
-    },
-    {
       "id": "yasuntha-gamalath",
       "name": "Yasuntha Gamalath",
       "aliases": [
@@ -55,6 +35,26 @@
       "active": true,
       "playhqProfileId": "f81f46c7-a702-497a-b339-fe20e0bcd3db",
       "profileUrl": "https://play.cricket.com.au/player/f81f46c7-a702-497a-b339-fe20e0bcd3db/yasuntha-gamalath",
+      "transferFrom": "Melbourne Sixers"
+    },
+    {
+      "id": "malith-kanahara",
+      "name": "Malith Kanahara",
+      "aliases": [
+        "M Kanahara",
+        "M. Kanahara"
+      ],
+      "teams": [
+        "loc-2"
+      ],
+      "captaincy": "captain",
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "be9369a0-f4c1-46be-8fbc-b3e50f825d00",
+      "profileUrl": "https://play.cricket.com.au/player/be9369a0-f4c1-46be-8fbc-b3e50f825d00/malith-kanahara",
       "transferFrom": "Melbourne Sixers"
     },
     {

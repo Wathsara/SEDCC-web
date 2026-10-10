@@ -67,10 +67,16 @@ export interface RosterPlayer {
 /** Roster entries the club currently lists. The example row ships inactive. */
 export const roster = players.players.filter((p) => p.active) as unknown as RosterPlayer[];
 
+/**
+ * A side's squad, in the order config/players.json lists them.
+ *
+ * Deliberately unsorted. Every caller passes the result through squadOrder,
+ * which sorts each group alphabetically anyway — and sorting here first threw
+ * away the config order, which is the only thing that says which of a side's
+ * two captains leads the squad.
+ */
 export function squadFor(slug: string): RosterPlayer[] {
-  return roster
-    .filter((p) => p.teams.includes(slug))
-    .sort((a, b) => a.name.localeCompare(b.name, 'en-AU'));
+  return roster.filter((p) => p.teams.includes(slug));
 }
 
 /**

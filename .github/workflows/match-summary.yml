@@ -1,0 +1,182 @@
+name: Match summary
+
+# Saturday 7pm for the two ECA sides, Sunday 7pm for VSCA Grade 4 — Melbourne
+# time, which is the whole difficulty. GitHub cron is UTC and has never heard of
+# daylight saving, so 7pm Melbourne is 08:00 UTC in summer (AEDT, UTC+11) and
+# 09:00 UTC in winter (AEST, UTC+10). Both are scheduled and a guard step drops
+# whichever one is not actually 7pm today. One of the two always no-ops.
+#
+# The season runs October to March, so in practice the 08:00 run is the live one
+# — but the guard means the schedule stays correct either side of the changeover
+# rather than quietly firing an hour out.
+#
+# The cards are published as a run artifact — download them from the Actions run
+# and post them wherever you like. Nothing is emailed.
+#
+# Note: GitHub does not promise punctual scheduled runs. Delays of 10-30 minutes
+# are normal under load, and a repo with no pushes for 60 days has its schedules
+# disabled automatically.
+
+on:
+  schedule:
+    - cron: '0 8 * * 6,0'   # 7pm AEDT (summer)
+    - cron: '0 9 * * 6,0'   # 7pm AEST (winter)
+  workflow_dispatch:
+    inputs:
+      teams:
+        description: "Sides to build, space separated. Blank uses today's."
+        required: false
+        default: ''
+      date:
+        description: 'Match date YYYY-MM-DD. Blank uses today in Melbourne.'
+        required: false
+        default: ''
+
+concurrency:
+  group: match-summary
+  cancel-in-progress: false
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Which sides, and for which day?
+        id: when
+        run: |
+          # Two crons for one 7pm, because GitHub cron is UTC and has no
+          # daylight saving. Pick by which cron fired, not by the clock: the
+          # scheduler is best-effort and a late start would otherwise throw
+          # away a run that was scheduled correctly.
+          OFFSET=$(TZ=Australia/Melbourne date +%z)
+          FIRED='${{ github.event.schedule }}'
+
+          case "$OFFSET" in
+            +1100) WANT='0 8 * * 6,0' ;;   # AEDT, summer
+            +1000) WANT='0 9 * * 6,0' ;;   # AEST, winter
+            *)     WANT='' ;;
+          esac
+
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -n "$WANT" ] && [ "$FIRED" != "$WANT" ]; then
+            echo "Fired by '$FIRED', the other half of the year. Stopping."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Which weekend day are we reporting on?
+          #
+          # Not simply "today": a delayed run can cross midnight in Melbourne
+          # and turn Saturday's job into Sunday's, building the wrong sides for
+          # a day that has no games. Walk back to the most recent Sat or Sun.
+          if [ -n "${{ inputs.date }}" ]; then
+            DATE="${{ inputs.date }}"
+          else
+            DATE=$(TZ=Australia/Melbourne date +%F)
+            for BACK in 0 1 2; do
+              D=$(TZ=Australia/Melbourne date -d "$DATE -$BACK day" +%F)
+              DOW=$(TZ=Australia/Melbourne date -d "$D" +%u)
+              if [ "$DOW" = "6" ] || [ "$DOW" = "7" ]; then DATE="$D"; break; fi
+            done
+          fi
+
+          DAY=$(TZ=Australia/Melbourne date -d "$DATE" +%u)   # 6=Sat 7=Sun
+
+          if [ -n "${{ inputs.teams }}" ]; then
+            TEAMS="${{ inputs.teams }}"
+          elif [ "$DAY" = "6" ]; then
+            TEAMS="loc-1 loc-2"          # Saturday is the ECA pair
+          elif [ "$DAY" = "7" ]; then
+            TEAMS="grade-4"              # Sunday is VSCA
+          else
+            echo "$DATE is not a weekend and no teams were given. Stopping."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Building $TEAMS for $DATE (Melbourne, UTC$OFFSET)"
+          echo "go=true" >> "$GITHUB_OUTPUT"
+          echo "teams=$TEAMS" >> "$GITHUB_OUTPUT"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "date_label=$DATE" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v7
+        if: steps.when.outputs.go == 'true'
+
+      - uses: actions/setup-node@v7
+        if: steps.when.outputs.go == 'true'
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        if: steps.when.outputs.go == 'true'
+        # Skip the postinstall download and fetch the browser explicitly below,
+        # so which build is used is a decision rather than a side effect.
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+        run: npm ci
+
+      - name: Install Chrome for Puppeteer
+        if: steps.when.outputs.go == 'true'
+        run: npx puppeteer browsers install chrome
+
+      - name: Pull the weekend's results from PlayHQ
+        if: steps.when.outputs.go == 'true'
+        env:
+          PLAYHQ_API_KEY: ${{ secrets.PLAYHQ_API_KEY }}
+        run: npm run playhq:sync
+
+      - name: Build the cards
+        id: build
+        if: steps.when.outputs.go == 'true'
+        run: |
+          BUILT=""
+          SKIPPED=""
+          DATE_ARG=""
+          [ -n "${{ steps.when.outputs.date }}" ] && DATE_ARG="--date ${{ steps.when.outputs.date }}"
+
+          for TEAM in ${{ steps.when.outputs.teams }}; do
+            OUT="match-summary-$TEAM.png"
+            set +e
+            node scripts/graphics/weekend-summary.mjs "$TEAM" $DATE_ARG --out "$OUT"
+            CODE=$?
+            set -e
+            case $CODE in
+              0) BUILT="$BUILT $OUT" ;;
+              3) SKIPPED="$SKIPPED $TEAM" ;;   # nothing to publish, not a failure
+              *) echo "::error::$TEAM failed to build (exit $CODE)"; exit $CODE ;;
+            esac
+          done
+
+          echo "built=${BUILT# }" >> "$GITHUB_OUTPUT"
+          echo "skipped=${SKIPPED# }" >> "$GITHUB_OUTPUT"
+          [ -n "$SKIPPED" ] && echo "::notice::No card for:$SKIPPED"
+          [ -z "$BUILT" ] && echo "::notice::No cards this week."
+          true
+
+      - name: Upload the cards
+        if: steps.build.outputs.built != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: match-summary-${{ steps.when.outputs.date_label }}
+          path: match-summary-*.png
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Summary
+        if: always() && steps.when.outputs.go == 'true'
+        run: |
+          {
+            echo "### Match summary — ${{ steps.when.outputs.date_label }}"
+            echo
+            if [ -n "${{ steps.build.outputs.built }}" ]; then
+              echo "Cards built: \`${{ steps.build.outputs.built }}\`"
+              echo
+              echo "Download them from the **Artifacts** section of this run."
+            else
+              echo "No cards this week."
+            fi
+            if [ -n "${{ steps.build.outputs.skipped }}" ]; then
+              echo
+              echo "Nothing to publish for: \`${{ steps.build.outputs.skipped }}\`"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

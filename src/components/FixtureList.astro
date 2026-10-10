@@ -147,6 +147,20 @@ const gamesToDisplay = toDisplay;
       const chip = chipFor(g.outcome);
       const isPlayed = g.status === 'FINAL' || g.outcome !== null;
       const opponentLogo = getClubLogo(g.opponent);
+      /*
+        "6/349 (40 ov)" is one string from the sync, and as one string it was
+        being squeezed into a 69px column and breaking across three lines. The
+        figure and the overs are separate things anyway — one is the headline,
+        the other is context — so they are set on separate lines, which also
+        means neither has to break.
+      */
+      const score = (value: string | null | undefined) => {
+        const m = /^(.*?)\s*\(([^)]*)\)\s*$/.exec(value ?? '');
+        return m ? { figure: m[1], overs: m[2] } : { figure: value ?? '', overs: '' };
+      };
+      const ourScore = score(g.ourScore);
+      const theirScore = score(g.theirScore);
+
       const mapUrl = g.mapQuery
         ? `https://www.google.com/maps/search/?api=1&query=${g.mapQuery}`
         : g.ground
@@ -198,7 +212,7 @@ const gamesToDisplay = toDisplay;
             <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
               {/* Left / Dreamers Team */}
               <div class="flex items-center justify-between md:justify-start md:gap-3.5">
-                <div class="flex items-center gap-3">
+                <div class="flex min-w-0 items-center gap-3">
                   <div class="relative flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-full bg-club shadow-sm border border-white/20 p-1">
                     <Logo class="h-8 w-8 sm:h-9 sm:w-9" width={36} />
                   </div>
@@ -218,8 +232,15 @@ const gamesToDisplay = toDisplay;
                 </div>
 
                 {isPlayed && g.ourScore && (
-                  <div class="font-figures text-xl sm:text-2xl font-bold text-club tracking-tight">
-                    {g.ourScore}
+                  <div class="shrink-0 text-right md:text-left">
+                    <div class="whitespace-nowrap font-figures text-xl sm:text-2xl font-bold tabular-nums tracking-tight text-club">
+                      {ourScore.figure}
+                    </div>
+                    {ourScore.overs && (
+                      <div class="whitespace-nowrap font-figures text-2xs text-ink-muted">
+                        {ourScore.overs}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -267,8 +288,15 @@ const gamesToDisplay = toDisplay;
                 </div>
 
                 {isPlayed && g.theirScore && (
-                  <div class="font-figures text-xl sm:text-2xl font-bold text-ink-muted tracking-tight">
-                    {g.theirScore}
+                  <div class="shrink-0 text-left md:text-right">
+                    <div class="whitespace-nowrap font-figures text-xl sm:text-2xl font-bold tabular-nums tracking-tight text-ink-muted">
+                      {theirScore.figure}
+                    </div>
+                    {theirScore.overs && (
+                      <div class="whitespace-nowrap font-figures text-2xs text-ink-muted">
+                        {theirScore.overs}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

@@ -51,6 +51,9 @@ export interface RosterPlayer {
    * It hangs off the player rather than off the team because nobody in the
    * roster leads one side and plays in another. The day someone does, this has
    * to become a per-team map — they would otherwise be marked on both cards.
+   *
+   * More than one captain per side is allowed and is deliberate: LOC 2 has two.
+   * They sort together at the head of the squad, alphabetically between them.
    */
   captaincy?: 'captain' | 'vice-captain';
   /** play.cricket.com.au public profile. Not the API's appearance id. */

@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-09T23:07:45.785Z",
+  "syncedAt": "2026-10-10T11:15:45.146Z",
   "season": "2026-27",
   "teams": [
     {
@@ -12,7 +12,7 @@
       "games": [
         {
           "id": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 1",
           "roundShort": "R1",
@@ -22,13 +22,13 @@
           ],
           "isHome": true,
           "opponent": "Deepdene Uniting 2nd XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Donnelly Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "6/349 (40 ov)",
+          "theirScore": "6/141 (40 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/f5bda536-c070-4ac2-ba35-931ad02f84d8?tab=summary"
         },
         {
@@ -380,7 +380,7 @@
       "games": [
         {
           "id": "4057d012-fc29-434d-a0c4-c9633602ca8d",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 1",
           "roundShort": "R1",
@@ -390,13 +390,13 @@
           ],
           "isHome": false,
           "opponent": "Salvation Army Waverley 1st XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Scoresby Secondary College",
           "ground": "Scoresby Secondary College",
           "suburb": "SCORESBY",
           "mapQuery": "Scoresby%20Secondary%20College%2C%20SCORESBY%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "2/76 (21.3 ov)",
+          "theirScore": "9/75 (31.3 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/3304b435-894b-4866-bec3-9d701b9af216?tab=summary"
         },
         {

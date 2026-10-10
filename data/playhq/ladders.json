@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-09T23:07:45.785Z",
+  "syncedAt": "2026-10-10T11:15:45.146Z",
   "season": "2026-27",
   "grades": [
     {
@@ -129,70 +129,70 @@
           "standings": [
             {
               "team": {
+                "id": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+                "name": "South Eastern Dreamers 1st XI"
+              },
+              "values": [
+                1,
+                6,
+                2.475,
+                5.2,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                349,
+                6,
+                141,
+                6
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
                 "id": "ca47da2b-41e7-4ba2-b372-f30a1e8616e6",
                 "name": "AYC Harlequins 1st XI"
               },
               "values": [
+                1,
+                6,
+                2.678,
+                3.148,
+                1,
                 0,
                 0,
-                null,
-                null,
                 0,
                 0,
                 0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
+                232,
+                3,
+                231,
+                8
               ],
               "conferenceId": null
             },
             {
               "team": {
-                "id": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
-                "name": "Alphington United 1st XI"
+                "id": "75957c0f-53b6-4d34-b1c8-6af85d700d98",
+                "name": "Monash University 1st XI"
               },
               "values": [
-                0,
-                0,
-                null,
-                null,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "9b5c4f26-ae57-44bc-9ce7-caa7e2f9ed0a",
-                "name": "Deepdene Uniting 2nd XI"
-              },
-              "values": [
-                0,
-                0,
-                null,
-                null,
+                1,
+                6,
+                2.086,
+                1.9,
+                1,
                 0,
                 0,
                 0,
                 0,
                 0,
-                0,
-                null,
-                0,
-                null,
-                0
+                146,
+                10,
+                70,
+                10
               ],
               "conferenceId": null
             },
@@ -200,29 +200,6 @@
               "team": {
                 "id": "4bba393f-8aac-4a9b-806c-006c114a7e5a",
                 "name": "Knox Churches 1st XI"
-              },
-              "values": [
-                0,
-                0,
-                null,
-                null,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "17606286-9310-4be3-815c-49500d8ada4d",
-                "name": "Knox City 1st XI"
               },
               "values": [
                 0,
@@ -267,47 +244,70 @@
             },
             {
               "team": {
-                "id": "75957c0f-53b6-4d34-b1c8-6af85d700d98",
-                "name": "Monash University 1st XI"
+                "id": "17606286-9310-4be3-815c-49500d8ada4d",
+                "name": "Knox City 1st XI"
               },
               "values": [
+                1,
+                0,
+                0.479,
+                -1.9,
+                0,
+                1,
                 0,
                 0,
-                null,
-                null,
                 0,
                 0,
-                0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
+                70,
+                10,
+                146,
+                10
               ],
               "conferenceId": null
             },
             {
               "team": {
-                "id": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
-                "name": "South Eastern Dreamers 1st XI"
+                "id": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+                "name": "Alphington United 1st XI"
               },
               "values": [
+                1,
+                0,
+                0.373,
+                -3.148,
+                0,
+                1,
                 0,
                 0,
-                null,
-                null,
+                0,
+                0,
+                231,
+                8,
+                232,
+                3
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "9b5c4f26-ae57-44bc-9ce7-caa7e2f9ed0a",
+                "name": "Deepdene Uniting 2nd XI"
+              },
+              "values": [
+                1,
+                0,
+                0.404,
+                -5.2,
+                0,
+                1,
                 0,
                 0,
                 0,
                 0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
+                141,
+                6,
+                349,
+                6
               ],
               "conferenceId": null
             }
@@ -468,47 +468,24 @@
           "standings": [
             {
               "team": {
-                "id": "ed1f6eb0-5ca6-4b39-9126-10d8e3e70604",
-                "name": "Balwyn Saints 3rd XI"
+                "id": "01d9a0e5-d922-456b-9ab0-62f47d577d88",
+                "name": "Melbourne Sixers 2nd X1"
               },
               "values": [
-                0,
-                0,
-                null,
-                null,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "8a37b904-851e-46d5-a727-12e663ecee4d",
-                "name": "Malvern Valley 1st XI"
-              },
-              "values": [
-                0,
-                0,
-                null,
-                null,
+                1,
+                6,
+                2.043,
+                6.311,
+                1,
                 0,
                 0,
                 0,
                 0,
                 0,
-                0,
-                null,
-                0,
-                null,
-                0
+                95,
+                5,
+                93,
+                10
               ],
               "conferenceId": null
             },
@@ -518,89 +495,20 @@
                 "name": "Manningham 1st XI"
               },
               "values": [
-                0,
-                0,
-                null,
-                null,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "01d9a0e5-d922-456b-9ab0-62f47d577d88",
-                "name": "Melbourne Sixers 2nd X1"
-              },
-              "values": [
-                0,
-                0,
-                null,
-                null,
+                1,
+                6,
+                2.708,
+                2.25,
+                1,
                 0,
                 0,
                 0,
                 0,
                 0,
-                0,
-                null,
-                0,
-                null,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "076979e2-82b5-4c2f-be75-860e3c4dc1ab",
-                "name": "STC South Camberwell 2nd XI"
-              },
-              "values": [
-                0,
-                0,
-                null,
-                null,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "9c5a84fe-aa1c-4615-9634-b6a8cf9b84f9",
-                "name": "Salvation Army Waverley 1st XI"
-              },
-              "values": [
-                0,
-                0,
-                null,
-                null,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                null,
-                0,
-                null,
-                0
+                234,
+                6,
+                144,
+                10
               ],
               "conferenceId": null
             },
@@ -610,20 +518,43 @@
                 "name": "South Eastern Dreamers 2nd XI"
               },
               "values": [
+                1,
+                6,
+                4.56,
+                1.154,
+                1,
                 0,
                 0,
-                null,
-                null,
+                0,
+                0,
+                0,
+                76,
+                2,
+                75,
+                9
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "076979e2-82b5-4c2f-be75-860e3c4dc1ab",
+                "name": "STC South Camberwell 2nd XI"
+              },
+              "values": [
+                1,
+                6,
+                1.262,
+                0.45,
+                1,
                 0,
                 0,
                 0,
                 0,
                 0,
-                0,
-                null,
-                0,
-                null,
-                0
+                210,
+                8,
+                208,
+                10
               ],
               "conferenceId": null
             },
@@ -633,20 +564,89 @@
                 "name": "St. Pauls Oakleigh 3rd XI"
               },
               "values": [
+                1,
+                0,
+                0.792,
+                -0.45,
+                0,
+                1,
                 0,
                 0,
-                null,
-                null,
+                0,
+                0,
+                208,
+                10,
+                210,
+                8
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "9c5a84fe-aa1c-4615-9634-b6a8cf9b84f9",
+                "name": "Salvation Army Waverley 1st XI"
+              },
+              "values": [
+                1,
+                0,
+                0.219,
+                -1.154,
+                0,
+                1,
                 0,
                 0,
                 0,
                 0,
+                75,
+                9,
+                76,
+                2
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "8a37b904-851e-46d5-a727-12e663ecee4d",
+                "name": "Malvern Valley 1st XI"
+              },
+              "values": [
+                1,
+                0,
+                0.369,
+                -2.25,
+                0,
+                1,
                 0,
                 0,
-                null,
                 0,
-                null,
-                0
+                0,
+                144,
+                10,
+                234,
+                6
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "ed1f6eb0-5ca6-4b39-9126-10d8e3e70604",
+                "name": "Balwyn Saints 3rd XI"
+              },
+              "values": [
+                1,
+                0,
+                0.489,
+                -6.311,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                93,
+                10,
+                95,
+                5
               ],
               "conferenceId": null
             }

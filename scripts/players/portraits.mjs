@@ -94,11 +94,37 @@ function match(filename) {
  * because a person cannot be made narrower and an arm's width costs less than
  * the height does.
  */
+/**
+ * A subject this much taller than the card is a full-length shot, not a
+ * head-and-shoulders one.
+ *
+ * The card is 2:3, so 0.67. Measured across the squad, head-and-torso cut-outs
+ * land between 0.46 and 0.68; Malith Kanahara's full-length photo is 0.32. Fit
+ * that whole into the card and he is a small figure stranded in the middle of
+ * an empty frame — the card has one player on it and should show him, not the
+ * room he is standing in.
+ */
+const FULL_LENGTH = 0.45;
+
 async function toPortrait(src) {
   const trimmed = await sharp(src).trim({ threshold: 1 }).toBuffer().catch(() => null);
-  const base = sharp(trimmed ?? (await sharp(src).toBuffer()));
+  const source = trimmed ?? (await sharp(src).toBuffer());
+  const { width: sw, height: sh } = await sharp(source).metadata();
 
-  const tall = await base.resize({ height: HEIGHT, fit: 'inside', withoutEnlargement: false }).toBuffer();
+  // A full-length photo is filled to the card's width and cut off at the
+  // bottom, keeping the head and as much of the body as the card has room for.
+  if (sw / sh < FULL_LENGTH) {
+    const scaled = await sharp(source).resize({ width: WIDTH }).toBuffer();
+    const { height } = await sharp(scaled).metadata();
+    return sharp(scaled)
+      .extract({ left: 0, top: 0, width: WIDTH, height: Math.min(HEIGHT, height) })
+      .webp({ quality: QUALITY, alphaQuality: 90 })
+      .toBuffer();
+  }
+
+  // Everything else fills the card's height, so every player stands the same
+  // height whatever shape their photo arrived in.
+  const tall = await sharp(source).resize({ height: HEIGHT, fit: 'inside', withoutEnlargement: false }).toBuffer();
   const { width } = await sharp(tall).metadata();
 
   const framed =

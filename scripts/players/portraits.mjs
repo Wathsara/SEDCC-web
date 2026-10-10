@@ -73,6 +73,46 @@ function match(filename) {
   return {};
 }
 
+/**
+ * A cut-out, framed to fill the card.
+ *
+ * Two things vary between the photos the club sends, and both used to show:
+ *
+ *   - How much empty space surrounds the subject. The LOC 1 cut-outs fill
+ *     80-98% of their frame; the LOC 2 ones only 69-80%. Resizing the frame
+ *     rather than the person meant the emptier photos rendered a smaller
+ *     player, for no reason a reader could see.
+ *   - The frame's shape. Six arrive 1024x1536, which is already 2:3, but
+ *     Malith Kanahara's is 1166x1349. Fitted whole into 2:3 he was limited by
+ *     his width and came out 275px short of the frame — visibly shorter than
+ *     the team-mates beside him.
+ *
+ * So the subject is measured first and then sized to the card, rather than the
+ * file being sized to the card. Height always fills: everyone stands the same
+ * height on their card whatever the source. Width is centred, padded when the
+ * subject is narrower than 2:3 — which is most people — and cropped when wider,
+ * because a person cannot be made narrower and an arm's width costs less than
+ * the height does.
+ */
+async function toPortrait(src) {
+  const trimmed = await sharp(src).trim({ threshold: 1 }).toBuffer().catch(() => null);
+  const base = sharp(trimmed ?? (await sharp(src).toBuffer()));
+
+  const tall = await base.resize({ height: HEIGHT, fit: 'inside', withoutEnlargement: false }).toBuffer();
+  const { width } = await sharp(tall).metadata();
+
+  const framed =
+    width > WIDTH
+      ? sharp(tall).extract({ left: Math.round((width - WIDTH) / 2), top: 0, width: WIDTH, height: HEIGHT })
+      : sharp(tall).extend({
+          left: Math.floor((WIDTH - width) / 2),
+          right: Math.ceil((WIDTH - width) / 2),
+          background: { r: 0, g: 0, b: 0, alpha: 0 },
+        });
+
+  return framed.webp({ quality: QUALITY, alphaQuality: 90 }).toBuffer();
+}
+
 const teams = (await readdir(SOURCE, { withFileTypes: true }))
   .filter((d) => d.isDirectory() && d.name !== 'portraits')
   .map((d) => d.name);
@@ -109,23 +149,7 @@ for (const team of teams) {
     }
 
     const before = (await stat(src)).size;
-    /*
-      Pad to a fixed 2:3 rather than crop to it. The card is 2:3 and shows the
-      portrait whole, so a photo arriving at some other shape has to be made to
-      fit — and padding a cut-out with transparency costs nothing, where
-      cropping would cut someone's legs off to suit the grid. Bottom-anchored,
-      because a cut-out stands on the foot of the card.
-    */
-    const buf = await sharp(src)
-      .resize({
-        width: WIDTH,
-        height: HEIGHT,
-        fit: 'contain',
-        position: 'bottom',
-        background: { r: 0, g: 0, b: 0, alpha: 0 },
-      })
-      .webp({ quality: QUALITY, alphaQuality: 90 })
-      .toBuffer();
+    const buf = await toPortrait(src);
     await writeFile(dest, buf);
 
     savedBytes += before - buf.length;

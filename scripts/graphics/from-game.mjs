@@ -44,10 +44,6 @@ export function toFields(match, summary) {
     inn.batting.slice(0, 3).forEach((b, n) => {
       f[`${k}.bat.${n}.name`] = b.name;
       f[`${k}.bat.${n}.runs`] = b.runs;
-      // Balls faced, in brackets beside the runs. PlayHQ leaves it out of some
-      // scorecards entirely, and "(0)" beside a score of 31 reads as a mistake,
-      // so an absent count sends an empty string and the renderer drops the slot.
-      f[`${k}.bat.${n}.balls`] = b.balls;
     });
     inn.bowling.slice(0, 3).forEach((b, n) => {
       f[`${k}.bowl.${n}.name`] = b.name;

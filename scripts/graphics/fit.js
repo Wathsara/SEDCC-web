@@ -285,20 +285,28 @@ window.__fitMatchSummary = function fit() {
   //
   //    Each name is fitted on its own, so a panel could finish with three
   //    different sizes — 17px, 15px and 19px down one batting card, which reads
-  //    as sloppy rather than as careful fitting. Drop every name in a column to
-  //    the smallest its own column needed. Only ever downward, so nothing that
-  //    had to shrink is pushed back into an overflow.
+  //    as sloppy rather than as careful fitting.
+  //
+  //    Both columns of an innings share one size, not each column its own. The
+  //    batting column carries a score beside the name and the bowling column a
+  //    shorter figure, so batters hit the limit first; sized per column, the
+  //    batters came out visibly smaller than the bowlers beside them, which
+  //    reads as the batting card being less important rather than as its names
+  //    being longer. Only ever downward, so nothing that had to shrink is
+  //    pushed back into an overflow.
   for (const inns of ['i1', 'i2']) {
+    const els = [];
     for (const role of ['bat', 'bowl']) {
-      const els = [0, 1, 2]
-        .map((n) => q(`${inns}.${role}.${n}.name`))
-        .filter((el) => el && el.getClientRects().length);
-      if (els.length < 2) continue;
-      const smallest = Math.min(...els.map((el) => parseFloat(getComputedStyle(el).fontSize)));
-      for (const el of els) {
-        if (parseFloat(getComputedStyle(el).fontSize) > smallest) {
-          el.style.fontSize = `${smallest}px`;
-        }
+      for (const n of [0, 1, 2]) {
+        const el = q(`${inns}.${role}.${n}.name`);
+        if (el && el.getClientRects().length) els.push(el);
+      }
+    }
+    if (els.length < 2) continue;
+    const smallest = Math.min(...els.map((el) => parseFloat(getComputedStyle(el).fontSize)));
+    for (const el of els) {
+      if (parseFloat(getComputedStyle(el).fontSize) > smallest) {
+        el.style.fontSize = `${smallest}px`;
       }
     }
   }

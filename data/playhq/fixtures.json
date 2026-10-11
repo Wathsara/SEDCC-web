@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-10T22:22:54.125Z",
+  "syncedAt": "2026-10-11T22:45:04.360Z",
   "season": "2026-27",
   "teams": [
     {
@@ -587,6 +587,48 @@
           "ourScore": null,
           "theirScore": null,
           "matchCentreUrl": "https://play.cricket.com.au/match/472da7cf-aedc-48fa-a5af-fd38677e7192?tab=summary"
+        },
+        {
+          "id": "df6a1409-b204-4021-99e3-12c58214cda8",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 11",
+          "roundShort": "R11",
+          "isFinal": false,
+          "dates": [
+            "2027-01-09T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Balwyn Saints 3rd XI",
+          "outcome": null,
+          "venue": "Myrtle Park",
+          "ground": "East Oval",
+          "suburb": "BALWYN NORTH",
+          "mapQuery": "Myrtle%20Park%2C%20BALWYN%20NORTH%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/50551fb1-fc42-4c78-b815-eb218823ccd4?tab=summary"
+        },
+        {
+          "id": "2d414398-f1e8-48bf-953e-e43bea5fcdc2",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 12",
+          "roundShort": "R12",
+          "isFinal": false,
+          "dates": [
+            "2027-01-16T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Malvern Valley 1st XI",
+          "outcome": null,
+          "venue": "Donnelly Recreation Reserve",
+          "ground": "Oval 1",
+          "suburb": "CRANBOURNE",
+          "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/a789820f-89a8-4735-8389-9744f0380886?tab=summary"
         }
       ],
       "byes": []

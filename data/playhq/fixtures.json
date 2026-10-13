@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-11T22:45:04.360Z",
+  "syncedAt": "2026-10-13T01:12:35.106Z",
   "season": "2026-27",
   "teams": [
     {
@@ -629,6 +629,27 @@
           "ourScore": null,
           "theirScore": null,
           "matchCentreUrl": "https://play.cricket.com.au/match/a789820f-89a8-4735-8389-9744f0380886?tab=summary"
+        },
+        {
+          "id": "9c08781d-d196-4d80-a417-ecdb13ca980f",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 13",
+          "roundShort": "R13",
+          "isFinal": false,
+          "dates": [
+            "2027-01-30T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Melbourne Sixers 2nd X1",
+          "outcome": null,
+          "venue": "Donnelly Recreation Reserve",
+          "ground": "Oval 1",
+          "suburb": "CRANBOURNE",
+          "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/6bc84a54-a7e6-4f5b-9293-ce71192f24ff?tab=summary"
         }
       ],
       "byes": []

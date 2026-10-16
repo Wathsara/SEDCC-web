@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-15T22:04:21.688Z",
+  "syncedAt": "2026-10-16T21:58:30.056Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -625,7 +625,7 @@
         "450a2908-e4af-4159-8641-17b9924244ec"
       ],
       "matchKey": "stpauls",
-      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7f4e9c11-11d3-4943-ae73-001afb82e0ae/1751076443663/logo.png?_a=BAMAMifg0"
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/7f4e9c11-11d3-4943-ae73-001afb82e0ae/1792104305048/logo.png?_a=BAMAMifg0"
     },
     "surrey-hills-cricket-club": {
       "name": "Surrey Hills Cricket Club",

@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-16T21:58:30.057Z",
+  "syncedAt": "2026-10-17T21:21:39.578Z",
   "season": "2026-27",
   "teams": [
     {
@@ -33,7 +33,7 @@
         },
         {
           "id": "6067a1b5-82f8-4a6a-ae15-9803706bfe36",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 2",
           "roundShort": "R2",
@@ -43,13 +43,13 @@
           ],
           "isHome": true,
           "opponent": "Knox City 1st XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Donnelly Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "2/100 (16.5 ov)",
+          "theirScore": "97 (33.5 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/253af784-2e41-4f65-ad83-6569d1f7d298?tab=summary"
         },
         {
@@ -401,7 +401,7 @@
         },
         {
           "id": "073bda70-ee77-4c76-a7f3-b161e12eaef1",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 2",
           "roundShort": "R2",
@@ -411,13 +411,13 @@
           ],
           "isHome": false,
           "opponent": "STC South Camberwell 2nd XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Nettleton Park",
           "ground": "East pitch",
           "suburb": "GLEN IRIS",
           "mapQuery": "Nettleton%20Park%2C%20GLEN%20IRIS%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "250 (37.5 ov)",
+          "theirScore": "190 (35.2 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/2f3d3b49-cae8-4a4e-85cc-a9429e4186bc?tab=summary"
         },
         {

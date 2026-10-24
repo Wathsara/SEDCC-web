@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-23T21:57:16.878Z",
+  "syncedAt": "2026-10-24T21:28:01.584Z",
   "season": "2026-27",
   "teams": [
     {
@@ -54,7 +54,7 @@
         },
         {
           "id": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 3",
           "roundShort": "R3",
@@ -64,13 +64,13 @@
           ],
           "isHome": false,
           "opponent": "Monash University 1st XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Monash University",
           "ground": "Frearson Oval",
           "suburb": "CLAYTON",
           "mapQuery": "Monash%20University%2C%20CLAYTON%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "8/265 (40 ov)",
+          "theirScore": "5/231 (40 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/30208003-1c38-4a22-96a7-492fb62c9ee6?tab=summary"
         },
         {
@@ -422,7 +422,7 @@
         },
         {
           "id": "9f84ca5b-7629-494e-9407-5400182df035",
-          "status": "UPCOMING",
+          "status": "ABANDONED",
           "type": null,
           "round": "Round 3",
           "roundShort": "R3",
@@ -432,13 +432,13 @@
           ],
           "isHome": true,
           "opponent": "St. Pauls Oakleigh 3rd XI",
-          "outcome": null,
+          "outcome": "ABANDONED",
           "venue": "Donnelly Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "9",
+          "theirScore": "152",
           "matchCentreUrl": "https://play.cricket.com.au/match/64771970-09e4-4962-8f5a-eb077ed0b6ab?tab=summary"
         },
         {

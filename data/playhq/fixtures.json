@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-10T22:22:54.125Z",
+  "syncedAt": "2026-10-23T21:57:16.878Z",
   "season": "2026-27",
   "teams": [
     {
@@ -33,7 +33,7 @@
         },
         {
           "id": "6067a1b5-82f8-4a6a-ae15-9803706bfe36",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 2",
           "roundShort": "R2",
@@ -43,13 +43,13 @@
           ],
           "isHome": true,
           "opponent": "Knox City 1st XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Donnelly Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "2/100 (16.5 ov)",
+          "theirScore": "97 (33.5 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/253af784-2e41-4f65-ad83-6569d1f7d298?tab=summary"
         },
         {
@@ -401,7 +401,7 @@
         },
         {
           "id": "073bda70-ee77-4c76-a7f3-b161e12eaef1",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 2",
           "roundShort": "R2",
@@ -411,13 +411,13 @@
           ],
           "isHome": false,
           "opponent": "STC South Camberwell 2nd XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Nettleton Park",
           "ground": "East pitch",
           "suburb": "GLEN IRIS",
           "mapQuery": "Nettleton%20Park%2C%20GLEN%20IRIS%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "250 (37.5 ov)",
+          "theirScore": "190 (35.2 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/2f3d3b49-cae8-4a4e-85cc-a9429e4186bc?tab=summary"
         },
         {
@@ -587,6 +587,153 @@
           "ourScore": null,
           "theirScore": null,
           "matchCentreUrl": "https://play.cricket.com.au/match/472da7cf-aedc-48fa-a5af-fd38677e7192?tab=summary"
+        },
+        {
+          "id": "df6a1409-b204-4021-99e3-12c58214cda8",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 11",
+          "roundShort": "R11",
+          "isFinal": false,
+          "dates": [
+            "2027-01-09T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Balwyn Saints 3rd XI",
+          "outcome": null,
+          "venue": "Myrtle Park",
+          "ground": "East Oval",
+          "suburb": "BALWYN NORTH",
+          "mapQuery": "Myrtle%20Park%2C%20BALWYN%20NORTH%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/50551fb1-fc42-4c78-b815-eb218823ccd4?tab=summary"
+        },
+        {
+          "id": "2d414398-f1e8-48bf-953e-e43bea5fcdc2",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 12",
+          "roundShort": "R12",
+          "isFinal": false,
+          "dates": [
+            "2027-01-16T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Malvern Valley 1st XI",
+          "outcome": null,
+          "venue": "Donnelly Recreation Reserve",
+          "ground": "Oval 1",
+          "suburb": "CRANBOURNE",
+          "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/a789820f-89a8-4735-8389-9744f0380886?tab=summary"
+        },
+        {
+          "id": "9c08781d-d196-4d80-a417-ecdb13ca980f",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 13",
+          "roundShort": "R13",
+          "isFinal": false,
+          "dates": [
+            "2027-01-30T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Melbourne Sixers 2nd X1",
+          "outcome": null,
+          "venue": "Donnelly Recreation Reserve",
+          "ground": "Oval 1",
+          "suburb": "CRANBOURNE",
+          "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/6bc84a54-a7e6-4f5b-9293-ce71192f24ff?tab=summary"
+        },
+        {
+          "id": "2a0519a4-39ad-471e-b3ff-29f0bf88b6e4",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 14",
+          "roundShort": "R14",
+          "isFinal": false,
+          "dates": [
+            "2027-02-06T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Manningham 1st XI",
+          "outcome": null,
+          "venue": "Rieschiecks Reserve",
+          "ground": "Oval 1",
+          "suburb": "EAST DONCASTER",
+          "mapQuery": "Rieschiecks%20Reserve%2C%20EAST%20DONCASTER%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/e1656193-241e-4d7b-b352-31056afa3000?tab=summary"
+        },
+        {
+          "id": "1c01d61f-0faa-41b6-8492-50fba9b31a1a",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 15",
+          "roundShort": "R15",
+          "isFinal": false,
+          "dates": [
+            "2027-02-13T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Salvation Army Waverley 1st XI",
+          "outcome": null,
+          "venue": "Scoresby Secondary College",
+          "ground": "Scoresby Secondary College",
+          "suburb": "SCORESBY",
+          "mapQuery": "Scoresby%20Secondary%20College%2C%20SCORESBY%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/7759c00b-84c0-4455-991d-04a84d5af754?tab=summary"
+        },
+        {
+          "id": "30da8b1b-5a6b-4417-91e4-7ea38f0747c1",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 16",
+          "roundShort": "R16",
+          "isFinal": false,
+          "dates": [
+            "2027-02-20T01:30:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "STC South Camberwell 2nd XI",
+          "outcome": null,
+          "venue": "Macleay Park",
+          "ground": "Oval 3",
+          "suburb": "BALWYN NORTH",
+          "mapQuery": "Macleay%20Park%2C%20BALWYN%20NORTH%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/a2327cee-e503-4c7b-a424-bd455ba6c66c?tab=summary"
+        },
+        {
+          "id": "e5af7089-4c53-46fa-9acd-7115fc7e1366",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 17",
+          "roundShort": "R17",
+          "isFinal": false,
+          "dates": [
+            "2027-02-27T01:30:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "St. Pauls Oakleigh 3rd XI",
+          "outcome": null,
+          "venue": "Donnelly Recreation Reserve",
+          "ground": "Oval 1",
+          "suburb": "CRANBOURNE",
+          "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null,
+          "matchCentreUrl": "https://play.cricket.com.au/match/82341eb5-464b-4f7b-8384-0b05437cc30a?tab=summary"
         }
       ],
       "byes": []

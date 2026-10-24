@@ -134,13 +134,49 @@ try {
       }
     }, fields);
 
+    // The result ribbon wears a trophy, which is the wrong thing to hand a
+    // match nobody won. `result.icon` names another; the geometry lives here
+    // rather than in the three designs so they cannot drift apart.
+    const RESULT_ICONS = {
+      // A cloud with rain under it: abandoned, washed out, no result.
+      rain:
+        '<path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" transform="translate(1 -5) scale(0.92)"></path>' +
+        '<rect x="6.4" y="16.4" width="2" height="5.6" rx="1"></rect>' +
+        '<rect x="11" y="17.6" width="2" height="5.6" rx="1"></rect>' +
+        '<rect x="15.6" y="16.4" width="2" height="5.6" rx="1"></rect>',
+      // Two level bars: a tie, and a draw on a two-day game.
+      level:
+        '<rect x="3" y="7.5" width="18" height="3" rx="1.5"></rect>' +
+        '<rect x="3" y="13.5" width="18" height="3" rx="1.5"></rect>',
+    };
+    const wantedIcon = typeof fields['result.icon'] === 'string' ? fields['result.icon'].trim() : '';
+    if (wantedIcon && wantedIcon !== 'trophy') {
+      const art = RESULT_ICONS[wantedIcon];
+      if (!art) {
+        console.warn(
+          `  result.icon "${wantedIcon}" is not one of: trophy, ${Object.keys(RESULT_ICONS).join(', ')} — keeping the trophy`,
+        );
+      } else {
+        const swapped = await page.evaluate(
+          (a) => {
+            const svg = document.querySelector('[data-result-icon]');
+            if (!svg) return false;
+            svg.innerHTML = a;
+            return true;
+          },
+          art,
+        );
+        if (!swapped) console.warn('  this design has no [data-result-icon] — result.icon ignored');
+      }
+    }
+
     const missing = await page.evaluate((f) => {
       const gone = [];
       for (const [k, v] of Object.entries(f)) {
         if (k.startsWith('_')) continue;
         // Directives, not text: they steer the render rather than name a slot
         // in the design, so their absence from the markup is not a mistake.
-        if (k === 'player.photo') continue;
+        if (k === 'player.photo' || k === 'result.icon') continue;
         const el = document.querySelector(`[data-field="${k}"]`);
         // An empty value is a deliberate "we do not know this" — an unrecorded
         // over count, the losing side's toss badge. Remove the slot rather

@@ -244,7 +244,26 @@ try {
             .replace(/\bxi\b/g, ' ')
             .replace(/\b(cc|sc|cricket|club|senior|seniors|men|women|grade\s*\d*\w*)\b/g, ' ')
             .replace(/[^a-z0-9]/g, '');
-          const theirs = crests[crestKey];
+          /*
+            Exact match first, then the longest stored key that starts the
+            team's. A team name can carry a suburb the club name does not:
+            "St. Pauls Oakleigh 3rd XI" reduces to "stpaulsoakleigh" while the
+            crest is filed under "stpauls", and the card fell back to an "SP"
+            monogram for a club whose artwork we hold.
+
+            Six characters minimum, longest wins. Checked against all 60 stored
+            keys, the only one that starts another is "burwood" against
+            "burwoodunitingcanterbury" — and an exact match is tried first, so
+            neither club can take the other's crest.
+          */
+          const theirs =
+            crests[crestKey] ??
+            (() => {
+              const starts = Object.keys(crests)
+                .filter((k) => k.length >= 6 && crestKey.startsWith(k))
+                .sort((a, b) => b.length - a.length);
+              return starts.length ? crests[starts[0]] : undefined;
+            })();
 
           if (ours && clubCrest) {
             wrap.innerHTML =

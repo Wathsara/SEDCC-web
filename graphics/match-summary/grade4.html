@@ -18,7 +18,7 @@
       body {
         margin: 0;
         padding: 0;
-        background-color: #020710;
+        background-color: #040f26;
         font-family: "Montserrat", sans-serif;
         overflow-x: hidden;
       }
@@ -31,9 +31,9 @@
         margin: 0 auto;
         background: radial-gradient(
           circle at 80% 15%,
-          #0e3059 0%,
-          #061730 45%,
-          #020914 100%
+          #1d4fa0 0%,
+          #0a2a63 45%,
+          #040f26 100%
         );
         overflow: hidden;
         display: flex;
@@ -65,8 +65,8 @@
           ),
           linear-gradient(
             to bottom,
-            #163252 0%,
-            #07172b 45%,
+            #1b4382 0%,
+            #0a1f45 45%,
             #092015 75%,
             #18440e 100%
           );
@@ -92,6 +92,39 @@
         box-shadow: inset -10px 10px 25px rgba(0, 0, 0, 0.6);
         clip-path: polygon(0 0, 100% 12%, 85% 100%, 0 100%);
         z-index: 2;
+        pointer-events: none;
+      }
+
+      /*
+         The VSCA shield is a sunburst behind the lettering. Echoed here at the
+         top of the card, which is what keeps this design from reading as the
+         ECA one in another colour.
+      */
+      .vsca-burst {
+        position: absolute;
+        top: -70%;
+        left: 50%;
+        width: 150%;
+        aspect-ratio: 1;
+        transform: translateX(-50%);
+        background: repeating-conic-gradient(
+          from 0deg at 50% 50%,
+          rgba(255, 255, 255, 0.085) 0deg 2.2deg,
+          transparent 2.2deg 7.5deg
+        );
+        -webkit-mask-image: radial-gradient(
+          circle at 50% 50%,
+          #000 0%,
+          rgba(0, 0, 0, 0.55) 34%,
+          transparent 62%
+        );
+        mask-image: radial-gradient(
+          circle at 50% 50%,
+          #000 0%,
+          rgba(0, 0, 0, 0.55) 34%,
+          transparent 62%
+        );
+        z-index: 0;
         pointer-events: none;
       }
 
@@ -125,8 +158,8 @@
       .broadcast-glass {
         background: linear-gradient(
           135deg,
-          rgba(8, 24, 48, 0.85) 0%,
-          rgba(4, 14, 30, 0.92) 100%
+          rgba(10, 34, 78, 0.88) 0%,
+          rgba(5, 20, 52, 0.93) 100%
         );
         backdrop-filter: blur(12px);
         box-shadow:
@@ -147,14 +180,15 @@
       <!-- Background Layer: Field Grass -->
       <!-- Vector Swoosh Overlays across the bottom & left, kept strictly to edges -->
       <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="vsca-burst"></div>
         <div
-          class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-cyan-500/15 blur-xl"
+          class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#2f6fd0]/20 blur-xl"
         ></div>
         <div
           class="absolute top-1/4 -right-32 w-96 h-96 rounded-full bg-blue-600/10 blur-xl"
         ></div>
         <div
-          class="absolute -bottom-40 left-1/3 w-[600px] h-80 rounded-full bg-cyan-400/10 blur-xl"
+          class="absolute -bottom-40 left-1/3 w-[600px] h-80 rounded-full bg-[#e8463c]/12 blur-xl"
         ></div>
         <svg
           class="absolute inset-0 w-full h-full opacity-30"
@@ -162,7 +196,7 @@
           xmlns="http://www.w3.org/2000/svg"
         >
           <line
-            stroke="#38bdf8"
+            stroke="#dbe4f2"
             stroke-dasharray="6 8"
             stroke-width="1"
             x1="-100"
@@ -172,7 +206,7 @@
           ></line>
           <line
             opacity="0.4"
-            stroke="#38bdf8"
+            stroke="#dbe4f2"
             stroke-dasharray="4 12"
             stroke-width="1"
             x1="-100"
@@ -180,8 +214,8 @@
             y1="750"
             y2="600"
           ></line>
-          <circle cx="240" cy="265" fill="#38bdf8" r="3"></circle>
-          <circle cx="1200" cy="635" fill="#38bdf8" r="3"></circle>
+          <circle cx="240" cy="265" fill="#e8463c" r="3"></circle>
+          <circle cx="1200" cy="635" fill="#e8463c" r="3"></circle>
         </svg>
       </div>
       <!-- BEGIN: TopBarAndHeaders -->
@@ -193,7 +227,7 @@
           <div class="flex items-center shrink-0" data-purpose="veca-association-logo">
             <div class="relative w-20 h-24 flex items-center justify-center">
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2zyu46yCkiYRB49ne2DMOmAK8UkB2Lz0O-izMQGRRFXWJckC59t1bIzP9Wcs9QbN5Qlekf5kKqdWvrEo-VQjg2APr7SZoxhsIiiFCJfsvhJQVUvy6c_9ZH5k0zhFQI5O6b3kCzncyRY6kBJCXrw_lhiPsFGrEZFMCBIWdgxnaPVKexd6cGnZGvzcygg9i4GRGAR6YjpxzUkWkVTUGKggBSg2er4wgfRvoCtHjrt_6Yk8UMJsJQweedFOEXfFD8ksMsg"
+                src="../../src/assets/sponsors/vsca-badge.png"
                 alt="VSCA Official Crest"
                 class="w-full h-full object-contain filter drop-shadow-xl select-none"
               />
@@ -202,16 +236,16 @@
           <!-- Center Match Title & Info -->
           <div class="text-center flex-1 -mt-1 px-4">
             <h1
-              class="font-marker text-6xl md:text-7xl lg:text-[5.25rem] whitespace-nowrap tracking-wider text-white transform -rotate-1 title-shadow leading-none drop-shadow-[0_4px_16px_rgba(0,210,255,0.35)]"
+              class="font-marker text-6xl md:text-7xl lg:text-[5.25rem] whitespace-nowrap tracking-wider text-white transform -rotate-1 title-shadow leading-none drop-shadow-[0_4px_16px_rgba(96,150,255,0.45)]"
             >
               MATCH SUMMARY
             </h1>
             <div class="mt-2 flex flex-col items-center justify-center">
               <div
-                class="inline-flex items-center gap-1.5 mb-1.5 px-3 py-0.5 rounded-md bg-[#081730] border border-cyan-400/40 shadow-sm"
+                class="inline-flex items-center gap-1.5 mb-1.5 px-3 py-0.5 rounded-md bg-[#081730] border border-[#dbe4f2]/35 shadow-sm"
               >
                 <span
-                  class="font-sports text-xs font-black tracking-widest text-cyan-300 uppercase"
+                  class="font-sports text-xs font-black tracking-widest text-[#cfdcf0] uppercase"
                   >COMPETITION:</span
                 ><span
                   class="font-sports text-xs md:text-sm font-black tracking-widest text-white uppercase"
@@ -223,31 +257,45 @@
               >
                 <span class=""
                   ><span data-field="header.away">EASTERN REBELS G4</span></span
-                ><span class="text-cyan-400 text-base font-light">VS</span
+                ><span class="text-[#ff6a5f] text-base font-light">VS</span
                 ><span class="text-slate-100"
                   ><span data-field="header.home">DREAMERS G4</span></span
                 >
               </h2>
               <div
-                class="flex items-center justify-center gap-2 mt-1 text-base font-sports font-semibold tracking-wider text-cyan-300 uppercase"
+                class="flex items-center justify-center gap-2 mt-1 text-base font-sports font-semibold tracking-wider text-[#cfdcf0] uppercase"
               >
                 <span class="text-white font-bold"
                   ><span data-field="meta.round">ROUND 14</span></span
-                ><span class="text-cyan-400/60">•</span
+                ><span class="text-[#7f93b5]">•</span
                 ><span class="text-slate-200"
                   ><span data-field="meta.season">SEASON 2025/26</span></span
-                ><span class="text-cyan-400/60">•</span
-                ><span class="text-cyan-300 font-bold flex items-center gap-1.5"
-                  ><span class="text-amber-400">📍</span
+                ><span class="text-[#7f93b5]">•</span
+                ><span class="text-[#cfdcf0] font-bold flex items-center gap-1.5"
+                  ><svg class="h-[15px] w-[15px] shrink-0 text-[#ff7a6e]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657 13.414 20.9a2 2 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path></svg
                   ><span data-field="meta.venue">VENUE: OVAL 1</span></span
                 >
               </div>
               <div class="flex items-center gap-1.5 mt-1">
                 <span
-                  class="h-[1px] w-8 bg-gradient-to-r from-transparent to-cyan-400"
+                  class="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#dbe4f2]"
                 ></span
+                ><svg
+                  class="h-4 w-9 shrink-0 text-white"
+                  viewBox="0 0 36 16"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <!-- Crux, as the shield carries it: Gacrux high, Acrux
+                       low, the arms either side, Epsilon small between. -->
+                  <path d="M18.60 -0.10L19.15 1.65L20.90 2.20L19.15 2.75L18.60 4.50L18.05 2.75L16.30 2.20L18.05 1.65Z"></path>
+                  <path d="M17.40 10.90L18.10 13.10L20.30 13.80L18.10 14.50L17.40 16.70L16.70 14.50L14.50 13.80L16.70 13.10Z"></path>
+                  <path d="M6.60 5.10L7.15 6.85L8.90 7.40L7.15 7.95L6.60 9.70L6.05 7.95L4.30 7.40L6.05 6.85Z"></path>
+                  <path d="M29.40 3.60L29.93 5.27L31.60 5.80L29.93 6.33L29.40 8.00L28.87 6.33L27.20 5.80L28.87 5.27Z"></path>
+                  <path d="M23.20 9.10L23.51 10.09L24.50 10.40L23.51 10.71L23.20 11.70L22.89 10.71L21.90 10.40L22.89 10.09Z"></path>
+                </svg
                 ><span
-                  class="h-[1px] w-8 bg-gradient-to-l from-transparent to-cyan-400"
+                  class="h-[1px] w-8 bg-gradient-to-l from-transparent to-[#dbe4f2]"
                 ></span>
               </div>
             </div>
@@ -358,7 +406,7 @@
               class="broadcast-glass rounded-xl p-3.5 space-y-1.5 border border-white/15"
             >
               <div
-                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-cyan-300"
+                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-[#cfdcf0]"
               >
                 <span class="">BATTER</span>
               </div>
@@ -371,7 +419,7 @@
                   <svg class="h-[14px] w-[14px] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 2.5a2.3 2.3 0 0 1 3.2 0l1.7 1.7a2.3 2.3 0 0 1 0 3.2l-7.8 7.8-4.9-4.9 7.8-7.8z"></path><path d="M7.9 11.6l4.5 4.5-4.4 4.4a1.5 1.5 0 0 1-2.1 0l-2.4-2.4a1.5 1.5 0 0 1 0-2.1l4.4-4.4z"></path></svg><span data-field="i1.bat.0.name">Saman Kumara</span>
                 </span>
                 <span
-                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-cyan-300 shrink-0 whitespace-nowrap"
+                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#eef4fd] shrink-0 whitespace-nowrap"
                   ><span data-field="i1.bat.0.runs">86</span></span
                 >
               </div>
@@ -407,7 +455,7 @@
               class="broadcast-glass rounded-xl p-3.5 space-y-1.5 border border-white/15"
             >
               <div
-                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-cyan-300"
+                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-[#cfdcf0]"
               >
                 <span class="">BOWLER</span><span class="">W/R</span>
               </div>
@@ -420,7 +468,7 @@
                     >Supun Jayasekara</span
                   ></span
                 ><span
-                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-cyan-300 text-right"
+                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#ff7a6e] text-right"
                   ><span data-field="i1.bowl.0.figures">1-14</span></span
                 >
               </div>
@@ -517,7 +565,7 @@
               class="broadcast-glass rounded-xl p-3.5 space-y-1.5 border border-white/15"
             >
               <div
-                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-cyan-300"
+                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-[#cfdcf0]"
               >
                 <span class="">BATTER</span>
               </div>
@@ -530,7 +578,7 @@
                   <svg class="h-[14px] w-[14px] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 2.5a2.3 2.3 0 0 1 3.2 0l1.7 1.7a2.3 2.3 0 0 1 0 3.2l-7.8 7.8-4.9-4.9 7.8-7.8z"></path><path d="M7.9 11.6l4.5 4.5-4.4 4.4a1.5 1.5 0 0 1-2.1 0l-2.4-2.4a1.5 1.5 0 0 1 0-2.1l4.4-4.4z"></path></svg><span data-field="i2.bat.0.name">Janith Thennakoon</span>
                 </span>
                 <span
-                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-cyan-300 shrink-0 whitespace-nowrap"
+                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#eef4fd] shrink-0 whitespace-nowrap"
                   ><span data-field="i2.bat.0.runs">79</span></span
                 >
               </div>
@@ -566,7 +614,7 @@
               class="broadcast-glass rounded-xl p-3.5 space-y-1.5 border border-white/15"
             >
               <div
-                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-cyan-300"
+                class="flex justify-between items-center pb-1 mb-1 border-b border-white/15 text-xs font-sports font-bold tracking-widest uppercase text-[#cfdcf0]"
               >
                 <span class="">BOWLER</span><span class="">W/R</span>
               </div>
@@ -579,7 +627,7 @@
                     >Indika Karunathilaka</span
                   ></span
                 ><span
-                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-cyan-300 text-right"
+                  class="font-sports font-black text-2xl md:text-3xl tracking-wider text-[#ff7a6e] text-right"
                   ><span data-field="i2.bowl.0.figures">1-14</span></span
                 >
               </div>
@@ -621,7 +669,7 @@
         <div class="w-full max-w-4xl relative group mx-auto px-4">
           <!-- Outer Glow Halo -->
           <div
-            class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500/30 via-amber-400/30 to-cyan-500/30 blur-md opacity-70 pointer-events-none"
+            class="absolute -inset-1 rounded-full bg-gradient-to-r from-[#e8463c]/30 via-[#dbe4f2]/45 to-[#e8463c]/30 blur-md opacity-70 pointer-events-none"
           ></div>
           <!-- Main Champion Pill: High-contrast crisp white with bold typography -->
           <div
@@ -651,8 +699,8 @@
                 <span class="text-[#071526]"
                   ><span data-field="result.team">DREAMERS CC</span></span
                 >
-                <span class="text-cyan-700 font-extrabold"><span data-field="result.verb">WON BY</span></span>
-                <span class="text-amber-600 font-black"
+                <span class="text-[#7a8ba4] font-extrabold"><span data-field="result.verb">WON BY</span></span>
+                <span class="text-[#c0271f] font-black"
                   ><span data-field="result.margin">65 RUNS</span></span
                 >
               </p>
@@ -669,13 +717,13 @@
         >
           <div class="flex items-center justify-center gap-2 mb-1.5">
             <span
-              class="h-[1px] w-12 bg-gradient-to-r from-transparent to-cyan-400/50"
+              class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#dbe4f2]/50"
             ></span
             ><span
-              class="font-sports text-[10px] md:text-xs font-bold tracking-[0.25em] text-cyan-300 uppercase"
+              class="font-sports text-[10px] md:text-xs font-bold tracking-[0.25em] text-[#cfdcf0] uppercase"
               >OFFICIAL SPONSORS</span
             ><span
-              class="h-[1px] w-12 bg-gradient-to-l from-transparent to-cyan-400/50"
+              class="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#dbe4f2]/50"
             ></span>
           </div>
           <div class="w-full grid grid-cols-5 gap-3 items-center">

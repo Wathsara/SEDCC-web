@@ -39,19 +39,63 @@ export const matchKey = (name: string) =>
   name
     .toLowerCase()
     .replace(/\s*-\s*\d+\s*$/, ' ') // VSCA: "Dreamers SC - 4"
-    .replace(/\b\d+\s*(st|nd|rd|th)\s*xi\b/g, ' ') // ECA: "AYC Harlequins 1st XI"
-    .replace(/\bxi\b/g, ' ')
+    .replace(/\b\d+\s*(st|nd|rd|th)\s*(xi|x1)\b/g, ' ') // ECA: "AYC Harlequins 1st XI", and the VSCA's "2nd X1"
+    .replace(/\b(xi|x1)\b/g, ' ')
     .replace(/\b(cc|sc|cricket|club|senior|seniors|men|women|grade\s*\d*\w*)\b/g, ' ')
+    .replace(/\b(inc|incorporated)\b/g, ' ') // "Eastern Rebels Cricket Club Inc"
+    .replace(/\s+\d+\s*$/, ' ') // VSCA: "Eastern Rebels Senior Men 4", no dash
     .replace(/[^a-z0-9]/g, '');
 
-/** The largest size on offer; these top out at 256 square. */
+/**
+ * The largest size on offer, upgraded past it where Cloudinary allows.
+ *
+ * The sizes PlayHQ lists top out at 256 square, which is enough for a crest in
+ * a scorecard row and not enough for an association badge set large on a 2160px
+ * poster — it came out soft. The size is a Cloudinary transform in the path
+ * (`/upload/h_256,w_256/`), and asking for 1024 returns a real 1024 square, so
+ * the request is rewritten. Measured against the ECA badge: 256, 512, 768 and
+ * 1024 all return at the size asked for.
+ */
+const UPGRADE_TO = 1024;
+
 function largest(image: PlayHQImage | null | undefined): string | null {
   const sizes = image?.sizes ?? [];
   if (!sizes.length) return null;
   const best = [...sizes].sort(
     (a, b) => (b.dimensions?.width ?? 0) - (a.dimensions?.width ?? 0),
   )[0];
-  return best?.url ?? null;
+  if (!best?.url) return null;
+
+  // Only touch the transform segment, and only upward.
+  return best.url.replace(
+    /\/upload\/h_(\d+),w_(\d+)\//,
+    (whole, h: string, w: string) =>
+      Number(h) < UPGRADE_TO && Number(w) < UPGRADE_TO
+        ? `/upload/h_${UPGRADE_TO},w_${UPGRADE_TO}/`
+        : whole,
+  );
+}
+
+/**
+ * Strip transparent padding, so a badge fills the box it is drawn in.
+ *
+ * PlayHQ pads uploads out to a square. The ECA badge is a wide oval in a
+ * 1024x1024 frame and its artwork covers 44% of it, so an `h-74px` slot drew a
+ * 41px oval — half the size of the same badge in the MVP posters, which use a
+ * tightly cropped copy. Five club crests are padded the same way.
+ *
+ * Only alpha images are trimmed. Most crests arrive as JPEG with a baked-in
+ * white ground, and trimming those by border colour would crop into the artwork
+ * rather than remove padding.
+ */
+async function tighten(buf: Buffer): Promise<Buffer> {
+  try {
+    const sharp = (await import('sharp')).default;
+    if (!(await sharp(buf).metadata()).hasAlpha) return buf;
+    return await sharp(buf).trim({ threshold: 1 }).png().toBuffer();
+  } catch {
+    return buf; // a logo that will not trim is still a usable logo
+  }
 }
 
 async function download(url: string, into: string): Promise<boolean> {
@@ -61,7 +105,7 @@ async function download(url: string, into: string): Promise<boolean> {
       log.warn(`logo ${res.status}: ${url.slice(0, 80)}`);
       return false;
     }
-    await writeFile(into, Buffer.from(await res.arrayBuffer()));
+    await writeFile(into, await tighten(Buffer.from(await res.arrayBuffer())));
     return true;
   } catch (err) {
     log.warn(`logo failed: ${err instanceof Error ? err.message : err}`);

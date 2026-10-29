@@ -67,3 +67,7 @@ src/assets/players/*/
 # Anchored: an unanchored "matchday/" also swallowed graphics/matchday/, which
 # is the template, not output.
 /matchday/
+
+# Generated from data/playhq/logos/ by scripts/playhq/publish-logos.mjs,
+# which runs before every build. The committed copy lives in data/.
+public/playhq/logos/

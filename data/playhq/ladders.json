@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-28T23:04:05.552Z",
+  "syncedAt": "2026-10-29T23:07:10.568Z",
   "season": "2026-27",
   "grades": [
     {
@@ -674,6 +674,313 @@
               "fullName": "Quotient",
               "sortOrder": 3,
               "toolTip": "Quotient"
+            }
+          ]
+        }
+      ],
+      "conferences": []
+    },
+    {
+      "slug": "grade-4",
+      "name": "Dreamers Grade 4",
+      "competition": "Victorian Sunday Cricket Association",
+      "gradeLabel": "Grade 4",
+      "ourTeamId": "64a6043e-8aaf-408c-8e98-ed00bc6a1965",
+      "gradeId": "acaf4ecb-04d6-43ed-966c-dfb94205fa00",
+      "ladders": [
+        {
+          "headers": [
+            {
+              "key": "played",
+              "name": "Played",
+              "shortName": "P",
+              "type": "BASIC",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "competitionPoints",
+              "name": "Ladder points",
+              "shortName": "PTS",
+              "type": "BASIC",
+              "sortOrder": 1,
+              "defaultSort": true
+            },
+            {
+              "key": "quotient",
+              "name": "Quotient",
+              "shortName": "Q",
+              "type": "BASIC",
+              "sortOrder": 2,
+              "defaultSort": false
+            },
+            {
+              "key": "netRunRate",
+              "name": "Net Run Rate",
+              "shortName": "NRR",
+              "type": "ADVANCED",
+              "sortOrder": 3,
+              "defaultSort": false
+            },
+            {
+              "key": "won",
+              "name": "Won",
+              "shortName": "W",
+              "type": "BASIC",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "lost",
+              "name": "Lost",
+              "shortName": "L",
+              "type": "BASIC",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "ties",
+              "name": "Ties",
+              "shortName": "TIE",
+              "type": "BASIC",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "noResults",
+              "name": "No Results",
+              "shortName": "N/R",
+              "type": "BASIC",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "byes",
+              "name": "Byes",
+              "shortName": "BYE",
+              "type": "BASIC",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "forfeits",
+              "name": "Forfeits",
+              "shortName": "FORF",
+              "type": "ADVANCED",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "disqualifications",
+              "name": "Disqualifications",
+              "shortName": "DISQ",
+              "type": "ADVANCED",
+              "sortOrder": null,
+              "defaultSort": false
+            },
+            {
+              "key": "adjustments",
+              "name": "Adjustments",
+              "shortName": "ADJ",
+              "type": "ADVANCED",
+              "sortOrder": null,
+              "defaultSort": false
+            }
+          ],
+          "pool": null,
+          "standings": [
+            {
+              "team": {
+                "id": "7f39a385-5267-435e-8792-35e5eadeec4a",
+                "name": "Casey Falcons Grade 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "2015fe91-210f-4070-924d-9eb3569f0a24",
+                "name": "Eastern Rebels  Senior Men 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "8c254f3a-8b87-4ad0-aa74-6bad093c935a",
+                "name": "Hartley CC - 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "3cd5aa0c-c20b-4452-b2e6-798c5cfebb48",
+                "name": "Melbourne Crickeroos Grade 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "db1f4584-fdda-423b-858d-a52f25e8dd10",
+                "name": "Melbourne Knights Grade 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "a3917ae2-b674-4929-b7e6-5f96213faa5b",
+                "name": "Melbourne Titans - 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "7785949d-00d6-4f68-a2fa-a31e353ce859",
+                "name": "Ocean XI - Grade 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "64a6043e-8aaf-408c-8e98-ed00bc6a1965",
+                "name": "South Eastern Dreamers Grade 4"
+              },
+              "values": [
+                0,
+                0,
+                null,
+                null,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            }
+          ],
+          "type": "oneDay",
+          "ladderTemplate": "LADDER_TEMPLATE_TOTAL_COMPETITION_POINTS",
+          "rankingFields": [
+            {
+              "key": "competitionPoints",
+              "shortName": "PTS",
+              "fullName": "Ladder points",
+              "sortOrder": 1,
+              "toolTip": "Ladder points"
+            },
+            {
+              "key": "quotient",
+              "shortName": "Q",
+              "fullName": "Quotient",
+              "sortOrder": 2,
+              "toolTip": "Quotient"
+            },
+            {
+              "key": "netRunRate",
+              "shortName": "NRR",
+              "fullName": "Net Run Rate",
+              "sortOrder": 3,
+              "toolTip": "Net Run Rate"
             }
           ]
         }

@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-28T23:04:05.552Z",
+  "syncedAt": "2026-10-29T23:07:10.568Z",
   "season": "2026-27",
   "teams": [
     {
@@ -743,9 +743,50 @@
       "name": "Dreamers Grade 4",
       "competition": "Victorian Sunday Cricket Association",
       "gradeLabel": "Grade 4",
-      "gradeId": null,
-      "teamId": null,
-      "games": [],
+      "gradeId": "acaf4ecb-04d6-43ed-966c-dfb94205fa00",
+      "teamId": "64a6043e-8aaf-408c-8e98-ed00bc6a1965",
+      "games": [
+        {
+          "id": "4dc33359-536b-4f51-8691-78509a5809b0",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 1",
+          "roundShort": "R1",
+          "isFinal": false,
+          "dates": [
+            "2026-11-01T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Casey Falcons Grade 4",
+          "outcome": null,
+          "venue": "Heatherbrae Recreation Reserve",
+          "ground": "Oval 1",
+          "suburb": "OFFICER",
+          "mapQuery": "Heatherbrae%20Recreation%20Reserve%2C%20OFFICER%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "13200c97-f0cf-4dac-a399-d9463411ac84",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 2",
+          "roundShort": "R2",
+          "isFinal": false,
+          "dates": [
+            "2026-11-08T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Eastern Rebels  Senior Men 4",
+          "outcome": null,
+          "venue": "Tatterson Park",
+          "ground": "Tatterson Park - East Oval",
+          "suburb": "KEYSBOROUGH",
+          "mapQuery": "Tatterson%20Park%2C%20KEYSBOROUGH%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        }
+      ],
       "byes": []
     }
   ]

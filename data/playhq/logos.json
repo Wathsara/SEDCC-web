@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-28T23:04:05.551Z",
+  "syncedAt": "2026-10-29T23:07:10.567Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -416,7 +416,10 @@
       "file": "data/playhq/logos/melbourne-sixers-sports-club.jpg",
       "teamIds": [
         "36f4ed9a-2399-46d2-a853-c5990584935e",
-        "01d9a0e5-d922-456b-9ab0-62f47d577d88"
+        "01d9a0e5-d922-456b-9ab0-62f47d577d88",
+        "0445124a-3f0e-4e4c-87bd-5639d0d20986",
+        "654fff09-12a9-4618-906b-278139bd5fdc",
+        "9928719f-60b6-413c-8984-812fe30c9063"
       ],
       "matchKey": "melbournesixerssports",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/b0a90bb9-f0df-4a66-bdb7-9aee3517da25/1681449992340/logo.jpg?_a=BAMAMifg0"
@@ -589,7 +592,8 @@
       "file": "data/playhq/logos/south-eastern-dreamers-cricket-club.png",
       "teamIds": [
         "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
-        "ca12b473-b355-408d-afe4-a285d0127dd3"
+        "ca12b473-b355-408d-afe4-a285d0127dd3",
+        "64a6043e-8aaf-408c-8e98-ed00bc6a1965"
       ],
       "matchKey": "southeasterndreamers",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/3e34387e-2fd6-48b6-8318-9659939e2c29/1757915787164/logo.png?_a=BAMAMifg0"
@@ -687,12 +691,265 @@
       "matchKey": "whitefriars",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/d2c58659-3e68-48e4-812c-8d0f8a1484da/1689596629932/logo.jpg?_a=BAMAMifg0"
     },
+    "badshah-s-xi-cricket-club": {
+      "name": "Badshah's XI Cricket Club",
+      "file": "data/playhq/logos/badshah-s-xi-cricket-club.jpg",
+      "teamIds": [
+        "89cb5ed7-e948-4993-b10a-7613c325b2c5"
+      ],
+      "matchKey": "badshahs",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/4fb1fd28-9c72-4f59-9a3e-5178b5707701/1695115305281/logo.jpg?_a=BAMAMifg0"
+    },
+    "berwick-strikers-c-c": {
+      "name": "Berwick Strikers C C",
+      "file": "data/playhq/logos/berwick-strikers-c-c.png",
+      "teamIds": [
+        "84b9e553-5db4-4590-ab91-02358cf96ad4",
+        "8fce51fc-d39f-43d3-bd0b-464fb8e86303",
+        "a5de01fd-b9c1-4895-9790-87f76773dc71",
+        "f293093a-2eeb-4ddb-a94c-dd1125d912a8",
+        "cb295e5c-bee9-4e1a-af34-763e972f7c8b",
+        "8f343cbf-e497-4dc9-ba8c-0fa2818749d6"
+      ],
+      "matchKey": "berwickstrikerscc",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/505755f0-db85-4ce4-9675-0632a7fec0a6/1678449671786/logo.png?_a=BAMAMifg0"
+    },
+    "casey-falcons-sports-club": {
+      "name": "Casey Falcons Sports Club",
+      "file": "data/playhq/logos/casey-falcons-sports-club.png",
+      "teamIds": [
+        "7f39a385-5267-435e-8792-35e5eadeec4a",
+        "7423147f-b9b8-4c86-9d4f-780dcc8c3ac3"
+      ],
+      "matchKey": "caseyfalconssports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/0016b5c6-c479-4c05-9e2b-a215ad9d8332/1746670608560/logo.png?_a=BAMAMifg0"
+    },
+    "colombo-sports-club": {
+      "name": "Colombo Sports Club",
+      "file": "data/playhq/logos/colombo-sports-club.jpg",
+      "teamIds": [
+        "652ba9f7-3a1d-4aa8-a186-0666b60ed107"
+      ],
+      "matchKey": "colombosports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/309e7fd8-1b0b-4e1a-a08d-1ae2a23cfacd/1691970119006/logo.jpg?_a=BAMAMifg0"
+    },
+    "eastern-knights-cricket-club-inc": {
+      "name": "Eastern Knights Cricket Club Inc.",
+      "file": "data/playhq/logos/eastern-knights-cricket-club-inc.jpg",
+      "teamIds": [
+        "f9a37123-4d59-4b11-ae59-d3a6d7cda604",
+        "981d63c5-b839-4595-8d52-8544bef78fdf",
+        "a72479c9-966f-4fb1-b348-411f526551d9"
+      ],
+      "matchKey": "easternknightsinc",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/8c10aa82-9aec-4c56-bc86-743b7db8ea1b/1693187201393/logo.jpg?_a=BAMAMifg0"
+    },
+    "eastern-rebels-cricket-club-inc": {
+      "name": "Eastern Rebels Cricket Club Inc",
+      "file": "data/playhq/logos/eastern-rebels-cricket-club-inc.jpg",
+      "teamIds": [
+        "ed9ab133-89da-48a5-b024-944dbe44ac17",
+        "901ca51a-e010-46ad-9d15-f4a8dd235961",
+        "2015fe91-210f-4070-924d-9eb3569f0a24",
+        "f819b841-b74f-4a1f-bdd6-c74bd945aac4",
+        "3fe21709-78b6-4bb6-9c16-2b87b6baeda1"
+      ],
+      "matchKey": "easternrebelsinc",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/0568302d-7900-4c55-bad9-e73c4cd1e0f2/1728381358242/logo.jpg?_a=BAMAMifg0"
+    },
+    "victorian-sunday-cricket-club": {
+      "name": "Victorian Sunday Cricket Club",
+      "file": "data/playhq/logos/victorian-sunday-cricket-club.jpg",
+      "teamIds": [
+        "2837a8ce-ed5f-480a-8023-48ade43962bc",
+        "84c99e99-a3c8-43cb-9a1b-cd6c044cbde9",
+        "db1f4584-fdda-423b-858d-a52f25e8dd10",
+        "6b1d24c2-9b83-4cc4-a94e-71eb198dcc64",
+        "63782048-828c-4a11-b175-57f9090fbee9",
+        "1c104d2f-8826-430a-9151-a33d25a45ae7",
+        "c6eed3a3-8337-4df9-a608-34e2cd529774"
+      ],
+      "matchKey": "victoriansunday",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/49a65098-01e2-4d0f-a5c0-1fcf946474c1/1725602300867/logo.jpg?_a=BAMAMifg0"
+    },
+    "hartley-cricket-club-vic": {
+      "name": "Hartley Cricket Club (VIC)",
+      "file": "data/playhq/logos/hartley-cricket-club-vic.jpg",
+      "teamIds": [
+        "8c254f3a-8b87-4ad0-aa74-6bad093c935a"
+      ],
+      "matchKey": "hartleyvic",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/4232cb5e-9084-44ed-9cc9-e4d2d72b54fa/1686705761689/logo.jpg?_a=BAMAMifg0"
+    },
+    "kerala-strikers-inc": {
+      "name": "Kerala Strikers Inc",
+      "file": "data/playhq/logos/kerala-strikers-inc.jpg",
+      "teamIds": [
+        "db7722fc-9d1b-4bc0-b20d-623e8bab543c"
+      ],
+      "matchKey": "keralastrikersinc",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/a39141a5-7e46-4a42-aafe-5b88c661723b/1679570903505/logo.jpg?_a=BAMAMifg0"
+    },
+    "melbourne-lions-sports-club": {
+      "name": "Melbourne Lions Sports Club",
+      "file": "data/playhq/logos/melbourne-lions-sports-club.jpg",
+      "teamIds": [
+        "c1645d38-4ab7-407d-8b66-e186d7391779",
+        "6a910858-3c2a-454f-9c80-7cf5df4e1450",
+        "4b040d8d-854e-4050-bf30-ef486665f5be",
+        "2696dab0-6c85-4ae4-82e1-ac44f2ee78b0"
+      ],
+      "matchKey": "melbournelionssports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/4b4d4a55-720f-45c2-b174-365632afeec8/1695097050136/logo.jpg?_a=BAMAMifg0"
+    },
+    "knox-city-mavericks": {
+      "name": "Knox City Mavericks",
+      "file": "data/playhq/logos/knox-city-mavericks.jpg",
+      "teamIds": [
+        "61dcb52f-4f4a-4ac6-b57c-58d0e8afaf80",
+        "f34f7612-f0dd-4d65-b6ba-14789a1f100d",
+        "f53eaad6-e726-42e8-9359-1b9e61cca226",
+        "934d0880-8f7b-4fb2-be0c-fd53d7443735"
+      ],
+      "matchKey": "knoxcitymavericks",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/137b7e53-4ded-4869-9c04-abcf58a7eb66/1690595698179/logo.jpg?_a=BAMAMifg0"
+    },
+    "melbourne-crickeroos": {
+      "name": "Melbourne Crickeroos",
+      "file": "data/playhq/logos/melbourne-crickeroos.png",
+      "teamIds": [
+        "f5eac593-e610-4777-bf08-3b2510c1b884",
+        "26bc875c-8c83-4e42-932d-ef36398eb298",
+        "3cd5aa0c-c20b-4452-b2e6-798c5cfebb48"
+      ],
+      "matchKey": "melbournecrickeroos",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/b415eafe-5ebc-4a97-8dde-59b6e29ecb8b/1685236307106/logo.png?_a=BAMAMifg0"
+    },
+    "melbourne-districts-united-cricket-club": {
+      "name": "Melbourne Districts United Cricket Club",
+      "file": "data/playhq/logos/melbourne-districts-united-cricket-club.png",
+      "teamIds": [
+        "b682c36c-023a-4aa6-92e6-fe5b0b498d50"
+      ],
+      "matchKey": "melbournedistrictsunited",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/e5b5a6b8-fb13-4c80-9690-c3c7d2e763fe/1715039106482/logo.png?_a=BAMAMifg0"
+    },
+    "melbourne-flash-sports-club": {
+      "name": "Melbourne Flash Sports Club",
+      "file": "data/playhq/logos/melbourne-flash-sports-club.jpg",
+      "teamIds": [
+        "cf3be269-3437-406b-a337-1e3fcf30fbb6",
+        "6e687352-adce-4abe-a6f9-d1ceb00709b8",
+        "5bd906d1-7639-41a3-855d-8279c51dc175",
+        "81be4089-053a-4ac7-b4d2-b28e02bc1938"
+      ],
+      "matchKey": "melbourneflashsports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/96060bbf-eb77-422f-ac27-554ea5310642/1681696790871/logo.jpg?_a=BAMAMifg0"
+    },
+    "melbourne-titans-sports-club": {
+      "name": "Melbourne Titans Sports Club",
+      "file": "data/playhq/logos/melbourne-titans-sports-club.jpg",
+      "teamIds": [
+        "afcb3e6a-83b0-4d2b-a883-979d8d95c524",
+        "89d8c90a-d7d3-491a-b344-1d68eff3022a",
+        "a3917ae2-b674-4929-b7e6-5f96213faa5b",
+        "a628b7f1-4148-4f96-8527-acecc43f79a4"
+      ],
+      "matchKey": "melbournetitanssports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/c8ebfbdc-3b27-443e-b1be-ee6250fce128/1679399122182/logo.jpg?_a=BAMAMifg0"
+    },
+    "ocean-11-cricket-club": {
+      "name": "Ocean 11 Cricket Club",
+      "file": "data/playhq/logos/ocean-11-cricket-club.jpg",
+      "teamIds": [
+        "9d0f8bd1-7835-4ab4-bbe7-d2ae90b3df1b",
+        "7785949d-00d6-4f68-a2fa-a31e353ce859"
+      ],
+      "matchKey": "ocean11",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/a73ef912-a8f8-42c6-a4cd-7a6bfc8b1c02/1692348598711/logo.jpg?_a=BAMAMifg0"
+    },
+    "paradise-sports-club": {
+      "name": "Paradise Sports Club",
+      "file": "data/playhq/logos/paradise-sports-club.jpg",
+      "teamIds": [
+        "d12db938-5688-4122-85e1-cd75c648a416",
+        "e47db2b3-1385-4c9a-a65c-b523650731ee"
+      ],
+      "matchKey": "paradisesports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/0090d18f-08c2-42c3-8b72-c2195021ea70/1692094538302/logo.jpg?_a=BAMAMifg0"
+    },
+    "southern-rangers-cricket-club": {
+      "name": "Southern Rangers Cricket Club",
+      "file": "data/playhq/logos/southern-rangers-cricket-club.png",
+      "teamIds": [
+        "8d88901a-bbc3-48c7-a9f7-5ae73f1d1948",
+        "e2f9eba1-ba1c-49ee-a322-e8d874382d3e",
+        "c12dab53-eeab-4ec6-acea-58ac4296d48f",
+        "dcc59980-6757-4360-9834-3b8344d30cd9",
+        "82eb0064-8622-44bf-9158-d65e7e8f82a6"
+      ],
+      "matchKey": "southernrangers",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/164402b4-3b30-4457-8537-e78d75981c3e/1685267260197/logo.png?_a=BAMAMifg0"
+    },
+    "southern-united-cricket-club": {
+      "name": "Southern United Cricket Club",
+      "file": "data/playhq/logos/southern-united-cricket-club.jpg",
+      "teamIds": [
+        "3906cba8-7863-4e71-8780-330f72008443"
+      ],
+      "matchKey": "southernunited",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/d59b3a74-0cf9-4618-bd10-b95efd4b2826/1695195752362/logo.jpg?_a=BAMAMifg0"
+    },
+    "southern-warriors-cricket-club-vic": {
+      "name": "Southern Warriors Cricket Club (VIC)",
+      "file": "data/playhq/logos/southern-warriors-cricket-club-vic.png",
+      "teamIds": [
+        "6f42551e-6785-4e6b-816f-f0b0ca08196c",
+        "57cc9b84-ec3d-4b4a-875a-b1177e752846",
+        "de656d7f-f683-4afe-aa9b-1d893ee97c42",
+        "91f83fdb-dd32-40e8-8c44-6707379395f1",
+        "d2829a5e-4638-4b9d-b3ff-f9a338cab50b"
+      ],
+      "matchKey": "southernwarriorsvic",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/ce4bdeda-4eef-46a5-a4be-1f2aabed7d19/1725569560137/logo.png?_a=BAMAMifg0"
+    },
+    "thunders-sports-club": {
+      "name": "Thunders Sports Club",
+      "file": "data/playhq/logos/thunders-sports-club.jpg",
+      "teamIds": [
+        "60f3dc77-094c-4dc1-8e73-a142d31d5075",
+        "79ec5f30-85bb-43ed-b3d6-077243594f7f",
+        "612ca66f-3ae0-48b7-970d-46ab70a60f21"
+      ],
+      "matchKey": "thunderssports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/8427173a-2783-4a0e-a3f6-bd8ba231fe53/1694151303217/logo.jpg?_a=BAMAMifg0"
+    },
+    "united-stars-sports-club": {
+      "name": "United Stars Sports Club",
+      "file": "data/playhq/logos/united-stars-sports-club.png",
+      "teamIds": [
+        "6fbca277-54ce-499c-b19f-a1afe550f9ca",
+        "d7003ebf-22fe-455d-8833-2c3999463fd5",
+        "16677ccc-9d48-4200-8d4d-82ce9c6ab471",
+        "f70f5efd-1aca-47b0-9999-c2b671c21501",
+        "34d3a19d-5e10-430a-9417-9bcdcea1365a"
+      ],
+      "matchKey": "unitedstarssports",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/4947afdd-9205-4eda-9577-a7d01f0b8d76/1769253106270/logo.png?_a=BAMAMifg0"
+    },
     "eastern-cricket-association": {
       "name": "Eastern Cricket Association",
       "file": "data/playhq/logos/eastern-cricket-association.png",
       "teamIds": [],
       "matchKey": "easternassociation",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/05ee99c2-3e3e-481f-aee1-dcbdaaf6bc87/1773376003171/logo.png?_a=BAMAMifg0"
+    },
+    "victorian-sunday-cricket-association": {
+      "name": "Victorian Sunday Cricket Association",
+      "file": "data/playhq/logos/victorian-sunday-cricket-association.jpg",
+      "teamIds": [],
+      "matchKey": "victoriansundayassociation",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_256,w_256/v1/production/ca/d2ad3868-6a1c-47c2-8f4e-0ddb37d40960/1676861686226/logo.jpg?_a=BAMAMifg0"
     }
   }
 }

@@ -11,22 +11,36 @@ interface Props {
 }
 const { batter, bowler } = Astro.props;
 
+/*
+  The headline and what qualifies it are separate, so the big figure never has
+  to share a line with its bracket — "2/34 (6 ov)" at display size wrapped on a
+  phone and broke across the closing bracket.
+*/
 const batting = (p: Performance) =>
-  p.batting ? `${p.batting.runs}${p.batting.notOut ? '*' : ''} (${p.batting.balls}b)` : '';
+  p.batting
+    ? { head: `${p.batting.runs}${p.batting.notOut ? '*' : ''}`, sub: `${p.batting.balls}b` }
+    : { head: '', sub: '' };
 
 const bowling = (p: Performance) =>
-  p.bowling ? `${p.bowling.wickets}/${p.bowling.runs} (${p.bowling.overs} ov)` : '';
+  p.bowling
+    ? { head: `${p.bowling.wickets}/${p.bowling.runs}`, sub: `${p.bowling.overs} ov` }
+    : { head: '', sub: '' };
 
 const entries = [
   batter && { label: 'Top batter', icon: 'bat' as const, p: batter, figures: batting(batter) },
   bowler && { label: 'Top bowler', icon: 'ball' as const, p: bowler, figures: bowling(bowler) },
-].filter(Boolean) as Array<{ label: string; icon: 'bat' | 'ball'; p: Performance; figures: string }>;
+].filter(Boolean) as Array<{
+  label: string;
+  icon: 'bat' | 'ball';
+  p: Performance;
+  figures: { head: string; sub: string };
+}>;
 ---
 
 <div class="grid gap-6 sm:grid-cols-2">
   {
     entries.map(({ label, icon, p, figures }) => (
-      <div class="tile p-7 border-t-2 border-t-club transition-all hover:shadow-lift" data-rule-in>
+      <div class="tile p-5 sm:p-7 border-t-2 border-t-club transition-all hover:shadow-lift" data-rule-in>
         <div class="flex items-center justify-between gap-3">
           <p class="eyebrow text-accent">{label}</p>
           <div class="flex h-7 w-7 items-center justify-center rounded bg-club/5 text-club">
@@ -38,8 +52,8 @@ const entries = [
           and the card was the one place on the page that named one without
           showing them.
         */}
-        <div class="mt-4 flex items-center gap-4">
-          <span class="h-16 w-16 shrink-0 overflow-hidden rounded-full border border-rule bg-paper-sunk">
+        <div class="mt-4 flex items-center gap-3 sm:gap-4">
+          <span class="h-14 w-14 shrink-0 overflow-hidden rounded-full border border-rule bg-paper-sunk sm:h-16 sm:w-16">
             <PlayerPortrait
               id={portraitKey(p.displayName)}
               name={p.displayName}
@@ -47,8 +61,15 @@ const entries = [
             />
           </span>
           <div class="min-w-0">
-            <p class="font-display text-2xl uppercase tracking-wide text-club">{p.displayName}</p>
-            <p class="mt-0.5 font-figures text-4xl font-bold tabular-nums text-ink">{figures}</p>
+            <p class="font-display text-xl uppercase tracking-wide text-club sm:text-2xl">
+              {p.displayName}
+            </p>
+            <p class="mt-0.5 flex items-baseline gap-2 whitespace-nowrap">
+              <span class="font-figures text-4xl font-bold tabular-nums text-ink">
+                {figures.head}
+              </span>
+              <span class="font-figures text-sm tabular-nums text-ink-muted">{figures.sub}</span>
+            </p>
           </div>
         </div>
         <p class="mt-3 text-sm text-ink-muted border-t border-rule pt-3">

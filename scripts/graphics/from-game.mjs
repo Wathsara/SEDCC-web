@@ -173,6 +173,8 @@ export async function fromGame(gameId) {
     const w = innings.find((i) => i.name === teamName.get(won.id));
     const l = innings.find((i) => i.name === teamName.get(lost.id));
     if (w && l) {
+      // A one-wicket win is won by 1 WICKET, not 1 WICKETS.
+      const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 'S'}`;
       // score is "w-runs", or just "runs" when a side is all out.
       const parts = (s) => String(s.score).split('-');
       const r = (s) => Number(parts(s).length > 1 ? parts(s)[1] : parts(s)[0]);
@@ -183,8 +185,8 @@ export async function fromGame(gameId) {
         : /SUPER_OVER/.test(won.outcome)
           ? 'SUPER OVER'
           : innings.indexOf(w) === 0
-            ? `${r(w) - r(l)} RUNS`
-            : `${10 - k(w)} WICKETS`;
+            ? plural(r(w) - r(l), 'RUN')
+            : plural(10 - k(w), 'WICKET');
       result = `${teamName.get(won.id).toUpperCase()} WIN BY ${margin}`;
     }
   }

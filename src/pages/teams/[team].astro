@@ -11,7 +11,7 @@ import LadderTable from '../../components/LadderTable.astro';
 import PlayerCard from '../../components/PlayerCard.astro';
 import { squadOrder } from '../../lib/portraits';
 import CricketIcon from '../../components/CricketIcon.astro';
-import { season, teams, squadFor, url, homeGroundLabel } from '../../lib/site';
+import { season, teams, squadFor, url, teamGround } from '../../lib/site';
 import { teamFixtures, teamLadder, seasonStats } from '../../lib/playhq';
 
 export const getStaticPaths = (async () => {
@@ -23,6 +23,7 @@ const { team } = Astro.props;
 const fixtures = teamFixtures(team.slug);
 const ladder = teamLadder(team.slug);
 const squad = squadOrder(squadFor(team.slug));
+const ground = teamGround(team.slug);
 
 /* Season figures come from the sync and join to the roster by name */
 const statsByName = new Map(
@@ -174,7 +175,10 @@ const hasLadder = ladder && ladder.ladders.length > 0;
               </div>
               <div class="flex justify-between gap-4">
                 <dt class="text-ink-muted">Home ground</dt>
-                <dd class="text-right text-ink">{homeGroundLabel}</dd>
+                <dd class="text-right text-ink">
+                  {ground?.label ?? 'To be confirmed'}
+                  {ground?.ground && <span class="block text-xs text-ink-muted">{ground.ground}</span>}
+                </dd>
               </div>
             </dl>
           </div>

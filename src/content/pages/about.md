@@ -18,9 +18,9 @@ community at its heart.
 ## Where we play
 
 Saturdays we're in the Eastern Cricket Association with two sides, LOC 1 (the
-McCarthy Shield) and LOC 2 (the Laws Shield). Sundays we're in the
-Victorian Sunday Cricket Association in Grade 4. Our home ground is Singleton
-Reserve, Endeavour Hills.
+McCarthy Shield) and LOC 2 (the Laws Shield), both at home at Donnelly
+Recreation Reserve in Cranbourne. Sundays we're in the Victorian Sunday Cricket
+Association in Grade 4, at home at Singleton Reserve, Endeavour Hills.
 
 ## Where we're going
 

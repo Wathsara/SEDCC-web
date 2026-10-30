@@ -6,7 +6,7 @@ import FixtureList from '../../components/FixtureList.astro';
 import LadderTable from '../../components/LadderTable.astro';
 import CricketIcon from '../../components/CricketIcon.astro';
 import Logo from '../../components/Logo.astro';
-import { club, season, teams, homeGroundLabel, url } from '../../lib/site';
+import { club, season, teams, homeGrounds, teamGround, url } from '../../lib/site';
 import { teamFixtures, teamLadder } from '../../lib/playhq';
 
 const loc1Fixtures = teamFixtures('loc-1');
@@ -19,6 +19,7 @@ const grade4Fixtures = teamFixtures('grade-4');
 const grade4Ladder = teamLadder('grade-4');
 
 const grade4Team = teams.find((t) => t.slug === 'grade-4');
+const grade4Ground = teamGround('grade-4');
 const loc1Team = teams.find((t) => t.slug === 'loc-1');
 const loc2Team = teams.find((t) => t.slug === 'loc-2');
 ---
@@ -54,9 +55,14 @@ const loc2Team = teams.find((t) => t.slug === 'loc-2');
             <span class="font-display text-xl sm:text-2xl uppercase text-paper font-bold">03 Teams</span>
           </div>
           <div class="tile bg-paper/10 border border-white/15 px-4 py-2.5 backdrop-blur-sm">
-            <span class="block font-figures text-2xs uppercase text-accent-tint">Home Ground</span>
-            <span class="font-display text-sm sm:text-base uppercase text-paper font-bold truncate max-w-[140px] sm:max-w-none">
-              {homeGroundLabel}
+            <span class="block font-figures text-2xs uppercase text-accent-tint">
+              {homeGrounds.length > 1 ? 'Home Grounds' : 'Home Ground'}
+            </span>
+            <span
+              class="font-display text-sm sm:text-base uppercase text-paper font-bold"
+              title={homeGrounds.map((g) => g.label).join(' · ')}
+            >
+              {homeGrounds.map((g) => g.shortName).join(' · ')}
             </span>
           </div>
         </div>
@@ -351,8 +357,12 @@ const loc2Team = teams.find((t) => t.slug === 'loc-2');
             </div>
             <div class="tile bg-paper-sunk/60 p-4 border border-rule">
               <p class="font-figures text-2xs uppercase text-ink-faint">Home Ground</p>
-              <p class="mt-1 font-display text-base uppercase text-club font-bold">{homeGroundLabel}</p>
-              <p class="mt-1 text-2xs text-ink-muted">Endeavour Hills, Victoria</p>
+              <p class="mt-1 font-display text-base uppercase text-club font-bold">
+                {grade4Ground?.name ?? 'To be confirmed'}
+              </p>
+              {grade4Ground?.suburb && (
+                <p class="mt-1 text-2xs text-ink-muted">{grade4Ground.suburb}, Victoria</p>
+              )}
             </div>
             <div class="tile bg-paper-sunk/60 p-4 border border-rule">
               <p class="font-figures text-2xs uppercase text-ink-faint">Last season</p>

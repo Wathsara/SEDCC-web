@@ -13,7 +13,7 @@ import FormGuide from '../components/FormGuide.astro';
 import CricketIcon from '../components/CricketIcon.astro';
 import WeeklyBest from '../components/WeeklyBest.astro';
 import MatchStrip from '../components/MatchStrip.astro';
-import { club, season, teams, homeGroundSuburb, homeGroundLabel, suburb, headlineRecords, sponsors, featuredSponsor, otherSponsors, showNews, intro, heroLine, vision, url } from '../lib/site';
+import { club, season, teams, homeGroundSuburb, homeGrounds, suburb, headlineRecords, sponsors, featuredSponsor, otherSponsors, showNews, intro, heroLine, vision, url } from '../lib/site';
 import { strategyHighlights, strategyPeriod } from '../lib/strategy';
 import { seasons } from '../lib/history';
 import {
@@ -119,7 +119,10 @@ const leadingBowl = [...(seasonStats.players ?? [])]
               }
               <div class="absolute bottom-2.5 left-3 right-3 text-left">
                 <p class="font-display text-xs uppercase tracking-wide text-paper">South Eastern Dreamers Senior Squad</p>
-                <p class="text-2xs text-accent-tint font-figures">Home ground: {homeGroundLabel}</p>
+                <p class="text-2xs text-accent-tint font-figures">
+                  {homeGrounds.length > 1 ? 'Home grounds: ' : 'Home ground: '}
+                  {homeGrounds.map((g) => g.shortName).join(' · ')}
+                </p>
               </div>
             </div>
           </div>

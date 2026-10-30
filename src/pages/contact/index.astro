@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
-import { club, filled, socials, homeGroundLabel, homeGroundMapUrl, url } from '../../lib/site';
+import { club, filled, socials, homeGrounds, url } from '../../lib/site';
 
 const { contact } = club;
 
@@ -30,11 +30,13 @@ const address = filled((contact as { address?: string }).address);
 const committee = contact.committee.filter((m) => filled(m.name));
 
 const details = [
-  homeGroundLabel && {
-    label: 'Home ground',
-    value: homeGroundLabel,
-    href: homeGroundMapUrl ?? null,
-  },
+  // A row per ground, labelled by the day it is played on: the Saturday ECA
+  // sides and the Sunday VSCA side are at different reserves.
+  ...homeGrounds.map((g) => ({
+    label: `Home ground · ${[...new Set(g.teams.map((t) => `${t.day}s`))].join(' & ')}`,
+    value: g.ground ? `${g.label} (${g.ground})` : g.label,
+    href: g.mapUrl ?? null,
+  })),
   address && { label: 'Postal address', value: address, href: null },
   phone && { label: 'Phone', value: phone, href: `tel:${phone.replace(/\s+/g, '')}` },
   email && { label: 'Email', value: email, href: `mailto:${email}` },

@@ -292,28 +292,101 @@ export const socials: SocialLink[] = SOCIAL_ORDER.flatMap(({ key, label }) => {
 });
 
 /**
- * The home ground. This is where cricket is played — Endeavour Hills — and is
- * a different place from `suburb`, which is where the club is registered.
- * Anything telling a visitor where to turn up should use this.
+ * The home grounds — where cricket is actually played, as opposed to `suburb`,
+ * which is only where the club is registered.
+ *
+ * There are two, and that is the point: the ECA Saturday sides play at Donnelly
+ * Recreation Reserve in Cranbourne and the VSCA Sunday side at Singleton
+ * Reserve in Endeavour Hills. The ground therefore belongs to the team, in
+ * config/season-2026-27.json, and nothing club-wide sets one. Anywhere with
+ * room for a single ground uses the one marked `primary`.
  */
-const groundCfg = club.location.homeGround as {
-  name?: string; suburb?: string; state?: string; mapUrl?: string | null;
+export interface Ground {
+  name: string;
+  shortName: string;
+  /** The oval within the reserve, where the association names one. */
+  ground: string | null;
+  suburb: string | null;
+  state: string | null;
+  mapUrl: string | null;
+  /** The label with the suburb, e.g. "Donnelly Recreation Reserve, Cranbourne VIC". */
+  label: string;
+}
+
+type GroundCfg = {
+  name?: string; shortName?: string; ground?: string | null;
+  suburb?: string | null; state?: string | null;
+  primary?: boolean; mapUrl?: string | null;
 };
 
-export const homeGround = filled(groundCfg?.name) ?? null;
+function toGround(cfg: GroundCfg | null | undefined): Ground | null {
+  const name = filled(cfg?.name);
+  if (!name) return null;
+  const suburb = filled(cfg?.suburb) ?? null;
+  const state = filled(cfg?.state) ?? null;
+  return {
+    name,
+    shortName: filled(cfg?.shortName) ?? name,
+    ground: filled(cfg?.ground) ?? null,
+    suburb,
+    state,
+    mapUrl: filled(cfg?.mapUrl) ?? null,
+    label: [name, [suburb, state].filter(Boolean).join(' ')].filter(Boolean).join(', '),
+  };
+}
 
-export const homeGroundSuburb = filled(groundCfg?.suburb) ?? null;
+/** The ground a given side plays its home games at. */
+export function teamGround(slug: string): Ground | null {
+  const cfg = (teamBySlug(slug) as unknown as { homeGround?: GroundCfg })?.homeGround;
+  return toGround(cfg);
+}
 
-export const homeGroundLabel = homeGround
-  ? [homeGround, [homeGroundSuburb, filled(groundCfg?.state)].filter(Boolean).join(' ')]
-      .filter(Boolean)
-      .join(', ')
-  : null;
+/**
+ * Every ground the active sides play at, deduplicated by name and carrying the
+ * sides that play there, so a club-wide list can say which is which.
+ */
+export const homeGrounds: Array<Ground & { teams: Team[] }> = (() => {
+  const out: Array<Ground & { teams: Team[] }> = [];
+  for (const team of teams) {
+    const g = toGround((team as unknown as { homeGround?: GroundCfg }).homeGround);
+    if (!g) continue;
+    const seen = out.find((x) => x.name === g.name);
+    if (seen) seen.teams.push(team);
+    else out.push({ ...g, teams: [team] });
+  }
+  return out;
+})();
 
-export const homeGroundMapUrl = filled(groundCfg?.mapUrl);
+/**
+ * The ground for places that have room for exactly one — the footer, the
+ * contact details, the home-page eyebrow. Marked in the config rather than
+ * guessed, falling back to the ground the most sides share.
+ */
+const primaryGround =
+  teams
+    .map((t) => (t as unknown as { homeGround?: GroundCfg }).homeGround)
+    .find((g) => g?.primary) ?? null;
 
+export const homeGround =
+  (primaryGround ? toGround(primaryGround) : null) ??
+  [...homeGrounds].sort((a, b) => b.teams.length - a.teams.length)[0] ??
+  null;
+
+export const homeGroundSuburb = homeGround?.suburb ?? null;
+
+export const homeGroundLabel = homeGround?.label ?? null;
+
+export const homeGroundMapUrl = homeGround?.mapUrl ?? null;
+
+/**
+ * Whether a game was played at home, decided by the ground rather than by the
+ * fixture. Any of the club's grounds counts — a Saturday game at Donnelly and
+ * a Sunday game at Singleton are both home.
+ */
 export function playedAtHome(ground: string | null | undefined): boolean {
-  return Boolean(homeGround && ground && ground.trim() === homeGround);
+  const at = ground?.trim();
+  if (!at) return false;
+  return homeGrounds.some((g) => g.name === at || (g.ground && `${g.name} - ${g.ground}` === at));
 }
 
 /**

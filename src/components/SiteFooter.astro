@@ -1,6 +1,6 @@
 ---
 import SocialLinks from './SocialLinks.astro';
-import { club, teams, season, suburb, filled, showNews, homeGroundLabel, url } from '../lib/site';
+import { club, teams, season, suburb, filled, showNews, homeGrounds, url } from '../lib/site';
 
 const year = new Date().getFullYear();
 const hasEmail = !club.contact.email.startsWith('TODO');
@@ -15,11 +15,12 @@ const address = filled((club.contact as { address?: string }).address);
       <p class="mt-2 text-sm text-accent-tint">
         {suburb}, {club.location.state}
       </p>
-      {homeGroundLabel && (
+      {/* Two grounds, so each is named with the day it is used. */}
+      {homeGrounds.map((g) => (
         <p class="mt-1 text-sm text-accent-tint">
-          Home ground · {homeGroundLabel}
+          {[...new Set(g.teams.map((t) => `${t.day}s`))].join(' & ')} · {g.label}
         </p>
-      )}
+      ))}
       <SocialLinks class="mt-5 text-accent-tint" />
     </div>
 

@@ -6,6 +6,15 @@
   "teams": [
     {
       "slug": "loc-1",
+      "homeGround": {
+        "name": "Donnelly Recreation Reserve",
+        "shortName": "Donnelly Reserve",
+        "ground": "Oval 1",
+        "suburb": "Cranbourne",
+        "state": "VIC",
+        "primary": true,
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC"
+      },
       "name": "Dreamers 1st XI",
       "shortName": "1st XI",
       "competition": "Eastern Cricket Association",
@@ -21,6 +30,15 @@
     },
     {
       "slug": "loc-2",
+      "homeGround": {
+        "name": "Donnelly Recreation Reserve",
+        "shortName": "Donnelly Reserve",
+        "ground": "Oval 1",
+        "suburb": "Cranbourne",
+        "state": "VIC",
+        "primary": true,
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC"
+      },
       "name": "Dreamers 2nd XI",
       "shortName": "2nd XI",
       "competition": "Eastern Cricket Association",
@@ -36,6 +54,15 @@
     },
     {
       "slug": "grade-4",
+      "homeGround": {
+        "name": "Singleton Reserve",
+        "shortName": "Singleton Reserve",
+        "ground": null,
+        "suburb": "Endeavour Hills",
+        "state": "VIC",
+        "primary": false,
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Singleton+Reserve%2C+Endeavour+Hills+VIC"
+      },
       "name": "Dreamers Grade 4",
       "shortName": "Grade 4",
       "competition": "Victorian Sunday Cricket Association",
@@ -50,6 +77,7 @@
       "shield": null
     }
   ],
+  "_groundComment": "The club has two home grounds, not one: the ECA Saturday sides play at Donnelly Recreation Reserve (Oval 1, Cranbourne) and the VSCA Sunday side at Singleton Reserve, Endeavour Hills. Confirmed against the published draws — every 2026/27 home fixture for LOC 1 and LOC 2 is at Donnelly, and all of 2025/26 Grade 4 was at Singleton. 'primary' marks the one used where the site has room for a single ground (the footer, the contact page, the home-page eyebrow).",
   "_shieldComment": "ECA names its limited-overs divisions after shields: LOC 1 is the McCarthy Shield and LOC 2 the Laws Shield. VSCA Grade 4 has no shield name.",
   "_namesComment": "name/shortName are what the club calls the side; gradeLabel is the ECA division it plays in. They are different things and both are shown — the 1st XI plays LOC 1 (McCarthy Shield), the 2nd XI plays LOC 2 (Laws Shield). The slugs stay loc-1 / loc-2 because those URLs are already live.",
   "_playCricketTeamId": "play.cricket.com.au runs on different identifiers from the PlayHQ API — the same fixture has one id in /v1/grades/{id}/games and another in /match/{id}, so a match centre link cannot be built from the synced game id. This is the club's team id on the public site, used to look the real ones up. Get it from any match centre URL for that side: npm run playhq:links -- --seed <url>. Null means that side's matches are not linked."

@@ -1,6 +1,6 @@
 {
   "week": "2026-W43",
-  "generatedAt": "2026-10-30T07:40:41.104Z",
+  "generatedAt": "2026-10-30T21:08:04.706Z",
   "topBatter": {
     "playerId": "yadeesha-deerasooriya",
     "displayName": "Yadeesha Deerasooriya",
@@ -466,7 +466,7 @@
       }
     },
     {
-      "playerId": null,
+      "playerId": "pavan-ariyadasa",
       "displayName": "Pavan Ariyadasa",
       "identifiable": true,
       "teamSlug": "loc-2",

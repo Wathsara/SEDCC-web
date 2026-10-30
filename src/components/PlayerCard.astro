@@ -22,28 +22,34 @@
 import PlayerPortrait from './PlayerPortrait.astro';
 import { portraitFor } from '../lib/portraits';
 import { nameLines } from '../lib/names';
-import type { RosterPlayer } from '../lib/site';
+import { captaincyIn, type RosterPlayer } from '../lib/site';
 
 interface Props {
   player: RosterPlayer;
+  /**
+   * The side this card is listed under. It decides both the armband and the
+   * kit: a vice-captain of one side is not one of another, and a side with its
+   * own kit does not borrow another's photograph.
+   */
+  team?: string;
   /** From the PlayHQ season aggregate, when the player has appearances. */
   stat?: { batting: { runs: number }; bowling: { wickets: number } } | undefined;
   loading?: 'eager' | 'lazy';
 }
-const { player, stat, loading = 'lazy' } = Astro.props;
+const { player, team, stat, loading = 'lazy' } = Astro.props;
 
 const runs = stat?.batting?.runs ?? 0;
 const wickets = stat?.bowling?.wickets ?? 0;
 const hasFigures = runs > 0 || wickets > 0;
 
 const profileUrl = (player as RosterPlayer & { profileUrl?: string }).profileUrl;
-const captaincy = player.captaincy;
+const captaincy = team ? captaincyIn(player, team) : undefined;
 const badge = captaincy === 'captain' ? 'C' : captaincy === 'vice-captain' ? 'VC' : null;
 const badgeLabel = captaincy === 'captain' ? 'Captain' : 'Vice-captain';
 
 /* A drawn silhouette has no head worth breaking the edge with — crossing it
    would read as a rendering fault rather than as a flourish. */
-const hasPhoto = Boolean(portraitFor(player.id));
+const hasPhoto = Boolean(portraitFor(player.id, team));
 
 /*
   Given name on the first line, surname on the second. Left to wrap on its own,
@@ -70,6 +76,7 @@ const surnameLine = surname || '\u00a0';
         <PlayerPortrait
           id={player.id}
           name={player.name}
+          team={team}
           loading={loading}
           class="absolute inset-0 z-10 h-full w-full object-cover object-top drop-shadow-cutout transition-transform duration-500 group-hover:-translate-y-1"
         />
@@ -78,6 +85,7 @@ const surnameLine = surname || '\u00a0';
           <PlayerPortrait
             id={player.id}
             name={player.name}
+            team={team}
             loading={loading}
             class="h-full w-full object-cover object-top"
           />

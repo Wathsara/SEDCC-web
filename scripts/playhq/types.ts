@@ -405,4 +405,12 @@ export interface SeasonAggregate {
     fourWicketHauls: number; fiveWicketHauls: number;
   };
   fielding: { catches: number; stumpings: number; runOuts: number };
+  /**
+   * The same figures split by side, for the sides this player turned out for.
+   * A team page shows its own slice; /stats/ and the Dream Team show the total.
+   */
+  byTeam?: Record<
+    string,
+    Pick<SeasonAggregate, 'matches' | 'batting' | 'bowling' | 'fielding'>
+  >;
 }

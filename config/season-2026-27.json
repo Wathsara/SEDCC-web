@@ -74,7 +74,8 @@
       "playhqTeamId": null,
       "playCricketTeamId": null,
       "active": true,
-      "shield": null
+      "shield": null,
+      "ownKit": true
     }
   ],
   "_groundComment": "The club has two home grounds, not one: the ECA Saturday sides play at Donnelly Recreation Reserve (Oval 1, Cranbourne) and the VSCA Sunday side at Singleton Reserve, Endeavour Hills. Confirmed against the published draws — every 2026/27 home fixture for LOC 1 and LOC 2 is at Donnelly, and all of 2025/26 Grade 4 was at Singleton. 'primary' marks the one used where the site has room for a single ground (the footer, the contact page, the home-page eyebrow).",

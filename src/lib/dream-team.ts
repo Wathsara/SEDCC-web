@@ -160,13 +160,25 @@ export interface DreamTeam {
 
 const KEEPER_WORDS = /\b(wicket-?keeper|keeper|wk)\b/i;
 
+/*
+  Whether the player captains any of the club's sides. captaincy is a bare
+  string when it applies to every side they turn out for, and an object keyed by
+  team slug when it differs between them — LOC 2's vice-captain also plays Grade
+  4, which has a captain of its own. Read here rather than imported from site.ts
+  so this module stays what its header says it is: the formulas, with no pull on
+  the rest of the site.
+*/
+function isClubCaptain(r: RosterPlayer | null | undefined): boolean {
+  const c = r?.captaincy;
+  if (!c) return false;
+  return typeof c === 'string' ? c === 'captain' : Object.values(c).includes('captain');
+}
+
 /** Whether the club has marked this player as a keeper in config/players.json. */
 function rosteredKeeper(r: RosterPlayer | null | undefined): boolean {
   if (!r) return false;
   return r.keeper === true || KEEPER_WORDS.test(r.role ?? '');
 }
-
-const isClubCaptain = (r: RosterPlayer | null | undefined) => r?.captaincy === 'captain';
 
 /**
  * Pick the XI.

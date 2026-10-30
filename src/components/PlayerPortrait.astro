@@ -19,11 +19,13 @@ import { portraitFor } from '../lib/portraits';
 interface Props {
   id: string;
   name: string;
+  /** The side being shown, when the photo should be in that side's kit. */
+  team?: string;
   class?: string;
   loading?: 'eager' | 'lazy';
 }
-const { id, name, class: className, loading = 'lazy' } = Astro.props;
-const photo = portraitFor(id);
+const { id, name, team, class: className, loading = 'lazy' } = Astro.props;
+const photo = portraitFor(id, team);
 ---
 
 {

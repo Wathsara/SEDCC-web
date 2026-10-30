@@ -28,6 +28,7 @@
         "loc-2"
       ],
       "captaincy": "captain",
+      "keeper": true,
       "role": null,
       "battingStyle": null,
       "bowlingStyle": null,
@@ -104,9 +105,12 @@
         "W. Daluwatta"
       ],
       "teams": [
-        "loc-2"
+        "loc-2",
+        "grade-4"
       ],
-      "captaincy": "vice-captain",
+      "captaincy": {
+        "loc-2": "vice-captain"
+      },
       "role": null,
       "battingStyle": null,
       "bowlingStyle": null,
@@ -221,7 +225,8 @@
         "K. Kumarasinghe"
       ],
       "teams": [
-        "loc-2"
+        "loc-2",
+        "grade-4"
       ],
       "role": null,
       "battingStyle": null,
@@ -259,8 +264,10 @@
         "A. Perera"
       ],
       "teams": [
-        "loc-2"
+        "loc-2",
+        "grade-4"
       ],
+      "keeper": true,
       "role": null,
       "battingStyle": null,
       "bowlingStyle": null,
@@ -279,7 +286,8 @@
         "H. Perera"
       ],
       "teams": [
-        "loc-2"
+        "loc-2",
+        "grade-4"
       ],
       "role": null,
       "battingStyle": null,
@@ -602,6 +610,7 @@
       "teams": [
         "loc-1"
       ],
+      "keeper": true,
       "role": null,
       "battingStyle": null,
       "bowlingStyle": null,
@@ -650,9 +659,196 @@
       "active": true,
       "playhqProfileId": "d847db41-d497-4784-8cdc-eb1f903828af",
       "profileUrl": "https://play.cricket.com.au/player/d847db41-d497-4784-8cdc-eb1f903828af/tharindu-samaranayake"
+    },
+    {
+      "id": "amila-jayanuwan",
+      "name": "Amila Jayanuwan",
+      "aliases": [
+        "A Jayanuwan",
+        "A. Jayanuwan"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "126bb0b5-5cbc-4d59-9662-b8016baca2bf",
+      "profileUrl": "https://play.cricket.com.au/player/126bb0b5-5cbc-4d59-9662-b8016baca2bf/amila-jayanuwan"
+    },
+    {
+      "id": "pavan-ariyadasa",
+      "name": "Pavan Ariyadasa",
+      "aliases": [
+        "P Ariyadasa",
+        "P. Ariyadasa"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "captaincy": "captain",
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "363cfca2-7f94-46ef-9415-2bb72100f3b9",
+      "profileUrl": "https://play.cricket.com.au/player/363cfca2-7f94-46ef-9415-2bb72100f3b9/pavan-ariyadasa"
+    },
+    {
+      "id": "thisara-nilupul-lankathilake",
+      "name": "Thisara Nilupul Lankathilake",
+      "aliases": [
+        "T Lankathilake",
+        "T. Lankathilake",
+        "Thisara Lankathilake"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "c469767e-aea4-49b9-b5d7-f61c2f3944b2",
+      "profileUrl": "https://play.cricket.com.au/player/c469767e-aea4-49b9-b5d7-f61c2f3944b2/thisara-nilupul-lankathilake"
+    },
+    {
+      "id": "mahesh-fernando",
+      "name": "Mahesh Fernando",
+      "aliases": [
+        "M Fernando",
+        "M. Fernando"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "ceef3087-2016-4288-9e44-5792b6ea9248",
+      "profileUrl": "https://play.cricket.com.au/player/ceef3087-2016-4288-9e44-5792b6ea9248/mahesh-fernando"
+    },
+    {
+      "id": "dilan-samarakoon",
+      "name": "Dilan Samarakoon",
+      "aliases": [
+        "D Samarakoon",
+        "D. Samarakoon"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "3f04da85-0b60-4a65-9a2f-2b39ec7df714",
+      "profileUrl": "https://play.cricket.com.au/player/3f04da85-0b60-4a65-9a2f-2b39ec7df714/dilan-samarakoon"
+    },
+    {
+      "id": "indika-karunathilaka",
+      "name": "Indika Karunathilaka",
+      "aliases": [
+        "I Karunathilaka",
+        "I. Karunathilaka",
+        "Indika Karunathilake"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "b7fbc4ab-bf4e-49fb-b324-7d64586284e7",
+      "profileUrl": "https://play.cricket.com.au/player/b7fbc4ab-bf4e-49fb-b324-7d64586284e7/indika-karunathilaka"
+    },
+    {
+      "id": "sanjeewa-jayawardane",
+      "name": "Sanjeewa Jayawardane",
+      "aliases": [
+        "S Jayawardane",
+        "S. Jayawardane",
+        "Sanjeewa Jayawardena"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "a88b3c7c-4b9d-4934-8620-3ae91ca329a3",
+      "profileUrl": "https://play.cricket.com.au/player/a88b3c7c-4b9d-4934-8620-3ae91ca329a3/sanjeewa-jayawardane"
+    },
+    {
+      "id": "kavindu-heshan-fernando",
+      "name": "Kavindu Heshan Fernando",
+      "aliases": [
+        "K Fernando",
+        "K. Fernando",
+        "Kavindu Fernando"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "a53ce240-9ad1-4350-a0f8-090c4654a2ca",
+      "profileUrl": "https://play.cricket.com.au/player/a53ce240-9ad1-4350-a0f8-090c4654a2ca/kavindu-heshan-fernando"
+    },
+    {
+      "id": "shek-narayan",
+      "name": "Shek Narayan",
+      "aliases": [
+        "S Narayan",
+        "S. Narayan"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "f29a3735-ab41-4bed-bc44-5071c3c7331c",
+      "profileUrl": "https://play.cricket.com.au/player/f29a3735-ab41-4bed-bc44-5071c3c7331c/shek-narayan"
+    },
+    {
+      "id": "ravi-jayasundara",
+      "name": "Ravi Jayasundara",
+      "aliases": [
+        "R Jayasundara",
+        "R. Jayasundara",
+        "Ravi Jayasundera"
+      ],
+      "teams": [
+        "grade-4"
+      ],
+      "role": null,
+      "battingStyle": null,
+      "bowlingStyle": null,
+      "joined": 2026,
+      "active": true,
+      "playhqProfileId": "13e429ae-8e1c-428f-ac4b-bf146381649b",
+      "profileUrl": "https://play.cricket.com.au/player/13e429ae-8e1c-428f-ac4b-bf146381649b/ravi-jayasundara"
     }
   ],
   "_idComment": "playhqProfileId is the play.cricket.com.au PROFILE id from the club's own sheet. It is NOT the appearance id the public API returns, which changes every game — matching in scripts/playhq/ stays by name via aliases. Treat these as reference only.",
   "_privacyComment": "Names and public profile URLs only. Never add emails, phone numbers, addresses or dates of birth to this file — see CLAUDE.md.",
-  "_teamsComment": "teams[] lists every side a player turns out for. Only the LOC 2 squad is finalised for 2026/27; LOC 1 and Grade 4 are not published yet and their squad sections show an empty state until players are added here. The three players marked '(No ECA Games)' on the transfer sheet are LOC 2 only — do not infer a Grade 4 side from that note."
+  "_teamsComment": "teams[] lists every side a player turns out for. A player who plays Saturday and Sunday carries both slugs and is one entry, not two — the stats aggregate adds their figures together. A side with no players here shows an empty squad section rather than a guess.",
+  "_captaincyComment": "captaincy is either a string, which applies to every side the player turns out for, or an object keyed by team slug when it differs between them — a LOC 2 vice-captain who also plays Grade 4 is not Grade 4's vice-captain."
 }

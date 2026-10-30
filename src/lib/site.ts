@@ -34,6 +34,8 @@ export function url(path = '/'): string {
   return joined.endsWith('/') ? joined : `${joined}/`;
 }
 
+export type Captaincy = 'captain' | 'vice-captain';
+
 export interface RosterPlayer {
   id: string;
   name: string;
@@ -55,7 +57,7 @@ export interface RosterPlayer {
    * More than one captain per side is allowed and is deliberate: LOC 2 has two.
    * They sort together at the head of the squad, alphabetically between them.
    */
-  captaincy?: 'captain' | 'vice-captain';
+  captaincy?: Captaincy | Partial<Record<string, Captaincy>>;
   /**
    * Marks a wicketkeeper. The Dream Team needs one and PlayHQ has no field
    * that says who keeps — a stumping proves it, but a keeper can go a season
@@ -109,6 +111,30 @@ export function portraitKey(name: string | null | undefined): string {
  * away the config order, which is the only thing that says which of a side's
  * two captains leads the squad.
  */
+/**
+ * What a player is to one particular side.
+ *
+ * A player can carry the armband for one side and nothing for another — LOC 2's
+ * vice-captain also turns out for Grade 4, which has a captain of its own and
+ * no vice-captain at all. A bare string in config/players.json applies to every
+ * side the player appears for; an object keyed by team slug scopes it.
+ */
+export function captaincyIn(
+  player: Pick<RosterPlayer, 'captaincy'>,
+  slug: string,
+): Captaincy | undefined {
+  const c = player.captaincy;
+  if (!c) return undefined;
+  return typeof c === 'string' ? c : c[slug];
+}
+
+/** Whether the player captains any of the club's sides. */
+export function isClubCaptain(player: Pick<RosterPlayer, 'captaincy'> | null | undefined): boolean {
+  const c = player?.captaincy;
+  if (!c) return false;
+  return typeof c === 'string' ? c === 'captain' : Object.values(c).includes('captain');
+}
+
 export function squadFor(slug: string): RosterPlayer[] {
   return roster.filter((p) => p.teams.includes(slug));
 }

@@ -187,7 +187,15 @@ function pickWeeklyBest(performances: Performance[]) {
   return { topBatter: batters[0] ?? null, topBowler: bowlers[0] ?? null };
 }
 
-function aggregate(allPerformances: Performance[]): SeasonAggregate[] {
+/**
+ * Season figures for one set of performances.
+ *
+ * Called once for the club as a whole and once per side, so a player who turns
+ * out on Saturday and Sunday has both a combined record and a split of it, and
+ * the two can never disagree — they are the same arithmetic over different
+ * slices.
+ */
+function aggregateRows(allPerformances: Performance[]): SeasonAggregate[] {
   // Unnamed fill-ins are dropped here, not merged: two different anonymous
   // players in the same round would otherwise become one person with combined
   // figures, which is worse than omitting them.
@@ -286,6 +294,45 @@ function aggregate(allPerformances: Performance[]): SeasonAggregate[] {
   }
 
   return [...byPlayer.values()].sort((a, b) => b.batting.runs - a.batting.runs);
+}
+
+const keyOf = (p: { playerId?: string | null; displayName: string }) =>
+  p.playerId ?? `name:${p.displayName}`;
+
+/**
+ * The club total for every player, each carrying a per-side split.
+ *
+ * The /stats/ page and the Dream Team read the total — one club, one XI, every
+ * side counting the same. A team page reads byTeam[slug], because a squad card
+ * on the LOC 2 page has no business showing runs scored on a Sunday.
+ */
+function aggregate(allPerformances: Performance[]): SeasonAggregate[] {
+  const total = aggregateRows(allPerformances);
+
+  const slugs = [...new Set(allPerformances.filter((p) => p.identifiable).map((p) => p.teamSlug))];
+  const perTeam = new Map<string, Map<string, SeasonAggregate>>();
+  for (const slug of slugs) {
+    const rows = aggregateRows(allPerformances.filter((p) => p.teamSlug === slug));
+    perTeam.set(slug, new Map(rows.map((r) => [keyOf(r), r])));
+  }
+
+  for (const row of total) {
+    const key = keyOf(row);
+    const byTeam: NonNullable<SeasonAggregate['byTeam']> = {};
+    for (const slug of row.teams) {
+      const r = perTeam.get(slug)?.get(key);
+      if (!r) continue;
+      byTeam[slug] = {
+        matches: r.matches,
+        batting: r.batting,
+        bowling: r.bowling,
+        fielding: r.fielding,
+      };
+    }
+    row.byTeam = byTeam;
+  }
+
+  return total;
 }
 
 async function main() {

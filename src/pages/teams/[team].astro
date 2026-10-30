@@ -22,13 +22,29 @@ const { team } = Astro.props;
 
 const fixtures = teamFixtures(team.slug);
 const ladder = teamLadder(team.slug);
-const squad = squadOrder(squadFor(team.slug));
+const squad = squadOrder(squadFor(team.slug), team.slug);
 const ground = teamGround(team.slug);
 
 /* Season figures come from the sync and join to the roster by name */
 const statsByName = new Map(
   (seasonStats.players ?? []).map((p) => [p.displayName.toLowerCase(), p]),
 );
+
+/*
+  A squad card under a side shows that side's figures, not the player's club
+  total. Someone who opens on Saturday and bowls on Sunday has both, and
+  putting the combined number on each card would double-count them in the
+  reader's head. The aggregate's byTeam carries the split; /stats/ and the
+  Dream XI keep reading the total.
+*/
+const statFor = (name: string, slug: string) => {
+  const row = statsByName.get(name.toLowerCase());
+  if (row?.byTeam) return row.byTeam[slug];
+  /* Stats files written before byTeam existed carry no split. One side's worth
+     of appearances can still be used, but only on that side's own page — the
+     whole record is not this side's just because it is all there is. */
+  return row && row.teams.length === 1 && row.teams[0] === slug ? row : undefined;
+};
 
 const articles = (
   await getCollection('articles', ({ data }) => !data.draft && data.team === team.slug)
@@ -277,7 +293,8 @@ const hasLadder = ladder && ladder.ladders.length > 0;
               <li>
                 <PlayerCard
                   player={p}
-                  stat={statsByName.get(p.name.toLowerCase())}
+                  team={team.slug}
+                  stat={statFor(p.name, team.slug)}
                   loading={i < 4 ? 'eager' : 'lazy'}
                 />
               </li>

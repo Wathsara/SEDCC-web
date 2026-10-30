@@ -119,6 +119,20 @@ export interface SeasonAggregate {
    * fielder's.
    */
   fielding?: { catches: number; stumpings: number; runOuts: number };
+  /**
+   * The same figures split by side. Written by the aggregator; absent in files
+   * written before it was. A team page reads its own slice so a squad card
+   * never shows runs scored for another side.
+   */
+  byTeam?: Record<
+    string,
+    {
+      matches: number;
+      batting: SeasonAggregate['batting'];
+      bowling: SeasonAggregate['bowling'];
+      fielding: { catches: number; stumpings: number; runOuts: number };
+    }
+  >;
 }
 
 export interface SeasonStats {

@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-29T23:12:19.836Z",
+  "syncedAt": "2026-10-30T22:54:12.513Z",
   "season": "2026-27",
   "teams": [
     {
@@ -437,8 +437,8 @@
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": "9",
-          "theirScore": "152",
+          "ourScore": "0/9 (1 ov)",
+          "theirScore": "3/152 (40 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/64771970-09e4-4962-8f5a-eb077ed0b6ab?tab=summary"
         },
         {
@@ -747,7 +747,7 @@
       "teamId": "64a6043e-8aaf-408c-8e98-ed00bc6a1965",
       "games": [
         {
-          "id": "4dc33359-536b-4f51-8691-78509a5809b0",
+          "id": "916b358b-4394-48a6-8562-dcc8a6f133e3",
           "status": "UPCOMING",
           "type": null,
           "round": "Round 1",
@@ -763,26 +763,6 @@
           "ground": "Oval 1",
           "suburb": "OFFICER",
           "mapQuery": "Heatherbrae%20Recreation%20Reserve%2C%20OFFICER%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null
-        },
-        {
-          "id": "13200c97-f0cf-4dac-a399-d9463411ac84",
-          "status": "UPCOMING",
-          "type": null,
-          "round": "Round 2",
-          "roundShort": "R2",
-          "isFinal": false,
-          "dates": [
-            "2026-11-08T02:00:00.000Z"
-          ],
-          "isHome": false,
-          "opponent": "Eastern Rebels  Senior Men 4",
-          "outcome": null,
-          "venue": "Tatterson Park",
-          "ground": "Tatterson Park - East Oval",
-          "suburb": "KEYSBOROUGH",
-          "mapQuery": "Tatterson%20Park%2C%20KEYSBOROUGH%2C%20VIC",
           "ourScore": null,
           "theirScore": null
         }

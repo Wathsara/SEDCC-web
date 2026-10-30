@@ -1,5 +1,1176 @@
 {
-  "generatedAt": "2026-10-29T23:12:20.173Z",
+  "generatedAt": "2026-10-30T07:40:41.100Z",
   "season": "2026-27",
-  "players": []
+  "players": [
+    {
+      "playerId": "yadeesha-deerasooriya",
+      "displayName": "Yadeesha Deerasooriya",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 2,
+        "notOuts": 0,
+        "runs": 270,
+        "balls": 221,
+        "highScore": "144",
+        "average": 135,
+        "strikeRate": 122.17,
+        "fifties": 0,
+        "hundreds": 2,
+        "fours": 30,
+        "sixes": 6
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 36,
+        "overs": "6.0",
+        "maidens": 3,
+        "runs": 14,
+        "wickets": 1,
+        "average": 14,
+        "economy": 2.33,
+        "best": "1/14",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "sheshan-andrahennadige",
+      "displayName": "Sheshan Andrahennadige",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 132,
+        "balls": 94,
+        "highScore": "132",
+        "average": 132,
+        "strikeRate": 140.43,
+        "fifties": 0,
+        "hundreds": 1,
+        "fours": 17,
+        "sixes": 3
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "yasuntha-gamalath",
+      "displayName": "Yasuntha Gamalath",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 2,
+        "notOuts": 1,
+        "runs": 98,
+        "balls": 108,
+        "highScore": "75",
+        "average": 98,
+        "strikeRate": 90.74,
+        "fifties": 1,
+        "hundreds": 0,
+        "fours": 9,
+        "sixes": 3
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 1,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "yasindu-hendavitharana",
+      "displayName": "Yasindu Hendavitharana",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 2,
+        "notOuts": 1,
+        "runs": 83,
+        "balls": 109,
+        "highScore": "44",
+        "average": 83,
+        "strikeRate": 76.15,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 9,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "lasitha-ekanayake",
+      "displayName": "Lasitha Ekanayake",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 44,
+        "balls": 39,
+        "highScore": "44",
+        "average": 44,
+        "strikeRate": 112.82,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 7,
+        "sixes": 1
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 21,
+        "overs": "3.3",
+        "maidens": 0,
+        "runs": 20,
+        "wickets": 1,
+        "average": 20,
+        "economy": 5.71,
+        "best": "1/0",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "janaka-don",
+      "displayName": "Janaka Don",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 3,
+        "notOuts": 0,
+        "runs": 37,
+        "balls": 62,
+        "highScore": "27",
+        "average": 12.33,
+        "strikeRate": 59.68,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 3,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 1,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "aruna-perera",
+      "displayName": "Aruna Perera",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 3,
+        "notOuts": 1,
+        "runs": 36,
+        "balls": 46,
+        "highScore": "19",
+        "average": 18,
+        "strikeRate": 78.26,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 5,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "shamendra-kannangara",
+      "displayName": "Shamendra Kannangara",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 35,
+        "balls": 37,
+        "highScore": "35",
+        "average": 35,
+        "strikeRate": 94.59,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 5,
+        "sixes": 1
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 48,
+        "overs": "8.0",
+        "maidens": 1,
+        "runs": 39,
+        "wickets": 1,
+        "average": 39,
+        "economy": 4.88,
+        "best": "1/29",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "pasindu-sunilchandra",
+      "displayName": "Pasindu Sunilchandra",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 2,
+        "notOuts": 0,
+        "runs": 32,
+        "balls": 20,
+        "highScore": "25",
+        "average": 16,
+        "strikeRate": 160,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 5,
+        "sixes": 1
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 96,
+        "overs": "16.0",
+        "maidens": 1,
+        "runs": 54,
+        "wickets": 1,
+        "average": 54,
+        "economy": 3.38,
+        "best": "1/39",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "buwaneka-wakishta",
+      "displayName": "Buwaneka Wakishta",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 2,
+        "notOuts": 0,
+        "runs": 31,
+        "balls": 30,
+        "highScore": "19",
+        "average": 15.5,
+        "strikeRate": 103.33,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 3,
+        "sixes": 1
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 108,
+        "overs": "18.0",
+        "maidens": 0,
+        "runs": 70,
+        "wickets": 4,
+        "average": 17.5,
+        "economy": 3.89,
+        "best": "2/34",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "thaushka-herath",
+      "displayName": "Thaushka Herath",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 2,
+        "notOuts": 1,
+        "runs": 28,
+        "balls": 53,
+        "highScore": "23*",
+        "average": 28,
+        "strikeRate": 52.83,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 3,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 66,
+        "overs": "11.0",
+        "maidens": 1,
+        "runs": 68,
+        "wickets": 0,
+        "average": null,
+        "economy": 6.18,
+        "best": "0/11",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": "thisura-waduge",
+      "displayName": "Thisura Waduge",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 3,
+        "notOuts": 2,
+        "runs": 25,
+        "balls": 29,
+        "highScore": "15*",
+        "average": 25,
+        "strikeRate": 86.21,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 2,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 30,
+        "overs": "5.0",
+        "maidens": 0,
+        "runs": 26,
+        "wickets": 1,
+        "average": 26,
+        "economy": 5.2,
+        "best": "1/21",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "udara-usliyanage",
+      "displayName": "Udara Usliyanage",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 1,
+        "notOuts": 1,
+        "runs": 21,
+        "balls": 26,
+        "highScore": "21*",
+        "average": null,
+        "strikeRate": 80.77,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 1,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "nisitha-ginigalgodage",
+      "displayName": "Nisitha Ginigalgodage",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 2,
+        "notOuts": 0,
+        "runs": 20,
+        "balls": 39,
+        "highScore": "12",
+        "average": 10,
+        "strikeRate": 51.28,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 3,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "harsha-munasinghe",
+      "displayName": "Harsha Munasinghe",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 17,
+        "balls": 15,
+        "highScore": "17",
+        "average": 17,
+        "strikeRate": 113.33,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 1,
+        "sixes": 1
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 11,
+        "balls": 15,
+        "highScore": "11",
+        "average": 11,
+        "strikeRate": 73.33,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 2,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 102,
+        "overs": "17.0",
+        "maidens": 2,
+        "runs": 55,
+        "wickets": 5,
+        "average": 11,
+        "economy": 3.24,
+        "best": "4/40",
+        "fourWicketHauls": 1,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "dilhan-rahubadde-kankanange",
+      "displayName": "Dilhan Rahubadde Kankanange",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 9,
+        "balls": 9,
+        "highScore": "9",
+        "average": 9,
+        "strikeRate": 100,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 1,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 110,
+        "overs": "18.2",
+        "maidens": 2,
+        "runs": 47,
+        "wickets": 3,
+        "average": 15.67,
+        "economy": 2.56,
+        "best": "2/6",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "malith-kanahara",
+      "displayName": "Malith Kanahara",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 6,
+        "balls": 17,
+        "highScore": "6",
+        "average": 6,
+        "strikeRate": 35.29,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 66,
+        "overs": "11.0",
+        "maidens": 3,
+        "runs": 15,
+        "wickets": 4,
+        "average": 3.75,
+        "economy": 1.36,
+        "best": "3/12",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "santhuka-de-silva",
+      "displayName": "Santhuka De Silva",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 2,
+        "notOuts": 1,
+        "runs": 4,
+        "balls": 7,
+        "highScore": "3",
+        "average": 4,
+        "strikeRate": 57.14,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 90,
+        "overs": "15.0",
+        "maidens": 1,
+        "runs": 60,
+        "wickets": 2,
+        "average": 30,
+        "economy": 4,
+        "best": "2/15",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "tharindu-demika",
+      "displayName": "Tharindu Demika",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 2,
+        "notOuts": 0,
+        "runs": 2,
+        "balls": 21,
+        "highScore": "1",
+        "average": 1,
+        "strikeRate": 9.52,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 18,
+        "overs": "3.0",
+        "maidens": 0,
+        "runs": 22,
+        "wickets": 1,
+        "average": 22,
+        "economy": 7.33,
+        "best": "1/22",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "dinuth-deerasooriya",
+      "displayName": "Dinuth Deerasooriya",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 1,
+        "notOuts": 1,
+        "runs": 2,
+        "balls": 2,
+        "highScore": "2*",
+        "average": null,
+        "strikeRate": 100,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 84,
+        "overs": "14.0",
+        "maidens": 1,
+        "runs": 63,
+        "wickets": 2,
+        "average": 31.5,
+        "economy": 4.5,
+        "best": "2/9",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "kalindu-kumarasinghe",
+      "displayName": "Kalindu Kumarasinghe",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 1,
+        "notOuts": 1,
+        "runs": 0,
+        "balls": 1,
+        "highScore": "0*",
+        "average": null,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 60,
+        "overs": "10.0",
+        "maidens": 1,
+        "runs": 47,
+        "wickets": 3,
+        "average": 15.67,
+        "economy": 4.7,
+        "best": "3/7",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "ruchira-dhanasekara",
+      "displayName": "Ruchira Dhanasekara",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 12,
+        "overs": "2.0",
+        "maidens": 0,
+        "runs": 16,
+        "wickets": 2,
+        "average": 8,
+        "economy": 8,
+        "best": "2/16",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "naveen-fernando",
+      "displayName": "Naveen Fernando",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 84,
+        "overs": "14.0",
+        "maidens": 1,
+        "runs": 53,
+        "wickets": 2,
+        "average": 26.5,
+        "economy": 3.79,
+        "best": "1/24",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "saminda-kaviraja",
+      "displayName": "Saminda Kaviraja",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 54,
+        "overs": "9.0",
+        "maidens": 1,
+        "runs": 32,
+        "wickets": 1,
+        "average": 32,
+        "economy": 3.56,
+        "best": "1/13",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "harith-perera",
+      "displayName": "Harith Perera",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 72,
+        "overs": "12.0",
+        "maidens": 3,
+        "runs": 33,
+        "wickets": 0,
+        "average": null,
+        "economy": 2.75,
+        "best": "0/9",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": "ruranga-jayarathna",
+      "displayName": "Ruranga Jayarathna",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 60,
+        "overs": "10.0",
+        "maidens": 2,
+        "runs": 46,
+        "wickets": 0,
+        "average": null,
+        "economy": 4.6,
+        "best": "0/16",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "ivan-udakara",
+      "displayName": "Ivan Udakara",
+      "teams": [
+        "loc-1"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 77,
+        "overs": "12.5",
+        "maidens": 1,
+        "runs": 53,
+        "wickets": 6,
+        "average": 8.83,
+        "economy": 4.13,
+        "best": "4/11",
+        "fourWicketHauls": 1,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "Pavan Ariyadasa",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 30,
+        "overs": "5.0",
+        "maidens": 0,
+        "runs": 27,
+        "wickets": 0,
+        "average": null,
+        "economy": 5.4,
+        "best": "0/27",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "nimsara-wijesinghe",
+      "displayName": "Nimsara Wijesinghe",
+      "teams": [
+        "loc-2"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 1,
+        "notOuts": 1,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "0*",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    }
+  ]
 }

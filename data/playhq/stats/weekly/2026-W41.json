@@ -1,0 +1,546 @@
+{
+  "week": "2026-W41",
+  "generatedAt": "2026-10-30T07:40:41.102Z",
+  "topBatter": {
+    "playerId": "yadeesha-deerasooriya",
+    "displayName": "Yadeesha Deerasooriya",
+    "identifiable": true,
+    "teamSlug": "loc-1",
+    "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+    "round": "Round 1",
+    "date": "2026-10-10T01:30:00.000Z",
+    "opponent": "Deepdene Uniting 2nd XI",
+    "batting": {
+      "runs": 144,
+      "balls": 110,
+      "fours": 15,
+      "sixes": 3,
+      "strikeRate": 130.91,
+      "notOut": false,
+      "didNotBat": false
+    },
+    "bowling": null,
+    "fielding": null
+  },
+  "topBowler": {
+    "playerId": "kalindu-kumarasinghe",
+    "displayName": "Kalindu Kumarasinghe",
+    "identifiable": true,
+    "teamSlug": "loc-2",
+    "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+    "round": "Round 1",
+    "date": "2026-10-10T01:30:00.000Z",
+    "opponent": "Salvation Army Waverley 1st XI",
+    "batting": null,
+    "bowling": {
+      "overs": 3,
+      "balls": 18,
+      "maidens": 1,
+      "runs": 7,
+      "wickets": 3,
+      "economy": 2.33
+    },
+    "fielding": null
+  },
+  "performances": [
+    {
+      "playerId": "naveen-fernando",
+      "displayName": "Naveen Fernando",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 29,
+        "wickets": 1,
+        "economy": 3.63
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "sheshan-andrahennadige",
+      "displayName": "Sheshan Andrahennadige",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 132,
+        "balls": 94,
+        "fours": 17,
+        "sixes": 3,
+        "strikeRate": 140.43,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "yadeesha-deerasooriya",
+      "displayName": "Yadeesha Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 144,
+        "balls": 110,
+        "fours": 15,
+        "sixes": 3,
+        "strikeRate": 130.91,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "buwaneka-wakishta",
+      "displayName": "Buwaneka Wakishta",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 12,
+        "balls": 9,
+        "fours": 1,
+        "sixes": 1,
+        "strikeRate": 133.33,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 6,
+        "balls": 36,
+        "maidens": 0,
+        "runs": 19,
+        "wickets": 1,
+        "economy": 3.17
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "santhuka-de-silva",
+      "displayName": "Santhuka De Silva",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 1,
+        "balls": 1,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 100,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 7,
+        "balls": 42,
+        "maidens": 1,
+        "runs": 15,
+        "wickets": 2,
+        "economy": 2.14
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "tharindu-demika",
+      "displayName": "Tharindu Demika",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 22,
+        "wickets": 1,
+        "economy": 7.33
+      },
+      "fielding": null
+    },
+    {
+      "playerId": null,
+      "displayName": "Fill-in player",
+      "identifiable": false,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 12,
+        "balls": 7,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 171.43,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "pasindu-sunilchandra",
+      "displayName": "Pasindu Sunilchandra",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 25,
+        "balls": 13,
+        "fours": 4,
+        "sixes": 1,
+        "strikeRate": 192.31,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 1,
+        "runs": 15,
+        "wickets": 0,
+        "economy": 1.88
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "janaka-don",
+      "displayName": "Janaka Don",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 0,
+        "balls": 9,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "thisura-waduge",
+      "displayName": "Thisura Waduge",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": {
+        "runs": 7,
+        "balls": 6,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 116.67,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 0,
+        "runs": 21,
+        "wickets": 1,
+        "economy": 5.25
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "dinuth-deerasooriya",
+      "displayName": "Dinuth Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21dbe0d1-f0b3-4108-a64d-d030b0fbffef",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Deepdene Uniting 2nd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 0,
+        "runs": 17,
+        "wickets": 0,
+        "economy": 4.25
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "dilhan-rahubadde-kankanange",
+      "displayName": "Dilhan Rahubadde Kankanange",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 6,
+        "wickets": 2,
+        "economy": 1.2
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "malith-kanahara",
+      "displayName": "Malith Kanahara",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 6,
+        "balls": 36,
+        "maidens": 0,
+        "runs": 12,
+        "wickets": 3,
+        "economy": 2
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "thaushka-herath",
+      "displayName": "Thaushka Herath",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": {
+        "runs": 23,
+        "balls": 43,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 53.49,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 11,
+        "wickets": 0,
+        "economy": 3.67
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 10,
+        "wickets": 0,
+        "economy": 2
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "kalindu-kumarasinghe",
+      "displayName": "Kalindu Kumarasinghe",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 1,
+        "runs": 7,
+        "wickets": 3,
+        "economy": 2.33
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "yasuntha-gamalath",
+      "displayName": "Yasuntha Gamalath",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": {
+        "runs": 23,
+        "balls": 38,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 60.53,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": {
+        "catches": 1,
+        "stumpings": 1,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "saminda-kaviraja",
+      "displayName": "Saminda Kaviraja",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 0,
+        "runs": 19,
+        "wickets": 0,
+        "economy": 4.75
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "lasitha-ekanayake",
+      "displayName": "Lasitha Ekanayake",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 0.3,
+        "balls": 3,
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 1,
+        "economy": 0
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "harith-perera",
+      "displayName": "Harith Perera",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 9,
+        "wickets": 0,
+        "economy": 1.8
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "aruna-perera",
+      "displayName": "Aruna Perera",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": {
+        "runs": 9,
+        "balls": 22,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 40.91,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "nisitha-ginigalgodage",
+      "displayName": "Nisitha Ginigalgodage",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "4057d012-fc29-434d-a0c4-c9633602ca8d",
+      "round": "Round 1",
+      "date": "2026-10-10T01:30:00.000Z",
+      "opponent": "Salvation Army Waverley 1st XI",
+      "batting": {
+        "runs": 12,
+        "balls": 31,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 38.71,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    }
+  ]
+}

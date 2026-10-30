@@ -380,14 +380,24 @@ async function main() {
     );
     log.ok(`${ourGames.length} game(s) in fixture`);
 
-    // Only completed games have a scorecard worth caching.
+    /*
+      Games with a scorecard worth caching.
+
+      FINAL is not the whole list. A match abandoned part-way through was still
+      played: LOC 2's round 3 against St Pauls Oakleigh is ABANDONED and the
+      fixture carries 152 against it, which is an innings somebody bowled and
+      somebody batted. Fetching only FINAL left those runs and wickets out of
+      every leaderboard on the site. Anything still to be played is skipped, as
+      it has nothing to fetch.
+    */
+    const NOT_PLAYED = new Set(['UPCOMING', 'PENDING', 'POSTPONED', 'CANCELLED', 'BYE']);
     const summaries = new Map<string, GameSummary>();
-    const finished = ourGames.filter((g) => g.status === 'FINAL');
-    for (const game of finished) {
+    const played = ourGames.filter((g) => !NOT_PLAYED.has(String(g.status).toUpperCase()));
+    for (const game of played) {
       const summary = await getSummary(game.id, game.updatedAt);
       if (summary) summaries.set(game.id, summary);
     }
-    if (finished.length) log.ok(`${summaries.size}/${finished.length} scorecard(s)`);
+    if (played.length) log.ok(`${summaries.size}/${played.length} scorecard(s)`);
 
     const { games, byes } = normaliseGames(allGames, team.playhqTeamId, summaries);
 

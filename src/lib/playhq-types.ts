@@ -96,6 +96,8 @@ export interface WeeklyStats {
 }
 
 export interface SeasonAggregate {
+  /** The roster id, or null for a name the roster does not carry. */
+  playerId?: string | null;
   displayName: string;
   teams: string[];
   matches: number;
@@ -108,7 +110,15 @@ export interface SeasonAggregate {
     innings: number; balls: number; overs: string; maidens: number;
     runs: number; wickets: number; average: number | null;
     economy: number | null; best: string;
+    /** Written by the aggregator; absent in files written before it was. */
+    fourWicketHauls?: number; fiveWicketHauls?: number;
   };
+  /**
+   * PlayHQ reports one catch total per player and never says which were taken
+   * behind the stumps, so a keeper's catches are not separable from a
+   * fielder's.
+   */
+  fielding?: { catches: number; stumpings: number; runOuts: number };
 }
 
 export interface SeasonStats {

@@ -1,7 +1,555 @@
 {
-  "week": null,
-  "topBatter": null,
-  "topBowler": null,
-  "performances": [],
-  "generatedAt": "2026-10-29T23:12:20.174Z"
+  "week": "2026-W43",
+  "generatedAt": "2026-10-30T07:40:41.104Z",
+  "topBatter": {
+    "playerId": "yadeesha-deerasooriya",
+    "displayName": "Yadeesha Deerasooriya",
+    "identifiable": true,
+    "teamSlug": "loc-1",
+    "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+    "round": "Round 3",
+    "date": "2026-10-24T01:30:00.000Z",
+    "opponent": "Monash University 1st XI",
+    "batting": {
+      "runs": 126,
+      "balls": 111,
+      "fours": 15,
+      "sixes": 3,
+      "strikeRate": 113.51,
+      "notOut": false,
+      "didNotBat": false
+    },
+    "bowling": null,
+    "fielding": null
+  },
+  "topBowler": {
+    "playerId": "buwaneka-wakishta",
+    "displayName": "Buwaneka Wakishta",
+    "identifiable": true,
+    "teamSlug": "loc-1",
+    "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+    "round": "Round 3",
+    "date": "2026-10-24T01:30:00.000Z",
+    "opponent": "Monash University 1st XI",
+    "batting": {
+      "runs": 19,
+      "balls": 21,
+      "fours": 2,
+      "sixes": 0,
+      "strikeRate": 90.48,
+      "notOut": false,
+      "didNotBat": false
+    },
+    "bowling": {
+      "overs": 6,
+      "balls": 36,
+      "maidens": 0,
+      "runs": 34,
+      "wickets": 2,
+      "economy": 5.67
+    },
+    "fielding": null
+  },
+  "performances": [
+    {
+      "playerId": "ruranga-jayarathna",
+      "displayName": "Ruranga Jayarathna",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 30,
+        "wickets": 0,
+        "economy": 6
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "yadeesha-deerasooriya",
+      "displayName": "Yadeesha Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 126,
+        "balls": 111,
+        "fours": 15,
+        "sixes": 3,
+        "strikeRate": 113.51,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "udara-usliyanage",
+      "displayName": "Udara Usliyanage",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 21,
+        "balls": 26,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 80.77,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "tharindu-demika",
+      "displayName": "Tharindu Demika",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 1,
+        "balls": 7,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 14.29,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "yasindu-hendavitharana",
+      "displayName": "Yasindu Hendavitharana",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 44,
+        "balls": 60,
+        "fours": 6,
+        "sixes": 0,
+        "strikeRate": 73.33,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "buwaneka-wakishta",
+      "displayName": "Buwaneka Wakishta",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 19,
+        "balls": 21,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 90.48,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 6,
+        "balls": 36,
+        "maidens": 0,
+        "runs": 34,
+        "wickets": 2,
+        "economy": 5.67
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "santhuka-de-silva",
+      "displayName": "Santhuka De Silva",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 3,
+        "balls": 6,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 50,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 45,
+        "wickets": 0,
+        "economy": 5.63
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "dinuth-deerasooriya",
+      "displayName": "Dinuth Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 2,
+        "balls": 2,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 100,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 37,
+        "wickets": 0,
+        "economy": 7.4
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "ivan-udakara",
+      "displayName": "Ivan Udakara",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 42,
+        "wickets": 2,
+        "economy": 5.25
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "pasindu-sunilchandra",
+      "displayName": "Pasindu Sunilchandra",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 7,
+        "balls": 7,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 100,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 39,
+        "wickets": 1,
+        "economy": 4.88
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "thisura-waduge",
+      "displayName": "Thisura Waduge",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 3,
+        "balls": 7,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 42.86,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "janaka-don",
+      "displayName": "Janaka Don",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "9ec9662b-fd3e-4449-b179-92f27b60ef3d",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "Monash University 1st XI",
+      "batting": {
+        "runs": 10,
+        "balls": 19,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 52.63,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": {
+        "catches": 0,
+        "stumpings": 1,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "harith-perera",
+      "displayName": "Harith Perera",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 7,
+        "balls": 42,
+        "maidens": 3,
+        "runs": 24,
+        "wickets": 0,
+        "economy": 3.43
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": "dilhan-rahubadde-kankanange",
+      "displayName": "Dilhan Rahubadde Kankanange",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 6,
+        "balls": 36,
+        "maidens": 0,
+        "runs": 22,
+        "wickets": 0,
+        "economy": 3.67
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "thaushka-herath",
+      "displayName": "Thaushka Herath",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 20,
+        "wickets": 0,
+        "economy": 4
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": "saminda-kaviraja",
+      "displayName": "Saminda Kaviraja",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 13,
+        "wickets": 1,
+        "economy": 2.6
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "kalindu-kumarasinghe",
+      "displayName": "Kalindu Kumarasinghe",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 24,
+        "wickets": 0,
+        "economy": 8
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "shamendra-kannangara",
+      "displayName": "Shamendra Kannangara",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 0,
+        "runs": 10,
+        "wickets": 0,
+        "economy": 2.5
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "Pavan Ariyadasa",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 27,
+        "wickets": 0,
+        "economy": 5.4
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 5,
+        "wickets": 1,
+        "economy": 1
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "nimsara-wijesinghe",
+      "displayName": "Nimsara Wijesinghe",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": {
+        "runs": 0,
+        "balls": 0,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "aruna-perera",
+      "displayName": "Aruna Perera",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "9f84ca5b-7629-494e-9407-5400182df035",
+      "round": "Round 3",
+      "date": "2026-10-24T01:30:00.000Z",
+      "opponent": "St. Pauls Oakleigh 3rd XI",
+      "batting": {
+        "runs": 8,
+        "balls": 7,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 114.29,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    }
+  ]
 }

@@ -5,9 +5,18 @@ import SectionHead from '../../components/SectionHead.astro';
 import EmptyState from '../../components/EmptyState.astro';
 import WeeklyBest from '../../components/WeeklyBest.astro';
 import LeaderTable from '../../components/LeaderTable.astro';
-import { club, season, url } from '../../lib/site';
-import { hasWeeklyStats, hasSeasonStats, weekly, seasonStats } from '../../lib/playhq';
+import DreamTeamGround from '../../components/DreamTeamGround.astro';
+import { club, season, roster, url } from '../../lib/site';
+import { hasWeeklyStats, hasSeasonStats, weekly, seasonStats, seasonProgress } from '../../lib/playhq';
+import { selectDreamTeam } from '../../lib/dream-team';
 
+/*
+  The XI is computed at build time from the committed aggregate, so the page
+  ships as static HTML and changes only when the weekly sync commits new stats.
+*/
+const dreamTeam = hasSeasonStats
+  ? selectDreamTeam(seasonStats.players, roster, seasonProgress)
+  : null;
 ---
 
 <Base title="Stats" description={`Weekly top batter and bowler, plus season leaderboards for ${club.name}.`}>
@@ -26,6 +35,22 @@ import { hasWeeklyStats, hasSeasonStats, weekly, seasonStats } from '../../lib/p
             <WeeklyBest batter={weekly.topBatter} bowler={weekly.topBowler} />
           ) : (
             <EmptyState title="No performances yet" />
+          )
+        }
+      </div>
+    </section>
+
+    <section>
+      <SectionHead
+        title="Team of the season"
+        note={dreamTeam ? `${dreamTeam.picks.length} of 11 named` : 'Opens with the first round'}
+      />
+      <div class="mt-6">
+        {
+          dreamTeam && dreamTeam.picks.length > 0 ? (
+            <DreamTeamGround team={dreamTeam} />
+          ) : (
+            <EmptyState title="The XI opens with the first round" />
           )
         }
       </div>

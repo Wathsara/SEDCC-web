@@ -56,6 +56,12 @@ export interface RosterPlayer {
    * They sort together at the head of the squad, alphabetically between them.
    */
   captaincy?: 'captain' | 'vice-captain';
+  /**
+   * Marks a wicketkeeper. The Dream Team needs one and PlayHQ has no field
+   * that says who keeps — a stumping proves it, but a keeper can go a season
+   * without one. Set it here and the XI stops having to infer it.
+   */
+  keeper?: boolean;
   /** play.cricket.com.au public profile. Not the API's appearance id. */
   profileUrl?: string;
   playhqProfileId?: string;
@@ -66,6 +72,34 @@ export interface RosterPlayer {
 
 /** Roster entries the club currently lists. The example row ships inactive. */
 export const roster = players.players.filter((p) => p.active) as unknown as RosterPlayer[];
+
+/**
+ * The roster entry behind a name PlayHQ gave us, or null for a fill-in.
+ *
+ * PlayHQ spells a player however they registered, which is not always how the
+ * club lists them — hence the aliases in config/players.json. Every page that
+ * wants a player's photograph from a stats row goes through here, so one
+ * spelling fixed in the config fixes the portrait everywhere at once.
+ */
+const rosterByName = new Map<string, RosterPlayer>();
+for (const p of roster) {
+  rosterByName.set(p.name.toLowerCase(), p);
+  for (const alias of p.aliases ?? []) rosterByName.set(alias.toLowerCase(), p);
+}
+
+export function rosterFor(name: string | null | undefined): RosterPlayer | null {
+  if (!name) return null;
+  return rosterByName.get(name.trim().toLowerCase()) ?? null;
+}
+
+/**
+ * The key a portrait is filed under. Falls back to the name so a player the
+ * roster has not caught up with still resolves to the drawn stand-in rather
+ * than to somebody else's face.
+ */
+export function portraitKey(name: string | null | undefined): string {
+  return rosterFor(name)?.id ?? (name ?? '').trim();
+}
 
 /**
  * A side's squad, in the order config/players.json lists them.

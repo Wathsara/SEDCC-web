@@ -401,6 +401,8 @@ export interface SeasonAggregate {
     innings: number; balls: number; overs: string; maidens: number;
     runs: number; wickets: number; average: number | null;
     economy: number | null; best: string;
+    /** Innings of four or more, and of five or more, wickets. */
+    fourWicketHauls: number; fiveWicketHauls: number;
   };
   fielding: { catches: number; stumpings: number; runOuts: number };
 }

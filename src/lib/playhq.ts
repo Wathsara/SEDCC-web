@@ -93,6 +93,31 @@ export const results: GameWithTeam[] = allGames
   .filter((g) => g.status === 'FINAL' || g.outcome !== null)
   .sort((a, b) => time(b) - time(a));
 
+/**
+ * How much of the season has been played, 0 to 1.
+ *
+ * Counted across the club rather than per side, because the Dream Team is one
+ * XI drawn from all three. A side whose association has only published part of
+ * its draw — the VSCA releases Grade 4 in stages — would otherwise read as
+ * nearly finished after two rounds, and drag the club's progress up with it.
+ * The longest published draw is the best estimate of a full season there is.
+ */
+export const seasonProgress: number = (() => {
+  // A bye is not a game here — it sits in its own array on the team — so
+  // games[] needs no filtering before it is counted.
+  const seasons = fixtures.teams.map((t) => {
+    const games = t.games ?? [];
+    return {
+      played: games.filter((g) => g.status === 'FINAL' || g.outcome !== null).length,
+      scheduled: games.length,
+    };
+  });
+  const scheduled = Math.max(0, ...seasons.map((s) => s.scheduled));
+  if (!scheduled) return 0;
+  const played = Math.max(0, ...seasons.map((s) => s.played));
+  return Math.min(1, played / scheduled);
+})();
+
 /** Last few outcomes for a side, most recent first — the form guide. */
 export function form(slug: string, count = 5): NormalisedGame['outcome'][] {
   return results

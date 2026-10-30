@@ -1,5 +1,7 @@
 ---
-import { teamBySlug } from '../lib/site';
+import CricketIcon from './CricketIcon.astro';
+import PlayerPortrait from './PlayerPortrait.astro';
+import { teamBySlug, portraitKey } from '../lib/site';
 import type { SeasonAggregate } from '../lib/playhq-types';
 
 interface Props {
@@ -22,44 +24,243 @@ const teamsOf = (p: SeasonAggregate) =>
 
 /** null average means never dismissed — a dash, not a zero. */
 const num = (v: number | null) => (v === null ? '—' : v.toFixed(2));
+
+/*
+  One row shape for both boards: the headline number the board is ranked on
+  sits alone on the right, and everything that qualifies it — average, teams,
+  innings or overs, best — runs along one meta line underneath.
+*/
+const battingBoard = batters.map((p, i) => ({
+  rank: i + 1,
+  name: p.displayName,
+  count: p.batting.runs,
+  meta: [
+    `@ ${num(p.batting.average)}`,
+    teamsOf(p),
+    `${p.batting.innings} inns`,
+    `HS ${p.batting.highScore}`,
+  ],
+}));
+
+const bowlingBoard = bowlers.map((p, i) => ({
+  rank: i + 1,
+  name: p.displayName,
+  count: p.bowling.wickets,
+  meta: [
+    `@ ${num(p.bowling.average)}`,
+    teamsOf(p),
+    `${p.bowling.overs} ov`,
+    `Best ${p.bowling.best}`,
+  ],
+}));
+
+const boards = [
+  {
+    title: 'Run scorers',
+    icon: 'bat' as const,
+    column: 'Runs',
+    note: 'All sides · top 10',
+    rows: battingBoard,
+  },
+  {
+    title: 'Wicket takers',
+    icon: 'ball' as const,
+    column: 'Wickets',
+    note: 'All sides · top 10',
+    rows: bowlingBoard,
+  },
+];
 ---
 
-<div class="grid gap-12 lg:grid-cols-2">
-  <section>
-    <p class="eyebrow">Runs</p>
-    <ul class="mt-4">
-      {
-        batters.map((p) => (
-          <li class="card-line" data-rule-in>
-            <span class="card-line__name">{p.displayName}</span>
-            <span class="card-line__figures">
-              {p.batting.runs} <span class="text-ink-faint">@ {num(p.batting.average)}</span>
+<div class="grid gap-8 lg:grid-cols-2 lg:items-start">
+  {
+    boards.map((board) => (
+      <section class="tile overflow-hidden border border-rule bg-paper" data-rule-in>
+        {/*
+          The same banner the ladder runs above its table: an icon, the board's
+          name, and on the right the name of the column the rows are sorted on.
+        */}
+        <header class="flex items-center justify-between gap-3 border-b border-rule bg-paper-sunk/70 px-5 py-3.5">
+          <div class="flex items-center gap-2.5">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-club text-paper shadow-sm">
+              <CricketIcon name={board.icon} class="h-3.5 w-3.5" />
             </span>
-            <span class="card-line__context">
-              {teamsOf(p)} · {p.batting.innings} inns · HS {p.batting.highScore}
-            </span>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+            <div>
+              <h3 class="font-display text-sm font-bold uppercase tracking-wider text-club">
+                {board.title}
+              </h3>
+              <p class="font-figures text-2xs text-ink-muted">{board.note}</p>
+            </div>
+          </div>
+          <span class="shrink-0 font-display text-2xs uppercase tracking-eyebrow text-ink-faint">
+            {board.column}
+          </span>
+        </header>
 
-  <section>
-    <p class="eyebrow">Wickets</p>
-    <ul class="mt-4">
-      {
-        bowlers.map((p) => (
-          <li class="card-line" data-rule-in>
-            <span class="card-line__name">{p.displayName}</span>
-            <span class="card-line__figures">
-              {p.bowling.wickets} <span class="text-ink-faint">@ {num(p.bowling.average)}</span>
-            </span>
-            <span class="card-line__context">
-              {teamsOf(p)} · {p.bowling.overs} ov · Best {p.bowling.best}
-            </span>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+        <ul class="px-3.5 sm:px-5">
+          {board.rows.map((row) => (
+            <li class="leader">
+              <span class="leader__rank">{row.rank}</span>
+              <span class="leader__face">
+                <PlayerPortrait id={portraitKey(row.name)} name={row.name} />
+              </span>
+              <span class="leader__name">{row.name}</span>
+              <span class="leader__count">{row.count}</span>
+              <span class="leader__meta">
+                {row.meta.map((bit) => (
+                  <span>{bit}</span>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
 </div>
+
+<style>
+  /*
+    A leaderboard row. It is .card-line with a rank, a face and a headline
+    number added — rather than the shared class itself, which contact and the
+    honour board also use and which has no business growing a portrait.
+
+    The rank and the portrait are fixed-width and span both rows, so every
+    name starts on the same line down the list and the column reads as a
+    ranking. The number the board is sorted on is the only thing on the right,
+    which is what makes it scannable on a phone as well as a laptop.
+  */
+  .leader {
+    display: grid;
+    grid-template-columns: 1.5rem 2.5rem 1fr auto;
+    column-gap: calc(var(--spacing) * 3);
+    row-gap: calc(var(--spacing) * 0.5);
+    align-items: center;
+    padding-block: calc(var(--spacing) * 2.5);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .leader:last-child {
+    border-bottom: 0;
+  }
+
+  .leader__rank {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    color: var(--color-ink-faint);
+  }
+
+  .leader__face {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper-sunk);
+  }
+
+  /* The portrait is another component's element, so a scoped class never
+     reaches it. */
+  .leader__face :global(img),
+  .leader__face :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .leader__name {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: end;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: 1.15;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  .leader__count {
+    grid-column: 4;
+    grid-row: 1;
+    align-self: end;
+    justify-self: end;
+    font-family: var(--font-figures);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /*
+    Everything that qualifies the number. A flex row rather than one string so
+    the separators fall away cleanly when it wraps on a narrow screen.
+  */
+  .leader__meta {
+    grid-column: 3 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+
+  .leader__meta span {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .leader__meta span:first-child {
+    font-family: var(--font-figures);
+    color: var(--color-ink);
+  }
+
+  .leader__meta span + span::before {
+    content: '·';
+    margin-right: 0.5rem;
+    color: var(--color-rule-strong);
+  }
+
+  /*
+    On a phone the name needs every pixel the figures aren't using — a surname
+    like "Andrahennadige" is one word, and squeezed it broke mid-word. The
+    number keeps its corner, the name drops a size, and the meta line gets the
+    full width underneath.
+  */
+  @media (max-width: 560px) {
+    .leader {
+      grid-template-columns: 1rem 2rem 1fr auto;
+      column-gap: calc(var(--spacing) * 2);
+      padding-block: calc(var(--spacing) * 3);
+    }
+
+    .leader__face {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .leader__name {
+      font-size: var(--text-sm);
+    }
+
+    .leader__count {
+      font-size: var(--text-lg);
+    }
+
+    .leader__meta {
+      grid-column: 3 / -1;
+      font-size: var(--text-2xs);
+    }
+  }
+</style>

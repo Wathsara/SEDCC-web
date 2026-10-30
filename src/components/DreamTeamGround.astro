@@ -1,0 +1,609 @@
+---
+/**
+ * The Dream Team, set out on a ground.
+ *
+ * Drawn rather than photographed. A photo of a stadium brought its own light,
+ * its own grass and its own stands into a navy and gold page, and no amount of
+ * washing it down made it belong; drawn, the ground takes the page's colours,
+ * stays sharp at any size, and — the reason it matters here — can be copied
+ * out as a picture, which a background image never could.
+ *
+ * It is one <svg>, so what the page shows and what the copy button puts on the
+ * clipboard are the same artwork at two sizes. Nothing here selects anybody;
+ * src/lib/dream-team.ts returns the eleven and the batting order, and this file
+ * only decides where each one stands.
+ *
+ * Every player's photograph sits above their name, never below it: a face over
+ * a plate reads as one card, and a plate over a face reads as two things that
+ * happen to be near each other. That rules out the two deep straight positions
+ * — there is no room under them for a plate — so the five in the deep are
+ * third man, fine leg, deep point, deep midwicket and a long off brought in.
+ *
+ * Below 560px the graphic is too small to read, so the same eleven are also
+ * listed as cards in batting order. The copy button still copies the full
+ * graphic — the picture does not shrink just because the phone did.
+ */
+import { getImage } from 'astro:assets';
+import { portraitFor } from '../lib/portraits';
+import { nameLines } from '../lib/names';
+import { club, season } from '../lib/site';
+import type { DreamTeam, Pick } from '../lib/dream-team';
+
+interface Props {
+  team: DreamTeam;
+}
+const { team } = Astro.props;
+
+/* ----------------------------------------------------------- geometry -- */
+
+const W = 1400;
+const H = 1560;
+const CX = 700;
+const CY = 870;
+const RX = 650; // the boundary, across
+const RY = 600; // and down — a ground is an oval, not a circle
+const RING = 0.58; // the painted 30-yard circle, as a fraction of the boundary
+const HALF_PITCH = 150; // middle to stumps
+
+const DISC = 48; // portrait radius
+const PW = 184; // name plate width
+const NAME_H = 62;
+const FIG_H = 36;
+const GAP = -14; // the plate laps over the disc, so the two read as one card
+
+interface Spot {
+  label: string;
+  /** Degrees clockwise from the striker's end, which is at the top. */
+  theta: number;
+  /** Distance out, as a fraction of the boundary. */
+  frac: number;
+  /** Plate above the disc rather than below, for fielders too deep for one under them. */
+  above: boolean;
+}
+
+/*
+  The keeper stands behind one set of stumps and the bowler behind the other.
+  The four fielders saving one sit at 0.45 of the boundary, inside the circle.
+
+  The five in the deep are at 0.84 — out near the rope — and each one stands on
+  the bisector of a gap in the ring in front of it, so no deep fielder is
+  directly behind the man inside him. Six markers (keeper, four in the ring,
+  bowler) make six gaps; five are filled and the sixth, behind square on the leg
+  side, is left open the way a real captain leaves one.
+*/
+const KEEPER: Spot = { label: 'Wicketkeeper', theta: 0, frac: 0.5, above: false };
+const MARK: Spot = { label: 'Bowling', theta: 180, frac: 0.5, above: false };
+
+const INNER: Spot[] = [
+  { label: 'Point', theta: 62, frac: 0.45, above: false },
+  { label: 'Cover', theta: 118, frac: 0.45, above: false },
+  { label: 'Mid-on', theta: 242, frac: 0.45, above: false },
+  { label: 'Midwicket', theta: 298, frac: 0.45, above: false },
+];
+
+const OUTER: Spot[] = [
+  { label: 'Third man', theta: 31, frac: 0.8, above: false },
+  { label: 'Deep point', theta: 90, frac: 0.78, above: false },
+  { label: 'Long off', theta: 149, frac: 0.72, above: false },
+  { label: 'Deep midwicket', theta: 270, frac: 0.78, above: false },
+  { label: 'Fine leg', theta: 329, frac: 0.8, above: false },
+];
+
+const at = (s: Spot) => {
+  const a = (s.theta * Math.PI) / 180;
+  return { x: CX + RX * s.frac * Math.sin(a), y: CY - RY * s.frac * Math.cos(a) };
+};
+
+/* -------------------------------------------------------- the eleven -- */
+
+const remaining = [...team.picks];
+const pull = (i: number) => (i < 0 ? null : remaining.splice(i, 1)[0]);
+
+const keeper = pull(remaining.findIndex((p) => p.role === 'keeper'));
+
+/* The mark goes to the best of the attack on bowling points, not on the XI's
+   batting order — the leading wicket-taker usually bats at ten. */
+let best = -1;
+remaining.forEach((p, i) => {
+  if (best === -1 || p.points.bowling > remaining[best].points.bowling) best = i;
+});
+const bowler = pull(best);
+
+/* A spot left empty by a missing keeper is filled from the ring rather than
+   left as a hole in the field. The four closest to the bat are the top order
+   and the five in the deep are the all-rounders and the rest of the attack,
+   which falls out of the batting order the selector already returned. */
+const spots = [...(keeper ? [] : [KEEPER]), ...(bowler ? [] : [MARK]), ...INNER, ...OUTER];
+const placed = [
+  ...(keeper ? [{ spot: KEEPER, pick: keeper }] : []),
+  ...(bowler ? [{ spot: MARK, pick: bowler }] : []),
+  ...remaining.flatMap((pick, i) => (spots[i] ? [{ spot: spots[i], pick }] : [])),
+];
+
+/* Down the ground, so a plate lower on the field overlaps one above it. */
+placed.sort((a, b) => at(a.spot).y - at(b.spot).y);
+
+/** What earned the place, in the fewest characters that still say it. */
+function figures(p: Pick): string {
+  const b = p.player.batting;
+  const w = p.player.bowling;
+  const bat = `${b.runs} R${b.average === null ? '' : ` @ ${Math.round(b.average)}`}`;
+  const ball = `${w.wickets} W${w.average === null ? '' : ` @ ${Math.round(w.average)}`}`;
+
+  if (p.role === 'bowler') return ball;
+  if (p.role === 'all-rounder') return `${b.runs} R · ${w.wickets} W`;
+  if (p.role === 'keeper') {
+    const f = p.player.fielding ?? { catches: 0, stumpings: 0, runOuts: 0 };
+    const d = f.catches + f.stumpings;
+    return d ? `${b.runs} R · ${d} DIS` : bat;
+  }
+  return bat;
+}
+
+/*
+  Portraits go into the SVG as <image>, so they need a plain URL rather than an
+  <Image> component. Width only: the files are 800x1200, and asking for a square
+  crops them down the middle, which on a head-and-shoulders photograph lands on
+  the chest.
+
+  The disc crops instead, and it crops from the bottom: the photograph's top
+  edge is flush with the top of the disc, so whatever else is lost, the head is
+  not. Nudging it up even ten pixels to centre the face took the tops off caps.
+*/
+const players = await Promise.all(
+  placed.map(async ({ spot, pick }) => {
+    const photo = pick.roster ? portraitFor(pick.roster.id) : undefined;
+    const src = photo
+      ? (await getImage({ src: photo, width: 320, format: 'webp' })).src
+      : null;
+    const { given, surname } = nameLines(pick.player.displayName);
+    const pos = at(spot);
+    return {
+      ...pos,
+      label: spot.label,
+      above: spot.above,
+      src,
+      given,
+      surname,
+      figures: figures(pick),
+      captain: pick.captain,
+      role: pick.role,
+      position: pick.position,
+      name: pick.player.displayName,
+      plateY: spot.above ? pos.y - DISC - GAP - (NAME_H + FIG_H) : pos.y + DISC + GAP,
+    };
+  }),
+);
+
+/*
+  Text in an SVG cannot reflow, so a long surname is condensed to exactly the
+  plate's inner width instead of running over it. Ten characters fill the plate
+  at full size; anything longer gets textLength, which squeezes it to fit.
+*/
+const INNER_W = PW - 24;
+const tooLong = (s: string, n: number) => s.length > n;
+
+const pct = Math.round(team.thresholds.progress * 100);
+const stripes = 16;
+---
+
+<div class="dt">
+  <div class="dt-bar">
+    <button type="button" class="dt-copy" data-dt-copy>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+        <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"></path>
+      </svg>
+      <span data-dt-label>Copy image</span>
+    </button>
+  </div>
+
+  <svg
+    class="dt-svg"
+    data-dt-svg
+    viewBox={`0 0 ${W} ${H}`}
+    width={W}
+    height={H}
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label={`${club.name} team of the season, eleven players`}
+  >
+    <style>
+      {`
+        .f-d { font-family: 'Oswald','Archivo Narrow',ui-sans-serif,system-ui,sans-serif; }
+        .f-m { font-family: 'JetBrains Mono',ui-monospace,Menlo,monospace; }
+      `}
+    </style>
+
+    <defs>
+      <clipPath id="dt-turf"><ellipse cx={CX} cy={CY} rx={RX} ry={RY} /></clipPath>
+      {
+        players.map((p, i) => (
+          <clipPath id={`dt-face-${i}`}>
+            <circle cx={p.x} cy={p.y} r={DISC} />
+          </clipPath>
+        ))
+      }
+      <radialGradient id="dt-light" cx="50%" cy="38%" r="72%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+        <stop offset="62%" stop-color="#ffffff" stop-opacity="0" />
+        <stop offset="100%" stop-color="#0d3a22" stop-opacity="0.42" />
+      </radialGradient>
+      <linearGradient id="dt-wall" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1d5133" />
+        <stop offset="100%" stop-color="#143a25" />
+      </linearGradient>
+      <filter id="dt-drop" x="-30%" y="-30%" width="160%" height="170%">
+        <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0b2b1a" flood-opacity="0.34" />
+      </filter>
+    </defs>
+
+    {/* The sheet the ground sits on, so the graphic is finished once copied. */}
+    <rect width={W} height={H} fill="#f4f3ee" />
+
+    {/*
+      The ground, given a side wall and set down on it. A flat disc of green
+      reads as a sticker; the wall underneath is what makes it a ground you are
+      looking down at.
+    */}
+    <ellipse cx={CX} cy={CY + 26} rx={RX} ry={RY} fill="url(#dt-wall)" />
+    <g clip-path="url(#dt-turf)">
+      {
+        Array.from({ length: stripes }).map((_, i) => (
+          <rect
+            x={CX - RX + (i * 2 * RX) / stripes}
+            y={CY - RY}
+            width={(2 * RX) / stripes}
+            height={2 * RY}
+            fill={i % 2 === 0 ? '#3d8b56' : '#42935c'}
+          />
+        ))
+      }
+
+      {/* The square: a worn strip, creases at both ends, three stumps on each. */}
+      <rect x={CX - 52} y={CY - HALF_PITCH - 28} width="104" height={2 * HALF_PITCH + 56}
+        rx="6" fill="#cdbf9f" opacity="0.88" />
+      <rect x={CX - 52} y={CY - HALF_PITCH - 28} width="104" height={2 * HALF_PITCH + 56}
+        rx="6" fill="none" stroke="#b5a582" stroke-width="2" opacity="0.5" />
+      {
+        [CY - HALF_PITCH, CY + HALF_PITCH].map((y) => (
+          <g stroke="#fbf7ec" stroke-width="3" opacity="0.9">
+            <line x1={CX - 46} y1={y} x2={CX + 46} y2={y} />
+            <line x1={CX - 27} y1={y - 24} x2={CX - 27} y2={y + 24} />
+            <line x1={CX + 27} y1={y - 24} x2={CX + 27} y2={y + 24} />
+          </g>
+        ))
+      }
+      {
+        [CY - HALF_PITCH, CY + HALF_PITCH].map((y) => (
+          <g stroke="#ffffff" stroke-width="3.5" stroke-linecap="round">
+            <line x1={CX - 12} y1={y - 17} x2={CX - 12} y2={y + 1} />
+            <line x1={CX} y1={y - 17} x2={CX} y2={y + 1} />
+            <line x1={CX + 12} y1={y - 17} x2={CX + 12} y2={y + 1} />
+          </g>
+        ))
+      }
+
+      {/* The thirty-yard circle, then the light across the ground. */}
+      <ellipse cx={CX} cy={CY} rx={RX * RING} ry={RY * RING} fill="none" stroke="#ffffff"
+        stroke-width="3" opacity="0.3" stroke-dasharray="20 16" />
+      <rect x={CX - RX} y={CY - RY} width={2 * RX} height={2 * RY} fill="url(#dt-light)" />
+    </g>
+
+    {/* The rope, and the club's colour around it. */}
+    <ellipse cx={CX} cy={CY} rx={RX - 5} ry={RY - 5} fill="none" stroke="#ffffff"
+      stroke-width="5" opacity="0.92" />
+    <ellipse cx={CX} cy={CY} rx={RX} ry={RY} fill="none" stroke="#dfb74c" stroke-width="4" />
+
+    {/* The title card, sat over the top of the ground the way the board is. */}
+    <g filter="url(#dt-drop)">
+      <rect x={CX - 280} y="44" width="560" height="152" rx="14" fill="#0f1c3f" />
+      <rect x={CX - 280} y="44" width="560" height="152" rx="14" fill="none"
+        stroke="#dfb74c" stroke-width="2" opacity="0.65" />
+    </g>
+    <text x={CX} y="112" class="f-d" text-anchor="middle" fill="#ffffff" font-size="56"
+      letter-spacing="9">DREAM TEAM</text>
+    <text x={CX} y="158" class="f-m" text-anchor="middle" fill="#dfb74c" font-size="21"
+      letter-spacing="5">{season.label.toUpperCase()} · {pct}% PLAYED</text>
+
+    {/* ------------------------------------------------------ the eleven -- */}
+    {
+      players.map((p, i) => (
+        <g>
+          <title>{`${p.position}. ${p.name} — ${p.label}`}</title>
+
+          <circle cx={p.x} cy={p.y + 4} r={DISC} fill="#05112b" opacity="0.45" />
+          <circle cx={p.x} cy={p.y} r={DISC} fill="#0f1c3f" />
+          {
+            p.src ? (
+              <image
+                href={p.src}
+                x={p.x - DISC}
+                y={p.y - DISC}
+                width={DISC * 2}
+                height={DISC * 3}
+                preserveAspectRatio="xMidYMin slice"
+                clip-path={`url(#dt-face-${i})`}
+              />
+            ) : (
+              /* Head and shoulders, sitting on the base line so it crops the
+                 way a real portrait does. */
+              <g clip-path={`url(#dt-face-${i})`} fill="#1c3069">
+                <circle cx={p.x} cy={p.y - 10} r={19} />
+                <path
+                  d={`M ${p.x} ${p.y + 14} a 30 30 0 0 1 30 30 l 0 10 l -60 0 l 0 -10 a 30 30 0 0 1 30 -30 z`}
+                />
+              </g>
+            )
+          }
+          <circle cx={p.x} cy={p.y} r={DISC} fill="none" stroke="#f7f6f2" stroke-width="3.5" />
+
+          {/* The plate: the name light, the figures that won the place dark. */}
+          <g transform={`translate(${p.x - PW / 2} ${p.plateY})`}>
+            <rect x="0" y="3" width={PW} height={NAME_H + FIG_H} rx="5" fill="#05112b" opacity="0.4" />
+            <path d={`M0 5 a5 5 0 0 1 5 -5 h${PW - 10} a5 5 0 0 1 5 5 v${NAME_H - 5} h${-PW} z`} fill="#f7f6f2" />
+            <path
+              d={`M0 ${NAME_H} h${PW} v${FIG_H - 5} a5 5 0 0 1 -5 5 h${-(PW - 10)} a5 5 0 0 1 -5 -5 z`}
+              fill="#0b1530"
+            />
+
+            <text
+              x={PW / 2}
+              y="25"
+              class="f-d"
+              text-anchor="middle"
+              fill="#5b6068"
+              font-size="18"
+              letter-spacing="1"
+              textLength={tooLong(p.given, 12) ? INNER_W : undefined}
+              lengthAdjust={tooLong(p.given, 12) ? 'spacingAndGlyphs' : undefined}
+            >
+              {p.given.toUpperCase()}
+            </text>
+            <text
+              x={PW / 2}
+              y="52"
+              class="f-d"
+              text-anchor="middle"
+              fill="#0f1c3f"
+              font-size="27"
+              letter-spacing="0.3"
+              textLength={tooLong(p.surname, 9) ? INNER_W : undefined}
+              lengthAdjust={tooLong(p.surname, 9) ? 'spacingAndGlyphs' : undefined}
+            >
+              {p.surname.toUpperCase()}
+            </text>
+            <text x={PW / 2} y={NAME_H + 25} class="f-m" text-anchor="middle" fill="#dfb74c" font-size="21">
+              {p.figures}
+            </text>
+
+            {
+              p.captain && (
+                <g transform={`translate(${PW - 26} 8)`}>
+                  <rect width="22" height="22" rx="4" fill="#dfb74c" />
+                  <text x="11" y="17" class="f-d" text-anchor="middle" fill="#0f1c3f" font-size="16">
+                    C
+                  </text>
+                </g>
+              )
+            }
+          </g>
+          {/*
+            The job, on the top shoulder. On the bottom it landed on the given
+            name, which the plate now laps up to.
+          */}
+          <g transform={`translate(${p.x + 34} ${p.y - 34})`}>
+            <circle r={p.role === 'all-rounder' ? 20 : 17} fill="#dfb74c" stroke="#0f1c3f" stroke-width="2.5" />
+            {
+              p.role === 'all-rounder' ? (
+                <g>
+                  <g transform="translate(-9 0) rotate(32)">
+                    <rect x="-3" y="-1" width="6" height="10" rx="2.4" fill="#0f1c3f" />
+                    <line x1="0" y1="-1.5" x2="0" y2="-8" stroke="#0f1c3f" stroke-width="2.4"
+                      stroke-linecap="round" />
+                  </g>
+                  <g transform="translate(10 1)">
+                    <circle r="6.6" fill="#0f1c3f" />
+                    <path d="M-4 -5.3 A 7.8 7.8 0 0 0 -4 5.3" stroke="#dfb74c" stroke-width="1.5"
+                      fill="none" stroke-linecap="round" />
+                  </g>
+                </g>
+              ) : p.role === 'bowler' ? (
+                <g>
+                  <circle r="8" fill="#0f1c3f" />
+                  <path d="M-4.8 -6.4 A 9.4 9.4 0 0 0 -4.8 6.4" stroke="#dfb74c" stroke-width="1.7"
+                    fill="none" stroke-linecap="round" />
+                  <path d="M4.8 -6.4 A 9.4 9.4 0 0 1 4.8 6.4" stroke="#dfb74c" stroke-width="1.7"
+                    fill="none" stroke-linecap="round" />
+                </g>
+              ) : p.role === 'keeper' ? (
+                <g stroke="#0f1c3f" stroke-width="2.3" stroke-linecap="round">
+                  <line x1="-6" y1="-6" x2="-6" y2="8" />
+                  <line x1="0" y1="-6" x2="0" y2="8" />
+                  <line x1="6" y1="-6" x2="6" y2="8" />
+                  <line x1="-8.5" y1="-7.5" x2="8.5" y2="-7.5" />
+                </g>
+              ) : (
+                <g transform="rotate(34)">
+                  <rect x="-3.6" y="-1" width="7.2" height="12" rx="2.8" fill="#0f1c3f" />
+                  <line x1="0" y1="-1.5" x2="0" y2="-9.5" stroke="#0f1c3f" stroke-width="2.8"
+                    stroke-linecap="round" />
+                </g>
+              )
+            }
+          </g>
+        </g>
+      ))
+    }
+
+    <text x={W / 2} y={H - 34} class="f-m" text-anchor="middle" fill="#6b7280" font-size="20"
+      letter-spacing="5">{club.name.toUpperCase()}</text>
+  </svg>
+
+</div>
+
+<style>
+  .dt {
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+
+  .dt-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+  }
+
+  .dt-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--color-rule-strong);
+    background: var(--color-paper);
+    font-family: var(--font-display);
+    font-size: var(--text-2xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-ink);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .dt-copy:hover,
+  .dt-copy:focus-visible {
+    background: var(--color-club);
+    border-color: var(--color-club);
+    color: var(--color-paper);
+  }
+
+  .dt-copy[data-busy] {
+    cursor: progress;
+    opacity: 0.7;
+  }
+
+  .dt-copy svg {
+    width: 0.9rem;
+    height: 0.9rem;
+    flex: none;
+  }
+
+  .dt-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+<script>
+  /*
+    Copy the graphic as a PNG.
+
+    The artwork is already one <svg>, so there is nothing to rasterise a page
+    with — the SVG is serialised, drawn into a canvas at twice its size and put
+    on the clipboard. The one catch is the portraits: an SVG loaded through an
+    <img> cannot fetch anything, so each <image> href is read and swapped for a
+    data URI first. They are same-origin, so nothing taints the canvas.
+
+    Safari only allows a clipboard write inside the gesture that started it, and
+    only accepts a promise for the blob; Chrome and Firefox accept either. The
+    promise form is tried first and the resolved-blob form second. Where the
+    clipboard is unavailable altogether the picture is downloaded instead, and
+    the button says so rather than appearing to do nothing.
+  */
+  const SCALE = 2;
+
+  async function asDataUri(url: string): Promise<string> {
+    const res = await fetch(url);
+    const blob = await res.blob();
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result));
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function render(svg: SVGSVGElement): Promise<Blob> {
+    const clone = svg.cloneNode(true) as SVGSVGElement;
+    const w = Number(svg.getAttribute('width'));
+    const h = Number(svg.getAttribute('height'));
+
+    await Promise.all(
+      [...clone.querySelectorAll('image')].map(async (node) => {
+        const href = node.getAttribute('href') ?? node.getAttribute('xlink:href');
+        if (!href || href.startsWith('data:')) return;
+        node.setAttribute('href', await asDataUri(href));
+        node.removeAttribute('xlink:href');
+      }),
+    );
+
+    const xml = new XMLSerializer().serializeToString(clone);
+    const img = new Image();
+    img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(xml)}`;
+    await img.decode();
+
+    const canvas = document.createElement('canvas');
+    canvas.width = w * SCALE;
+    canvas.height = h * SCALE;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('no canvas context');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    return new Promise((resolve, reject) =>
+      canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error('no blob'))), 'image/png'),
+    );
+  }
+
+  function download(blob: Blob) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'dream-team.png';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-dt-copy]').forEach((button) => {
+    const label = button.querySelector('[data-dt-label]');
+    const root = button.closest('.dt');
+    const svg = root?.querySelector<SVGSVGElement>('[data-dt-svg]');
+    if (!svg || !label) return;
+
+    const say = (text: string) => {
+      label.textContent = text;
+      setTimeout(() => (label.textContent = 'Copy image'), 2600);
+    };
+
+    button.addEventListener('click', async () => {
+      if (button.dataset.busy) return;
+      button.dataset.busy = 'true';
+      label.textContent = 'Copying…';
+
+      try {
+        if (typeof ClipboardItem === 'undefined' || !navigator.clipboard?.write) {
+          download(await render(svg));
+          say('Downloaded');
+          return;
+        }
+
+        try {
+          await navigator.clipboard.write([new ClipboardItem({ 'image/png': render(svg) })]);
+        } catch {
+          await navigator.clipboard.write([
+            new ClipboardItem({ 'image/png': await render(svg) }),
+          ]);
+        }
+        say('Copied');
+      } catch {
+        try {
+          download(await render(svg));
+          say('Downloaded');
+        } catch {
+          say('Could not copy');
+        }
+      } finally {
+        delete button.dataset.busy;
+      }
+    });
+  });
+</script>

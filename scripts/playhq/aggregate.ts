@@ -213,6 +213,7 @@ function aggregate(allPerformances: Performance[]): SeasonAggregate[] {
         bowling: {
           innings: 0, balls: 0, overs: '0.0', maidens: 0, runs: 0,
           wickets: 0, average: null, economy: null, best: '—',
+          fourWicketHauls: 0, fiveWicketHauls: 0,
         },
         fielding: { catches: 0, stumpings: 0, runOuts: 0 },
       });
@@ -245,6 +246,8 @@ function aggregate(allPerformances: Performance[]): SeasonAggregate[] {
       agg.bowling.maidens += p.bowling.maidens;
       agg.bowling.runs += p.bowling.runs;
       agg.bowling.wickets += p.bowling.wickets;
+      if (p.bowling.wickets >= 5) agg.bowling.fiveWicketHauls++;
+      else if (p.bowling.wickets >= 4) agg.bowling.fourWicketHauls++;
 
       const bb = bestBowling.get(key);
       if (!bb || p.bowling.wickets > bb.w || (p.bowling.wickets === bb.w && p.bowling.runs < bb.r)) {
@@ -292,16 +295,27 @@ async function main() {
     readJson<{ teams: TeamFixtures[] }>(resolve(DATA_DIR, 'fixtures.json')).catch(() => ({ teams: [] })),
   ]);
 
+  /*
+    Which teams are ours. The config is the stated source of truth, but it
+    holds the IDs only once someone has pasted them in after a discover run —
+    and the sync already resolves them and writes them into fixtures.json on
+    every run. Reading the config alone meant three rounds of real cricket
+    aggregated to nothing while every page said "no performances yet": the
+    data was there and this step threw it away. The config still wins where
+    it is filled in.
+  */
   const ourTeamIds = new Set<string>();
-  for (const team of season.teams) {
-    if (team.playhqTeamId) {
-      ourTeamIds.add(team.playhqTeamId);
-      teamSlugByPlayhqId.set(team.playhqTeamId, team.slug);
-    }
-  }
+  const addTeam = (id: string | null | undefined, slug: string) => {
+    if (!id || ourTeamIds.has(id)) return;
+    ourTeamIds.add(id);
+    teamSlugByPlayhqId.set(id, slug);
+  };
+
+  for (const team of season.teams) addTeam(team.playhqTeamId, team.slug);
+  for (const team of fixtures.teams ?? []) addTeam(team.teamId, team.slug);
 
   if (ourTeamIds.size === 0) {
-    log.warn('No PlayHQ team IDs configured yet — writing empty stat files.');
+    log.warn('No PlayHQ team IDs yet, in the config or the synced fixtures — writing empty stat files.');
   }
 
   const index = buildNameIndex(roster.players);

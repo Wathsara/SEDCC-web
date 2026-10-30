@@ -1,5 +1,14 @@
 {
-  "generatedAt": "2026-10-29T23:12:20.174Z",
+  "generatedAt": "2026-10-30T07:40:41.107Z",
   "note": "Names in PlayHQ scorecards with no match in config/players.json. Add each as a new player or as an alias of an existing one.",
-  "names": []
+  "names": [
+    {
+      "name": "Janaka Muthukumarana",
+      "appearances": 1
+    },
+    {
+      "name": "Pavan Ariyadasa",
+      "appearances": 1
+    }
+  ]
 }

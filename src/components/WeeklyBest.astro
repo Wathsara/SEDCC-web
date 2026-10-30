@@ -1,7 +1,8 @@
 ---
 import CricketIcon from './CricketIcon.astro';
+import PlayerPortrait from './PlayerPortrait.astro';
 import { formatDate } from '../lib/format';
-import { teamBySlug } from '../lib/site';
+import { teamBySlug, portraitKey } from '../lib/site';
 import type { Performance } from '../lib/playhq-types';
 
 interface Props {
@@ -32,8 +33,24 @@ const entries = [
             <CricketIcon name={icon} class="h-4 w-4 text-accent" />
           </div>
         </div>
-        <p class="mt-4 font-display text-2xl uppercase tracking-wide text-club">{p.displayName}</p>
-        <p class="mt-1 font-figures text-4xl font-bold tabular-nums text-ink">{figures}</p>
+        {/*
+          The face first, then the name. A week's best performance is a person,
+          and the card was the one place on the page that named one without
+          showing them.
+        */}
+        <div class="mt-4 flex items-center gap-4">
+          <span class="h-16 w-16 shrink-0 overflow-hidden rounded-full border border-rule bg-paper-sunk">
+            <PlayerPortrait
+              id={portraitKey(p.displayName)}
+              name={p.displayName}
+              class="h-full w-full object-cover object-top"
+            />
+          </span>
+          <div class="min-w-0">
+            <p class="font-display text-2xl uppercase tracking-wide text-club">{p.displayName}</p>
+            <p class="mt-0.5 font-figures text-4xl font-bold tabular-nums text-ink">{figures}</p>
+          </div>
+        </div>
         <p class="mt-3 text-sm text-ink-muted border-t border-rule pt-3">
           {teamBySlug(p.teamSlug)?.shortName ?? p.teamSlug} · {p.round} v {p.opponent} ·{' '}
           {formatDate(p.date, { day: 'numeric', month: 'short' })}

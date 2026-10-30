@@ -274,7 +274,11 @@ const loc2Team = teams.find((t) => t.slug === 'loc-2');
             VSCA Grade 4 Tournament Centre
           </h2>
           <p class="mt-1 text-xs text-ink-muted">
-            Runners-up in 2025/26. The VSCA draw is published ahead of the October start.
+            {
+              grade4Fixtures && grade4Fixtures.games.length > 0
+                ? `Runners-up in 2025/26. ${grade4Fixtures.games.length} ${grade4Fixtures.games.length === 1 ? 'round' : 'rounds'} of the VSCA draw are out — the rest follow as the association declares them.`
+                : 'Runners-up in 2025/26. The VSCA draw is published ahead of the October start.'
+            }
           </p>
         </div>
         <div class="flex items-center gap-3">
@@ -287,57 +291,93 @@ const loc2Team = teams.find((t) => t.slug === 'loc-2');
         </div>
       </div>
 
-      {/* Premium IPL-Style "Coming Soon" Tournament Stage */}
-      <div class="tile overflow-hidden border border-rule bg-paper p-8 text-center shadow-tile">
-        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-club text-paper shadow-md">
-          <Logo class="h-10 w-10" width={40} />
-        </div>
+      {
+        grade4Fixtures && grade4Fixtures.games.length > 0 ? (
+          <>
+            {/* Grade 4: Fixtures View */}
+            <div data-view-content="fixtures" class="space-y-6">
+              <div class="flex items-center justify-between">
+                <SectionHead
+                  title="Grade 4 Match Schedule"
+                  note={`${grade4Fixtures.games.length} ${grade4Fixtures.games.length === 1 ? 'round' : 'rounds'} published`}
+                />
+              </div>
+              <FixtureList team={grade4Fixtures} />
+              <p class="text-2xs text-ink-muted">
+                The VSCA declares the Grade 4 draw in stages. Remaining rounds appear here
+                automatically after the weekly sync.
+              </p>
+            </div>
+
+            {/* Grade 4: Ladder View */}
+            <div data-view-content="ladder" class="space-y-6 hidden">
+              <div class="flex items-center justify-between">
+                <SectionHead title="Grade 4 Points Table" note="Official VSCA Standings" />
+              </div>
+              {
+                grade4Ladder && grade4Ladder.ladders.length > 0 ? (
+                  <LadderTable grade={grade4Ladder} />
+                ) : (
+                  <div class="tile p-8 text-center text-ink-muted">
+                    The ladder opens once the first round is played.
+                  </div>
+                )
+              }
+            </div>
+          </>
+        ) : (
+        <div class="tile overflow-hidden border border-rule bg-paper p-8 text-center shadow-tile">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-club text-paper shadow-md">
+            <Logo class="h-10 w-10" width={40} />
+          </div>
         
-          <p class="mt-5 font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
-            VSCA draw published in October
+            <p class="mt-5 font-display text-2xs uppercase tracking-eyebrow text-ink-muted">
+              VSCA draw published in October
+            </p>
+
+          <h3 class="mt-4 font-display text-2xl sm:text-3xl uppercase tracking-tight text-club font-bold">
+            Grade 4 Fixtures & Standings
+          </h3>
+          <p class="mx-auto mt-2 max-w-xl text-sm text-ink-muted leading-relaxed">
+            The Victorian Sunday Cricket Association is currently compiling the 2026/27 division fixtures. As soon as the official draw is declared, live match cards and the competition ladder will synchronize here automatically.
           </p>
 
-        <h3 class="mt-4 font-display text-2xl sm:text-3xl uppercase tracking-tight text-club font-bold">
-          Grade 4 Fixtures & Standings
-        </h3>
-        <p class="mx-auto mt-2 max-w-xl text-sm text-ink-muted leading-relaxed">
-          The Victorian Sunday Cricket Association is currently compiling the 2026/27 division fixtures. As soon as the official draw is declared, live match cards and the competition ladder will synchronize here automatically.
-        </p>
+          {/* Tournament Highlights Bento */}
+          <div class="mt-8 grid gap-4 sm:grid-cols-3 text-left">
+            <div class="tile bg-paper-sunk/60 p-4 border border-rule">
+              <p class="font-figures text-2xs uppercase text-ink-faint">Matchday</p>
+              <p class="mt-1 font-display text-base uppercase text-club font-bold">Every Sunday</p>
+              <p class="mt-1 text-2xs text-ink-muted">1:00 PM – 40 Overs Format</p>
+            </div>
+            <div class="tile bg-paper-sunk/60 p-4 border border-rule">
+              <p class="font-figures text-2xs uppercase text-ink-faint">Home Ground</p>
+              <p class="mt-1 font-display text-base uppercase text-club font-bold">{homeGroundLabel}</p>
+              <p class="mt-1 text-2xs text-ink-muted">Endeavour Hills, Victoria</p>
+            </div>
+            <div class="tile bg-paper-sunk/60 p-4 border border-rule">
+              <p class="font-figures text-2xs uppercase text-ink-faint">Last season</p>
+              <p class="mt-1 font-display text-base uppercase text-club font-bold">Runners-up</p>
+              <p class="mt-1 text-2xs text-ink-muted">VSCA Grade 4, 2025/26</p>
+            </div>
+          </div>
 
-        {/* Tournament Highlights Bento */}
-        <div class="mt-8 grid gap-4 sm:grid-cols-3 text-left">
-          <div class="tile bg-paper-sunk/60 p-4 border border-rule">
-            <p class="font-figures text-2xs uppercase text-ink-faint">Matchday</p>
-            <p class="mt-1 font-display text-base uppercase text-club font-bold">Every Sunday</p>
-            <p class="mt-1 text-2xs text-ink-muted">1:00 PM – 40 Overs Format</p>
-          </div>
-          <div class="tile bg-paper-sunk/60 p-4 border border-rule">
-            <p class="font-figures text-2xs uppercase text-ink-faint">Home Ground</p>
-            <p class="mt-1 font-display text-base uppercase text-club font-bold">{homeGroundLabel}</p>
-            <p class="mt-1 text-2xs text-ink-muted">Endeavour Hills, Victoria</p>
-          </div>
-          <div class="tile bg-paper-sunk/60 p-4 border border-rule">
-            <p class="font-figures text-2xs uppercase text-ink-faint">Last season</p>
-            <p class="mt-1 font-display text-base uppercase text-club font-bold">Runners-up</p>
-            <p class="mt-1 text-2xs text-ink-muted">VSCA Grade 4, 2025/26</p>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={url('teams/grade-4')}
+              class="bg-club px-6 py-2.5 font-display text-xs uppercase tracking-wider text-paper transition-colors hover:bg-club-tint font-semibold shadow-sm"
+            >
+              Explore Grade 4 Squad
+            </a>
+            <a
+              href={url('seasons/2025-26')}
+              class="border border-rule-strong bg-paper px-6 py-2.5 font-display text-xs uppercase tracking-wider text-ink transition-colors hover:bg-paper-sunk font-semibold"
+            >
+                View 2025/26 season
+            </a>
           </div>
         </div>
-
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href={url('teams/grade-4')}
-            class="bg-club px-6 py-2.5 font-display text-xs uppercase tracking-wider text-paper transition-colors hover:bg-club-tint font-semibold shadow-sm"
-          >
-            Explore Grade 4 Squad
-          </a>
-          <a
-            href={url('seasons/2025-26')}
-            class="border border-rule-strong bg-paper px-6 py-2.5 font-display text-xs uppercase tracking-wider text-ink transition-colors hover:bg-paper-sunk font-semibold"
-          >
-              View 2025/26 season
-          </a>
-        </div>
-      </div>
+        )
+      }
     </div>
 
   </div>

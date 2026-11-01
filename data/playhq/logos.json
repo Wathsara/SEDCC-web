@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-01T10:00:46.385Z",
+  "syncedAt": "2026-11-01T22:40:13.405Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -816,14 +816,14 @@
     },
     "melbourne-crickeroos": {
       "name": "Melbourne Crickeroos",
-      "file": "data/playhq/logos/melbourne-crickeroos.png",
+      "file": "data/playhq/logos/melbourne-crickeroos.jpg",
       "teamIds": [
         "f5eac593-e610-4777-bf08-3b2510c1b884",
         "26bc875c-8c83-4e42-932d-ef36398eb298",
         "3cd5aa0c-c20b-4452-b2e6-798c5cfebb48"
       ],
       "matchKey": "melbournecrickeroos",
-      "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/b415eafe-5ebc-4a97-8dde-59b6e29ecb8b/1685236307106/logo.png?_a=BAMAMifg0"
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/b415eafe-5ebc-4a97-8dde-59b6e29ecb8b/1793529688007/logo.jpg?_a=BAMAMifg0"
     },
     "melbourne-districts-united-cricket-club": {
       "name": "Melbourne Districts United Cricket Club",

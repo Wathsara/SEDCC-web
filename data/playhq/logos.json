@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-30T07:40:40.624Z",
+  "syncedAt": "2026-11-01T10:00:46.385Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -772,28 +772,13 @@
       "matchKey": "easternrebels",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/0568302d-7900-4c55-bad9-e73c4cd1e0f2/1728381358242/logo.jpg?_a=BAMAMifg0"
     },
-    "victorian-sunday-cricket-club": {
-      "name": "Victorian Sunday Cricket Club",
-      "file": "data/playhq/logos/victorian-sunday-cricket-club.jpg",
-      "teamIds": [
-        "2837a8ce-ed5f-480a-8023-48ade43962bc",
-        "84c99e99-a3c8-43cb-9a1b-cd6c044cbde9",
-        "db1f4584-fdda-423b-858d-a52f25e8dd10",
-        "6b1d24c2-9b83-4cc4-a94e-71eb198dcc64",
-        "63782048-828c-4a11-b175-57f9090fbee9",
-        "1c104d2f-8826-430a-9151-a33d25a45ae7",
-        "c6eed3a3-8337-4df9-a608-34e2cd529774"
-      ],
-      "matchKey": "victoriansunday",
-      "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/49a65098-01e2-4d0f-a5c0-1fcf946474c1/1725602300867/logo.jpg?_a=BAMAMifg0"
-    },
     "hartley-cricket-club-vic": {
       "name": "Hartley Cricket Club (VIC)",
       "file": "data/playhq/logos/hartley-cricket-club-vic.jpg",
       "teamIds": [
         "8c254f3a-8b87-4ad0-aa74-6bad093c935a"
       ],
-      "matchKey": "hartleyvic",
+      "matchKey": "hartley",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/4232cb5e-9084-44ed-9cc9-e4d2d72b54fa/1686705761689/logo.jpg?_a=BAMAMifg0"
     },
     "kerala-strikers-inc": {
@@ -926,7 +911,7 @@
         "57cc9b84-ec3d-4b4a-875a-b1177e752846",
         "d2829a5e-4638-4b9d-b3ff-f9a338cab50b"
       ],
-      "matchKey": "southernwarriorsvic",
+      "matchKey": "southernwarriors",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/ce4bdeda-4eef-46a5-a4be-1f2aabed7d19/1725569560137/logo.png?_a=BAMAMifg0"
     },
     "thunders-sports-club": {

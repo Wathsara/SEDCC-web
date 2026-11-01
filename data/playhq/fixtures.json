@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-31T22:22:57.974Z",
+  "syncedAt": "2026-11-01T10:00:46.386Z",
   "season": "2026-27",
   "teams": [
     {
@@ -748,7 +748,7 @@
       "games": [
         {
           "id": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 1",
           "roundShort": "R1",
@@ -758,11 +758,271 @@
           ],
           "isHome": false,
           "opponent": "Casey Falcons Grade 4",
-          "outcome": null,
+          "outcome": "LOST",
           "venue": "Heatherbrae Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "OFFICER",
           "mapQuery": "Heatherbrae%20Recreation%20Reserve%2C%20OFFICER%2C%20VIC",
+          "ourScore": "135 (37.4 ov)",
+          "theirScore": "155 (34 ov)"
+        },
+        {
+          "id": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 2",
+          "roundShort": "R2",
+          "isFinal": false,
+          "dates": [
+            "2026-11-08T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Eastern Rebels  Senior Men 4",
+          "outcome": null,
+          "venue": "Tatterson Park",
+          "ground": "Tatterson Park - East Oval",
+          "suburb": "KEYSBOROUGH",
+          "mapQuery": "Tatterson%20Park%2C%20KEYSBOROUGH%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "1c6b2466-5622-4698-a748-b0f3e862523e",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 3",
+          "roundShort": "R3",
+          "isFinal": false,
+          "dates": [
+            "2026-11-15T02:00:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Melbourne Titans - 4",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "816af032-0a87-4404-8dc9-610cca7039fe",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 4",
+          "roundShort": "R4",
+          "isFinal": false,
+          "dates": [
+            "2026-11-22T02:00:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Melbourne Crickeroos Grade 4",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "7afeda50-6d7f-4318-8a15-8f6648fe79c0",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 5",
+          "roundShort": "R5",
+          "isFinal": false,
+          "dates": [
+            "2026-11-29T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Hartley CC - 4",
+          "outcome": null,
+          "venue": "Charles Green Recreation Reserve",
+          "ground": "Charles Green Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Charles%20Green%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "2c5429df-6469-48d3-8905-161722637bb3",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 6",
+          "roundShort": "R6",
+          "isFinal": false,
+          "dates": [
+            "2026-12-06T02:00:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Ocean XI - Grade 4",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "b6027aa5-7789-4cd3-b7bb-69bcff57db7a",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 7",
+          "roundShort": "R7",
+          "isFinal": false,
+          "dates": [
+            "2026-12-13T02:00:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Melbourne Knights Grade 4",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "eb1ac8d2-0df9-4be7-8f7e-20727c7cd795",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 8",
+          "roundShort": "R8",
+          "isFinal": false,
+          "dates": [
+            "2027-01-03T02:00:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Casey Falcons Grade 4",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "f9bb7954-d504-4675-b9be-9cf45fe280b2",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 9",
+          "roundShort": "R9",
+          "isFinal": false,
+          "dates": [
+            "2027-01-10T02:00:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Eastern Rebels  Senior Men 4",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "c5d5d3a4-f936-46e3-8f45-3474f89134b3",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 10",
+          "roundShort": "R10",
+          "isFinal": false,
+          "dates": [
+            "2027-01-17T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Melbourne Titans - 4",
+          "outcome": null,
+          "venue": "McNabb Recreation Reserve",
+          "ground": "Oval 1 (East)",
+          "suburb": "Cranbourne West",
+          "mapQuery": "McNabb%20Recreation%20Reserve%2C%20Cranbourne%20West%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "e36789d5-1d35-40ab-83ec-462a3aef9137",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 11",
+          "roundShort": "R11",
+          "isFinal": false,
+          "dates": [
+            "2027-01-24T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Melbourne Crickeroos Grade 4",
+          "outcome": null,
+          "venue": "Carlisle Park Reserve",
+          "ground": "Carlisle Park Reserve",
+          "suburb": "CRANBOURNE",
+          "mapQuery": "Carlisle%20Park%20Reserve%2C%20CRANBOURNE%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "a52830d0-f586-42f9-be8c-677572c7e546",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 12",
+          "roundShort": "R12",
+          "isFinal": false,
+          "dates": [
+            "2027-01-31T02:00:00.000Z"
+          ],
+          "isHome": true,
+          "opponent": "Hartley CC - 4",
+          "outcome": null,
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "919c1d43-b245-4f16-a649-b21762f62693",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 13",
+          "roundShort": "R13",
+          "isFinal": false,
+          "dates": [
+            "2027-02-07T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Ocean XI - Grade 4",
+          "outcome": null,
+          "venue": "Ramlegh Reserve",
+          "ground": "Ramlegh Reserve Field 1 (East)",
+          "suburb": "CLYDE NORTH",
+          "mapQuery": "Ramlegh%20Reserve%2C%20CLYDE%20NORTH%2C%20VIC",
+          "ourScore": null,
+          "theirScore": null
+        },
+        {
+          "id": "616a7895-6555-46ca-a252-27624821fbb9",
+          "status": "UPCOMING",
+          "type": null,
+          "round": "Round 14",
+          "roundShort": "R14",
+          "isFinal": false,
+          "dates": [
+            "2027-02-14T02:00:00.000Z"
+          ],
+          "isHome": false,
+          "opponent": "Melbourne Knights Grade 4",
+          "outcome": null,
+          "venue": "Sweeney Recreation Reserve",
+          "ground": "Sweeney Reserve 3",
+          "suburb": "NARRE WARREN",
+          "mapQuery": "Sweeney%20Recreation%20Reserve%2C%20NARRE%20WARREN%2C%20VIC",
           "ourScore": null,
           "theirScore": null
         }

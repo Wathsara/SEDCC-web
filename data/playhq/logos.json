@@ -724,6 +724,21 @@
       "matchKey": "caseyfalcons",
       "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/0016b5c6-c479-4c05-9e2b-a215ad9d8332/1746670608560/logo.png?_a=BAMAMifg0"
     },
+    "victorian-sunday-cricket-club": {
+      "name": "Victorian Sunday Cricket Club",
+      "file": "data/playhq/logos/victorian-sunday-cricket-club.jpg",
+      "teamIds": [
+        "c6eed3a3-8337-4df9-a608-34e2cd529774",
+        "2837a8ce-ed5f-480a-8023-48ade43962bc",
+        "84c99e99-a3c8-43cb-9a1b-cd6c044cbde9",
+        "db1f4584-fdda-423b-858d-a52f25e8dd10",
+        "6b1d24c2-9b83-4cc4-a94e-71eb198dcc64",
+        "63782048-828c-4a11-b175-57f9090fbee9",
+        "1c104d2f-8826-430a-9151-a33d25a45ae7"
+      ],
+      "matchKey": "victoriansunday",
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/49a65098-01e2-4d0f-a5c0-1fcf946474c1/1725602300867/logo.jpg?_a=BAMAMifg0"
+    },
     "colombo-sports-club": {
       "name": "Colombo Sports Club",
       "file": "data/playhq/logos/colombo-sports-club.jpg",
@@ -906,9 +921,9 @@
       "file": "data/playhq/logos/southern-warriors-cricket-club-vic.png",
       "teamIds": [
         "6f42551e-6785-4e6b-816f-f0b0ca08196c",
-        "57cc9b84-ec3d-4b4a-875a-b1177e752846",
         "de656d7f-f683-4afe-aa9b-1d893ee97c42",
         "91f83fdb-dd32-40e8-8c44-6707379395f1",
+        "57cc9b84-ec3d-4b4a-875a-b1177e752846",
         "d2829a5e-4638-4b9d-b3ff-f9a338cab50b"
       ],
       "matchKey": "southernwarriorsvic",

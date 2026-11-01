@@ -257,6 +257,18 @@
     ],
     "fiveWicketHauls": [
       {
+        "name": "Pavan Ariyadasa",
+        "season": "2026/27",
+        "figures": "5/32",
+        "overs": 8,
+        "runs": 32,
+        "maidens": 1,
+        "economy": 4.0,
+        "opponent": "Casey Falcons Grade 4",
+        "grade": "VSCA Grade 4",
+        "round": "Round 1"
+      },
+      {
         "name": "Anuradha Kannangara",
         "season": "2025/26",
         "figures": "5/38",

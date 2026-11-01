@@ -67,7 +67,9 @@ const longestName = rows.reduce((n, r) => Math.max(n, r.name.length), 1);
             const extraBowling = [
               r.overs ? `${r.overs} ov` : null,
               r.maidens ? `${r.maidens} md` : null,
-              r.economy ? `Econ ${r.economy}` : null,
+              // Two decimals, always: JSON drops the trailing zero on 4.0 and
+              // 6.0, and a column reading 4 · 4.75 · 6 · 1.25 looks unfinished.
+              r.economy ? `Econ ${r.economy.toFixed(2)}` : null,
             ]
               .filter(Boolean)
               .join(' · ');

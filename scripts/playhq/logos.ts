@@ -41,9 +41,13 @@ export const matchKey = (name: string) =>
     .replace(/\s*-\s*\d+\s*$/, ' ') // VSCA: "Dreamers SC - 4"
     .replace(/\b\d+\s*(st|nd|rd|th)\s*(xi|x1)\b/g, ' ') // ECA: "AYC Harlequins 1st XI", and the VSCA's "2nd X1"
     .replace(/\b(xi|x1)\b/g, ' ')
-    .replace(/\b(cc|sc|cricket|club|senior|seniors|men|women|grade\s*\d*\w*)\b/g, ' ')
+    .replace(/\b(cc|sc|cricket|club|sports?|senior|seniors|men|women|grade\s*\d*\w*)\b/g, ' ') // "Casey Falcons Sports Club"
     .replace(/\b(inc|incorporated)\b/g, ' ') // "Eastern Rebels Cricket Club Inc"
     .replace(/\s+\d+\s*$/, ' ') // VSCA: "Eastern Rebels Senior Men 4", no dash
+    // A state disambiguator the club carries and its teams do not: PlayHQ files
+    // the club as "Hartley Cricket Club (VIC)" while the VSCA fixture says
+    // "Hartley CC - 4". Only at the end, so nothing inside a name is touched.
+    .replace(/[\s(]*\b(vic|nsw|qld|sa|wa|tas|nt|act)\b\s*\)?\s*$/, ' ')
     .replace(/[^a-z0-9]/g, '');
 
 /**

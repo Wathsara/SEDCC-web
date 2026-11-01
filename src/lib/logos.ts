@@ -28,13 +28,17 @@ export function normalizeMatchKey(name: string): string {
     // Sixers 2nd XI". Read it as XI rather than carry it into the key.
     .replace(/\b\d+\s*(st|nd|rd|th)\s*(xi|x1)\b/gi, ' ')
     .replace(/\b(xi|x1)\b/gi, ' ')
-    .replace(/\b(cc|sc|cricket|club|senior|seniors|men|women|grade\s*\d*\w*)\b/gi, ' ')
+    // "Casey Falcons Sports Club" fields a team called "Casey Falcons Grade 4".
+    .replace(/\b(cc|sc|cricket|club|sports?|senior|seniors|men|women|grade\s*\d*\w*)\b/gi, ' ')
     // A club registers as "Eastern Rebels Cricket Club Inc" and fields a team
     // called "Eastern Rebels Senior Men 4": the suffix is on one side only.
     .replace(/\b(inc|incorporated)\b/gi, ' ')
     // The team number, once the grade words are gone. "- 4" is handled above;
     // this is the same number written without the dash.
     .replace(/\s+\d+\s*$/, ' ')
+    // A state disambiguator the club carries and its teams do not:
+    // "Hartley Cricket Club (VIC)" against the fixture's "Hartley CC - 4".
+    .replace(/[\s(]*\b(vic|nsw|qld|sa|wa|tas|nt|act)\b\s*\)?\s*$/i, ' ')
     .replace(/[^a-z0-9]/g, '');
 }
 

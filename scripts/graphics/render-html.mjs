@@ -231,6 +231,18 @@ try {
 
     // Opponent crests, cached from PlayHQ by the sync. A real crest beats a
     // monogram tile, so the tile becomes the fallback rather than the default.
+    // Kept in step with reduceName() inside the page evaluate below.
+    const clubKey = (name) =>
+      String(name || '')
+        .toLowerCase()
+        .replace(/\s*-\s*\d+\s*$/, ' ')
+        .replace(/\b\d+\s*(st|nd|rd|th)\s*(xi|x1)\b/g, ' ')
+        .replace(/\b(xi|x1)\b/g, ' ')
+        .replace(/\b(cc|sc|cricket|club|sports?|senior|seniors|men|women|grade\s*\d*\w*)\b/g, ' ')
+        .replace(/\b(inc|incorporated)\b/g, ' ')
+        .replace(/\s+\d+\s*$/, ' ')
+        .replace(/[\s(]*\b(vic|nsw|qld|sa|wa|tas|nt|act)\b\s*\)?\s*$/, ' ')
+        .replace(/[^a-z0-9]/g, '');
     const crests = {};
     try {
       const { readFile: rf } = await import('node:fs/promises');
@@ -242,7 +254,17 @@ try {
         const buf = await rf(path);
         const ext = entry.file.split('.').pop().toLowerCase();
         const mime = ext === 'svg' ? 'svg+xml' : ext === 'jpg' ? 'jpeg' : ext;
-        crests[entry.matchKey] = `data:image/${mime};base64,${buf.toString('base64')}`;
+        const uri = `data:image/${mime};base64,${buf.toString('base64')}`;
+        /*
+          Filed under the key the sync wrote and under the club name reduced
+          here. The two differ whenever the reduction has been corrected since
+          the logos were last synced — "Hartley Cricket Club (VIC)" was stored
+          as "hartleyvic", while the fixture's "Hartley CC - 4" reduces to
+          "hartley" — and re-deriving means a crest we already hold is found
+          without waiting for the next sync to rewrite logos.json.
+        */
+        crests[entry.matchKey] = uri;
+        crests[clubKey(entry.name)] = uri;
       }
     } catch {
       // No logos.json yet — every opponent falls back to a monogram.
@@ -250,6 +272,25 @@ try {
 
     await page.evaluate(
       ({ clubCrest, clubMatch, crests }) => {
+        /*
+          The same reduction scripts/playhq/logos.ts writes as matchKey, so
+          "Melbourne Crickeroos CC - 4" finds the crest filed under "Melbourne
+          Crickeroos CC". Spelled out again here rather than shared: this
+          function is serialised into the page, which cannot see this module's
+          closures. Change one and change the other.
+        */
+        const reduceName = (name) =>
+          String(name || '')
+            .toLowerCase()
+            .replace(/\s*-\s*\d+\s*$/, ' ')
+            .replace(/\b\d+\s*(st|nd|rd|th)\s*(xi|x1)\b/g, ' ')
+            .replace(/\b(xi|x1)\b/g, ' ')
+            .replace(/\b(cc|sc|cricket|club|sports?|senior|seniors|men|women|grade\s*\d*\w*)\b/g, ' ')
+            .replace(/\b(inc|incorporated)\b/g, ' ')
+            .replace(/\s+\d+\s*$/, ' ')
+            .replace(/[\s(]*\b(vic|nsw|qld|sa|wa|tas|nt|act)\b\s*\)?\s*$/, ' ')
+            .replace(/[^a-z0-9]/g, '');
+
         const monogram = (name) =>
           String(name || '')
             .replace(/\s*-\s*\d+$/, '')
@@ -273,13 +314,7 @@ try {
 
           // Same reduction the sync writes, so "Melbourne Crickeroos CC - 4"
           // finds the crest filed under "Melbourne Crickeroos CC".
-          const crestKey = String(name || '')
-            .toLowerCase()
-            .replace(/\s*-\s*\d+\s*$/, ' ')
-            .replace(/\b\d+\s*(st|nd|rd|th)\s*xi\b/g, ' ')
-            .replace(/\bxi\b/g, ' ')
-            .replace(/\b(cc|sc|cricket|club|senior|seniors|men|women|grade\s*\d*\w*)\b/g, ' ')
-            .replace(/[^a-z0-9]/g, '');
+          const crestKey = reduceName(name);
           /*
             Exact match first, then the longest stored key that starts the
             team's. A team name can carry a suburb the club name does not:

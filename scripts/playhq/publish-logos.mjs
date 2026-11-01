@@ -13,9 +13,21 @@
  *
  * public/playhq/logos/ is therefore generated and not committed: data/ is the
  * one copy under version control, and this runs before every build.
+ *
+ * ## Why these are resized on the way across
+ *
+ * The sync fetches crests at 1024 square, because an association badge set
+ * large on a 2160px poster came out soft at the 256 PlayHQ lists. The site has
+ * the opposite need: the ladder draws a crest at 28px, and public/ is served
+ * verbatim — Astro does not optimise what it finds there. Copying the
+ * originals straight across put 17MB of artwork into dist/ to render icons,
+ * the largest a 1.1MB PNG for a 28px circle. So data/ keeps the big ones for
+ * the graphics scripts and the web gets a 128px copy, which still has room for
+ * a 3x display.
  */
 
-import { readdir, mkdir, copyFile, stat, unlink, readFile } from 'node:fs/promises';
+import { readdir, mkdir, copyFile, stat, unlink, readFile, writeFile } from 'node:fs/promises';
+import sharp from 'sharp';
 import { existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -36,26 +48,51 @@ await mkdir(TO, { recursive: true });
 const source = (await readdir(FROM)).filter((f) => !f.startsWith('.'));
 const published = existsSync(TO) ? (await readdir(TO)).filter((f) => !f.startsWith('.')) : [];
 
-/** Same bytes? Cheap check first, so a rebuild copies nothing. */
-const same = async (a, b) => {
-  try {
-    const [sa, sb] = await Promise.all([stat(a), stat(b)]);
-    if (sa.size !== sb.size) return false;
-    const [ba, bb] = await Promise.all([readFile(a), readFile(b)]);
-    return ba.equals(bb);
-  } catch {
-    return false;
-  }
-};
+/** The widest a crest is ever drawn on the site, times three for the display. */
+const WEB_SIZE = 128;
 
+/*
+  The published file is no longer a copy of the source, so "are the bytes the
+  same" cannot answer whether it is current. The source's size and mtime are
+  recorded instead, and a crest is re-rendered only when one of them moves.
+  The name starts with a dot, so it is skipped by both readdir filters and
+  never published or swept.
+*/
+const STAMP = join(TO, '.sources.json');
+let stamps = {};
+try {
+  stamps = JSON.parse(await readFile(STAMP, 'utf8'));
+} catch {
+  // No stamp file, or an unreadable one: everything is rendered again.
+}
+
+const next = {};
 let copied = 0;
 for (const name of source) {
   const from = join(FROM, name);
   const to = join(TO, name);
-  if (await same(from, to)) continue;
-  await copyFile(from, to);
+  const { size, mtimeMs } = await stat(from);
+  next[name] = `${size}:${mtimeMs}`;
+
+  if (stamps[name] === next[name] && existsSync(to)) continue;
+
+  // An SVG is already resolution-free, and rasterising one would lose that.
+  if (name.toLowerCase().endsWith('.svg')) {
+    await copyFile(from, to);
+  } else {
+    /*
+      `fit: 'inside'` with `withoutEnlargement` keeps the aspect ratio and
+      never scales a small crest up — a club that only ever had a 96px logo
+      stays at 96px rather than being blown up and re-compressed.
+    */
+    await sharp(from)
+      .resize({ width: WEB_SIZE, height: WEB_SIZE, fit: 'inside', withoutEnlargement: true })
+      .toFile(to);
+  }
   copied++;
 }
+
+await writeFile(STAMP, `${JSON.stringify(next, null, 2)}\n`);
 
 // A club that leaves the data — renamed, or dropped when a season rolls over —
 // should not leave its crest behind to be served for ever.

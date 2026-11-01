@@ -28,7 +28,13 @@ const seasonStatsRaw = dataFile(
   import.meta.glob<{ default: unknown }>('../../data/playhq/stats/season.json', { eager: true }),
   { players: [] },
 );
-import type { LadderGrade, TeamFixtures, WeeklyStats, SeasonStats } from './playhq-types';
+import type {
+  LadderGrade,
+  TeamFixtures,
+  WeeklyStats,
+  SeasonStats,
+  SeasonAggregate,
+} from './playhq-types';
 
 /*
   Read-only view over the committed sync output. Nothing here talks to PlayHQ —
@@ -63,6 +69,36 @@ export function teamLadder(slug: string): LadderGrade | undefined {
 
 export const hasWeeklyStats = weekly.topBatter !== null || weekly.topBowler !== null;
 export const hasSeasonStats = (seasonStats.players?.length ?? 0) > 0;
+
+/*
+  Leaderboard order.
+
+  Wickets and runs alone are not a ranking: two players level on the headline
+  number came out in whatever order the aggregate happened to be written in.
+  Wathsara Daluwatta and Ivan Udakara both reached six wickets, and the board
+  put Wathsara on top at 15.67 while Ivan had taken his at 8.83.
+
+  So the headline number decides it, and a tie goes to the better rate — the
+  order a scorecard page ranks in.
+*/
+
+/** A batter never dismissed has no average, which beats any number. */
+const batAvg = (p: SeasonAggregate) => p.batting.average ?? Infinity;
+/** A missing bowling rate sorts last; with a wicket taken there is always one. */
+const bowlAvg = (p: SeasonAggregate) => p.bowling.average ?? Infinity;
+const bowlEcon = (p: SeasonAggregate) => p.bowling.economy ?? Infinity;
+
+/** Most runs, then the higher average, then the faster scoring. */
+export const byRuns = (a: SeasonAggregate, b: SeasonAggregate) =>
+  b.batting.runs - a.batting.runs ||
+  batAvg(b) - batAvg(a) ||
+  (b.batting.strikeRate ?? 0) - (a.batting.strikeRate ?? 0);
+
+/** Most wickets, then the lower average, then the tighter economy. */
+export const byWickets = (a: SeasonAggregate, b: SeasonAggregate) =>
+  b.bowling.wickets - a.bowling.wickets ||
+  bowlAvg(a) - bowlAvg(b) ||
+  bowlEcon(a) - bowlEcon(b);
 export const hasFixtures = fixtures.teams.length > 0;
 export const hasLadders = ladders.grades.length > 0;
 

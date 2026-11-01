@@ -2,6 +2,7 @@
 import CricketIcon from './CricketIcon.astro';
 import PlayerPortrait from './PlayerPortrait.astro';
 import { teamBySlug, portraitKey } from '../lib/site';
+import { byRuns, byWickets } from '../lib/playhq';
 import type { SeasonAggregate } from '../lib/playhq-types';
 
 interface Props {
@@ -11,12 +12,12 @@ const { players } = Astro.props;
 
 const batters = [...players]
   .filter((p) => p.batting.innings > 0)
-  .sort((a, b) => b.batting.runs - a.batting.runs)
+  .sort(byRuns)
   .slice(0, 10);
 
 const bowlers = [...players]
   .filter((p) => p.bowling.wickets > 0)
-  .sort((a, b) => b.bowling.wickets - a.bowling.wickets)
+  .sort(byWickets)
   .slice(0, 10);
 
 const teamsOf = (p: SeasonAggregate) =>

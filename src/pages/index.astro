@@ -19,7 +19,7 @@ import { strategyHighlights, strategyPeriod } from '../lib/strategy';
 import { seasons } from '../lib/history';
 import {
   hasWeeklyStats, hasSeasonStats, weekly, seasonStats,
-  upcoming, results, form,
+  upcoming, results, form, byRuns, byWickets,
 } from '../lib/playhq';
 import { formatDate, isoDate } from '../lib/format';
 
@@ -46,10 +46,10 @@ const growth = [
 // Leading players this season, from the sync.
 const leadingBat = [...(seasonStats.players ?? [])]
   .filter((p) => p.batting.innings > 0)
-  .sort((a, b) => b.batting.runs - a.batting.runs)[0];
+  .sort(byRuns)[0];
 const leadingBowl = [...(seasonStats.players ?? [])]
   .filter((p) => p.bowling.wickets > 0)
-  .sort((a, b) => b.bowling.wickets - a.bowling.wickets)[0];
+  .sort(byWickets)[0];
 ---
 
 <Base title={club.name} bareTitle>

@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-03T23:55:55.272Z",
+  "syncedAt": "2026-11-05T00:15:57.352Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -883,6 +883,7 @@
       "name": "Southern Rangers Cricket Club",
       "file": "data/playhq/logos/southern-rangers-cricket-club.png",
       "teamIds": [
+        "d022a1a8-ec7a-4e10-aa95-9674262800f0",
         "8d88901a-bbc3-48c7-a9f7-5ae73f1d1948",
         "e2f9eba1-ba1c-49ee-a322-e8d874382d3e",
         "c12dab53-eeab-4ec6-acea-58ac4296d48f",

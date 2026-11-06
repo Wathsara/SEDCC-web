@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-06T00:00:24.210Z",
+  "syncedAt": "2026-11-06T23:41:26.623Z",
   "season": "2026-27",
   "teams": [
     {
@@ -443,7 +443,7 @@
         },
         {
           "id": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-          "status": "UPCOMING",
+          "status": null,
           "type": null,
           "round": "Round 4",
           "roundShort": "R4",

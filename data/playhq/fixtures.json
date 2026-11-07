@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-06T23:41:26.623Z",
+  "syncedAt": "2026-11-07T22:37:40.925Z",
   "season": "2026-27",
   "teams": [
     {
@@ -75,7 +75,7 @@
         },
         {
           "id": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 4",
           "roundShort": "R4",
@@ -85,13 +85,13 @@
           ],
           "isHome": false,
           "opponent": "AYC Harlequins 1st XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Markham Avenue Reserve",
           "ground": "Markham Avenue Reserve",
           "suburb": "ASHBURTON",
           "mapQuery": "Markham%20Avenue%20Reserve%2C%20ASHBURTON%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "6/243 (37.2 ov)",
+          "theirScore": "5/242 (40 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/fd520e94-31cb-43ce-acc1-338e680bf18f?tab=summary"
         },
         {
@@ -443,7 +443,7 @@
         },
         {
           "id": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-          "status": null,
+          "status": "FINAL",
           "type": null,
           "round": "Round 4",
           "roundShort": "R4",
@@ -453,13 +453,13 @@
           ],
           "isHome": true,
           "opponent": "Balwyn Saints 3rd XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Donnelly Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "4/145 (29.3 ov)",
+          "theirScore": "6/139 (40 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/e04745b9-8d74-4fcf-a381-f19f62848081?tab=summary"
         },
         {

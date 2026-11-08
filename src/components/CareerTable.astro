@@ -1,0 +1,306 @@
+---
+import CricketIcon from './CricketIcon.astro';
+import PlayerPortrait from './PlayerPortrait.astro';
+import { portraitKey } from '../lib/site';
+import type { CareerPlayer } from '../lib/career';
+
+interface Props {
+  players: CareerPlayer[];
+  kind: 'batting' | 'bowling';
+  note?: string;
+}
+const { players, kind, note } = Astro.props;
+
+const num = (v: number | null) => (v === null ? '—' : v.toFixed(2));
+/** A nought in a career column is an absence, and reads better as a rule. */
+const dash = (v: number) => (v === 0 ? '—' : String(v));
+
+interface Column {
+  label: string;
+  /** Expanded in the header's abbr, so a column never has to be guessed at. */
+  title: string;
+  value: (p: CareerPlayer) => string;
+  /** Opens a group with a hairline rule to its left. */
+  open?: boolean;
+  /** The number the table is ordered on — the one the eye should land on. */
+  rank?: boolean;
+}
+
+/*
+  Two tables rather than one, the way an almanack sets them: a batting table
+  ordered on runs and a bowling table ordered on wickets. One table ordered on
+  runs buried the bowlers — Indika Karunathilaka's 23 wickets sat forty rows
+  down because he bats at ten.
+
+  Fielding travels with batting, which is also the almanack's convention: it is
+  what a player did when they were not bowling.
+*/
+const batting: Column[] = [
+  { label: 'Szn', title: 'Seasons played', value: (p) => String(p.seasons.length) },
+  { label: 'M', title: 'Matches', value: (p) => String(p.matches) },
+  { label: 'I', title: 'Innings', value: (p) => String(p.batting.innings) },
+  { label: 'NO', title: 'Not outs', value: (p) => dash(p.batting.notOuts) },
+  { label: 'Runs', title: 'Runs scored', value: (p) => dash(p.batting.runs), open: true, rank: true },
+  { label: 'HS', title: 'Highest score', value: (p) => p.batting.highScore },
+  { label: 'Avg', title: 'Batting average', value: (p) => num(p.batting.average) },
+  { label: '100', title: 'Hundreds', value: (p) => dash(p.batting.hundreds) },
+  { label: '50', title: 'Fifties', value: (p) => dash(p.batting.fifties) },
+  { label: 'Ct', title: 'Catches', value: (p) => dash(p.fielding.catches), open: true },
+  { label: 'St', title: 'Stumpings', value: (p) => dash(p.fielding.stumpings) },
+  { label: 'RO', title: 'Run-outs', value: (p) => dash(p.fielding.runOuts) },
+];
+
+const bowling: Column[] = [
+  { label: 'Szn', title: 'Seasons played', value: (p) => String(p.seasons.length) },
+  { label: 'M', title: 'Matches', value: (p) => String(p.matches) },
+  { label: 'Ov', title: 'Overs bowled', value: (p) => p.bowling.overs },
+  { label: 'Mdn', title: 'Maidens', value: (p) => dash(p.bowling.maidens) },
+  { label: 'R', title: 'Runs conceded', value: (p) => dash(p.bowling.runs) },
+  { label: 'Wkts', title: 'Wickets taken', value: (p) => dash(p.bowling.wickets), open: true, rank: true },
+  { label: 'Best', title: 'Best bowling in an innings', value: (p) => p.bowling.best },
+  { label: 'Avg', title: 'Bowling average', value: (p) => num(p.bowling.average) },
+  { label: 'Econ', title: 'Economy rate', value: (p) => num(p.bowling.economy) },
+  { label: '5w', title: 'Five-wicket hauls', value: (p) => dash(p.bowling.fiveWicketHauls) },
+];
+
+const table =
+  kind === 'batting'
+    ? { columns: batting, title: 'Batting & fielding', icon: 'bat' as const, min: 'min-w-[900px]' }
+    : { columns: bowling, title: 'Bowling', icon: 'ball' as const, min: 'min-w-[820px]' };
+---
+
+<div class="tile overflow-hidden border border-rule bg-paper shadow-tile" data-rule-in>
+  <div
+    class="flex flex-wrap items-center justify-between gap-3 border-b border-rule bg-paper-sunk/70 px-5 py-3.5"
+  >
+    <div class="flex items-center gap-2.5">
+      <span
+        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-club text-paper shadow-sm"
+      >
+        <CricketIcon name={table.icon} class="h-3.5 w-3.5" />
+      </span>
+      <div>
+        <h3 class="font-display text-sm font-bold uppercase tracking-wider text-club">
+          {table.title}
+        </h3>
+        <p class="font-figures text-2xs text-ink-muted">{note ?? 'Career totals'}</p>
+      </div>
+    </div>
+    <div class="flex shrink-0 items-center gap-3">
+      <span class="career-hint font-figures text-2xs text-ink-faint">Swipe for all columns →</span>
+      <span class="font-display text-2xs uppercase tracking-eyebrow text-ink-faint">
+        {players.length} players
+      </span>
+    </div>
+  </div>
+
+  {/*
+    Every column, at every width. A phone sees the whole record by swiping the
+    table sideways rather than being given an edited version of it — the ladder
+    handles its own width the same way.
+
+    The name column stays put while the figures move under it, so a row read
+    halfway along still has someone's name against it.
+  */}
+  <div class="overflow-x-auto">
+    <table class:list={['w-full border-collapse text-left text-sm', table.min]}>
+      <thead>
+        <tr class="border-b border-rule bg-paper-sunk/30">
+          <th
+            scope="col"
+            class="career-name career-name--head min-w-[9.5rem] py-3 pl-4 pr-3 font-display text-2xs uppercase tracking-eyebrow text-ink-muted sm:min-w-[220px]"
+          >
+            Player
+          </th>
+          {
+            table.columns.map((c) => (
+              <th
+                scope="col"
+                class:list={['career-h', c.open && 'career-h--open']}
+              >
+                <abbr title={c.title} class="no-underline">
+                  {c.label}
+                </abbr>
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-rule/60">
+        {
+          players.map((player) => (
+            <tr class="transition-colors hover:bg-paper-sunk/40">
+              <th scope="row" class="career-name py-3 pl-4 pr-3 text-left font-normal">
+                <div class="flex items-center gap-2 sm:gap-2.5">
+                  <span class="career-face">
+                    <PlayerPortrait id={portraitKey(player.name)} name={player.name} />
+                  </span>
+                  <span class="career-name__text font-display text-sm uppercase leading-tight sm:text-base">
+                    {player.name}
+                  </span>
+                </div>
+              </th>
+              {table.columns.map((c) => (
+                <td
+                  class:list={['career-c', c.open && 'career-c--open', c.rank && 'font-bold']}
+                  title={c.label === 'Szn' ? player.seasons.map((s) => s.label).join(', ') : undefined}
+                >
+                  {c.value(player)}
+                </td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  /*
+    The name column is pinned to the left edge of the scroller. Thirteen columns
+    of figures mean nothing once the name has scrolled off, and on a phone it
+    goes within one swipe. It carries its own ground, because the cells passing
+    beneath it would otherwise show through, and a hairline on its right so the
+    join reads as an edge rather than as a glitch.
+  */
+  .career-name {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--color-paper);
+    /*
+      A hairline plus a short shadow falling to the right. The hairline is the
+      scorebook edge; the shadow is what makes a half-covered figure at the
+      boundary read as a number passing underneath rather than a number cut in
+      half.
+    */
+    box-shadow:
+      inset -1px 0 0 var(--color-rule),
+      6px 0 8px -6px rgb(15 28 63 / 0.2);
+  }
+
+  .career-name--head {
+    z-index: 2;
+    background: color-mix(in srgb, var(--color-paper-sunk) 30%, var(--color-paper));
+  }
+
+  /* The row highlight has to be repainted on the pinned cell: it sits above the
+     row's own background, not in it. */
+  tbody tr:hover .career-name {
+    background: color-mix(in srgb, var(--color-paper-sunk) 40%, var(--color-paper));
+  }
+
+  .career-h {
+    padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+    text-align: right;
+    font-family: var(--font-display);
+    font-size: var(--text-2xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-ink-muted);
+    white-space: nowrap;
+  }
+
+  .career-c {
+    padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
+    text-align: right;
+    font-family: var(--font-figures);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .career-h:last-child,
+  .career-c:last-child {
+    padding-right: calc(var(--spacing) * 4);
+  }
+
+  /*
+    The number the table is ranked on opens its own group with a hairline and
+    carries the weight. Everything to the right of it qualifies it.
+  */
+  .career-h--open,
+  .career-c--open {
+    border-left: 1px solid var(--color-rule);
+    color: var(--color-ink);
+  }
+
+  /* The hint belongs only where the table is wider than its container. */
+  .career-hint {
+    display: none;
+  }
+
+  @media (max-width: 1023px) {
+    .career-hint {
+      display: inline;
+    }
+  }
+
+  .career-face {
+    display: block;
+    width: 1.75rem;
+    height: 1.75rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper-sunk);
+  }
+
+  .career-face :global(img),
+  .career-face :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /*
+    On a phone the pinned column has to earn its width. At 220px it covered
+    nearly two thirds of a 356px viewport and the figures it was meant to label
+    had almost nowhere left to scroll into, so the portrait comes off and the
+    name is held to eight rems and wraps. That buys back about seventy pixels —
+    another column and a half in view at a time.
+  */
+  /*
+    Between a phone and a laptop the table still scrolls, so the name column is
+    held back here too — left to itself it took 356px of a 606px viewport and
+    only seven of the thirteen columns were reachable. Above 1024px the table
+    fits without scrolling and the slack can go to the names, which then sit on
+    one line.
+  */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .career-name {
+      width: 13rem;
+    }
+  }
+
+  /*
+    On a phone the pinned column has to earn its width: left alone it took 212px
+    of a 356px viewport and the figures it was meant to label had almost nowhere
+    to scroll into. So the portrait shrinks rather than going away — it is how
+    most people find their own row — and the name is held to seven rems and
+    wraps. The figures still get the larger half of the screen.
+
+    The width is explicit, not just a smaller minimum: the table carries a
+    min-width of 900px so it has something to scroll, and an auto layout hands
+    that spare width to whichever column can absorb it, which is the one with
+    wrappable text. Pinned, the figures get the slack instead.
+  */
+  @media (max-width: 639px) {
+    .career-name {
+      width: 10rem;
+      min-width: 0;
+    }
+
+    .career-name__text {
+      max-width: 7rem;
+    }
+
+    .career-face {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+</style>

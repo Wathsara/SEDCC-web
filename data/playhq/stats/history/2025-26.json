@@ -1,0 +1,856 @@
+{
+  "generatedAt": "2026-11-08T20:59:58.432Z",
+  "season": "2025-26",
+  "label": "2025/26",
+  "team": "Dreamers SC - 4",
+  "grade": "VSCA Grade 4",
+  "matches": 15,
+  "source": "play.cricket.com.au match centre",
+  "players": [
+    {
+      "playerId": "aruna-perera",
+      "displayName": "Aruna Perera",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 15,
+      "batting": {
+        "innings": 15,
+        "notOuts": 1,
+        "runs": 670,
+        "balls": 539,
+        "highScore": "150*",
+        "average": 47.86,
+        "strikeRate": 124.3,
+        "fifties": 2,
+        "hundreds": 2,
+        "fours": 86,
+        "sixes": 8
+      },
+      "bowling": {
+        "innings": 2,
+        "balls": 12,
+        "overs": "2.0",
+        "maidens": 0,
+        "runs": 20,
+        "wickets": 1,
+        "average": 20,
+        "economy": 10,
+        "best": "1/3",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 3,
+        "stumpings": 1,
+        "runOuts": 2
+      }
+    },
+    {
+      "playerId": "amila-jayanuwan",
+      "displayName": "Amila Jayanuwan",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 15,
+      "batting": {
+        "innings": 15,
+        "notOuts": 2,
+        "runs": 569,
+        "balls": 282,
+        "highScore": "154",
+        "average": 43.77,
+        "strikeRate": 201.77,
+        "fifties": 2,
+        "hundreds": 2,
+        "fours": 84,
+        "sixes": 17
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 7,
+        "stumpings": 0,
+        "runOuts": 2
+      }
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 13,
+      "batting": {
+        "innings": 12,
+        "notOuts": 2,
+        "runs": 335,
+        "balls": 388,
+        "highScore": "86",
+        "average": 33.5,
+        "strikeRate": 86.34,
+        "fifties": 1,
+        "hundreds": 0,
+        "fours": 34,
+        "sixes": 4
+      },
+      "bowling": {
+        "innings": 7,
+        "balls": 145,
+        "overs": "24.1",
+        "maidens": 3,
+        "runs": 105,
+        "wickets": 4,
+        "average": 26.25,
+        "economy": 4.34,
+        "best": "2/28",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 3,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": "thisara-nilupul-lankathilake",
+      "displayName": "Thisara Nilupul Lankathilake",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 8,
+      "batting": {
+        "innings": 7,
+        "notOuts": 2,
+        "runs": 213,
+        "balls": 236,
+        "highScore": "51",
+        "average": 42.6,
+        "strikeRate": 90.25,
+        "fifties": 2,
+        "hundreds": 0,
+        "fours": 28,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 8,
+        "balls": 260,
+        "overs": "43.2",
+        "maidens": 1,
+        "runs": 267,
+        "wickets": 10,
+        "average": 26.7,
+        "economy": 6.16,
+        "best": "2/20",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "dilan-samarakoon",
+      "displayName": "Dilan Samarakoon",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 8,
+      "batting": {
+        "innings": 8,
+        "notOuts": 1,
+        "runs": 210,
+        "balls": 250,
+        "highScore": "58*",
+        "average": 30,
+        "strikeRate": 84,
+        "fifties": 1,
+        "hundreds": 0,
+        "fours": 23,
+        "sixes": 2
+      },
+      "bowling": {
+        "innings": 6,
+        "balls": 109,
+        "overs": "18.1",
+        "maidens": 2,
+        "runs": 81,
+        "wickets": 3,
+        "average": 27,
+        "economy": 4.46,
+        "best": "1/0",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "kalindu-kumarasinghe",
+      "displayName": "Kalindu Kumarasinghe",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 12,
+      "batting": {
+        "innings": 9,
+        "notOuts": 3,
+        "runs": 101,
+        "balls": 103,
+        "highScore": "33",
+        "average": 16.83,
+        "strikeRate": 98.06,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 14,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 12,
+        "balls": 420,
+        "overs": "70.0",
+        "maidens": 8,
+        "runs": 339,
+        "wickets": 16,
+        "average": 21.19,
+        "economy": 4.84,
+        "best": "3/21",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 3,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "S Konara Mudiyanselage",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 5,
+      "batting": {
+        "innings": 5,
+        "notOuts": 0,
+        "runs": 77,
+        "balls": 106,
+        "highScore": "23",
+        "average": 15.4,
+        "strikeRate": 72.64,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 11,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 30,
+        "overs": "5.0",
+        "maidens": 0,
+        "runs": 30,
+        "wickets": 1,
+        "average": 30,
+        "economy": 6,
+        "best": "1/30",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "kavindu-heshan-fernando",
+      "displayName": "Kavindu Heshan Fernando",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 7,
+      "batting": {
+        "innings": 7,
+        "notOuts": 1,
+        "runs": 76,
+        "balls": 111,
+        "highScore": "23",
+        "average": 12.67,
+        "strikeRate": 68.47,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 4,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 6,
+        "balls": 216,
+        "overs": "36.0",
+        "maidens": 3,
+        "runs": 170,
+        "wickets": 6,
+        "average": 28.33,
+        "economy": 4.72,
+        "best": "2/16",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "indika-karunathilaka",
+      "displayName": "Indika Karunathilaka",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 13,
+      "batting": {
+        "innings": 9,
+        "notOuts": 3,
+        "runs": 61,
+        "balls": 145,
+        "highScore": "17*",
+        "average": 10.17,
+        "strikeRate": 42.07,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 4,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 11,
+        "balls": 419,
+        "overs": "69.5",
+        "maidens": 4,
+        "runs": 343,
+        "wickets": 17,
+        "average": 20.18,
+        "economy": 4.91,
+        "best": "4/24",
+        "fourWicketHauls": 2,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "N Dharmasena",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 7,
+      "batting": {
+        "innings": 6,
+        "notOuts": 1,
+        "runs": 55,
+        "balls": 97,
+        "highScore": "22",
+        "average": 11,
+        "strikeRate": 56.7,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 4,
+        "sixes": 1
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 60,
+        "overs": "10.0",
+        "maidens": 0,
+        "runs": 71,
+        "wickets": 2,
+        "average": 35.5,
+        "economy": 7.1,
+        "best": "2/33",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "harith-perera",
+      "displayName": "Harith Perera",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 12,
+      "batting": {
+        "innings": 5,
+        "notOuts": 2,
+        "runs": 51,
+        "balls": 51,
+        "highScore": "30*",
+        "average": 17,
+        "strikeRate": 100,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 5,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 12,
+        "balls": 467,
+        "overs": "77.5",
+        "maidens": 5,
+        "runs": 408,
+        "wickets": 25,
+        "average": 16.32,
+        "economy": 5.24,
+        "best": "5/48",
+        "fourWicketHauls": 1,
+        "fiveWicketHauls": 1
+      },
+      "fielding": {
+        "catches": 3,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "sanjeewa-jayawardane",
+      "displayName": "Sanjeewa Jayawardane",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 5,
+      "batting": {
+        "innings": 5,
+        "notOuts": 2,
+        "runs": 44,
+        "balls": 58,
+        "highScore": "34*",
+        "average": 14.67,
+        "strikeRate": 75.86,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 6,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "pavan-ariyadasa",
+      "displayName": "Pavan Ariyadasa",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 12,
+      "batting": {
+        "innings": 7,
+        "notOuts": 2,
+        "runs": 33,
+        "balls": 67,
+        "highScore": "9*",
+        "average": 6.6,
+        "strikeRate": 49.25,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 4,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 12,
+        "balls": 474,
+        "overs": "79.0",
+        "maidens": 5,
+        "runs": 304,
+        "wickets": 11,
+        "average": 27.64,
+        "economy": 3.85,
+        "best": "3/12",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 1
+      }
+    },
+    {
+      "playerId": "shek-narayan",
+      "displayName": "Shek Narayan",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 4,
+      "batting": {
+        "innings": 4,
+        "notOuts": 1,
+        "runs": 25,
+        "balls": 24,
+        "highScore": "16*",
+        "average": 8.33,
+        "strikeRate": 104.17,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 2,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 3,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "A Kannangara",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 3,
+      "batting": {
+        "innings": 1,
+        "notOuts": 1,
+        "runs": 20,
+        "balls": 21,
+        "highScore": "20*",
+        "average": null,
+        "strikeRate": 95.24,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 4,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 3,
+        "balls": 108,
+        "overs": "18.0",
+        "maidens": 1,
+        "runs": 98,
+        "wickets": 6,
+        "average": 16.33,
+        "economy": 5.44,
+        "best": "5/38",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 1
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "harsha-munasinghe",
+      "displayName": "Harsha Munasinghe",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 13,
+        "balls": 0,
+        "highScore": "13",
+        "average": 13,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 2,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 12,
+        "overs": "2.0",
+        "maidens": 0,
+        "runs": 15,
+        "wickets": 0,
+        "average": null,
+        "economy": 7.5,
+        "best": "0/15",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "G Lasantha",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 4,
+      "batting": {
+        "innings": 3,
+        "notOuts": 1,
+        "runs": 5,
+        "balls": 7,
+        "highScore": "4",
+        "average": 2.5,
+        "strikeRate": 71.43,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 1,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 4,
+        "balls": 87,
+        "overs": "14.3",
+        "maidens": 1,
+        "runs": 69,
+        "wickets": 6,
+        "average": 11.5,
+        "economy": 4.76,
+        "best": "3/26",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "yasuntha-gamalath",
+      "displayName": "Yasuntha Gamalath",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 3,
+        "balls": 15,
+        "highScore": "3",
+        "average": 3,
+        "strikeRate": 20,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "M De Silva",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 2,
+      "batting": {
+        "innings": 1,
+        "notOuts": 0,
+        "runs": 1,
+        "balls": 3,
+        "highScore": "1",
+        "average": 1,
+        "strikeRate": 33.33,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 0,
+        "balls": 0,
+        "overs": "0.0",
+        "maidens": 0,
+        "runs": 0,
+        "wickets": 0,
+        "average": null,
+        "economy": null,
+        "best": "—",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "malith-kanahara",
+      "displayName": "Malith Kanahara",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 0,
+        "notOuts": 0,
+        "runs": 0,
+        "balls": 0,
+        "highScore": "—",
+        "average": null,
+        "strikeRate": null,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 30,
+        "overs": "5.0",
+        "maidens": 1,
+        "runs": 20,
+        "wickets": 0,
+        "average": null,
+        "economy": 4,
+        "best": "0/20",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": null,
+      "displayName": "S Fernandez",
+      "teams": [
+        "VSCA Grade 4"
+      ],
+      "matches": 1,
+      "batting": {
+        "innings": 1,
+        "notOuts": 1,
+        "runs": 0,
+        "balls": 2,
+        "highScore": "0*",
+        "average": null,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "fours": 0,
+        "sixes": 0
+      },
+      "bowling": {
+        "innings": 1,
+        "balls": 24,
+        "overs": "4.0",
+        "maidens": 0,
+        "runs": 20,
+        "wickets": 3,
+        "average": 6.67,
+        "economy": 5,
+        "best": "3/20",
+        "fourWicketHauls": 0,
+        "fiveWicketHauls": 0
+      },
+      "fielding": {
+        "catches": 0,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "name": "N Dharmasena",
+      "appearances": 7
+    },
+    {
+      "name": "S Konara Mudiyanselage",
+      "appearances": 5
+    },
+    {
+      "name": "G Lasantha",
+      "appearances": 4
+    },
+    {
+      "name": "A Kannangara",
+      "appearances": 3
+    },
+    {
+      "name": "M De Silva",
+      "appearances": 2
+    },
+    {
+      "name": "S Fernandez",
+      "appearances": 1
+    }
+  ]
+}

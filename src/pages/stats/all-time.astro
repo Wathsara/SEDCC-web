@@ -1,0 +1,432 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import CareerTable from '../../components/CareerTable.astro';
+import CricketIcon from '../../components/CricketIcon.astro';
+import { club, url } from '../../lib/site';
+import {
+  career,
+  careerSeasons,
+  careerTotals,
+  hasCareer,
+  byCareerRuns,
+  byCareerWickets,
+} from '../../lib/career';
+import { seasons as clubSeasons } from '../../lib/history';
+
+/*
+  Career figures are built at build time from the committed stat files — this
+  season's weekly aggregate and one file per past season. Nothing is fetched
+  here; see src/lib/career.ts.
+*/
+/*
+  Two tables, each holding only the players it has something to say about: a
+  batter who never bowled has no line in the bowling table, and a tail-ender
+  who never got in has none in the batting one. Everyone who played is in one
+  of them.
+*/
+const byRuns = [...career].filter((p) => p.batting.innings > 0).sort(byCareerRuns);
+const byWickets = [...career].filter((p) => p.bowling.balls > 0).sort(byCareerWickets);
+
+const mostRuns = byRuns[0];
+const mostWickets = byWickets[0];
+const mostMatches = [...career].sort((a, b) => b.matches - a.matches || byCareerRuns(a, b))[0];
+
+const covered = careerSeasons.map((s) => s.label);
+const span = covered.length > 1 ? `${covered[0]} — ${covered.at(-1)}` : (covered[0] ?? '');
+
+/*
+  Seasons the club has played but has no per-player figures for. 2024/25 is one
+  today: the club's first season was registered under another club's banner and
+  nothing in the config points at that side's scorecards yet. Saying so is
+  better than a table that quietly starts a year late.
+*/
+const missing = clubSeasons
+  .map((s) => s.label)
+  .filter((label) => !covered.includes(label));
+
+const n = (v: number) => v.toLocaleString('en-AU');
+const plural = (v: number, word: string) => `${n(v)} ${word}${v === 1 ? '' : 's'}`;
+
+/*
+  Four figures, each with the piece of cricket furniture it counts. The icons
+  are what stop this reading as a generic metrics row: a bat beside the runs
+  and a ball beside the wickets say what the numbers are before the labels are
+  read at all.
+*/
+const headline = [
+  { label: 'Seasons', value: String(careerTotals.seasons), icon: 'boundary' as const },
+  { label: 'Players', value: String(careerTotals.players), icon: 'cap' as const },
+  { label: 'Runs', value: n(careerTotals.runs), icon: 'bat' as const },
+  { label: 'Wickets', value: n(careerTotals.wickets), icon: 'ball' as const },
+];
+
+const leaders = [
+  mostRuns && {
+    eyebrow: 'Most runs',
+    name: mostRuns.name,
+    figure: n(mostRuns.batting.runs),
+    unit: 'runs',
+    detail: [
+      mostRuns.batting.average === null ? null : `@ ${mostRuns.batting.average.toFixed(2)}`,
+      `HS ${mostRuns.batting.highScore}`,
+      plural(mostRuns.matches, 'game'),
+    ].filter(Boolean) as string[],
+  },
+  mostWickets && {
+    eyebrow: 'Most wickets',
+    name: mostWickets.name,
+    figure: n(mostWickets.bowling.wickets),
+    unit: 'wickets',
+    detail: [
+      mostWickets.bowling.average === null ? null : `@ ${mostWickets.bowling.average.toFixed(2)}`,
+      `Best ${mostWickets.bowling.best}`,
+      plural(mostWickets.matches, 'game'),
+    ].filter(Boolean) as string[],
+  },
+  mostMatches && {
+    eyebrow: 'Most games',
+    name: mostMatches.name,
+    figure: n(mostMatches.matches),
+    unit: 'games',
+    detail: [
+      plural(mostMatches.batting.runs, 'run'),
+      plural(mostMatches.bowling.wickets, 'wicket'),
+      mostMatches.seasons.map((s) => s.label).join(', '),
+    ],
+  },
+].filter(Boolean) as Array<{
+  eyebrow: string;
+  name: string;
+  figure: string;
+  unit: string;
+  detail: string[];
+}>;
+---
+
+<Base
+  title="All-time stats"
+  description={`Career runs, wickets and appearances for every ${club.name} player, every season since the club started.`}
+>
+  <PageHeader
+    eyebrow={span || 'Every season'}
+    title="All-time stats"
+    intro="Every run, wicket and appearance a Dreamer has made for the club, added up season by season."
+  />
+
+  {
+    hasCareer ? (
+      <>
+        <div class="band-dark relative overflow-hidden bg-club">
+          <div class="relative z-10 mx-auto max-w-6xl px-4 py-12 sm:py-14">
+            {/*
+              A scoreboard, not four numbers floating on a field. Ruled into
+              cells with hard corners, the way tokens.css asks for — "a
+              scorebook has no rounded corners, and the hard edges are what
+              make the hairline rules read as ruling".
+            */}
+            <dl class="totals">
+              {headline.map((item) => (
+                <div class="total">
+                  <dt class="total__label">
+                    <CricketIcon name={item.icon} class="total__icon" />
+                    {item.label}
+                  </dt>
+                  <dd class="total__value">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div class="mt-10 grid gap-5 md:grid-cols-3">
+              {leaders.map((leader) => (
+                <div class="border border-honour/30 bg-paper/5 p-5">
+                  <p class="font-display text-2xs uppercase tracking-eyebrow text-honour">
+                    {leader.eyebrow}
+                  </p>
+                  <p class="mt-2 font-display text-xl uppercase leading-tight text-paper">
+                    {leader.name}
+                  </p>
+                  <p class="mt-1 flex items-baseline gap-1.5">
+                    <span class="font-figures text-2xl font-bold tabular-nums text-paper">
+                      {leader.figure}
+                    </span>
+                    <span class="font-display text-2xs uppercase tracking-eyebrow text-accent-tint">
+                      {leader.unit}
+                    </span>
+                  </p>
+                  <p class="mt-2 font-figures text-2xs text-accent-tint">
+                    {leader.detail.join(' · ')}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-auto max-w-6xl space-y-6 px-4 py-16">
+          <SectionHead title="Career records" note={span} />
+
+          {/*
+            A switch rather than two tables stacked. The batting table runs to
+            49 rows, which put the bowling one a full screen and a half below
+            the fold — nobody scrolled that far to find out who takes wickets.
+
+            Two radios and a sibling selector, so it works with no JavaScript,
+            with no flash before hydration, and with a keyboard: the radios are
+            the real control and the labels are their faces.
+          */}
+          <div class="career-views">
+            <input
+              class="career-radio"
+              type="radio"
+              name="career-view"
+              id="career-view-batting"
+              checked
+            />
+            <input class="career-radio" type="radio" name="career-view" id="career-view-bowling" />
+
+            <div class="career-switch">
+              <label class="career-tab" for="career-view-batting">
+                Batting
+                <span class="career-tab__count">{byRuns.length}</span>
+              </label>
+              <label class="career-tab" for="career-view-bowling">
+                Bowling
+                <span class="career-tab__count">{byWickets.length}</span>
+              </label>
+            </div>
+
+            <div class="career-panel career-panel--batting">
+              <CareerTable kind="batting" players={byRuns} note={`Ordered on runs · ${span}`} />
+            </div>
+            <div class="career-panel career-panel--bowling">
+              <CareerTable kind="bowling" players={byWickets} note={`Ordered on wickets · ${span}`} />
+            </div>
+          </div>
+
+          <div class="space-y-2 text-2xs text-ink-muted">
+            <p>
+              Figures come from PlayHQ scorecards and are rebuilt every time the season syncs.
+              Averages, economy and highest scores are worked out from career totals, not averaged
+              across seasons. There is no career strike rate: early scorecards did not record balls
+              faced on every innings, so one would be runs over a fraction of the deliveries that
+              made them.
+            </p>
+            <p>
+              Everyone who has played is listed, including players who have since moved on. A player
+              the club has not added to its roster appears as the scorecard wrote them — an initial
+              and a surname.
+            </p>
+            {missing.length > 0 && (
+              <p>
+                {missing.join(' and ')} {missing.length > 1 ? 'are' : 'is'} not included yet — the
+                club played that season under another registration and its scorecards are not linked
+                to us on PlayHQ. Send the committee a match link from that season and it goes in.
+              </p>
+            )}
+          </div>
+        </div>
+      </>
+    ) : (
+      <div class="mx-auto max-w-6xl px-4 py-16">
+        <EmptyState title="Career figures open with the first round" />
+      </div>
+    )
+  }
+
+  <div class="mx-auto max-w-6xl px-4 pb-16">
+    <section
+      class="tile flex flex-col items-start justify-between gap-6 border border-honour/40 bg-club p-8 text-paper sm:flex-row sm:items-center"
+    >
+      <div>
+        <p class="eyebrow text-honour">This season</p>
+        <h3 class="mt-2 font-display text-2xl uppercase tracking-wide text-paper">
+          Season leaderboards
+        </h3>
+        <p class="mt-1 text-sm text-accent-tint">
+          Weekly best, the team of the season and the current leaderboards.
+        </p>
+      </div>
+      <a
+        href={url('stats')}
+        class="stitch-link shrink-0 font-display text-sm uppercase tracking-eyebrow text-honour transition-colors hover:text-paper"
+      >
+        Back to Stats →
+      </a>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /*
+    The scoreboard. One ruled panel rather than four loose figures: a hairline
+    frame, a cell per number, and a hairline between cells. Grid rather than a
+    wrapping flex row, so the rules always land on a cell edge — a wrapped row
+    left a divider dangling at the start of the second line with nothing to
+    divide, and CSS has no test for "first on its row".
+
+    Hard corners on purpose. tokens.css sets --radius-none because a scorebook
+    has none, and the square edge is what makes the hairlines read as ruling
+    rather than as a border round a box.
+  */
+  .totals {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border: 1px solid var(--rule-gold);
+    background: color-mix(in srgb, var(--color-paper) 4%, transparent);
+    --rule-gold: color-mix(in srgb, var(--color-honour) 28%, transparent);
+  }
+
+  .total {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+    padding: calc(var(--spacing) * 4) calc(var(--spacing) * 5);
+  }
+
+  /* Ruling for a two-up grid: a rule left of the right-hand column, and above
+     the second row. */
+  .total:nth-child(2n) {
+    border-left: 1px solid var(--rule-gold);
+  }
+
+  .total:nth-child(n + 3) {
+    border-top: 1px solid var(--rule-gold);
+  }
+
+  .total__label {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 1.5);
+    font-family: var(--font-display);
+    font-size: var(--text-2xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-honour);
+  }
+
+  .total__label :global(.total__icon) {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  .total__value {
+    font-family: var(--font-figures);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: var(--color-paper);
+  }
+
+  /* Four across once there is room, and the ruling follows. */
+  @media (min-width: 720px) {
+    .totals {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .total:nth-child(n + 3) {
+      border-top: 0;
+    }
+
+    .total:not(:first-child) {
+      border-left: 1px solid var(--rule-gold);
+    }
+
+    .total {
+      padding: calc(var(--spacing) * 5) calc(var(--spacing) * 6);
+    }
+
+    .total__value {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  /*
+    The radios carry the state and are never seen; the labels are the control.
+    Keeping them in the flow (rather than display:none) leaves them focusable,
+    and the focus ring is drawn on whichever label the focused radio belongs to.
+  */
+  .career-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .career-switch {
+    display: inline-flex;
+    gap: calc(var(--spacing) * 1);
+    padding: calc(var(--spacing) * 1);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    background: var(--color-paper-sunk);
+  }
+
+  .career-tab {
+    display: inline-flex;
+    align-items: baseline;
+    gap: calc(var(--spacing) * 2);
+    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-ink-muted);
+    transition:
+      background-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .career-tab:hover {
+    color: var(--color-club);
+  }
+
+  .career-tab__count {
+    font-family: var(--font-figures);
+    font-size: var(--text-2xs);
+    font-variant-numeric: tabular-nums;
+    opacity: 0.7;
+  }
+
+  #career-view-batting:checked ~ .career-switch [for='career-view-batting'],
+  #career-view-bowling:checked ~ .career-switch [for='career-view-bowling'] {
+    background: var(--color-club);
+    color: var(--color-paper);
+  }
+
+  #career-view-batting:focus-visible ~ .career-switch [for='career-view-batting'],
+  #career-view-bowling:focus-visible ~ .career-switch [for='career-view-bowling'] {
+    outline: 2px solid var(--color-honour);
+    outline-offset: 2px;
+  }
+
+  .career-panel {
+    display: none;
+    margin-top: calc(var(--spacing) * 6);
+  }
+
+  #career-view-batting:checked ~ .career-panel--batting,
+  #career-view-bowling:checked ~ .career-panel--bowling {
+    display: block;
+  }
+
+  /* The switch is wider than a phone in one row only if the counts run long. */
+  @media (max-width: 420px) {
+    .career-tab {
+      padding-inline: calc(var(--spacing) * 3);
+      font-size: var(--text-2xs);
+    }
+  }
+</style>
+
+<script>
+  import '../../scripts/motion.ts';
+</script>

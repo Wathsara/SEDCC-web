@@ -98,6 +98,8 @@
       "first": true,
       "note": "The club's first season. One side, Grade 3C, every Sunday.",
       "photo": "2024-25-vsca-grade-3c-team.jpg",
+      "publicTeamId": "c6b35e9e-52e1-4967-ad1d-a4e62a90a4c2",
+      "publicGradeId": "8962c5ed-0d1a-4d48-bdf5-0826229bb4a6",
       "clubNameThen": "Dreamers",
       "teamNameThen": "Dreamers Grade 3C",
       "leaders": {
@@ -128,6 +130,8 @@
       "result": "Runners-up",
       "playhqGradeId": "e3e0d509-769b-43ba-9167-7af1e5545a9b",
       "playhqTeamId": "b8e29581-2ae0-4529-9a8e-742b8057fe6a",
+      "publicTeamId": "b8e29581-2ae0-4529-9a8e-742b8057fe6a",
+      "publicGradeId": "e3e0d509-769b-43ba-9167-7af1e5545a9b",
       "resultsUrl": "https://play.cricket.com.au/grade/e3e0d509-769b-43ba-9167-7af1e5545a9b?teamId=b8e29581-2ae0-4529-9a8e-742b8057fe6a&tab=matches",
       "leaders": {
         "mostRuns": {
@@ -320,5 +324,6 @@
       }
     ]
   },
+  "_publicTeamIdComment": "publicTeamId / publicGradeId are the side's ids in the play.cricket.com.au match centre, which npm run playhq:history reads to rebuild that season's player figures. They need no API key. Both of the club's first two seasons were registered under the Victorian Sunday Cricket Club, so our sides are listed there, not under our own club: play.cricket.com.au/club/victorian-sunday-cricket-club/d5f2561a-fc5d-49d0-af92-cf4924a61add?tab=teams, with the season picker set to that summer. The ids are in the team link. Or run: npm run playhq:history -- --seed <any match URL from that season>.",
   "_historicalIdsComment": "playhqGradeId / playhqTeamId on a season here are HISTORICAL — they belong to that season only. Never copy them into config/season-2026-27.json: the sync would pull last season's fixtures and present them as this season's. Once PLAYHQ_API_KEY exists these can be used to backfill real results for past seasons."
 }

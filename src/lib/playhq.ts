@@ -99,6 +99,32 @@ export const byWickets = (a: SeasonAggregate, b: SeasonAggregate) =>
   b.bowling.wickets - a.bowling.wickets ||
   bowlAvg(a) - bowlAvg(b) ||
   bowlEcon(a) - bowlEcon(b);
+
+/**
+ * Every dismissal the player had a hand in. PlayHQ counts the three kinds
+ * separately and does not add them up, but a fielding board needs one number
+ * to rank on, and in the field a catch, a stumping and a run-out are the same
+ * contribution: a batter walking off.
+ *
+ * `fielding` is absent from stats files written before the aggregator recorded
+ * it, so a missing block is nought rather than a crash.
+ */
+export const dismissals = (p: SeasonAggregate) =>
+  (p.fielding?.catches ?? 0) + (p.fielding?.stumpings ?? 0) + (p.fielding?.runOuts ?? 0);
+
+/*
+  Most dismissals, then whoever took them in fewer games.
+
+  Cricket has no official fielding ranking and the numbers are small — most of
+  the board sits on one or two — so without a tie-break the order is whatever
+  the aggregate happened to be written in. Appearances break it, the way the
+  average breaks it on the other two boards: the same work in less cricket is
+  the better return. Catches settle the rest.
+*/
+export const byFielding = (a: SeasonAggregate, b: SeasonAggregate) =>
+  dismissals(b) - dismissals(a) ||
+  a.matches - b.matches ||
+  (b.fielding?.catches ?? 0) - (a.fielding?.catches ?? 0);
 export const hasFixtures = fixtures.teams.length > 0;
 export const hasLadders = ladders.grades.length > 0;
 

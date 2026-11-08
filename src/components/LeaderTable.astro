@@ -2,7 +2,7 @@
 import CricketIcon from './CricketIcon.astro';
 import PlayerPortrait from './PlayerPortrait.astro';
 import { teamBySlug, portraitKey } from '../lib/site';
-import { byRuns, byWickets } from '../lib/playhq';
+import { byRuns, byWickets, byFielding, dismissals } from '../lib/playhq';
 import type { SeasonAggregate } from '../lib/playhq-types';
 
 interface Props {
@@ -20,18 +20,35 @@ const bowlers = [...players]
   .sort(byWickets)
   .slice(0, 10);
 
+/*
+  Not cut to ten like the other two. Most of a fielding board is players level
+  on one catch, so a top ten would end mid-tie and drop half a dozen people who
+  did exactly what the tenth name did. The board runs full width under the other
+  two and has the room, so everyone who has had a hand in a dismissal is on it.
+*/
+const fielders = [...players].filter((p) => dismissals(p) > 0).sort(byFielding);
+
 const teamsOf = (p: SeasonAggregate) =>
   p.teams.map((s) => teamBySlug(s)?.shortName ?? s).join(' · ');
 
 /** null average means never dismissed — a dash, not a zero. */
 const num = (v: number | null) => (v === null ? '—' : v.toFixed(2));
 
+const games = (n: number) => `${n} ${n === 1 ? 'game' : 'games'}`;
+
 /*
-  One row shape for both boards: the headline number the board is ranked on
+  One row shape for all three boards: the headline number the board is ranked on
   sits alone on the right, and everything that qualifies it — average, teams,
   innings or overs, best — runs along one meta line underneath.
 */
-const battingBoard = batters.map((p, i) => ({
+interface Row {
+  rank: number;
+  name: string;
+  count: number;
+  meta: string[];
+}
+
+const battingBoard: Row[] = batters.map((p, i) => ({
   rank: i + 1,
   name: p.displayName,
   count: p.batting.runs,
@@ -43,7 +60,7 @@ const battingBoard = batters.map((p, i) => ({
   ],
 }));
 
-const bowlingBoard = bowlers.map((p, i) => ({
+const bowlingBoard: Row[] = bowlers.map((p, i) => ({
   rank: i + 1,
   name: p.displayName,
   count: p.bowling.wickets,
@@ -55,6 +72,45 @@ const bowlingBoard = bowlers.map((p, i) => ({
   ],
 }));
 
+/*
+  The fielding row's leading figure is the breakdown rather than a rate: the
+  total on the right says how many, and catches, stumpings and run-outs are not
+  the same job. A kind the player has none of is left out, so a specialist
+  keeper's line reads "2 ct · 1 st" and a fielder's just "3 ct", instead of
+  every row carrying three numbers and two noughts.
+*/
+const fieldingBoard: Row[] = fielders.map((p, i) => ({
+  rank: i + 1,
+  name: p.displayName,
+  count: dismissals(p),
+  meta: [
+    [
+      p.fielding?.catches ? `${p.fielding.catches} ct` : null,
+      p.fielding?.stumpings ? `${p.fielding.stumpings} st` : null,
+      p.fielding?.runOuts ? `${p.fielding.runOuts} ro` : null,
+    ]
+      .filter(Boolean)
+      .join(' · '),
+    teamsOf(p),
+    games(p.matches),
+  ],
+}));
+
+/*
+  The fielding board runs the full width underneath the other two, so its rows
+  are dealt into two columns like a printed leaderboard — read down the left,
+  then down the right. Two lists rather than one two-column grid, so each
+  column's last row drops its own rule.
+
+  Under five names it stays a single column: a 3-and-2 split reads as a short
+  board with a hole in it rather than as two columns.
+*/
+const columnsOf = (rows: Row[], split: boolean) => {
+  if (!split || rows.length < 5) return [rows];
+  const half = Math.ceil(rows.length / 2);
+  return [rows.slice(0, half), rows.slice(half)];
+};
+
 const boards = [
   {
     title: 'Run scorers',
@@ -62,6 +118,7 @@ const boards = [
     column: 'Runs',
     note: 'All sides · top 10',
     rows: battingBoard,
+    wide: false,
   },
   {
     title: 'Wicket takers',
@@ -69,14 +126,33 @@ const boards = [
     column: 'Wickets',
     note: 'All sides · top 10',
     rows: bowlingBoard,
+    wide: false,
   },
-];
+  {
+    title: 'In the field',
+    icon: 'stumps' as const,
+    column: 'Dismissals',
+    note: 'All sides · all dismissals',
+    rows: fieldingBoard,
+    wide: true,
+  },
+].flatMap((board) =>
+  /* A board with nothing in it yet is left out rather than shown empty — the
+     page already has its own empty state for a season that has not started. */
+  board.rows.length === 0 ? [] : [{ ...board, columns: columnsOf(board.rows, board.wide) }],
+);
 ---
 
 <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
   {
     boards.map((board) => (
-      <section class="tile overflow-hidden border border-rule bg-paper" data-rule-in>
+      <section
+        class:list={[
+          'tile overflow-hidden border border-rule bg-paper',
+          board.wide && 'lg:col-span-2',
+        ]}
+        data-rule-in
+      >
         {/*
           The same banner the ladder runs above its table: an icon, the board's
           name, and on the right the name of the column the rows are sorted on.
@@ -98,23 +174,32 @@ const boards = [
           </span>
         </header>
 
-        <ul class="px-3.5 sm:px-5">
-          {board.rows.map((row) => (
-            <li class="leader">
-              <span class="leader__rank">{row.rank}</span>
-              <span class="leader__face">
-                <PlayerPortrait id={portraitKey(row.name)} name={row.name} />
-              </span>
-              <span class="leader__name">{row.name}</span>
-              <span class="leader__count">{row.count}</span>
-              <span class="leader__meta">
-                {row.meta.map((bit) => (
-                  <span>{bit}</span>
-                ))}
-              </span>
-            </li>
+        <div
+          class:list={[
+            'leader-cols px-3.5 sm:px-5',
+            board.columns.length > 1 && 'leader-cols--split lg:grid lg:grid-cols-2 lg:gap-x-10',
+          ]}
+        >
+          {board.columns.map((column) => (
+            <ul class="leader-col">
+              {column.map((row) => (
+                <li class="leader">
+                  <span class="leader__rank">{row.rank}</span>
+                  <span class="leader__face">
+                    <PlayerPortrait id={portraitKey(row.name)} name={row.name} />
+                  </span>
+                  <span class="leader__name">{row.name}</span>
+                  <span class="leader__count">{row.count}</span>
+                  <span class="leader__meta">
+                    {row.meta.map((bit) => (
+                      <span>{bit}</span>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
           ))}
-        </ul>
+        </div>
       </section>
     ))
   }
@@ -141,8 +226,23 @@ const boards = [
     border-bottom: 1px solid var(--color-rule);
   }
 
-  .leader:last-child {
+  /*
+    Stacked — one column, or a split board below the breakpoint — the rules run
+    unbroken and only the very last row of the tile drops its own. Side by side,
+    each column is its own list and ends cleanly.
+
+    The split waits for lg because that is where the wide tile actually widens:
+    at sm the tile is still one column of the page grid, and halving it again
+    left 263px a row and wrapped nine names in ten.
+  */
+  .leader-col:last-child > .leader:last-child {
     border-bottom: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .leader-cols--split > .leader-col > .leader:last-child {
+      border-bottom: 0;
+    }
   }
 
   .leader__rank {

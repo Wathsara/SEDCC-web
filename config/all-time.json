@@ -148,6 +148,19 @@
     "_comment": "The two honours boards, Lord's style: centuries and five-wicket hauls. One row per performance, not per player. The site sorts by season, newest first, and preserves the order of this list within each season — so to move an entry, move it here. Rounds were resolved by cross-referencing each innings against the team totals in config/results-*.json; two are left null because more than one round fits.",
     "centuries": [
       {
+        "name": "Mahesh Fernando",
+        "season": "2026/27",
+        "score": "102*",
+        "balls": 83,
+        "fours": 14,
+        "sixes": 0,
+        "strikeRate": 122.89,
+        "opponent": "Eastern Rebels Senior Men 4",
+        "grade": "VSCA Grade 4",
+        "round": "Round 2",
+        "dismissal": "Not out"
+      },
+      {
         "name": "Yadeesha Deerasooriya",
         "season": "2026/27",
         "score": "126",

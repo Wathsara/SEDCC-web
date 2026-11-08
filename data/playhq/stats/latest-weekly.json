@@ -1,59 +1,59 @@
 {
   "week": "2026-W45",
-  "generatedAt": "2026-11-07T22:37:41.159Z",
+  "generatedAt": "2026-11-08T19:16:07.325Z",
   "topBatter": {
-    "playerId": "yadeesha-deerasooriya",
-    "displayName": "Yadeesha Deerasooriya",
+    "playerId": "mahesh-fernando",
+    "displayName": "Mahesh Fernando",
     "identifiable": true,
-    "teamSlug": "loc-1",
-    "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-    "round": "Round 4",
-    "date": "2026-11-07T01:30:00.000Z",
-    "opponent": "AYC Harlequins 1st XI",
+    "teamSlug": "grade-4",
+    "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+    "round": "Round 2",
+    "date": "2026-11-08T02:00:00.000Z",
+    "opponent": "Eastern Rebels  Senior Men 4",
     "batting": {
-      "runs": 82,
-      "balls": 65,
-      "fours": 10,
-      "sixes": 3,
-      "strikeRate": 126.15,
-      "notOut": false,
-      "didNotBat": false
-    },
-    "bowling": {
-      "overs": 8,
-      "balls": 48,
-      "maidens": 0,
-      "runs": 49,
-      "wickets": 1,
-      "economy": 6.13
-    },
-    "fielding": null
-  },
-  "topBowler": {
-    "playerId": "malith-kanahara",
-    "displayName": "Malith Kanahara",
-    "identifiable": true,
-    "teamSlug": "loc-2",
-    "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-    "round": "Round 4",
-    "date": "2026-11-07T01:30:00.000Z",
-    "opponent": "Balwyn Saints 3rd XI",
-    "batting": {
-      "runs": 22,
-      "balls": 36,
-      "fours": 1,
+      "runs": 102,
+      "balls": 83,
+      "fours": 14,
       "sixes": 0,
-      "strikeRate": 61.11,
+      "strikeRate": 122.89,
       "notOut": true,
       "didNotBat": false
     },
     "bowling": {
       "overs": 8,
       "balls": 48,
-      "maidens": 2,
-      "runs": 14,
-      "wickets": 2,
-      "economy": 1.75
+      "maidens": 0,
+      "runs": 44,
+      "wickets": 3,
+      "economy": 5.5
+    },
+    "fielding": null
+  },
+  "topBowler": {
+    "playerId": "mahesh-fernando",
+    "displayName": "Mahesh Fernando",
+    "identifiable": true,
+    "teamSlug": "grade-4",
+    "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+    "round": "Round 2",
+    "date": "2026-11-08T02:00:00.000Z",
+    "opponent": "Eastern Rebels  Senior Men 4",
+    "batting": {
+      "runs": 102,
+      "balls": 83,
+      "fours": 14,
+      "sixes": 0,
+      "strikeRate": 122.89,
+      "notOut": true,
+      "didNotBat": false
+    },
+    "bowling": {
+      "overs": 8,
+      "balls": 48,
+      "maidens": 0,
+      "runs": 44,
+      "wickets": 3,
+      "economy": 5.5
     },
     "fielding": null
   },
@@ -605,6 +605,251 @@
         "didNotBat": false
       },
       "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": null,
+      "displayName": "Anushka Withanage",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": {
+        "runs": 72,
+        "balls": 64,
+        "fours": 9,
+        "sixes": 1,
+        "strikeRate": 112.5,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "ravi-jayasundara",
+      "displayName": "Ravi Jayasundara",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": null,
+      "bowling": null,
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "mahesh-fernando",
+      "displayName": "Mahesh Fernando",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": {
+        "runs": 102,
+        "balls": 83,
+        "fours": 14,
+        "sixes": 0,
+        "strikeRate": 122.89,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 44,
+        "wickets": 3,
+        "economy": 5.5
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "indika-karunathilaka",
+      "displayName": "Indika Karunathilaka",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": null,
+      "bowling": {
+        "overs": 3.3,
+        "balls": 21,
+        "maidens": 0,
+        "runs": 15,
+        "wickets": 1,
+        "economy": 4.29
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": null,
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 14,
+        "wickets": 2,
+        "economy": 4.67
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "thisara-nilupul-lankathilake",
+      "displayName": "Thisara Nilupul Lankathilake",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": null,
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 33,
+        "wickets": 0,
+        "economy": 11
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "pavan-ariyadasa",
+      "displayName": "Pavan Ariyadasa",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": null,
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 32,
+        "wickets": 1,
+        "economy": 4
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "aruna-perera",
+      "displayName": "Aruna Perera",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": {
+        "runs": 10,
+        "balls": 15,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 66.67,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": {
+        "catches": 1,
+        "stumpings": 1,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "amila-jayanuwan",
+      "displayName": "Amila Jayanuwan",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": {
+        "runs": 17,
+        "balls": 19,
+        "fours": 3,
+        "sixes": 0,
+        "strikeRate": 89.47,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "dilan-samarakoon",
+      "displayName": "Dilan Samarakoon",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": {
+        "runs": 6,
+        "balls": 23,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 26.09,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "harith-perera",
+      "displayName": "Harith Perera",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
+      "round": "Round 2",
+      "date": "2026-11-08T02:00:00.000Z",
+      "opponent": "Eastern Rebels  Senior Men 4",
+      "batting": {
+        "runs": 36,
+        "balls": 37,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 97.3,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 0,
+        "runs": 36,
+        "wickets": 1,
+        "economy": 9
+      },
       "fielding": null
     }
   ]

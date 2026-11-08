@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-07T22:37:40.925Z",
+  "syncedAt": "2026-11-08T19:16:07.032Z",
   "season": "2026-27",
   "teams": [
     {
@@ -768,7 +768,7 @@
         },
         {
           "id": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 2",
           "roundShort": "R2",
@@ -778,13 +778,13 @@
           ],
           "isHome": false,
           "opponent": "Eastern Rebels  Senior Men 4",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Tatterson Park",
           "ground": "Tatterson Park - East Oval",
           "suburb": "KEYSBOROUGH",
           "mapQuery": "Tatterson%20Park%2C%20KEYSBOROUGH%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null
+          "ourScore": "4/268 (40 ov)",
+          "theirScore": "174 (29.3 ov)"
         },
         {
           "id": "1c6b2466-5622-4698-a748-b0f3e862523e",

@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-07T22:37:40.925Z",
+  "syncedAt": "2026-11-08T19:16:07.032Z",
   "season": "2026-27",
   "grades": [
     {
@@ -541,7 +541,7 @@
                 "name": "Melbourne Sixers 2nd X1"
               },
               "values": [
-                3,
+                4,
                 9,
                 0.896,
                 0.989,
@@ -587,8 +587,8 @@
                 "name": "STC South Camberwell 2nd XI"
               },
               "values": [
-                3,
-                6,
+                4,
+                9,
                 0.837,
                 -0.521,
                 1,
@@ -610,8 +610,8 @@
                 "name": "Malvern Valley 1st XI"
               },
               "values": [
-                3,
-                6,
+                4,
+                9,
                 0.552,
                 -1.36,
                 1,
@@ -633,7 +633,7 @@
                 "name": "St. Pauls Oakleigh 3rd XI"
               },
               "values": [
-                3,
+                4,
                 6,
                 0.659,
                 -2.305,
@@ -791,57 +791,15 @@
           "standings": [
             {
               "team": {
-                "id": "a3917ae2-b674-4929-b7e6-5f96213faa5b",
-                "name": "Melbourne Titans - 4"
-              },
-              "values": [
-                1,
-                6,
-                3.352,
-                1.199,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "db1f4584-fdda-423b-858d-a52f25e8dd10",
-                "name": "Melbourne Knights Grade 4"
-              },
-              "values": [
-                1,
-                6,
-                1.731,
-                1.073,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
                 "id": "3cd5aa0c-c20b-4452-b2e6-798c5cfebb48",
                 "name": "Melbourne Crickeroos Grade 4"
               },
               "values": [
-                1,
-                6,
-                1.673,
-                0.112,
-                1,
+                2,
+                12,
+                1.546,
+                0.464,
+                2,
                 0,
                 0,
                 0,
@@ -858,11 +816,11 @@
                 "name": "Casey Falcons Grade 4"
               },
               "values": [
-                1,
-                6,
-                1.148,
-                0.5,
-                1,
+                2,
+                12,
+                1.272,
+                0.862,
+                2,
                 0,
                 0,
                 0,
@@ -879,11 +837,11 @@
                 "name": "South Eastern Dreamers Grade 4"
               },
               "values": [
+                2,
+                6,
+                1.75,
+                0.925,
                 1,
-                0,
-                0.871,
-                -0.5,
-                0,
                 1,
                 0,
                 0,
@@ -896,15 +854,15 @@
             },
             {
               "team": {
-                "id": "2015fe91-210f-4070-924d-9eb3569f0a24",
-                "name": "Eastern Rebels  Senior Men 4"
+                "id": "a3917ae2-b674-4929-b7e6-5f96213faa5b",
+                "name": "Melbourne Titans - 4"
               },
               "values": [
+                2,
+                6,
+                1.308,
+                0.138,
                 1,
-                0,
-                0.598,
-                -0.112,
-                0,
                 1,
                 0,
                 0,
@@ -921,11 +879,32 @@
                 "name": "Ocean XI - Grade 4"
               },
               "values": [
+                2,
+                6,
+                1.138,
+                1.019,
+                1,
                 1,
                 0,
-                0.578,
-                -1.073,
                 0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "db1f4584-fdda-423b-858d-a52f25e8dd10",
+                "name": "Melbourne Knights Grade 4"
+              },
+              "values": [
+                2,
+                6,
+                1.042,
+                -0.128,
+                1,
                 1,
                 0,
                 0,
@@ -942,12 +921,33 @@
                 "name": "Hartley CC - 4"
               },
               "values": [
-                1,
+                2,
                 0,
-                0.298,
-                -1.199,
+                0.487,
+                -2.109,
                 0,
-                1,
+                2,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "2015fe91-210f-4070-924d-9eb3569f0a24",
+                "name": "Eastern Rebels  Senior Men 4"
+              },
+              "values": [
+                2,
+                0,
+                0.412,
+                -1.23,
+                0,
+                2,
                 0,
                 0,
                 0,

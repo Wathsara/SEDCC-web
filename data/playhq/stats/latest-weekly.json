@@ -1,84 +1,112 @@
 {
-  "week": "2026-W44",
-  "generatedAt": "2026-11-01T10:00:46.736Z",
+  "week": "2026-W45",
+  "generatedAt": "2026-11-07T22:37:41.159Z",
   "topBatter": {
-    "playerId": "amila-jayanuwan",
-    "displayName": "Amila Jayanuwan",
+    "playerId": "yadeesha-deerasooriya",
+    "displayName": "Yadeesha Deerasooriya",
     "identifiable": true,
-    "teamSlug": "grade-4",
-    "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-    "round": "Round 1",
-    "date": "2026-11-01T02:00:00.000Z",
-    "opponent": "Casey Falcons Grade 4",
+    "teamSlug": "loc-1",
+    "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+    "round": "Round 4",
+    "date": "2026-11-07T01:30:00.000Z",
+    "opponent": "AYC Harlequins 1st XI",
     "batting": {
-      "runs": 39,
-      "balls": 44,
-      "fours": 2,
-      "sixes": 0,
-      "strikeRate": 88.64,
+      "runs": 82,
+      "balls": 65,
+      "fours": 10,
+      "sixes": 3,
+      "strikeRate": 126.15,
       "notOut": false,
       "didNotBat": false
     },
-    "bowling": null,
+    "bowling": {
+      "overs": 8,
+      "balls": 48,
+      "maidens": 0,
+      "runs": 49,
+      "wickets": 1,
+      "economy": 6.13
+    },
     "fielding": null
   },
   "topBowler": {
-    "playerId": "pavan-ariyadasa",
-    "displayName": "Pavan Ariyadasa",
+    "playerId": "malith-kanahara",
+    "displayName": "Malith Kanahara",
     "identifiable": true,
-    "teamSlug": "grade-4",
-    "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-    "round": "Round 1",
-    "date": "2026-11-01T02:00:00.000Z",
-    "opponent": "Casey Falcons Grade 4",
+    "teamSlug": "loc-2",
+    "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+    "round": "Round 4",
+    "date": "2026-11-07T01:30:00.000Z",
+    "opponent": "Balwyn Saints 3rd XI",
     "batting": {
-      "runs": 0,
-      "balls": 5,
-      "fours": 0,
+      "runs": 22,
+      "balls": 36,
+      "fours": 1,
       "sixes": 0,
-      "strikeRate": 0,
+      "strikeRate": 61.11,
       "notOut": true,
       "didNotBat": false
     },
     "bowling": {
       "overs": 8,
       "balls": 48,
-      "maidens": 1,
-      "runs": 32,
-      "wickets": 5,
-      "economy": 4
+      "maidens": 2,
+      "runs": 14,
+      "wickets": 2,
+      "economy": 1.75
     },
     "fielding": null
   },
   "performances": [
     {
-      "playerId": "mahesh-fernando",
-      "displayName": "Mahesh Fernando",
+      "playerId": "malith-kanahara",
+      "displayName": "Malith Kanahara",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
       "batting": {
-        "runs": 3,
-        "balls": 9,
-        "fours": 0,
+        "runs": 22,
+        "balls": 36,
+        "fours": 1,
         "sixes": 0,
-        "strikeRate": 33.33,
-        "notOut": false,
+        "strikeRate": 61.11,
+        "notOut": true,
         "didNotBat": false
       },
       "bowling": {
         "overs": 8,
         "balls": 48,
         "maidens": 2,
-        "runs": 28,
-        "wickets": 1,
-        "economy": 3.5
+        "runs": 14,
+        "wickets": 2,
+        "economy": 1.75
       },
+      "fielding": null
+    },
+    {
+      "playerId": "yasuntha-gamalath",
+      "displayName": "Yasuntha Gamalath",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
+      "batting": {
+        "runs": 11,
+        "balls": 33,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 33.33,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
       "fielding": {
-        "catches": 1,
+        "catches": 2,
         "stumpings": 0,
         "runOuts": 0
       }
@@ -87,14 +115,14 @@
       "playerId": "harith-perera",
       "displayName": "Harith Perera",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
       "batting": {
         "runs": 0,
-        "balls": 3,
+        "balls": 0,
         "fours": 0,
         "sixes": 0,
         "strikeRate": 0,
@@ -102,111 +130,30 @@
         "didNotBat": false
       },
       "bowling": {
-        "overs": 6,
-        "balls": 36,
+        "overs": 7,
+        "balls": 42,
         "maidens": 0,
-        "runs": 25,
+        "runs": 23,
         "wickets": 2,
-        "economy": 4.17
+        "economy": 3.29
       },
       "fielding": null
     },
     {
-      "playerId": "indika-karunathilaka",
-      "displayName": "Indika Karunathilaka",
+      "playerId": "dilhan-rahubadde-kankanange",
+      "displayName": "Dilhan Rahubadde Kankanange",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
       "batting": {
-        "runs": 1,
-        "balls": 12,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 8.33,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 1,
-        "balls": 6,
-        "maidens": 0,
-        "runs": 3,
-        "wickets": 0,
-        "economy": 3
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "harsha-munasinghe",
-      "displayName": "Harsha Munasinghe",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
-      "batting": {
-        "runs": 22,
-        "balls": 38,
-        "fours": 1,
-        "sixes": 0,
-        "strikeRate": 57.89,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": {
-        "catches": 1,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "wathsara-daluwatta",
-      "displayName": "Wathsara Daluwatta",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
-      "batting": {
-        "runs": 25,
-        "balls": 37,
-        "fours": 2,
-        "sixes": 0,
-        "strikeRate": 67.57,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 1,
-        "runs": 39,
-        "wickets": 1,
-        "economy": 4.88
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "pavan-ariyadasa",
-      "displayName": "Pavan Ariyadasa",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
-      "batting": {
-        "runs": 0,
-        "balls": 5,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 0,
+        "runs": 51,
+        "balls": 40,
+        "fours": 7,
+        "sixes": 2,
+        "strikeRate": 127.5,
         "notOut": true,
         "didNotBat": false
       },
@@ -214,21 +161,183 @@
         "overs": 8,
         "balls": 48,
         "maidens": 1,
-        "runs": 32,
-        "wickets": 5,
-        "economy": 4
+        "runs": 18,
+        "wickets": 1,
+        "economy": 2.25
       },
       "fielding": null
     },
     {
-      "playerId": "thisara-nilupul-lankathilake",
-      "displayName": "Thisara Nilupul Lankathilake",
+      "playerId": "shehan-galagedara",
+      "displayName": "Shehan Galagedara",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
+      "batting": {
+        "runs": 0,
+        "balls": 0,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 15,
+        "wickets": 1,
+        "economy": 5
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "naveen-fernando",
+      "displayName": "Naveen Fernando",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
+      "batting": {
+        "runs": 0,
+        "balls": 0,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 26,
+        "wickets": 0,
+        "economy": 5.2
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "saminda-kaviraja",
+      "displayName": "Saminda Kaviraja",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
+      "batting": {
+        "runs": 0,
+        "balls": 0,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 0,
+        "runs": 12,
+        "wickets": 0,
+        "economy": 3
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
+      "batting": {
+        "runs": 2,
+        "balls": 3,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 66.67,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 24,
+        "wickets": 0,
+        "economy": 4.8
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "nisitha-ginigalgodage",
+      "displayName": "Nisitha Ginigalgodage",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
+      "batting": {
+        "runs": 39,
+        "balls": 60,
+        "fours": 4,
+        "sixes": 0,
+        "strikeRate": 65,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "tharindu-demika",
+      "displayName": "Tharindu Demika",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
+      "batting": {
+        "runs": 0,
+        "balls": 0,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "lasitha-ekanayake",
+      "displayName": "Lasitha Ekanayake",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
       "batting": {
         "runs": 7,
         "balls": 16,
@@ -238,32 +347,21 @@
         "notOut": false,
         "didNotBat": false
       },
-      "bowling": {
-        "overs": 3,
-        "balls": 18,
-        "maidens": 0,
-        "runs": 23,
-        "wickets": 0,
-        "economy": 7.67
-      },
-      "fielding": {
-        "catches": 1,
-        "stumpings": 0,
-        "runOuts": 0
-      }
+      "bowling": null,
+      "fielding": null
     },
     {
-      "playerId": "aruna-perera",
-      "displayName": "Aruna Perera",
+      "playerId": "nimsara-wijesinghe",
+      "displayName": "Nimsara Wijesinghe",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
+      "teamSlug": "loc-2",
+      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "Balwyn Saints 3rd XI",
       "batting": {
         "runs": 0,
-        "balls": 6,
+        "balls": 0,
         "fours": 0,
         "sixes": 0,
         "strikeRate": 0,
@@ -271,27 +369,217 @@
         "didNotBat": false
       },
       "bowling": null,
-      "fielding": {
-        "catches": 2,
-        "stumpings": 0,
-        "runOuts": 1
-      }
+      "fielding": null
     },
     {
-      "playerId": "amila-jayanuwan",
-      "displayName": "Amila Jayanuwan",
+      "playerId": "buwaneka-wakishta",
+      "displayName": "Buwaneka Wakishta",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
       "batting": {
-        "runs": 39,
-        "balls": 44,
-        "fours": 2,
+        "runs": 9,
+        "balls": 12,
+        "fours": 1,
         "sixes": 0,
-        "strikeRate": 88.64,
+        "strikeRate": 75,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 40,
+        "wickets": 1,
+        "economy": 5
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "ruranga-jayarathna",
+      "displayName": "Ruranga Jayarathna",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 43,
+        "wickets": 1,
+        "economy": 5.38
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "dinuth-deerasooriya",
+      "displayName": "Dinuth Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 48,
+        "wickets": 0,
+        "economy": 9.6
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "yadeesha-deerasooriya",
+      "displayName": "Yadeesha Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": {
+        "runs": 82,
+        "balls": 65,
+        "fours": 10,
+        "sixes": 3,
+        "strikeRate": 126.15,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 49,
+        "wickets": 1,
+        "economy": 6.13
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "pasindu-sunilchandra",
+      "displayName": "Pasindu Sunilchandra",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": {
+        "runs": 3,
+        "balls": 6,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 50,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 33,
+        "wickets": 1,
+        "economy": 4.13
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "santhuka-de-silva",
+      "displayName": "Santhuka De Silva",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": {
+        "runs": 1,
+        "balls": 4,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 25,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 27,
+        "wickets": 1,
+        "economy": 9
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "thisura-waduge",
+      "displayName": "Thisura Waduge",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": {
+        "runs": 20,
+        "balls": 20,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 100,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": null,
+      "displayName": "Janaka Muthukumarana",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": {
+        "runs": 29,
+        "balls": 24,
+        "fours": 0,
+        "sixes": 2,
+        "strikeRate": 120.83,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "janaka-don",
+      "displayName": "Janaka Don",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
+      "batting": {
+        "runs": 79,
+        "balls": 96,
+        "fours": 12,
+        "sixes": 0,
+        "strikeRate": 82.29,
         "notOut": false,
         "didNotBat": false
       },
@@ -299,41 +587,20 @@
       "fielding": null
     },
     {
-      "playerId": "charith-elvatigala",
-      "displayName": "Charith Elvatigala",
+      "playerId": "yasindu-hendavitharana",
+      "displayName": "Yasindu Hendavitharana",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
+      "teamSlug": "loc-1",
+      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
+      "round": "Round 4",
+      "date": "2026-11-07T01:30:00.000Z",
+      "opponent": "AYC Harlequins 1st XI",
       "batting": {
-        "runs": 5,
-        "balls": 33,
+        "runs": 2,
+        "balls": 12,
         "fours": 0,
         "sixes": 0,
-        "strikeRate": 15.15,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "dilan-samarakoon",
-      "displayName": "Dilan Samarakoon",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "916b358b-4394-48a6-8562-dcc8a6f133e3",
-      "round": "Round 1",
-      "date": "2026-11-01T02:00:00.000Z",
-      "opponent": "Casey Falcons Grade 4",
-      "batting": {
-        "runs": 8,
-        "balls": 23,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 34.78,
+        "strikeRate": 16.67,
         "notOut": false,
         "didNotBat": false
       },

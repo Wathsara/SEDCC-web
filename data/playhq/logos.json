@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-01T10:00:46.385Z",
+  "syncedAt": "2026-11-07T22:37:40.924Z",
   "_comment": "Club crests and association badges from PlayHQ, cached locally. Machine-written by scripts/playhq/sync.ts — do not hand-edit. Match a team name to a crest with matchKey, which strips the grade suffix and words like CC/SC so \"Dreamers SC - 4\" finds \"Dreamers SC\".",
   "logos": {
     "ayc-harlequins-cricket-club": {
@@ -797,6 +797,7 @@
         "c1645d38-4ab7-407d-8b66-e186d7391779",
         "6a910858-3c2a-454f-9c80-7cf5df4e1450",
         "4b040d8d-854e-4050-bf30-ef486665f5be",
+        "ee402c3b-fa51-41e5-a391-da570c530f76",
         "2696dab0-6c85-4ae4-82e1-ac44f2ee78b0"
       ],
       "matchKey": "melbournelions",
@@ -816,14 +817,14 @@
     },
     "melbourne-crickeroos": {
       "name": "Melbourne Crickeroos",
-      "file": "data/playhq/logos/melbourne-crickeroos.png",
+      "file": "data/playhq/logos/melbourne-crickeroos.jpg",
       "teamIds": [
         "f5eac593-e610-4777-bf08-3b2510c1b884",
         "26bc875c-8c83-4e42-932d-ef36398eb298",
         "3cd5aa0c-c20b-4452-b2e6-798c5cfebb48"
       ],
       "matchKey": "melbournecrickeroos",
-      "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/b415eafe-5ebc-4a97-8dde-59b6e29ecb8b/1685236307106/logo.png?_a=BAMAMifg0"
+      "source": "https://res.cloudinary.com/playhq/image/upload/h_1024,w_1024/v1/production/ca/b415eafe-5ebc-4a97-8dde-59b6e29ecb8b/1793529688007/logo.jpg?_a=BAMAMifg0"
     },
     "melbourne-districts-united-cricket-club": {
       "name": "Melbourne Districts United Cricket Club",
@@ -853,7 +854,6 @@
         "afcb3e6a-83b0-4d2b-a883-979d8d95c524",
         "89d8c90a-d7d3-491a-b344-1d68eff3022a",
         "a3917ae2-b674-4929-b7e6-5f96213faa5b",
-        "18aa2e28-ae43-499b-95f0-168038946bc3",
         "a628b7f1-4148-4f96-8527-acecc43f79a4"
       ],
       "matchKey": "melbournetitans",
@@ -883,6 +883,7 @@
       "name": "Southern Rangers Cricket Club",
       "file": "data/playhq/logos/southern-rangers-cricket-club.png",
       "teamIds": [
+        "d022a1a8-ec7a-4e10-aa95-9674262800f0",
         "8d88901a-bbc3-48c7-a9f7-5ae73f1d1948",
         "e2f9eba1-ba1c-49ee-a322-e8d874382d3e",
         "c12dab53-eeab-4ec6-acea-58ac4296d48f",

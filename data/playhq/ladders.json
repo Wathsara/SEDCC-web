@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-13T00:02:33.383Z",
+  "syncedAt": "2026-11-14T00:17:04.584Z",
   "season": "2026-27",
   "grades": [
     {
@@ -875,27 +875,6 @@
             },
             {
               "team": {
-                "id": "7785949d-00d6-4f68-a2fa-a31e353ce859",
-                "name": "Ocean XI - Grade 4"
-              },
-              "values": [
-                2,
-                6,
-                1.138,
-                1.019,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
                 "id": "db1f4584-fdda-423b-858d-a52f25e8dd10",
                 "name": "Melbourne Knights Grade 4"
               },
@@ -922,16 +901,37 @@
               },
               "values": [
                 2,
-                0,
+                6,
                 0.487,
                 -2.109,
+                1,
+                1,
                 0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "7785949d-00d6-4f68-a2fa-a31e353ce859",
+                "name": "Ocean XI - Grade 4"
+              },
+              "values": [
                 2,
                 0,
+                1.138,
+                1.019,
+                0,
+                1,
                 0,
                 0,
                 0,
                 0,
+                1,
                 0
               ],
               "conferenceId": null

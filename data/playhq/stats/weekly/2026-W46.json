@@ -1,0 +1,300 @@
+{
+  "week": "2026-W46",
+  "generatedAt": "2026-11-14T22:54:43.120Z",
+  "topBatter": {
+    "playerId": "thisura-waduge",
+    "displayName": "Thisura Waduge",
+    "identifiable": true,
+    "teamSlug": "loc-1",
+    "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+    "round": "Round 5",
+    "date": "2026-11-14T01:30:00.000Z",
+    "opponent": "Knox Churches 1st XI",
+    "batting": {
+      "runs": 42,
+      "balls": 92,
+      "fours": 1,
+      "sixes": 0,
+      "strikeRate": 45.65,
+      "notOut": true,
+      "didNotBat": false
+    },
+    "bowling": null,
+    "fielding": null
+  },
+  "topBowler": {
+    "playerId": "buwaneka-wakishta",
+    "displayName": "Buwaneka Wakishta",
+    "identifiable": true,
+    "teamSlug": "loc-1",
+    "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+    "round": "Round 5",
+    "date": "2026-11-14T01:30:00.000Z",
+    "opponent": "Knox Churches 1st XI",
+    "batting": {
+      "runs": 21,
+      "balls": 34,
+      "fours": 1,
+      "sixes": 0,
+      "strikeRate": 61.76,
+      "notOut": false,
+      "didNotBat": false
+    },
+    "bowling": {
+      "overs": 6.1,
+      "balls": 37,
+      "maidens": 1,
+      "runs": 30,
+      "wickets": 3,
+      "economy": 4.86
+    },
+    "fielding": {
+      "catches": 2,
+      "stumpings": 0,
+      "runOuts": 0
+    }
+  },
+  "performances": [
+    {
+      "playerId": "ruranga-jayarathna",
+      "displayName": "Ruranga Jayarathna",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 12,
+        "wickets": 2,
+        "economy": 2.4
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "dinuth-deerasooriya",
+      "displayName": "Dinuth Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 6,
+        "balls": 36,
+        "maidens": 0,
+        "runs": 37,
+        "wickets": 1,
+        "economy": 6.17
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "buwaneka-wakishta",
+      "displayName": "Buwaneka Wakishta",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": {
+        "runs": 21,
+        "balls": 34,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 61.76,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 6.1,
+        "balls": 37,
+        "maidens": 1,
+        "runs": 30,
+        "wickets": 3,
+        "economy": 4.86
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "yadeesha-deerasooriya",
+      "displayName": "Yadeesha Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 6,
+        "balls": 36,
+        "maidens": 1,
+        "runs": 17,
+        "wickets": 1,
+        "economy": 2.83
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "pasindu-sunilchandra",
+      "displayName": "Pasindu Sunilchandra",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": {
+        "runs": 11,
+        "balls": 17,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 64.71,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 1,
+        "runs": 12,
+        "wickets": 2,
+        "economy": 1.5
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "santhuka-de-silva",
+      "displayName": "Santhuka De Silva",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 21,
+        "wickets": 1,
+        "economy": 4.2
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "tharindu-demika",
+      "displayName": "Tharindu Demika",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
+      "bowling": null,
+      "fielding": {
+        "catches": 3,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "thisura-waduge",
+      "displayName": "Thisura Waduge",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": {
+        "runs": 42,
+        "balls": 92,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 45.65,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "janaka-don",
+      "displayName": "Janaka Don",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": {
+        "runs": 9,
+        "balls": 16,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 56.25,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "yasindu-hendavitharana",
+      "displayName": "Yasindu Hendavitharana",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": {
+        "runs": 13,
+        "balls": 21,
+        "fours": 3,
+        "sixes": 0,
+        "strikeRate": 61.9,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": null,
+      "displayName": "Janaka Muthukumarana",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": {
+        "runs": 23,
+        "balls": 54,
+        "fours": 3,
+        "sixes": 0,
+        "strikeRate": 42.59,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    }
+  ]
+}

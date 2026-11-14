@@ -1,421 +1,77 @@
 {
-  "week": "2026-W45",
-  "generatedAt": "2026-11-14T00:17:04.805Z",
+  "week": "2026-W46",
+  "generatedAt": "2026-11-14T22:54:43.120Z",
   "topBatter": {
-    "playerId": "mahesh-fernando",
-    "displayName": "Mahesh Fernando",
+    "playerId": "thisura-waduge",
+    "displayName": "Thisura Waduge",
     "identifiable": true,
-    "teamSlug": "grade-4",
-    "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-    "round": "Round 2",
-    "date": "2026-11-08T02:00:00.000Z",
-    "opponent": "Eastern Rebels  Senior Men 4",
+    "teamSlug": "loc-1",
+    "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+    "round": "Round 5",
+    "date": "2026-11-14T01:30:00.000Z",
+    "opponent": "Knox Churches 1st XI",
     "batting": {
-      "runs": 102,
-      "balls": 83,
-      "fours": 14,
+      "runs": 42,
+      "balls": 92,
+      "fours": 1,
       "sixes": 0,
-      "strikeRate": 122.89,
+      "strikeRate": 45.65,
       "notOut": true,
       "didNotBat": false
     },
-    "bowling": {
-      "overs": 8,
-      "balls": 48,
-      "maidens": 0,
-      "runs": 44,
-      "wickets": 3,
-      "economy": 5.5
-    },
+    "bowling": null,
     "fielding": null
   },
   "topBowler": {
-    "playerId": "mahesh-fernando",
-    "displayName": "Mahesh Fernando",
+    "playerId": "buwaneka-wakishta",
+    "displayName": "Buwaneka Wakishta",
     "identifiable": true,
-    "teamSlug": "grade-4",
-    "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-    "round": "Round 2",
-    "date": "2026-11-08T02:00:00.000Z",
-    "opponent": "Eastern Rebels  Senior Men 4",
+    "teamSlug": "loc-1",
+    "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+    "round": "Round 5",
+    "date": "2026-11-14T01:30:00.000Z",
+    "opponent": "Knox Churches 1st XI",
     "batting": {
-      "runs": 102,
-      "balls": 83,
-      "fours": 14,
+      "runs": 21,
+      "balls": 34,
+      "fours": 1,
       "sixes": 0,
-      "strikeRate": 122.89,
-      "notOut": true,
+      "strikeRate": 61.76,
+      "notOut": false,
       "didNotBat": false
     },
     "bowling": {
-      "overs": 8,
-      "balls": 48,
-      "maidens": 0,
-      "runs": 44,
+      "overs": 6.1,
+      "balls": 37,
+      "maidens": 1,
+      "runs": 30,
       "wickets": 3,
-      "economy": 5.5
+      "economy": 4.86
     },
-    "fielding": null
+    "fielding": {
+      "catches": 2,
+      "stumpings": 0,
+      "runOuts": 0
+    }
   },
   "performances": [
-    {
-      "playerId": "malith-kanahara",
-      "displayName": "Malith Kanahara",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 22,
-        "balls": 36,
-        "fours": 1,
-        "sixes": 0,
-        "strikeRate": 61.11,
-        "notOut": true,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 2,
-        "runs": 14,
-        "wickets": 2,
-        "economy": 1.75
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "yasuntha-gamalath",
-      "displayName": "Yasuntha Gamalath",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 11,
-        "balls": 33,
-        "fours": 1,
-        "sixes": 0,
-        "strikeRate": 33.33,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": {
-        "catches": 2,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "harith-perera",
-      "displayName": "Harith Perera",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 0,
-        "balls": 0,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 0,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 7,
-        "balls": 42,
-        "maidens": 0,
-        "runs": 23,
-        "wickets": 2,
-        "economy": 3.29
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "dilhan-rahubadde-kankanange",
-      "displayName": "Dilhan Rahubadde Kankanange",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 51,
-        "balls": 40,
-        "fours": 7,
-        "sixes": 2,
-        "strikeRate": 127.5,
-        "notOut": true,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 1,
-        "runs": 18,
-        "wickets": 1,
-        "economy": 2.25
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "shehan-galagedara",
-      "displayName": "Shehan Galagedara",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 0,
-        "balls": 0,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 0,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 3,
-        "balls": 18,
-        "maidens": 0,
-        "runs": 15,
-        "wickets": 1,
-        "economy": 5
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "naveen-fernando",
-      "displayName": "Naveen Fernando",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 0,
-        "balls": 0,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 0,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 5,
-        "balls": 30,
-        "maidens": 0,
-        "runs": 26,
-        "wickets": 0,
-        "economy": 5.2
-      },
-      "fielding": {
-        "catches": 1,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "saminda-kaviraja",
-      "displayName": "Saminda Kaviraja",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 0,
-        "balls": 0,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 0,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 4,
-        "balls": 24,
-        "maidens": 0,
-        "runs": 12,
-        "wickets": 0,
-        "economy": 3
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "wathsara-daluwatta",
-      "displayName": "Wathsara Daluwatta",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 2,
-        "balls": 3,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 66.67,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 5,
-        "balls": 30,
-        "maidens": 0,
-        "runs": 24,
-        "wickets": 0,
-        "economy": 4.8
-      },
-      "fielding": {
-        "catches": 1,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "nisitha-ginigalgodage",
-      "displayName": "Nisitha Ginigalgodage",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 39,
-        "balls": 60,
-        "fours": 4,
-        "sixes": 0,
-        "strikeRate": 65,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "tharindu-demika",
-      "displayName": "Tharindu Demika",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 0,
-        "balls": 0,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 0,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "lasitha-ekanayake",
-      "displayName": "Lasitha Ekanayake",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 7,
-        "balls": 16,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 43.75,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "nimsara-wijesinghe",
-      "displayName": "Nimsara Wijesinghe",
-      "identifiable": true,
-      "teamSlug": "loc-2",
-      "gameId": "259e97e1-4b9d-4eb4-bffc-f33c5d934e90",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "Balwyn Saints 3rd XI",
-      "batting": {
-        "runs": 0,
-        "balls": 0,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 0,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "buwaneka-wakishta",
-      "displayName": "Buwaneka Wakishta",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
-      "batting": {
-        "runs": 9,
-        "balls": 12,
-        "fours": 1,
-        "sixes": 0,
-        "strikeRate": 75,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 0,
-        "runs": 40,
-        "wickets": 1,
-        "economy": 5
-      },
-      "fielding": null
-    },
     {
       "playerId": "ruranga-jayarathna",
       "displayName": "Ruranga Jayarathna",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
       "batting": null,
       "bowling": {
-        "overs": 8,
-        "balls": 48,
+        "overs": 5,
+        "balls": 30,
         "maidens": 0,
-        "runs": 43,
-        "wickets": 1,
-        "economy": 5.38
+        "runs": 12,
+        "wickets": 2,
+        "economy": 2.4
       },
       "fielding": null
     },
@@ -424,46 +80,70 @@
       "displayName": "Dinuth Deerasooriya",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
       "batting": null,
       "bowling": {
-        "overs": 5,
-        "balls": 30,
+        "overs": 6,
+        "balls": 36,
         "maidens": 0,
-        "runs": 48,
-        "wickets": 0,
-        "economy": 9.6
+        "runs": 37,
+        "wickets": 1,
+        "economy": 6.17
       },
       "fielding": null
+    },
+    {
+      "playerId": "buwaneka-wakishta",
+      "displayName": "Buwaneka Wakishta",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": {
+        "runs": 21,
+        "balls": 34,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 61.76,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 6.1,
+        "balls": 37,
+        "maidens": 1,
+        "runs": 30,
+        "wickets": 3,
+        "economy": 4.86
+      },
+      "fielding": {
+        "catches": 2,
+        "stumpings": 0,
+        "runOuts": 0
+      }
     },
     {
       "playerId": "yadeesha-deerasooriya",
       "displayName": "Yadeesha Deerasooriya",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
-      "batting": {
-        "runs": 82,
-        "balls": 65,
-        "fours": 10,
-        "sixes": 3,
-        "strikeRate": 126.15,
-        "notOut": false,
-        "didNotBat": false
-      },
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
       "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 0,
-        "runs": 49,
+        "overs": 6,
+        "balls": 36,
+        "maidens": 1,
+        "runs": 17,
         "wickets": 1,
-        "economy": 6.13
+        "economy": 2.83
       },
       "fielding": null
     },
@@ -472,26 +152,26 @@
       "displayName": "Pasindu Sunilchandra",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
       "batting": {
-        "runs": 3,
-        "balls": 6,
+        "runs": 11,
+        "balls": 17,
         "fours": 0,
         "sixes": 0,
-        "strikeRate": 50,
-        "notOut": false,
+        "strikeRate": 64.71,
+        "notOut": true,
         "didNotBat": false
       },
       "bowling": {
         "overs": 8,
         "balls": 48,
-        "maidens": 0,
-        "runs": 33,
-        "wickets": 1,
-        "economy": 4.13
+        "maidens": 1,
+        "runs": 12,
+        "wickets": 2,
+        "economy": 1.5
       },
       "fielding": null
     },
@@ -500,65 +180,53 @@
       "displayName": "Santhuka De Silva",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
-      "batting": {
-        "runs": 1,
-        "balls": 4,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 25,
-        "notOut": false,
-        "didNotBat": false
-      },
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
       "bowling": {
-        "overs": 3,
-        "balls": 18,
-        "maidens": 0,
-        "runs": 27,
+        "overs": 5,
+        "balls": 30,
+        "maidens": 1,
+        "runs": 21,
         "wickets": 1,
-        "economy": 9
+        "economy": 4.2
       },
       "fielding": null
+    },
+    {
+      "playerId": "tharindu-demika",
+      "displayName": "Tharindu Demika",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
+      "batting": null,
+      "bowling": null,
+      "fielding": {
+        "catches": 3,
+        "stumpings": 0,
+        "runOuts": 0
+      }
     },
     {
       "playerId": "thisura-waduge",
       "displayName": "Thisura Waduge",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
       "batting": {
-        "runs": 20,
-        "balls": 20,
+        "runs": 42,
+        "balls": 92,
         "fours": 1,
         "sixes": 0,
-        "strikeRate": 100,
-        "notOut": true,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": null,
-      "displayName": "Janaka Muthukumarana",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
-      "batting": {
-        "runs": 29,
-        "balls": 24,
-        "fours": 0,
-        "sixes": 2,
-        "strikeRate": 120.83,
+        "strikeRate": 45.65,
         "notOut": true,
         "didNotBat": false
       },
@@ -570,16 +238,16 @@
       "displayName": "Janaka Don",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
       "batting": {
-        "runs": 79,
-        "balls": 96,
-        "fours": 12,
+        "runs": 9,
+        "balls": 16,
+        "fours": 0,
         "sixes": 0,
-        "strikeRate": 82.29,
+        "strikeRate": 56.25,
         "notOut": false,
         "didNotBat": false
       },
@@ -591,16 +259,16 @@
       "displayName": "Yasindu Hendavitharana",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "3bca512f-10f2-44c9-aa9d-cc616bf0b3ef",
-      "round": "Round 4",
-      "date": "2026-11-07T01:30:00.000Z",
-      "opponent": "AYC Harlequins 1st XI",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
       "batting": {
-        "runs": 2,
-        "balls": 12,
-        "fours": 0,
+        "runs": 13,
+        "balls": 21,
+        "fours": 3,
         "sixes": 0,
-        "strikeRate": 16.67,
+        "strikeRate": 61.9,
         "notOut": false,
         "didNotBat": false
       },
@@ -609,247 +277,23 @@
     },
     {
       "playerId": null,
-      "displayName": "Anushka Withanage",
+      "displayName": "Janaka Muthukumarana",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
+      "teamSlug": "loc-1",
+      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
+      "round": "Round 5",
+      "date": "2026-11-14T01:30:00.000Z",
+      "opponent": "Knox Churches 1st XI",
       "batting": {
-        "runs": 72,
-        "balls": 64,
-        "fours": 9,
-        "sixes": 1,
-        "strikeRate": 112.5,
-        "notOut": true,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "ravi-jayasundara",
-      "displayName": "Ravi Jayasundara",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": null,
-      "bowling": null,
-      "fielding": {
-        "catches": 1,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "mahesh-fernando",
-      "displayName": "Mahesh Fernando",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": {
-        "runs": 102,
-        "balls": 83,
-        "fours": 14,
-        "sixes": 0,
-        "strikeRate": 122.89,
-        "notOut": true,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 0,
-        "runs": 44,
-        "wickets": 3,
-        "economy": 5.5
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "indika-karunathilaka",
-      "displayName": "Indika Karunathilaka",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": null,
-      "bowling": {
-        "overs": 3.3,
-        "balls": 21,
-        "maidens": 0,
-        "runs": 15,
-        "wickets": 1,
-        "economy": 4.29
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "wathsara-daluwatta",
-      "displayName": "Wathsara Daluwatta",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": null,
-      "bowling": {
-        "overs": 3,
-        "balls": 18,
-        "maidens": 0,
-        "runs": 14,
-        "wickets": 2,
-        "economy": 4.67
-      },
-      "fielding": {
-        "catches": 2,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "thisara-nilupul-lankathilake",
-      "displayName": "Thisara Nilupul Lankathilake",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": null,
-      "bowling": {
-        "overs": 3,
-        "balls": 18,
-        "maidens": 0,
-        "runs": 33,
-        "wickets": 0,
-        "economy": 11
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "pavan-ariyadasa",
-      "displayName": "Pavan Ariyadasa",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": null,
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 0,
-        "runs": 32,
-        "wickets": 1,
-        "economy": 4
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "aruna-perera",
-      "displayName": "Aruna Perera",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": {
-        "runs": 10,
-        "balls": 15,
-        "fours": 2,
-        "sixes": 0,
-        "strikeRate": 66.67,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": {
-        "catches": 1,
-        "stumpings": 1,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "amila-jayanuwan",
-      "displayName": "Amila Jayanuwan",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": {
-        "runs": 17,
-        "balls": 19,
+        "runs": 23,
+        "balls": 54,
         "fours": 3,
         "sixes": 0,
-        "strikeRate": 89.47,
+        "strikeRate": 42.59,
         "notOut": false,
         "didNotBat": false
       },
       "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "dilan-samarakoon",
-      "displayName": "Dilan Samarakoon",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": {
-        "runs": 6,
-        "balls": 23,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 26.09,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "harith-perera",
-      "displayName": "Harith Perera",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "621ba2c8-cd6d-40e5-b107-d3e0997ba5db",
-      "round": "Round 2",
-      "date": "2026-11-08T02:00:00.000Z",
-      "opponent": "Eastern Rebels  Senior Men 4",
-      "batting": {
-        "runs": 36,
-        "balls": 37,
-        "fours": 2,
-        "sixes": 0,
-        "strikeRate": 97.3,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 4,
-        "balls": 24,
-        "maidens": 0,
-        "runs": 36,
-        "wickets": 1,
-        "economy": 9
-      },
       "fielding": null
     }
   ]

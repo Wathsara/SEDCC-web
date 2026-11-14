@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-14T00:17:04.584Z",
+  "syncedAt": "2026-11-14T22:54:42.795Z",
   "season": "2026-27",
   "teams": [
     {
@@ -96,7 +96,7 @@
         },
         {
           "id": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 5",
           "roundShort": "R5",
@@ -106,13 +106,13 @@
           ],
           "isHome": true,
           "opponent": "Knox Churches 1st XI",
-          "outcome": null,
+          "outcome": "WON",
           "venue": "Donnelly Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "4/134 (37.3 ov)",
+          "theirScore": "133 (36.1 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/661a5886-9201-406d-9ece-85d7fbf1b272?tab=summary"
         },
         {
@@ -464,7 +464,7 @@
         },
         {
           "id": "61b56a73-03ec-44f4-a655-de9c68971395",
-          "status": "UPCOMING",
+          "status": "ABANDONED",
           "type": null,
           "round": "Round 5",
           "roundShort": "R5",
@@ -474,13 +474,13 @@
           ],
           "isHome": false,
           "opponent": "Malvern Valley 1st XI",
-          "outcome": null,
+          "outcome": "ABANDONED",
           "venue": "Basil Reserve",
           "ground": "Oval 1 - West",
           "suburb": "EAST MALVERN",
           "mapQuery": "Basil%20Reserve%2C%20EAST%20MALVERN%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "0/0 (0 ov)",
+          "theirScore": "0/0 (0 ov)",
           "matchCentreUrl": "https://play.cricket.com.au/match/6c711a33-38e2-40ac-a376-9039d58e1524?tab=summary"
         },
         {

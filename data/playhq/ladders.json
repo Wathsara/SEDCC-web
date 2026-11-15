@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-14T22:54:42.795Z",
+  "syncedAt": "2026-11-15T23:21:13.433Z",
   "season": "2026-27",
   "grades": [
     {
@@ -791,58 +791,16 @@
           "standings": [
             {
               "team": {
-                "id": "3cd5aa0c-c20b-4452-b2e6-798c5cfebb48",
-                "name": "Melbourne Crickeroos Grade 4"
-              },
-              "values": [
-                2,
-                12,
-                1.546,
-                0.464,
-                2,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
                 "id": "7f39a385-5267-435e-8792-35e5eadeec4a",
                 "name": "Casey Falcons Grade 4"
               },
               "values": [
-                2,
-                12,
-                1.272,
-                0.862,
-                2,
+                3,
+                18,
+                1.54,
+                1.286,
+                3,
                 0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              "conferenceId": null
-            },
-            {
-              "team": {
-                "id": "64a6043e-8aaf-408c-8e98-ed00bc6a1965",
-                "name": "South Eastern Dreamers Grade 4"
-              },
-              "values": [
-                2,
-                6,
-                1.75,
-                0.925,
-                1,
-                1,
                 0,
                 0,
                 0,
@@ -858,11 +816,11 @@
                 "name": "Melbourne Titans - 4"
               },
               "values": [
+                3,
+                12,
+                1.241,
+                0.119,
                 2,
-                6,
-                1.308,
-                0.138,
-                1,
                 1,
                 0,
                 0,
@@ -879,11 +837,32 @@
                 "name": "Melbourne Knights Grade 4"
               },
               "values": [
+                3,
+                12,
+                1.201,
+                0.5,
                 2,
-                6,
-                1.042,
-                -0.128,
                 1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "3cd5aa0c-c20b-4452-b2e6-798c5cfebb48",
+                "name": "Melbourne Crickeroos Grade 4"
+              },
+              "values": [
+                3,
+                12,
+                1.184,
+                0.281,
+                2,
                 1,
                 0,
                 0,
@@ -900,12 +879,33 @@
                 "name": "Hartley CC - 4"
               },
               "values": [
+                3,
+                12,
+                0.717,
+                -1.375,
                 2,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "conferenceId": null
+            },
+            {
+              "team": {
+                "id": "64a6043e-8aaf-408c-8e98-ed00bc6a1965",
+                "name": "South Eastern Dreamers Grade 4"
+              },
+              "values": [
+                3,
                 6,
-                0.487,
-                -2.109,
+                1.393,
+                0.591,
                 1,
-                1,
+                2,
                 0,
                 0,
                 0,
@@ -921,12 +921,12 @@
                 "name": "Ocean XI - Grade 4"
               },
               "values": [
+                3,
+                0,
+                0.792,
+                -0.01,
+                0,
                 2,
-                0,
-                1.138,
-                1.019,
-                0,
-                1,
                 0,
                 0,
                 0,
@@ -942,12 +942,12 @@
                 "name": "Eastern Rebels  Senior Men 4"
               },
               "values": [
-                2,
+                3,
                 0,
-                0.412,
-                -1.23,
+                0.453,
+                -1.803,
                 0,
-                2,
+                3,
                 0,
                 0,
                 0,

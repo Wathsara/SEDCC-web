@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-14T22:54:42.795Z",
+  "syncedAt": "2026-11-15T23:21:13.433Z",
   "season": "2026-27",
   "teams": [
     {
@@ -788,7 +788,7 @@
         },
         {
           "id": "1c6b2466-5622-4698-a748-b0f3e862523e",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 3",
           "roundShort": "R3",
@@ -798,13 +798,13 @@
           ],
           "isHome": true,
           "opponent": "Melbourne Titans - 4",
-          "outcome": null,
+          "outcome": "LOST",
           "venue": "Singleton Recreation Reserve",
           "ground": "Singleton Reserve",
           "suburb": "ENDEAVOUR HILLS",
           "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null
+          "ourScore": "9/177 (40 ov)",
+          "theirScore": "8/178 (39.3 ov)"
         },
         {
           "id": "816af032-0a87-4404-8dc9-610cca7039fe",

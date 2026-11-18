@@ -106,6 +106,14 @@ function match(filename) {
  */
 const FULL_LENGTH = 0.45;
 
+/*
+ * How much of the card's width a subject may overflow before it is sized to
+ * the width rather than cropped. 5% is 40px — twice the widest incidental
+ * crop in the current squad (13px a side) and well under Malith Kanahara's
+ * 46px a side, which is the one that was taking arms off.
+ */
+const MAX_SIDE_CROP = 0.05;
+
 async function toPortrait(src) {
   const trimmed = await sharp(src).trim({ threshold: 1 }).toBuffer().catch(() => null);
   const source = trimmed ?? (await sharp(src).toBuffer());
@@ -127,9 +135,56 @@ async function toPortrait(src) {
   const tall = await sharp(source).resize({ height: HEIGHT, fit: 'inside', withoutEnlargement: false }).toBuffer();
   const { width } = await sharp(tall).metadata();
 
+  /*
+    A subject so much wider than the card that filling the height would cut
+    into them is sized to the card's width instead, and hung from the top.
+
+    Filling the height used to crop the sides whatever the overflow, on the
+    reasoning that an arm's width costs less than the height does. Malith
+    Kanahara's photo is the case that disproves it: his cut-out trims to 0.74
+    where the rest of the squad lands between 0.51 and 0.59, because his was
+    taken closer. Filling the height took 92px off his width — both arms ran
+    off the edges and SOUTH EASTERN DREAMERS was cut mid-word, which reads as
+    a broken card rather than a tight one.
+
+    Sizing to width costs him about a tenth of his height against his
+    team-mates. That shows far less than severed arms, and the padding below
+    him is transparent over the club navy, so there is nothing to see: the
+    card is 4:5 and crops from the top, so most of it is never on screen.
+
+    The tolerance matters as much as the rule. Three of the squad trim to
+    between 0.667 and 0.689 — a hair over 2:3 — and filling the height takes
+    7 to 13px off each side of them, which is empty frame, not shoulder.
+    Sending those down the width path would rewrite three good cards to make
+    everyone on them 3% shorter, so the overflow has to be worth acting on
+    before it is acted on.
+  */
+  if (width - WIDTH > WIDTH * MAX_SIDE_CROP) {
+    const wide = await sharp(source).resize({ width: WIDTH }).toBuffer();
+    const { height } = await sharp(wide).metadata();
+    // extend and extract cannot share one pipeline — extract measures the
+    // input, not the extended result — so the padding is written out first.
+    const padded =
+      height >= HEIGHT
+        ? wide
+        : await sharp(wide)
+            .extend({ bottom: HEIGHT - height, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+            .toBuffer();
+    return sharp(padded)
+      .extract({ left: 0, top: 0, width: WIDTH, height: HEIGHT })
+      .webp({ quality: QUALITY, alphaQuality: 90 })
+      .toBuffer();
+  }
+
+  // Within the tolerance: fill the height, and centre what little spills.
   const framed =
     width > WIDTH
-      ? sharp(tall).extract({ left: Math.round((width - WIDTH) / 2), top: 0, width: WIDTH, height: HEIGHT })
+      ? sharp(tall).extract({
+          left: Math.round((width - WIDTH) / 2),
+          top: 0,
+          width: WIDTH,
+          height: HEIGHT,
+        })
       : sharp(tall).extend({
           left: Math.floor((WIDTH - width) / 2),
           right: Math.ceil((WIDTH - width) / 2),

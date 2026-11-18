@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-17T02:24:20.964Z",
+  "syncedAt": "2026-11-18T01:33:57.298Z",
   "season": "2026-27",
   "teams": [
     {
@@ -859,10 +859,10 @@
           "isHome": true,
           "opponent": "Ocean XI - Grade 4",
           "outcome": null,
-          "venue": "Singleton Recreation Reserve",
-          "ground": "Singleton Reserve",
-          "suburb": "ENDEAVOUR HILLS",
-          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
+          "venue": "Ramlegh Reserve",
+          "ground": "Ramlegh Reserve Field 1 (East)",
+          "suburb": "CLYDE NORTH",
+          "mapQuery": "Ramlegh%20Reserve%2C%20CLYDE%20NORTH%2C%20VIC",
           "ourScore": null,
           "theirScore": null
         },
@@ -999,10 +999,10 @@
           "isHome": false,
           "opponent": "Ocean XI - Grade 4",
           "outcome": null,
-          "venue": "Ramlegh Reserve",
-          "ground": "Ramlegh Reserve Field 1 (East)",
-          "suburb": "CLYDE NORTH",
-          "mapQuery": "Ramlegh%20Reserve%2C%20CLYDE%20NORTH%2C%20VIC",
+          "venue": "Singleton Recreation Reserve",
+          "ground": "Singleton Reserve",
+          "suburb": "ENDEAVOUR HILLS",
+          "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
           "ourScore": null,
           "theirScore": null
         },

@@ -1,13 +1,17 @@
 {
-  "generatedAt": "2026-11-21T00:42:07.975Z",
+  "generatedAt": "2026-11-21T23:44:25.215Z",
   "note": "Names in PlayHQ scorecards with no match in config/players.json. Add each as a new player or as an alias of an existing one.",
   "names": [
     {
       "name": "Janaka Muthukumarana",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "name": "Kushan Perera",
+      "appearances": 2
+    },
+    {
+      "name": "Yakdehikandage Dilan Yasintha Costa",
       "appearances": 1
     },
     {

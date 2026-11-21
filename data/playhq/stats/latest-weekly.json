@@ -1,136 +1,218 @@
 {
-  "week": "2026-W46",
-  "generatedAt": "2026-11-21T00:42:07.974Z",
+  "week": "2026-W47",
+  "generatedAt": "2026-11-21T23:44:25.214Z",
   "topBatter": {
-    "playerId": "thisura-waduge",
-    "displayName": "Thisura Waduge",
+    "playerId": "yadeesha-deerasooriya",
+    "displayName": "Yadeesha Deerasooriya",
     "identifiable": true,
     "teamSlug": "loc-1",
-    "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-    "round": "Round 5",
-    "date": "2026-11-14T01:30:00.000Z",
-    "opponent": "Knox Churches 1st XI",
+    "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+    "round": "Round 6",
+    "date": "2026-11-21T01:30:00.000Z",
+    "opponent": "Melbourne Sixers 1st XI",
     "batting": {
-      "runs": 42,
-      "balls": 92,
-      "fours": 1,
+      "runs": 82,
+      "balls": 98,
+      "fours": 4,
       "sixes": 0,
-      "strikeRate": 45.65,
-      "notOut": true,
-      "didNotBat": false
-    },
-    "bowling": null,
-    "fielding": null
-  },
-  "topBowler": {
-    "playerId": "buwaneka-wakishta",
-    "displayName": "Buwaneka Wakishta",
-    "identifiable": true,
-    "teamSlug": "loc-1",
-    "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-    "round": "Round 5",
-    "date": "2026-11-14T01:30:00.000Z",
-    "opponent": "Knox Churches 1st XI",
-    "batting": {
-      "runs": 21,
-      "balls": 34,
-      "fours": 1,
-      "sixes": 0,
-      "strikeRate": 61.76,
+      "strikeRate": 83.67,
       "notOut": false,
       "didNotBat": false
     },
     "bowling": {
-      "overs": 6.1,
-      "balls": 37,
-      "maidens": 1,
-      "runs": 30,
-      "wickets": 3,
-      "economy": 4.86
+      "overs": 5,
+      "balls": 30,
+      "maidens": 0,
+      "runs": 23,
+      "wickets": 0,
+      "economy": 4.6
     },
     "fielding": {
-      "catches": 2,
+      "catches": 1,
       "stumpings": 0,
       "runOuts": 0
     }
   },
+  "topBowler": {
+    "playerId": null,
+    "displayName": "Kushan Perera",
+    "identifiable": true,
+    "teamSlug": "loc-1",
+    "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+    "round": "Round 6",
+    "date": "2026-11-21T01:30:00.000Z",
+    "opponent": "Melbourne Sixers 1st XI",
+    "batting": null,
+    "bowling": {
+      "overs": 8,
+      "balls": 48,
+      "maidens": 0,
+      "runs": 28,
+      "wickets": 3,
+      "economy": 3.5
+    },
+    "fielding": null
+  },
   "performances": [
     {
-      "playerId": "dilan-samarakoon",
-      "displayName": "Dilan Samarakoon",
+      "playerId": null,
+      "displayName": "Yakdehikandage Dilan Yasintha Costa",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
       "batting": {
-        "runs": 7,
-        "balls": 13,
-        "fours": 1,
+        "runs": 14,
+        "balls": 18,
+        "fours": 0,
+        "sixes": 1,
+        "strikeRate": 77.78,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "yasuntha-gamalath",
+      "displayName": "Yasuntha Gamalath",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
+      "batting": {
+        "runs": 20,
+        "balls": 53,
+        "fours": 0,
         "sixes": 0,
-        "strikeRate": 53.85,
+        "strikeRate": 37.74,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "nisitha-ginigalgodage",
+      "displayName": "Nisitha Ginigalgodage",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
+      "batting": {
+        "runs": 1,
+        "balls": 15,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 6.67,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
+      "batting": {
+        "runs": 2,
+        "balls": 2,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 100,
         "notOut": false,
         "didNotBat": false
       },
       "bowling": {
-        "overs": 7,
-        "balls": 42,
+        "overs": 1,
+        "balls": 6,
         "maidens": 0,
-        "runs": 31,
-        "wickets": 2,
-        "economy": 4.43
+        "runs": 17,
+        "wickets": 0,
+        "economy": 17
       },
-      "fielding": {
-        "catches": 0,
-        "stumpings": 0,
-        "runOuts": 2
-      }
+      "fielding": null
     },
     {
-      "playerId": "thisara-nilupul-lankathilake",
-      "displayName": "Thisara Nilupul Lankathilake",
+      "playerId": "dilhan-rahubadde-kankanange",
+      "displayName": "Dilhan Rahubadde Kankanange",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
       "batting": {
-        "runs": 32,
+        "runs": 28,
         "balls": 44,
-        "fours": 3,
+        "fours": 4,
         "sixes": 0,
-        "strikeRate": 72.73,
+        "strikeRate": 63.64,
         "notOut": false,
         "didNotBat": false
       },
       "bowling": {
-        "overs": 6.2,
-        "balls": 38,
-        "maidens": 0,
-        "runs": 32,
-        "wickets": 2,
-        "economy": 5.05
+        "overs": 5,
+        "balls": 30,
+        "maidens": 2,
+        "runs": 23,
+        "wickets": 0,
+        "economy": 4.6
       },
-      "fielding": {
-        "catches": 0,
-        "stumpings": 0,
-        "runOuts": 1
-      }
+      "fielding": null
     },
     {
-      "playerId": "shehan-galagedara",
-      "displayName": "Shehan Galagedara",
+      "playerId": "thaushka-herath",
+      "displayName": "Thaushka Herath",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
+      "batting": {
+        "runs": 2,
+        "balls": 8,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 25,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 26,
+        "wickets": 0,
+        "economy": 8.67
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "ruchira-dhanasekara",
+      "displayName": "Ruchira Dhanasekara",
+      "identifiable": true,
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
       "batting": {
         "runs": 0,
-        "balls": 1,
+        "balls": 8,
         "fours": 0,
         "sixes": 0,
         "strikeRate": 0,
@@ -141,350 +223,51 @@
       "fielding": null
     },
     {
-      "playerId": "pavan-ariyadasa",
-      "displayName": "Pavan Ariyadasa",
+      "playerId": "nimsara-wijesinghe",
+      "displayName": "Nimsara Wijesinghe",
       "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
       "batting": {
-        "runs": 4,
-        "balls": 7,
+        "runs": 5,
+        "balls": 8,
         "fours": 0,
         "sixes": 0,
-        "strikeRate": 57.14,
+        "strikeRate": 62.5,
         "notOut": true,
         "didNotBat": false
       },
       "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 0,
-        "runs": 26,
-        "wickets": 0,
-        "economy": 3.25
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "wathsara-daluwatta",
-      "displayName": "Wathsara Daluwatta",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
-      "batting": {
-        "runs": 13,
-        "balls": 27,
-        "fours": 2,
-        "sixes": 0,
-        "strikeRate": 48.15,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": {
-        "catches": 1,
-        "stumpings": 1,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "indika-karunathilaka",
-      "displayName": "Indika Karunathilaka",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
-      "batting": {
-        "runs": 4,
-        "balls": 20,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 20,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 5,
-        "balls": 30,
+        "overs": 1.3,
+        "balls": 9,
         "maidens": 0,
         "runs": 15,
-        "wickets": 0,
-        "economy": 3
-      },
-      "fielding": {
-        "catches": 0,
-        "stumpings": 0,
-        "runOuts": 1
-      }
-    },
-    {
-      "playerId": "amila-jayanuwan",
-      "displayName": "Amila Jayanuwan",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
-      "batting": {
-        "runs": 26,
-        "balls": 19,
-        "fours": 4,
-        "sixes": 1,
-        "strikeRate": 136.84,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": "harsha-munasinghe",
-      "displayName": "Harsha Munasinghe",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
-      "batting": {
-        "runs": 26,
-        "balls": 42,
-        "fours": 2,
-        "sixes": 0,
-        "strikeRate": 61.9,
-        "notOut": true,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": {
-        "catches": 1,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "harith-perera",
-      "displayName": "Harith Perera",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
-      "batting": {
-        "runs": 11,
-        "balls": 30,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 36.67,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 3,
-        "balls": 18,
-        "maidens": 0,
-        "runs": 25,
-        "wickets": 0,
-        "economy": 8.33
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "ravi-jayasundara",
-      "displayName": "Ravi Jayasundara",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
-      "batting": {
-        "runs": 4,
-        "balls": 16,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 25,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 2,
-        "balls": 12,
-        "maidens": 0,
-        "runs": 17,
-        "wickets": 0,
-        "economy": 8.5
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "mahesh-fernando",
-      "displayName": "Mahesh Fernando",
-      "identifiable": true,
-      "teamSlug": "grade-4",
-      "gameId": "1c6b2466-5622-4698-a748-b0f3e862523e",
-      "round": "Round 3",
-      "date": "2026-11-15T02:00:00.000Z",
-      "opponent": "Melbourne Titans - 4",
-      "batting": {
-        "runs": 24,
-        "balls": 25,
-        "fours": 3,
-        "sixes": 0,
-        "strikeRate": 96,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 0,
-        "runs": 29,
-        "wickets": 2,
-        "economy": 3.63
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "ruranga-jayarathna",
-      "displayName": "Ruranga Jayarathna",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
-      "batting": null,
-      "bowling": {
-        "overs": 5,
-        "balls": 30,
-        "maidens": 0,
-        "runs": 12,
-        "wickets": 2,
-        "economy": 2.4
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "dinuth-deerasooriya",
-      "displayName": "Dinuth Deerasooriya",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
-      "batting": null,
-      "bowling": {
-        "overs": 6,
-        "balls": 36,
-        "maidens": 0,
-        "runs": 37,
         "wickets": 1,
-        "economy": 6.17
+        "economy": 10
       },
       "fielding": null
     },
     {
-      "playerId": "buwaneka-wakishta",
-      "displayName": "Buwaneka Wakishta",
+      "playerId": "malith-kanahara",
+      "displayName": "Malith Kanahara",
       "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
       "batting": {
-        "runs": 21,
-        "balls": 34,
-        "fours": 1,
+        "runs": 2,
+        "balls": 13,
+        "fours": 0,
         "sixes": 0,
-        "strikeRate": 61.76,
+        "strikeRate": 15.38,
         "notOut": false,
         "didNotBat": false
       },
-      "bowling": {
-        "overs": 6.1,
-        "balls": 37,
-        "maidens": 1,
-        "runs": 30,
-        "wickets": 3,
-        "economy": 4.86
-      },
-      "fielding": {
-        "catches": 2,
-        "stumpings": 0,
-        "runOuts": 0
-      }
-    },
-    {
-      "playerId": "yadeesha-deerasooriya",
-      "displayName": "Yadeesha Deerasooriya",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
-      "batting": null,
-      "bowling": {
-        "overs": 6,
-        "balls": 36,
-        "maidens": 1,
-        "runs": 17,
-        "wickets": 1,
-        "economy": 2.83
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "pasindu-sunilchandra",
-      "displayName": "Pasindu Sunilchandra",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
-      "batting": {
-        "runs": 11,
-        "balls": 17,
-        "fours": 0,
-        "sixes": 0,
-        "strikeRate": 64.71,
-        "notOut": true,
-        "didNotBat": false
-      },
-      "bowling": {
-        "overs": 8,
-        "balls": 48,
-        "maidens": 1,
-        "runs": 12,
-        "wickets": 2,
-        "economy": 1.5
-      },
-      "fielding": null
-    },
-    {
-      "playerId": "santhuka-de-silva",
-      "displayName": "Santhuka De Silva",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
-      "batting": null,
       "bowling": {
         "overs": 5,
         "balls": 30,
@@ -496,58 +279,287 @@
       "fielding": null
     },
     {
-      "playerId": "tharindu-demika",
-      "displayName": "Tharindu Demika",
+      "playerId": "saminda-kaviraja",
+      "displayName": "Saminda Kaviraja",
       "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
-      "batting": null,
-      "bowling": null,
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
+      "batting": {
+        "runs": 6,
+        "balls": 9,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 66.67,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 42,
+        "wickets": 0,
+        "economy": 8.4
+      },
       "fielding": {
-        "catches": 3,
+        "catches": 1,
         "stumpings": 0,
         "runOuts": 0
       }
     },
     {
-      "playerId": "thisura-waduge",
-      "displayName": "Thisura Waduge",
+      "playerId": "lasitha-ekanayake",
+      "displayName": "Lasitha Ekanayake",
       "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
+      "teamSlug": "loc-2",
+      "gameId": "3e5f6855-25fe-490c-a8d1-1b62b3c98595",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 2nd X1",
       "batting": {
-        "runs": 42,
-        "balls": 92,
-        "fours": 1,
+        "runs": 41,
+        "balls": 70,
+        "fours": 4,
         "sixes": 0,
-        "strikeRate": 45.65,
-        "notOut": true,
+        "strikeRate": 58.57,
+        "notOut": false,
         "didNotBat": false
       },
       "bowling": null,
       "fielding": null
     },
     {
-      "playerId": "janaka-don",
-      "displayName": "Janaka Don",
+      "playerId": "yadeesha-deerasooriya",
+      "displayName": "Yadeesha Deerasooriya",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
       "batting": {
-        "runs": 9,
-        "balls": 16,
+        "runs": 82,
+        "balls": 98,
+        "fours": 4,
+        "sixes": 0,
+        "strikeRate": 83.67,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 23,
+        "wickets": 0,
+        "economy": 4.6
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "dinuth-deerasooriya",
+      "displayName": "Dinuth Deerasooriya",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 5,
+        "balls": 30,
+        "maidens": 0,
+        "runs": 26,
+        "wickets": 0,
+        "economy": 5.2
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "pasindu-sunilchandra",
+      "displayName": "Pasindu Sunilchandra",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": {
+        "runs": 1,
+        "balls": 1,
         "fours": 0,
         "sixes": 0,
-        "strikeRate": 56.25,
+        "strikeRate": 100,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 1,
+        "runs": 17,
+        "wickets": 2,
+        "economy": 2.13
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "ruranga-jayarathna",
+      "displayName": "Ruranga Jayarathna",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 2,
+        "runs": 10,
+        "wickets": 0,
+        "economy": 2.5
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "thisura-waduge",
+      "displayName": "Thisura Waduge",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 3,
+        "balls": 18,
+        "maidens": 0,
+        "runs": 11,
+        "wickets": 0,
+        "economy": 3.67
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "santhuka-de-silva",
+      "displayName": "Santhuka De Silva",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": {
+        "runs": 22,
+        "balls": 36,
+        "fours": 2,
+        "sixes": 0,
+        "strikeRate": 61.11,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 7,
+        "balls": 42,
+        "maidens": 0,
+        "runs": 35,
+        "wickets": 1,
+        "economy": 5
+      },
+      "fielding": null
+    },
+    {
+      "playerId": null,
+      "displayName": "Kushan Perera",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": null,
+      "bowling": {
+        "overs": 8,
+        "balls": 48,
+        "maidens": 0,
+        "runs": 28,
+        "wickets": 3,
+        "economy": 3.5
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "buwaneka-wakishta",
+      "displayName": "Buwaneka Wakishta",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": {
+        "runs": 28,
+        "balls": 40,
+        "fours": 1,
+        "sixes": 2,
+        "strikeRate": 70,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "tharindu-demika",
+      "displayName": "Tharindu Demika",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": {
+        "runs": 7,
+        "balls": 14,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 50,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "udara-usliyanage",
+      "displayName": "Udara Usliyanage",
+      "identifiable": true,
+      "teamSlug": "loc-1",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
+      "batting": {
+        "runs": 5,
+        "balls": 17,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 29.41,
         "notOut": false,
         "didNotBat": false
       },
@@ -559,37 +571,16 @@
       "displayName": "Yasindu Hendavitharana",
       "identifiable": true,
       "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
+      "gameId": "707e3402-087b-4db3-afdb-72110a97bf78",
+      "round": "Round 6",
+      "date": "2026-11-21T01:30:00.000Z",
+      "opponent": "Melbourne Sixers 1st XI",
       "batting": {
-        "runs": 13,
-        "balls": 21,
-        "fours": 3,
+        "runs": 2,
+        "balls": 11,
+        "fours": 0,
         "sixes": 0,
-        "strikeRate": 61.9,
-        "notOut": false,
-        "didNotBat": false
-      },
-      "bowling": null,
-      "fielding": null
-    },
-    {
-      "playerId": null,
-      "displayName": "Janaka Muthukumarana",
-      "identifiable": true,
-      "teamSlug": "loc-1",
-      "gameId": "21d09083-7e7b-4d2f-9ca2-951b38230d6f",
-      "round": "Round 5",
-      "date": "2026-11-14T01:30:00.000Z",
-      "opponent": "Knox Churches 1st XI",
-      "batting": {
-        "runs": 23,
-        "balls": 54,
-        "fours": 3,
-        "sixes": 0,
-        "strikeRate": 42.59,
+        "strikeRate": 18.18,
         "notOut": false,
         "didNotBat": false
       },

@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-21T23:44:24.927Z",
+  "syncedAt": "2026-11-23T00:07:53.222Z",
   "season": "2026-27",
   "teams": [
     {
@@ -808,7 +808,7 @@
         },
         {
           "id": "816af032-0a87-4404-8dc9-610cca7039fe",
-          "status": "UPCOMING",
+          "status": "FINAL",
           "type": null,
           "round": "Round 4",
           "roundShort": "R4",
@@ -818,13 +818,13 @@
           ],
           "isHome": true,
           "opponent": "Melbourne Crickeroos Grade 4",
-          "outcome": null,
+          "outcome": "LOST",
           "venue": "Singleton Recreation Reserve",
           "ground": "Singleton Reserve",
           "suburb": "ENDEAVOUR HILLS",
           "mapQuery": "Singleton%20Recreation%20Reserve%2C%20ENDEAVOUR%20HILLS%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null
+          "ourScore": "109 (24.4 ov)",
+          "theirScore": "5/112 (23.5 ov)"
         },
         {
           "id": "7afeda50-6d7f-4318-8a15-8f6648fe79c0",

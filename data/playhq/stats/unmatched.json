@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T23:44:25.215Z",
+  "generatedAt": "2026-11-23T00:07:53.568Z",
   "note": "Names in PlayHQ scorecards with no match in config/players.json. Add each as a new player or as an alias of an existing one.",
   "names": [
     {
@@ -11,11 +11,15 @@
       "appearances": 2
     },
     {
+      "name": "Anushka Withanage",
+      "appearances": 2
+    },
+    {
       "name": "Yakdehikandage Dilan Yasintha Costa",
       "appearances": 1
     },
     {
-      "name": "Anushka Withanage",
+      "name": "Shenal Fernandez",
       "appearances": 1
     }
   ]

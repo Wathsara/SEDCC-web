@@ -1,6 +1,6 @@
 {
   "week": "2026-W47",
-  "generatedAt": "2026-11-21T23:44:25.214Z",
+  "generatedAt": "2026-11-23T00:07:53.567Z",
   "topBatter": {
     "playerId": "yadeesha-deerasooriya",
     "displayName": "Yadeesha Deerasooriya",
@@ -586,6 +586,294 @@
       },
       "bowling": null,
       "fielding": null
+    },
+    {
+      "playerId": null,
+      "displayName": "Shenal Fernandez",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 4,
+        "balls": 14,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 28.57,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 2,
+        "balls": 12,
+        "maidens": 0,
+        "runs": 8,
+        "wickets": 0,
+        "economy": 4
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "mahesh-fernando",
+      "displayName": "Mahesh Fernando",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 4,
+        "balls": 12,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 33.33,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 6,
+        "balls": 36,
+        "maidens": 0,
+        "runs": 29,
+        "wickets": 2,
+        "economy": 4.83
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "sanjeewa-jayawardane",
+      "displayName": "Sanjeewa Jayawardane",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 1,
+        "balls": 10,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 10,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "wathsara-daluwatta",
+      "displayName": "Wathsara Daluwatta",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 13,
+        "balls": 23,
+        "fours": 0,
+        "sixes": 1,
+        "strikeRate": 56.52,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 1,
+        "balls": 6,
+        "maidens": 0,
+        "runs": 10,
+        "wickets": 0,
+        "economy": 10
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "harith-perera",
+      "displayName": "Harith Perera",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 5,
+        "balls": 6,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 83.33,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 2,
+        "balls": 12,
+        "maidens": 0,
+        "runs": 6,
+        "wickets": 0,
+        "economy": 3
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "amila-jayanuwan",
+      "displayName": "Amila Jayanuwan",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 4,
+        "balls": 6,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 66.67,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "thisara-nilupul-lankathilake",
+      "displayName": "Thisara Nilupul Lankathilake",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 22,
+        "balls": 26,
+        "fours": 2,
+        "sixes": 1,
+        "strikeRate": 84.62,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 2,
+        "balls": 12,
+        "maidens": 0,
+        "runs": 23,
+        "wickets": 0,
+        "economy": 11.5
+      },
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
+    },
+    {
+      "playerId": "indika-karunathilaka",
+      "displayName": "Indika Karunathilaka",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 27,
+        "balls": 43,
+        "fours": 1,
+        "sixes": 0,
+        "strikeRate": 62.79,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 4,
+        "balls": 24,
+        "maidens": 0,
+        "runs": 16,
+        "wickets": 1,
+        "economy": 4
+      },
+      "fielding": null
+    },
+    {
+      "playerId": "pavan-ariyadasa",
+      "displayName": "Pavan Ariyadasa",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 0,
+        "balls": 1,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": true,
+        "didNotBat": false
+      },
+      "bowling": {
+        "overs": 6.5,
+        "balls": 41,
+        "maidens": 2,
+        "runs": 18,
+        "wickets": 2,
+        "economy": 2.63
+      },
+      "fielding": null
+    },
+    {
+      "playerId": null,
+      "displayName": "Anushka Withanage",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 0,
+        "balls": 4,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 0,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": null
+    },
+    {
+      "playerId": "shehan-galagedara",
+      "displayName": "Shehan Galagedara",
+      "identifiable": true,
+      "teamSlug": "grade-4",
+      "gameId": "816af032-0a87-4404-8dc9-610cca7039fe",
+      "round": "Round 4",
+      "date": "2026-11-22T02:00:00.000Z",
+      "opponent": "Melbourne Crickeroos Grade 4",
+      "batting": {
+        "runs": 1,
+        "balls": 4,
+        "fours": 0,
+        "sixes": 0,
+        "strikeRate": 25,
+        "notOut": false,
+        "didNotBat": false
+      },
+      "bowling": null,
+      "fielding": {
+        "catches": 1,
+        "stumpings": 0,
+        "runOuts": 0
+      }
     }
   ]
 }

@@ -1,0 +1,368 @@
+{
+  "id": "f54b8c84-5919-48d6-8077-1c875c1e75c7",
+  "gradeId": "c6d23fbe-698c-4244-88c0-107c8be49b79",
+  "grade": {
+    "id": "c6d23fbe-698c-4244-88c0-107c8be49b79",
+    "name": "13. LOC 1 McCarthy Shield"
+  },
+  "organisation": {
+    "id": "05ee99c2-3e3e-481f-aee1-dcbdaaf6bc87",
+    "name": "Eastern Cricket Association"
+  },
+  "round": {
+    "id": "9d1e8536-fa45-40dd-b6aa-48bad9cbde46",
+    "name": "Round 7",
+    "abbreviatedName": "R7",
+    "isFinalRound": false
+  },
+  "status": "ABANDONED",
+  "type": "oneDay",
+  "schedule": [
+    {
+      "day": null,
+      "dateTime": "2026-11-28T01:30:00.000Z",
+      "playingSurfaceId": "f4a72d40-4826-4be3-ad7c-0196991b1431"
+    }
+  ],
+  "appearances": [
+    {
+      "id": "0fe0e2c6-e135-4706-8c61-3563075a5a93",
+      "firstName": "Kushan",
+      "lastName": "Perera",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": true,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "da8e81fb-d8e5-4320-acda-9ac50074bd63",
+      "firstName": "Samuel",
+      "lastName": "Sedawie",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": true,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "8575549f-ea30-4512-84b2-44e79bcf163b",
+      "firstName": "Parth",
+      "lastName": "Sharma",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": true,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "6010938c-5d22-4052-bf95-b7a023a96546",
+      "firstName": "Tharindu",
+      "lastName": "Samaranayake",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "6d792165-9c30-4e87-a797-1db235426ebf",
+      "firstName": "Udara",
+      "lastName": "Usliyanage",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "c163f1f2-725d-449e-9557-182cf732e7e3",
+      "firstName": "Yadeesha",
+      "lastName": "Deerasooriya",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "81ce6ea6-3f03-45d6-a7a3-ea238f4e5037",
+      "firstName": "Janaka",
+      "lastName": "Muthukumarana",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "4fb7b1a0-8dde-461c-8a5a-1e99dc3a8778",
+      "firstName": "Sheshan",
+      "lastName": "Andrahennadige",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "f4ca4615-7bde-416d-ad81-c5bc99c4f270",
+      "firstName": "Santhuka",
+      "lastName": "De Silva",
+      "captainRole": "CAPTAIN",
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "af3e6313-29ba-40fa-a46d-1d0292374fad",
+      "firstName": "Dinuth",
+      "lastName": "Deerasooriya",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "7ca443a5-bec6-49e2-93be-643d4e08488a",
+      "firstName": "Thisura",
+      "lastName": "Waduge",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "185ab853-8710-40e0-b24d-163a67346598",
+      "firstName": "Yasindu",
+      "lastName": "Hendavitharana",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "5739ec5e-8f9d-4acd-8c7a-739abde34889",
+      "firstName": "Pasindu",
+      "lastName": "Sunilchandra",
+      "captainRole": "VICE_CAPTAIN",
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "f5be3308-f20c-40c9-80b8-cd96b96e5da6",
+      "firstName": "Buwaneka",
+      "lastName": "Wakishta",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "playerPosition": null
+    },
+    {
+      "id": "3c9e124e-7b84-41dd-a3e2-f68e8357aef7",
+      "firstName": "Jett",
+      "lastName": "Mikedis",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "18011769-b775-4d95-a997-6a8272f212ed",
+      "firstName": "Xavier",
+      "lastName": "Garita",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "fb793791-c594-48a2-bf7a-d77bbe2ea3fe",
+      "firstName": "Tom",
+      "lastName": "McGurn",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "fbafdeff-bbba-4ba2-9b00-ccf32232a01d",
+      "firstName": "David",
+      "lastName": "Fitz-Gerald",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "43cc7c85-956a-4c1f-8afc-491868ce86c2",
+      "firstName": "Brett",
+      "lastName": "Webb",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "c2a7683f-bf49-41f3-b841-c74657a55622",
+      "firstName": "David",
+      "lastName": "Burgess",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "f209f44c-bc29-44cb-b7c0-b104a95f0adc",
+      "firstName": "Andre",
+      "lastName": "Samson",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "e6b5c421-ba5c-4a8d-b596-5b35410b86e5",
+      "firstName": "Declan",
+      "lastName": "Hudson",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    },
+    {
+      "id": "1326e6c3-7ea8-40de-8e86-bc07f29db175",
+      "firstName": "Gavin",
+      "lastName": "Cox",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "playerPosition": null
+    }
+  ],
+  "teams": [
+    {
+      "id": "3a3c3186-09c4-4f35-9bd7-98329c2c6259",
+      "name": "Alphington United 1st XI",
+      "isHomeTeam": true,
+      "outcome": "ABANDONED",
+      "organisation": {
+        "id": "fa679fb0-830a-4f4f-bd11-a34f7a13ecd3",
+        "name": "Alphington United Cricket Club"
+      }
+    },
+    {
+      "id": "235135a4-6aa6-48d3-8da8-24b20b05b7e8",
+      "name": "South Eastern Dreamers 1st XI",
+      "isHomeTeam": false,
+      "outcome": "ABANDONED",
+      "organisation": {
+        "id": "3e34387e-2fd6-48b6-8318-9659939e2c29",
+        "name": "South Eastern Dreamers Cricket Club"
+      }
+    }
+  ],
+  "coinToss": null,
+  "periods": [],
+  "playingSurfaces": [
+    {
+      "id": "f4a72d40-4826-4be3-ad7c-0196991b1431",
+      "name": "Alphington Park",
+      "abbreviatedName": "AlIQ8",
+      "longitude": "145.029830932617",
+      "latitude": "-37.7843166960159",
+      "venue": {
+        "id": "81a9e15a-8147-4a44-adb8-32f9cccd30d9",
+        "name": "Alphington Park",
+        "timezone": "Australia/Melbourne"
+      }
+    }
+  ],
+  "_syncedAt": "2026-11-28T01:49:55.380Z",
+  "_updatedAt": "2026-11-27T22:28:40.000Z"
+}

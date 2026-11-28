@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-27T02:05:41.692Z",
+  "syncedAt": "2026-11-28T01:50:05.234Z",
   "season": "2026-27",
   "teams": [
     {
@@ -138,7 +138,7 @@
         },
         {
           "id": "f54b8c84-5919-48d6-8077-1c875c1e75c7",
-          "status": "UPCOMING",
+          "status": "ABANDONED",
           "type": null,
           "round": "Round 7",
           "roundShort": "R7",
@@ -148,13 +148,13 @@
           ],
           "isHome": false,
           "opponent": "Alphington United 1st XI",
-          "outcome": null,
+          "outcome": "ABANDONED",
           "venue": "Alphington Park",
           "ground": "Alphington Park",
           "suburb": "ALPHINGTON",
           "mapQuery": "Alphington%20Park%2C%20ALPHINGTON%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "0",
+          "theirScore": "0",
           "matchCentreUrl": "https://play.cricket.com.au/match/2fe2a2a1-dfa8-4e04-9150-9e15fbdd27fa?tab=summary"
         },
         {
@@ -506,7 +506,7 @@
         },
         {
           "id": "9b4124f2-afe9-4e04-b2da-3ac4502003e8",
-          "status": "UPCOMING",
+          "status": "ABANDONED",
           "type": null,
           "round": "Round 7",
           "roundShort": "R7",
@@ -516,13 +516,13 @@
           ],
           "isHome": true,
           "opponent": "Manningham 1st XI",
-          "outcome": null,
+          "outcome": "ABANDONED",
           "venue": "Donnelly Recreation Reserve",
           "ground": "Oval 1",
           "suburb": "CRANBOURNE",
           "mapQuery": "Donnelly%20Recreation%20Reserve%2C%20CRANBOURNE%2C%20VIC",
-          "ourScore": null,
-          "theirScore": null,
+          "ourScore": "0",
+          "theirScore": "0",
           "matchCentreUrl": "https://play.cricket.com.au/match/2ac03f85-6cfd-487c-8c76-e66a83cef2b4?tab=summary"
         },
         {

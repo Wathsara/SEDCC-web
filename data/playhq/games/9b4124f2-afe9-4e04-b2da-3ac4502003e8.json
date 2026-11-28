@@ -1,0 +1,225 @@
+{
+  "id": "9b4124f2-afe9-4e04-b2da-3ac4502003e8",
+  "gradeId": "2521ddb6-6c4f-4e37-bff9-e0d3dcd38147",
+  "grade": {
+    "id": "2521ddb6-6c4f-4e37-bff9-e0d3dcd38147",
+    "name": "14. LOC 2 Laws Shield"
+  },
+  "organisation": {
+    "id": "05ee99c2-3e3e-481f-aee1-dcbdaaf6bc87",
+    "name": "Eastern Cricket Association"
+  },
+  "round": {
+    "id": "adecdf7c-fa0b-4d59-89b2-5e9f9f2fdeec",
+    "name": "Round 7",
+    "abbreviatedName": "R7",
+    "isFinalRound": false
+  },
+  "status": "ABANDONED",
+  "type": "oneDay",
+  "schedule": [
+    {
+      "day": null,
+      "dateTime": "2026-11-28T01:30:00.000Z",
+      "playingSurfaceId": "e85950f2-30e4-452a-b117-4ec02396d794"
+    }
+  ],
+  "appearances": [
+    {
+      "id": "07ca8aa0-444c-4669-b537-3d8300e0995d",
+      "firstName": "Thisara Nilupul",
+      "lastName": "Lankathilake",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": true,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "54a9a03c-20a9-4fbe-87cf-b96d9819f607",
+      "firstName": "Harith",
+      "lastName": "Perera",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "ae696497-05f8-4541-bad6-db40a2a100c9",
+      "firstName": "Nimsara",
+      "lastName": "Wijesinghe",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "a7e1dadd-0217-4f4e-8487-d0c4d6568467",
+      "firstName": "Yasuntha",
+      "lastName": "Gamalath",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "a15c9385-7ce2-455d-8aa5-bc337ae12390",
+      "firstName": "Dilhan",
+      "lastName": "Rahubadde Kankanange",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "06a428e9-537e-4223-8482-493c79e7ef20",
+      "firstName": "Harsha",
+      "lastName": "Munasinghe",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "e1303958-dc2f-44dd-aaa8-d93ca6d3dec4",
+      "firstName": "Charitha",
+      "lastName": "Elvitigala",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "6527bc3c-5769-45d9-92c4-348334af5962",
+      "firstName": "Thaushka",
+      "lastName": "Herath",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "547f468e-299b-412d-a0e0-f88e0fe10de0",
+      "firstName": "Lasitha",
+      "lastName": "Ekanayake",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "059b92b5-4d20-4143-8178-bb342852c9c0",
+      "firstName": "Nisitha",
+      "lastName": "Ginigalgodage",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "fde2b5d1-0cc0-494d-9ce3-56f8876fbbcb",
+      "firstName": "Malith",
+      "lastName": "Kanahara",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    },
+    {
+      "id": "4561a5b8-671e-4d7c-a659-851b00c9b3ec",
+      "firstName": "Wathsara",
+      "lastName": "Daluwatta",
+      "captainRole": null,
+      "playerNumber": null,
+      "isFillIn": false,
+      "isRegisteredPlayer": true,
+      "visible": true,
+      "roleType": "Player",
+      "teamId": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "playerPosition": null
+    }
+  ],
+  "teams": [
+    {
+      "id": "ca12b473-b355-408d-afe4-a285d0127dd3",
+      "name": "South Eastern Dreamers 2nd XI",
+      "isHomeTeam": true,
+      "outcome": "ABANDONED",
+      "organisation": {
+        "id": "3e34387e-2fd6-48b6-8318-9659939e2c29",
+        "name": "South Eastern Dreamers Cricket Club"
+      }
+    },
+    {
+      "id": "f607744b-f920-40b2-a310-b78a2e7d4279",
+      "name": "Manningham 1st XI",
+      "isHomeTeam": false,
+      "outcome": "ABANDONED",
+      "organisation": {
+        "id": "7faf3398-e8a3-4b33-bd11-00778a7dfa0f",
+        "name": "Manningham Cricket Club"
+      }
+    }
+  ],
+  "coinToss": null,
+  "periods": [],
+  "playingSurfaces": [
+    {
+      "id": "e85950f2-30e4-452a-b117-4ec02396d794",
+      "name": "Oval 1",
+      "abbreviatedName": "OvAC2",
+      "longitude": "145.277645587921",
+      "latitude": "-38.0892593791554",
+      "venue": {
+        "id": "0695a5b3-e750-48e2-a4fd-8657161c8282",
+        "name": "Donnelly Recreation Reserve",
+        "timezone": "Australia/Melbourne"
+      }
+    }
+  ],
+  "_syncedAt": "2026-11-28T01:49:58.104Z",
+  "_updatedAt": "2026-11-27T22:28:40.000Z"
+}
